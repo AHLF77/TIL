@@ -1,4 +1,4 @@
-public class CBT220305Ch0473 {
+public class Ch0473 {
     static void rs(char a[]) {
 		for(int i = 0; i< a.length;i++)
 			if(a[i]== 'B') { // 해당 배열이 문자 'B'와 일치 시, 아래 'C'문자를 반환한다.
