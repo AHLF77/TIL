@@ -1,4 +1,4 @@
-public class java0404 {
+public class Ch01 {
 
 	public static void main(String[] args) {
 		int a = 10;
