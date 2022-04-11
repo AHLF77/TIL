@@ -76,6 +76,7 @@ public class P117 {
 
 ```
 
+## Switch문과 랜덤함수
 ```java
 package day04;
 
@@ -117,6 +118,7 @@ public class P118 {
 
 ```
 
+## for문과 while문
 ```java
 package day04;
 
@@ -144,6 +146,7 @@ public class P119 {
 }
 ```
 
+## Switch문
 ```java
 package day04;
 
@@ -175,6 +178,37 @@ public class P120 {
 		
 		System.out.println("-------------------------------------");	
 		
+	}
+
+}
+
+```
+```java
+package day04;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class P121 {
+
+	public static void main(String[] args) {
+		// Random을 통해 1 ~ 99까지의 난수를 발생 시킴.
+		
+		Random r = new Random(); 
+		int n = r.nextInt(98)+2;// 랜던 값
+		System.out.println("랜덤값: " + n);
+		
+	// 1부터 난수까지의 합과 평균을 출력한다.
+		double sum = 0.0; // 합
+		int count = 0;
+		
+		for (int i = 1; i <= n; i++) { 
+			sum += i;
+			count++;
+		}
+		System.out.println("합계: " + sum);
+		System.out.println("평균: " + sum/count);
+
 	}
 
 }
