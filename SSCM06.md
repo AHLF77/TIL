@@ -42,6 +42,7 @@
 }
  ```
  
+## Switch문
 ```java
 package day04;
 
