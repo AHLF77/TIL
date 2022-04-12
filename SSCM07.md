@@ -236,3 +236,39 @@ public class P149 {
 }
 
 ```
+
+## 배열과 for문 예제
+```java
+package ch05;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class P150 {
+
+	public static void main(String[] args) {
+		int ar [] = new int[10];
+		
+		// for문을 이용하여 1 ~ 9 까지 난수를 만들어 배열에 넣어라
+		Random r = new Random();
+		for (int i = 0; i < ar.length; i++) {
+			ar[i] = r.nextInt(9)+1;
+		
+		}
+		
+		//배열 내용을 출력하시오.
+		System.out.println(Arrays.toString(ar));
+		
+		//합과 평균을 구하시오.
+		double sum = 0.0;
+		for(int i =0; i<ar.length; i++) {
+			sum += ar[i];
+		}
+		System.out.println(sum);
+		System.out.println(sum/ar.length);
+		
+		
+	}
+
+}
+```
