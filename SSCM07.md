@@ -165,6 +165,7 @@ public class P135 {
 
 ## 참조 타입
 - 객체형: 문자열, 객체
+- substring(시작위치,끝위치)
 
 ## Substring, IndexOf
 ```java
@@ -181,9 +182,7 @@ public class P148 {
 		
 		String str2 = str.substring(0,3); // 0번 째서부터 2번째까지 출력 필요
 		System.out.println(str2);
-		
-		//substring(시작위치,끝위치)
-		
+
 		String mail = "gjhan777@gmail.com";
 		// id와 domain을 출력 하시오.
 		
@@ -300,6 +299,8 @@ public class P151 {
 ```
 
 ## 152P
+- 
+- 
 ```java
 package ch05;
 
@@ -321,6 +322,7 @@ public class P152 {
 ```
 
 ## 2차원 배열 예제
+- 배열 요소로 또 다른 배열을 가지는 배열을 의미
 ```java
 package ch05;
 
