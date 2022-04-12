@@ -161,3 +161,78 @@ public class P135 {
 
 
 ```
+
+
+## 참조 타입
+- 객체형: 문자열, 객체
+
+## Substring, IndexOf
+```java
+package ch05;
+
+public class P148 {
+
+	public static void main(String[] args) {
+		String str = "abcde";
+		
+		int c = str.indexOf("b");
+		String c1 = str.substring(c);
+		System.out.println(c1);
+		
+		String str2 = str.substring(0,3); // 0번 째서부터 2번째까지 출력 필요
+		System.out.println(str2);
+		
+		//substring(시작위치,끝위치)
+		
+		String mail = "gjhan777@gmail.com";
+		// id와 domain을 출력 하시오.
+		
+		int idx = mail.indexOf("@");
+		String id = mail.substring(0,idx);
+		String domain = mail.substring(idx); 
+		
+		System.out.printf("%s %s \n", id, domain);	
+		
+		String ss = " abc ";
+		System.out.println(ss.trim()); // trim은 공백을 지워준다.
+	}
+
+}
+
+```
+
+## 배열
+- 참조타입
+- for문을 돌려서 값을 추출
+- int 선언하면은 String 사용 못함
+- Arrays.toString(ar) : // 안에 내용을 볼 때만 사용
+- 배열의 고정된 값은 시험 에서만 나온다.
+```java
+package ch05;
+
+import java.util.Arrays;
+
+public class P149 {
+
+	public static void main(String[] args) {
+		int a = 10;
+		
+		int ar [] = new int[4]; // ar 뒤에 [] 사용해도 문제는 없음., new int[4] 선언 
+		ar[0] = 10;
+		ar[1] = 11;
+		ar[2] = 12;
+		ar[3] = 13;
+		
+		System.out.println(a);
+		System.out.println(ar);
+		System.out.println(Arrays.toString(ar)); // 안에 내용을 볼 때만 사용
+		
+		for (int i = 0; i < ar.length; i++) {
+			System.out.println(ar[i]);
+		}
+
+	}
+
+}
+
+```
