@@ -272,3 +272,97 @@ public class P150 {
 
 }
 ```
+
+## 배열에 홀수 번째 값들의 합과 평균을 구하는 예제
+```java
+package ch05;
+
+public class P151 {
+
+	public static void main(String[] args) {
+		int ar [] = {1,2,3,4,5,6,7,8,9};
+		
+		// 
+		double sum =0.0;
+		int cnt = 0;
+		for (int i = 0; i < ar.length;i++) {
+			if(i%2 == 1) {
+				sum += ar[i];
+				cnt++;
+			}
+		}
+		System.out.println(sum);
+		System.out.println(sum/cnt);
+	}
+
+}
+
+```
+
+## 152P
+```java
+package ch05;
+
+import java.util.Arrays;
+
+public class P152 {
+
+	public static void main(String[] args) {
+		String sr [] = new String[3];
+		sr[0] = "abc";
+		sr[1] = "cd";
+		sr[2] = "ef";
+		
+		System.out.println(Arrays.toString(sr));
+
+	}
+
+}
+```
+
+## 2차원 배열 예제
+```java
+package ch05;
+
+import java.util.Random;
+
+public class P153 {
+
+	public static void main(String[] args) {
+		
+		//int ar[][] = new int[3][3];
+		int ar [][] = new int[3][];
+		ar[0] = new int[3];
+		ar[1] = new int[3];
+		ar[2] = new int[3];
+
+		Random r = new Random();
+		
+		for (int i = 0; i < ar.length; i++) {
+			// 0, 1, 2
+			for (int j = 0; j < ar[i].length; j++) {
+				ar[i][j] = r.nextInt(9)+1; 
+			}
+		}
+		
+		// 출력
+		for(int i = 0; i< ar.length; i++) {
+			for (int j = 0; j < ar[i].length; j++) {
+				System.out.printf("%d \t", ar[i][j]);
+			}
+			System.out.println("");
+		}
+		
+		//for문을 이용하여 합과 평균을 구하시오.
+		double sum =0.0;
+		for(int i =0; i<ar.length; i++) {
+			for (int j = 0; j < ar[i].length; j++) {
+				sum += ar[i][j];
+			}
+		}
+		System.out.println(sum);
+		System.out.println(""+sum/(ar.length * ar[0].length));
+	}
+}
+
+```
