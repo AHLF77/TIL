@@ -235,7 +235,7 @@ public class Ws02 {
 				nm = Integer.parseInt(num);
 				user[i] = nm;
 				if(nm < 1 || nm >20) {
-					System.out.println("입력 오류.");
+					System.out.println("입력 오류 입니다.");
 					i--;
 					continue;
 				}	
@@ -248,7 +248,7 @@ public class Ws02 {
 			
 			for (int j = 0; j < i; j++) {
 				if(user[i] == user[j]) {
-					System.out.println("중복 숫자.");
+					System.out.println("중복 숫자 입니다.");
 					i--;
 					continue;
 					}			
@@ -271,13 +271,13 @@ public class Ws02 {
 		System.out.println(Arrays.toString(user));
 		
 		if(cnt == 6) {
-			System.out.println("1등에 당첨되셨습니다. 상금 10만원입니다.");
+			System.out.println("1등입니다. 상금은 10만원입니다");
 		}else if(cnt == 5) {
-			System.out.println("2등에 당첨되셨습니다. 상금 7만원입니다.");
+			System.out.println("2등입니다. 상금은 7만원입니다");
 		}else if(cnt == 4) {
-			System.out.println("3등에 당첨되셨습니다. 상금 5만원입니다.");
+			System.out.println("3등입니다. 상금은 3만원입니다");
 		}else {
-			System.out.println("꽝");
+			System.out.println("꽝입니다");
 		}
 		
 		
@@ -285,6 +285,5 @@ public class Ws02 {
 	}
 
 	}
-
 
 ```
