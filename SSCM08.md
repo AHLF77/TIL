@@ -70,8 +70,46 @@ public abstract class tw01 {
 
 ```
 
-## 2. 2번 과제
+## 3. 3번 과제
 ```java
+package tw;
+
+import java.util.Arrays;
+
+public class Tw021 {
+
+	public static void main(String[] args) {
+		double ar[]= new double[9];
+		double arr[] = new double[9];
+		double sum = 0.0;
+		int cnt = 0;
+		for (int i = 2; i < 10; i++) {
+			if(i%2 == 1) {
+				continue;
+			}
+			System.out.println(i+"단 시작");
+			for (int j = 1; j < 10; j++) {
+				/*if((i*j) == 99) {
+					break outter;
+				}*/
+				System.out.printf("%d x %d = %d \n ",i,j,(i*j));
+				sum += i*j;
+				cnt++;
+				
+			}
+			ar[i-1] = sum;
+			arr[i-1] = sum/cnt;
+			System.out.println(i+"단의 합과 평균 : "+sum+", "+sum/cnt);
+			
+			System.out.println("~~~~~~~~~~~~~");
+			sum = 0;
+			cnt = 0;
+		}
+		System.out.println("각 단의 합 : "+Arrays.toString(ar));
+		System.out.println("각 단의 평균 : "+Arrays.toString(arr));
+	}
+
+}
 
 ```
 
