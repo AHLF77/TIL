@@ -44,5 +44,43 @@ public class tp01 {
 
 ## 2. 2번 과제
 ```java
+package tw;
+
+public abstract class tw01 {
+
+	public static void main(String[] args) {
+		/*
+		 정수 1~100의 수 중 5의 배수 합을 구하시오.
+		 */
+		
+		int num = 5; // 선언
+		double sum = 0.0;
+		
+		for (int i = 1; i <= 100; i++) {
+			if(i%num==0) {
+				sum += i;
+			}
+		}
+		System.out.println("5의 배수의 합: " + sum);
+		
+		
+	}
+
+}
+
+```
+
+## 2. 2번 과제
+```java
+
+```
+
+## 2. 2번 과제
+```java
+
+```
+
+## 2. 2번 과제
+```java
 
 ```
