@@ -186,5 +186,105 @@ public class Ws01 {
 
 ## 5. 5번 과제
 ```java
+package tw;
+
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Ws02 {
+
+	public static void main(String[] args) {
+		/*
+		Lotto Game 을 만드시오.
+  		1에서 20까지의 정수 중에서 중복 없이 랜덤으로 숫자 6개를 뽑는다.(배열사용)
+		입력받은 숫자들과 뽑힌 숫자를 비교한다. (이중for문)(배열사용)
+		1등은 숫자 6개를 모두 맞춘 경우, 메시지 "1등입니다. 상금은 10만원입니다"출력함
+		2등은 숫자 5개를 맞춘 경우, 메시지 "2등입니다. 상금은 7만원입니다"출력함
+		3등은 숫자 4개를 맞춘 경우, 메시지 "3등입니다. 상금은 3만원입니다"출력함
+		그 외는 메시지 " 꽝입니다" 출력함
+		 */
+				
+		int ar[] = new int[6];
+		int user[] = new int[6];
+		int cnt = 0;
+		
+		Random r = new Random();
+		Scanner sc = new Scanner(System.in);
+		
+	//	로또 번호 산정(1~20)
+		for (int i = 0; i < ar.length; i++) {
+			int a = r.nextInt(20)+1;
+			ar[i] = a;
+			for (int j = 0; j < i; j++) {
+				if(ar[i] == ar[j]) {
+					i--;
+				}
+				
+			}
+		}
+		
+		
+		int nm = 0;
+		for (int i = 0; i < ar.length; i++) {
+			
+			System.out.println("숫자를 입력하세요.");
+			String num = sc.next();
+			
+			try {
+				nm = Integer.parseInt(num);
+				user[i] = nm;
+				if(nm < 1 || nm >20) {
+					System.out.println("입력 오류.");
+					i--;
+					continue;
+				}	
+				
+			} catch (Exception e) {
+				System.out.println("문자를 입력 하셨습니다.");
+				i--;
+				continue;
+			}
+			
+			for (int j = 0; j < i; j++) {
+				if(user[i] == user[j]) {
+					System.out.println("중복 숫자.");
+					i--;
+					continue;
+					}			
+	
+		}
+			
+		
+	}
+		
+		
+		for (int i = 0; i < user.length; i++) {
+			if(ar[i] == user[i]) {
+				cnt++;
+			}
+		}
+		
+		
+		System.out.println("맞힌 숫자 갯수 : "+cnt);
+		System.out.println(Arrays.toString(ar));
+		System.out.println(Arrays.toString(user));
+		
+		if(cnt == 6) {
+			System.out.println("1등에 당첨되셨습니다. 상금 10만원입니다.");
+		}else if(cnt == 5) {
+			System.out.println("2등에 당첨되셨습니다. 상금 7만원입니다.");
+		}else if(cnt == 4) {
+			System.out.println("3등에 당첨되셨습니다. 상금 5만원입니다.");
+		}else {
+			System.out.println("꽝");
+		}
+		
+		
+		sc.close();
+	}
+
+	}
+
 
 ```
