@@ -113,12 +113,78 @@ public class Tw021 {
 
 ```
 
-## 2. 2번 과제
+## 4. 4번 과제
 ```java
+package tw;
 
+import java.util.Random;
+import java.util.Scanner;
+
+public class Ws01 {
+
+	public static void main(String[] args) {
+		/*
+		 * Number Guess Game 을 만드시오
+		ㅇ"Game Start" 메시지를 출력하며 게임을 시작한다.
+		ㅇ1에서 10까지의 정수 중에서 숫자 1개를 골라 정답을 정해놓는다.
+		ㅇ숫자를 하나 입력받는다. 단, 입력횟수(시도횟수)도 5회로 정해져있다.(While)
+		ㅇ입력받은 숫자가 정답보다 크면 down을 출력하고 다시 메시지를 출력하고 숫자를 입력받는다.
+		ㅇ입력받은 숫자가 정답보다 작으면 up을 출력하고 다시 메시지를 출력하고 숫자를 입력받는다.
+		ㅇ입력받은 숫자와 정답과 일치하면 "축하합니다! 정답입니다!"를 출력한다.
+		ㅇ5회 모두 실패시, 정답을 출력하고 메시지 "Game End"를 출력한다. 
+		ㅇ "종료" 를 입력하면 바로 프로그램을 종료한다.
+
+*/
+		Random rn = new Random();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Game Start...");
+		int rd = rn.nextInt(10)+1;
+		int try_count = 5;
+		while(true) {
+			
+			System.out.println("1~10숫자를 입력하세요.");
+			String num = sc.next();
+			if(num.contentEquals("종료")) {
+				sc.close();
+				System.out.println("종료");
+				break;
+			}
+			
+			int n = Integer.parseInt(num);
+			
+			if (n <0 || n>10) {
+				System.out.println("입력오류");
+				continue;
+			}
+			if(n>rd) {
+				System.out.println("down");
+				try_count--;
+				
+			}else if(n<rd){
+				System.out.println("up");
+				try_count--;	
+				
+			}else if(n == rd) {
+				sc.close();
+				System.out.println("정답");
+				return;
+				
+			}
+			if(try_count == 0) {
+				System.out.println("정답은"+rd+"끝");
+				rd = rn.nextInt(10)+1;
+				try_count = 5;
+				continue;
+			}
+		}
+		
+	}
+
+	
+	}
 ```
 
-## 2. 2번 과제
+## 5. 5번 과제
 ```java
 
 ```
