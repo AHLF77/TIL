@@ -4,11 +4,17 @@
 - Java(OOP) Design Pattern
 
 ## OOP 특징 - Java
-1. Encapsulation
-2. Inheritance
-3. Polymorpism
-4. Abstraction
+### Encapsulation
+- 관련이 있는 변수와 함수를 하나의 클래스로 묶고 외부에서 접근하지 못하도록 은닉하는 것이 핵심(정보처리기사에도 나옴)
 
+### 접근제어자
+- default
+- private
+- public
+- protected
+
+### getter 와 setter
+- 사용이유: 클래스의 필드에 집적 접근하는 것을 막기 위함
 
 ## 자동차에 대한 클래스 예제
 ```java
