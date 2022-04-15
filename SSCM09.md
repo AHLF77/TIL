@@ -57,5 +57,26 @@ public class Car { // 객체를 생성하기 위한 툴이다.
 	
 }
 
+```
+
+```java
+package ch06;
+
+public class App {
+
+	public static void main(String[] args) {
+//		int a =100;
+//		String s = new String("ABC");
+//		int ar[] = {1,2,3,4};
+		
+		Car c1 = new Car();
+		String result1= c1.toString();
+		System.out.println(c1.toString());
+		
+		Car c2 = new Car();
+		System.out.println(c2.toString());
+	}
+
+}
 
 ```
