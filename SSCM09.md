@@ -98,3 +98,32 @@ public class App2 {
 }
 
 ```
+
+## 은행에 대한 클래스 예제
+```java
+package ch06;
+
+public class BankApp {
+
+	public static void main(String[] args) {
+	
+		Account acc1 = new Account("1111-2222");
+		System.out.println(acc1.toString());
+
+		acc1.deposit(10000);
+		System.out.println(acc1.toString());
+		
+		acc1.withdraw(5000);
+		System.out.println(acc1);
+		
+		acc1.setBalance(500000000.0);
+		
+		String accNo = acc1.getAccNo();
+		double balance = acc1.getBalance();
+		System.out.printf("계좌번호: %s %.2f \n",accNo, balance);
+		
+	}
+
+}
+
+```
