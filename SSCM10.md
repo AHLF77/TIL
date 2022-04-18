@@ -526,7 +526,7 @@ public class BankApp {
 ## 상속
 - 부모가 자식에게 물려주는 행위를 말함.
 - 프로그램에서 자식이 부모를 선택함.
-- 
+- 상위 클래스의 필드나 정보를 하위 클래스에서 정상적으로 사용을 가능하게 해줌
 
 ### 회사 상속 예제
 ```java
@@ -535,7 +535,7 @@ package company;
 public class Employee {
 	private String id;
 	private String name;
-	private double salary;
+	protected double salary;
 	
 	public Employee() {
 		
@@ -605,17 +605,81 @@ public class Manager extends Employee{
 		this.bonus = bonus;
 	}
 
+	// 재정의 - overriding(overloading: 하나의 클래스 안에 동일한 이름이 같이 있어도 문제가 없음)	
+	@Override
+	public double annsalary() {
+		double sum = 0.0;
+	  //sum = getSalary() * 12 + this.bonus;
+		sum = super.annsalary()+ this.bonus;
+		return sum;
+	}
+	
+	public double getBonusTex() {
+		double tex = 0.0;
+		tex = this.bonus - (this.bonus/ 1.1);
+		return tex;
+	}
+	
 	@Override
 	public String toString() {
 		return "Manager [bonus=" + bonus + ", toString()=" + super.toString() + "]";
 	}
-	
+
 }
 
 ```
 ```java
+package company;
+
+public class CompanyApp {
+
+	public static void main(String[] args) {
+		
+		Employee e = new Employee("100","james", 300);
+		System.out.println(e);
+		System.out.println(e.annsalary());
+		
+		Manager m = new Manager("101", "lee", 300, 500);
+		System.out.println(m);
+		System.out.println(m.annsalary());
+		System.out.println(m.getBonusTex());
+		
+	}
+
+}
+
+```
+```java
+package company;
+
+public class CompanyApp2 {
+
+	public static void main(String[] args) {
+		
+		// heterogeneous collection
+		Employee e[] = new Employee[4];
+		e[0] = new Employee("100", "kim", 1000);
+		e[1] = new Employee("101", "lee", 1000);
+		e[2] = new Manager("102", "hong", 1000, 500);
+		e[3] = new Manager("103", "jin", 1000, 800);
+		
+		for (int i = 0; i < e.length; i++) {
+			System.out.println(e[i]);
+		}
+		for (int i = 0; i < e.length; i++) {
+			System.out.println(e[i].annsalary());
+		}
+		for (int i = 0; i < e.length; i++) { // equals는 주소값으로 비교함
+			if(e[i] instanceof Manager) {
+				Manager m = (Manager)e[i];
+				System.out.println(m.getBonusTex());
+			}
+		}
+	}
+
+}
 
 ```
 - Manager is a Employee
 
-#### singleton, final, annotation 제외
+#### singleton, final, annotation 제외(※ 나중에 따로 독학해야 함.)
