@@ -352,4 +352,4 @@ public class CalApp {
 - protected: 같은 패키지 또는 자식 클래스에서 사용할 수 있음
 - public: 외부 클래스에서 자유롭게 사용이 가능
 
-#### singleton 제외, final 제외
+#### singleton, final, annotation 제외
