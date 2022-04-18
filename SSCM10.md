@@ -22,14 +22,108 @@
 ### 생성자 오버로딩
 - 자바는 다양한 방법으로 객체를 생성할 수 있도록 제공
 
-## Car 상속
+### 다른 생성자 호출(this)
+- 자신의 다른 생성자를 호출하는 코드로 반드시 생성자의 첫줄에서만 허용(주소를 의미)
+- this가 없으면 아무것도 아님
+
+## 
+
+
+## Car3 예제
 ```java
+package ch06;
+
+public class Car {
+	private String name;
+	private String color;
+	private int size;
+	
+	public Car() {
+	}
+
+	public Car(String name) {
+		this(name, "red", 1000);
+	}
+
+	
+	
+	public Car(String name, String color) {
+		this(name, color, 1000);// 같은 클래스 안에 동일한 컨스트럭터흫 호출
+	}
+	
+	
+
+	public Car(String name, String color, int size) { // 위의 this와는 다름
+		this.name = name;
+		this.color = color;
+		this.size = size;
+	}
+	
+	
+	
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	
+	public void go() {
+		System.out.println(this.name+": GO!!!!!!!");
+	}
+	
+	public void go(int a) { // 오버로딩이 안되면 go를 변경 시켜야 함.
+		System.out.println(this.name+": GO!!!!!!!"+a);
+	}
+	
+	public void go(double b) { // 오버로딩이 안되면 go를 변경 시켜야 함.
+		System.out.println(this.name+": GO!!!!!!!" + b);
+	}
+	
+	// 컴파일 언어는 변수명을 똑같이 쓰면 안된다.
+	
+	@Override
+	public String toString() {
+		return "Car [name=" + name + ", color=" + color + ", size=" + size + "]";
+	}
+	
+	
+}
 
 
 ```
 
 
 ```java
+package ch06;
+
+public class CarApp {
+
+	public static void main(String[] args) {
+		Car c = new Car("k1");
+		c.setSize(2000);
+		System.out.println(c);
+		String color = c.getColor();
+		System.out.println(c.getColor());
+		
+		c.go(7);
+	}
+
+}
 
 
 ```
