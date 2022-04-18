@@ -265,12 +265,84 @@ public class CarApp2 {
 
 ## 계산기 예제
 ```java
+package ch06;
+
+public class Cal1 {
+
+	private int a;
+	private int b;
+	
+	public Cal1(){
+		
+	}
+
+	public Cal1(int a, int b) {
+		this.a = a;
+		this.b = b;
+	}
+	
+	public int sum() {
+		return (this.a + this.b);
+	}
+	
+	public int div() {
+		return (this.a / this.b);
+	}
+	
+	public int avg() {
+		return (this.a + this.b) / 2;
+	}
+	
+	
+	
+}
 
 ```
 ```java
+package ch06;
+
+public class Cal2 {
+	
+	public static int sum(int a, int b) {
+		return a + b;
+	}
+	
+	public static int div(int a, int b) {
+		return a / b;
+	}
+	
+	public static double sum(double a, double b) { // 오버로딩(arguments가 달라서)
+		return a + b;
+	}
+	
+	public static double div(double a, double b) { // 오버로딩(arguments가 달라서)
+		return a / b;
+	}
+	
+}
 
 ```
 ```java
+package ch06;
+
+public class CalApp {
+
+	public static void main(String[] args) {
+		
+		Cal1 c1 = new Cal1(10,2);
+		int c1avg = c1.avg();
+		System.out.println(c1avg);
+		
+		int c2sum = Cal2.sum(10, 2);
+		System.out.println(c2sum);
+		
+		double c2sumd = Cal2.sum(10.1,2.1);
+		System.out.println(c2sumd);
+		
+		
+	}
+
+}
 
 ```
 
