@@ -352,4 +352,85 @@ public class CalApp {
 - protected: 같은 패키지 또는 자식 클래스에서 사용할 수 있음
 - public: 외부 클래스에서 자유롭게 사용이 가능
 
+
+## 은행3 예제
+```java
+package bank;
+
+import java.util.Arrays;
+
+public class Customer {
+	
+	private String name; // 고객명
+	private Account[] accs; 
+	
+	public Customer() {
+		
+	}
+
+	public Customer(String name) {
+		this.name = name;
+	}
+
+	public Customer(String name, Account[] accs) {
+		this.name = name;
+		this.accs = accs;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Account[] getAccs() {
+		return accs;
+	}
+	
+	public void setAccs(Account[] accs) {
+		this.accs = accs;
+	}
+	
+	//고객계좌 잔액의 합을 구하는 기능
+	public double getBalanceSum() {
+		double sum = 0.0;
+		for (int i = 0; i < accs.length; i++) {
+			sum += accs[i].getBalance();
+		}
+		return sum;
+	}
+	
+	public void deposit(String accNo, double money) {
+	
+		for (int i = 0; i < accs.length; i++) {
+			if(accs[i].getAccNo().equals(accNo)){
+				accs[i].deposit(money);;
+				}
+			}
+		
+	}
+	
+	//"1111"인 계좌를 리턴 한다.
+	public Account getAc(String accNo) {
+		Account acc = null;
+		for (int i = 0; i < accs.length; i++) {
+			if(accs[i].getAccNo().equals(accNo)){
+				acc = accs[i];
+				}
+			}
+		return acc;
+	} // 일일이 하나 하나 계좌번호를 대조해 가며 해야함
+	
+	@Override
+	public String toString() {
+		return "Customer [name=" + name + ", accs=" + Arrays.toString(accs) + "]";
+	}
+	
+}
+
+```
+```java
+
+```
+```java
+
+```
 #### singleton, final, annotation 제외
