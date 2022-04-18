@@ -38,7 +38,8 @@ public class Car {
 	private String color;
 	private int size;
 	
-	public Car() {
+	public Car() { // default는 반드시 만들어 준다.
+		
 	}
 
 	public Car(String name) {
