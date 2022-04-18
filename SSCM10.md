@@ -522,4 +522,100 @@ public class BankApp {
 }
 
 ```
+
+## 상속
+- 부모가 자식에게 물려주는 행위를 말함.
+- 프로그램에서 자식이 부모를 선택함.
+- 
+
+### 회사 상속 예제
+```java
+package company;
+
+public class Employee {
+	private String id;
+	private String name;
+	private double salary;
+	
+	public Employee() {
+		
+	}
+
+	public Employee(String id, String name, double salary) {
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public double annsalary() {	
+	return this.salary * 12;
+	}
+	
+	@Override
+	public String toString() {
+		return "Manager [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+	}
+}
+
+```
+```java
+package company;
+
+public class Manager extends Employee{
+	private double bonus;
+
+	public Manager() {
+	}
+
+	public Manager(String id, String name, double salary, double bonus) {
+		super(id, name, salary);
+		this.bonus = bonus;
+	}
+
+	public double getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(double bonus) {
+		this.bonus = bonus;
+	}
+
+	@Override
+	public String toString() {
+		return "Manager [bonus=" + bonus + ", toString()=" + super.toString() + "]";
+	}
+	
+}
+
+```
+```java
+
+```
+- Manager is a Employee
+
 #### singleton, final, annotation 제외
