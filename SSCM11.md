@@ -19,13 +19,176 @@
 - final 메소드: 자식이 재정의할 수 없는 메소드
 - 프로모션(자동 타입 변환): 프로그램 실행 도중에 자동 타입 변환이 일어나는 것
 
-```java
-
-```
-
 ### 다형성
 - 같은 타입이지만 실행결과가 다양한 객체 대입 가능한 성질
 
 ```java
+package graphic;
+
+public class Rectangle extends Shape {
+
+	private int width;
+	private int height;
+	
+	public Rectangle() {
+		
+	}
+
+	public Rectangle(int x, int y) {
+		super(x, y);
+		
+	}
+
+	public Rectangle(int x, int y, int width, int height) {
+		super(x, y);
+		this.width = width;
+		this.height = height;
+	}
+
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	@Override
+	public String toString() {
+		return "Rectangle [width=" + width + ", height=" + height + ", x=" + x + ", y=" + y + "]";
+	}
+
+	@Override
+	public double getArea() {
+		return x * y;
+	}
+	
+	@Override
+	public double getCircum() {
+		return (x+y)*2;
+	}
+
+}
+
+```
+```java
+package graphic;
+
+public class Triangle extends Shape {
+
+	private int width;
+	private int height;
+	
+	
+	public Triangle() {
+
+	}
+
+	public Triangle(int x, int y) {
+		super(x, y);
+		
+	}
+
+	public Triangle(int x, int y, int width, int height) {
+		super(x, y);
+		this.width = width;
+		this.height = height;
+	}
+
+	
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	@Override
+	public String toString() {
+		return "Triangle [width=" + width + ", height=" + height + ", x=" + x + ", y=" + y + "]";
+	}
+
+	@Override
+	public double getArea() {
+		return (width * height) /2;
+	}
+
+	@Override
+	public double getCircum() {
+		return width + height + Math.hypot(width, height);
+	}
+
+}
+
+```
+```java
+package graphic;
+
+public class Circle extends Shape {
+
+	private int radius;
+	
+	public Circle() {
+		
+	}
+
+	public Circle(int x, int y) {
+		super(x, y);
+		
+	}
+
+	public Circle(int x, int y, int radius) {
+		super(x, y);
+		this.radius = radius;
+	}
+	
+	
+	public int getRadius() {
+		return radius;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	public void setColor(String color) {
+		System.out.println(color);
+	}
+	
+	@Override
+	public String toString() {
+		return "Circle [radius=" + radius + ", x=" + x + ", y=" + y + "]";
+	}
+
+	@Override
+	public double getArea() {
+		return radius * radius * Math.PI;
+	}
+
+	@Override
+	public double getCircum() {
+		return 2 * radius * Math.PI;
+	}
+
+}
 
 ```
