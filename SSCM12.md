@@ -262,10 +262,65 @@ public class App {
 
 ```
 ```java
+package P345;
+
+public class CustomerVO {
+	private String id;
+	private String pwd;
+	private String name;
+	public CustomerVO() {
+	}
+	public CustomerVO(String id, String pwd, String name) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "CustomerVO [id=" + id + ", pwd=" + pwd + ", name=" + name + "]";
+	}
+	
+}
 
 ```
 ```java
+package P345;
 
+import java.util.ArrayList;
+
+public interface DAO {
+	static final int a = 1000;
+	
+	public default void connect() {
+		System.out.println("Connect .....");
+	}
+	public default void close() {
+		System.out.println(" .....");
+	}
+	
+	public void insert(CustomerVO c);
+	public void delete(String id);
+	public CustomerVO select(String id);
+	public ArrayList<CustomerVO> select();
+}
 ```
 ```java
 
