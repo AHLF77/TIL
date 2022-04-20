@@ -343,9 +343,86 @@ public class CustomerVO {
 
 ```
 ```java
+package P346;
+
+import java.util.ArrayList;
+
+public interface DAO {
+	
+	static final int a = 1000; 
+	
+	public default void connect() {
+		System.out.println("Connect......");
+	}
+	public default void close() {
+		System.out.println("Close......");
+	}
+	
+	public void insert(CustomerVO c);
+	public void delete(String id);
+	public void update(CustomerVO c);
+	public CustomerVO select(String id);
+	public ArrayList<CustomerVO> select();
+
+}
 
 ```
 ```java
+package P346;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class OracleDAO implements DAO {
+
+	HashMap<String, CustomerVO> map;
+	
+	public OracleDAO() {
+		map = new HashMap<String, CustomerVO>();
+	}
+	
+	@Override
+	public void insert(CustomerVO c) {
+		String key = c.getId();
+		map.put(key, c);
+	}
+
+	@Override
+	public void delete(String id) {
+		map.remove(id);
+	}
+
+	@Override
+	public CustomerVO select(String id) {
+		CustomerVO c = null;
+		c = map.get(id);
+		return c;
+	}
+
+	@Override
+	public ArrayList<CustomerVO> select() {
+		Collection<CustomerVO> col = map.values();
+		Iterator<CustomerVO> it = col.iterator();
+		
+		ArrayList<CustomerVO> list = new ArrayList<>();
+		while(it.hasNext()) {
+			CustomerVO cust = it.next();
+			list.add(cust);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public void update(CustomerVO c) {
+		String key = c.getId();
+		map.put(key, c);
+		
+	}
+
+}
 
 ```
 ```java
