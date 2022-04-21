@@ -341,3 +341,121 @@ public class App {
 }
 
 ```
+
+## 예외처리 예제3
+```java
+package bank;
+
+public class Account {
+	private String accNo;
+	private double balance;
+	
+	public Account() {
+	}
+
+	
+	public Account(String accNo) {
+		this.accNo = accNo;
+	}
+
+
+	public Account(String accNo, double balance) {
+		this.accNo = accNo;
+		this.balance = balance;
+	}
+
+	
+	
+	
+	public String getAccNo() {
+		return accNo;
+	}
+
+
+	public double getBalance() {
+		return balance;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Account [accNo=" + accNo + ", balance=" + balance + "]";
+	}
+	
+	public void deposit(double money) throws MinusException {
+		if(money < 1) {
+		throw new MinusException("EX0001");
+		}
+		this.balance += money;
+	}
+	
+	
+	public void withdraw(double money) throws MinusException, OverdrawnException {
+		if(money < 1) {
+			throw new MinusException("음수입니다.");
+		}
+		if(this.balance < money) {
+			throw new OverdrawnException("잔액부족");
+		}
+		this.balance -= money;
+	}
+	
+}
+```
+```java
+package bank;
+
+public class BankApp {
+
+	public static void main(String[] args) {
+		Account acc = new Account("1111",10000);
+
+		try {
+			acc.deposit(-100);	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		try {
+			acc.withdraw(1000);
+		} catch (MinusException | OverdrawnException e) {
+			System.out.println(e.getMessage());
+		}
+	
+		System.out.println(acc);
+	
+	}
+
+}
+
+```
+```java
+package bank;
+
+public class MinusException extends Exception {
+	
+	public MinusException() {
+		
+	}
+	public MinusException(String msg) {
+		super(msg);
+	}
+	
+}
+
+```
+```java
+package bank;
+
+public class OverdrawnException extends Exception {
+	
+	public OverdrawnException() {
+		
+	}
+	public OverdrawnException(String msg) {
+		super(msg);
+	}
+	
+}
+
+```
