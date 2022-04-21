@@ -1,5 +1,43 @@
 ## 0421 강의
 
+### serach
+```java
+
+```
+```java
+package P346;
+
+public class TestApp {
+
+	public static void main(String[] args) {
+		OracleDAO oracleDao = new OracleDAO();
+		
+		DAO dao = oracleDao;
+		
+		CustomerVO c = new CustomerVO("id01","pwd01","lee");
+		dao.insert(c);
+		
+		CustomerVO sc = dao.select("id01");
+		System.out.println(sc);
+		
+	}
+
+}
+
+```
+```java
+package P346;
+
+import java.util.ArrayList;
+
+public interface Search {
+	
+	public ArrayList<CustomerVO> search(String name);
+
+}
+
+```
+
 ### 웹 어플리케이션 디자인
 ```java
 package awt;
