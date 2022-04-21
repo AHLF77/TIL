@@ -194,6 +194,7 @@ public class App {
 ## 10장 예외처리
 - 사용자의 잘못된 조작 또는 개발자의 잘못된 코딩으로 인해 발생하는 프로그램 오류
 - 개발자가 잘못 코딩 시, 빨리 고쳐서 배포를 해야함
+- 예외 종류: 
 
 ## 예외처리 예제1
 ```java
@@ -201,7 +202,7 @@ package P422;
 
 import java.util.Scanner;
 
-public class Ex1 {
+public class Ex2 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -211,14 +212,26 @@ public class Ex1 {
 		
 		try {
 			n = Integer.parseInt(num);	
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
+			//System.out.println(e);	
+			e.printStackTrace();
 			System.out.println("숫자가 아닙니다.");
+		
 		}
 		
-		
 		System.out.println(n);
+		int result = 0;
+		try {
+			result = 100/n;	
+		} catch (Exception e) {
+			System.out.println("분모가 0입니다.");
+		}
+		
+		System.out.println(result);
 		sc.close();
 	}
+
+}
 
 }
 
