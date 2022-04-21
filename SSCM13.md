@@ -194,7 +194,7 @@ public class App {
 ## 10장 예외처리
 - 사용자의 잘못된 조작 또는 개발자의 잘못된 코딩으로 인해 발생하는 프로그램 오류
 - 개발자가 잘못 코딩 시, 빨리 고쳐서 배포를 해야함
-- 예외 종류: 
+- 예외 종류: 일반에러, 실행 에외
 
 ## 예외처리 예제1
 ```java
@@ -266,6 +266,31 @@ public class Ex1 {
 			System.out.println("end");
 		
 		}
+	}
+
+}
+
+```
+```java
+package P422;
+
+import java.util.Iterator;
+
+public class Ex3 {
+
+	public static void main(String[] args) {
+		String str = "ABC";
+		System.out.println(str.toLowerCase());
+		
+		int a[] = new int[3];
+		for (int i = 0; i < a.length; i++) {
+			System.out.println(a[i]);
+		}
+		
+		for (int i : a) {
+			System.out.println(i);
+		}
+
 	}
 
 }
