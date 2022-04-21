@@ -296,3 +296,48 @@ public class Ex3 {
 }
 
 ```
+
+## 예외처리 예제2
+```java
+package P440;
+
+public class Calc {
+	public int div(int a, int b) throws Exception{
+		int result = 0;
+		try {
+			result = a/b;	
+		} catch (Exception e) {
+			throw e;
+		}
+		return result;
+		
+	}
+	
+}
+
+```
+```java
+package P440;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		Calc calc = new Calc();
+		
+		int a = 10;
+		int b = 0;
+		int result = 0;
+		try {
+			result = calc.div(a,b);
+		} catch (Exception e) {
+			System.out.println("분모가 0 입니다.");
+		}
+		
+		System.out.println(result);	
+	
+	}
+
+}
+
+```
