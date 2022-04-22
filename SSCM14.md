@@ -505,3 +505,25 @@ public class StringTest {
 }
 
 ```
+### 예제7(Wrapper)
+```java
+package P496;
+
+public class WrapperTest {
+
+	public static void main(String[] args) {
+		int a = 10;
+		Integer i = 10;
+		
+		int result = a + i;
+		System.out.println(result);
+		
+		if(a == i) {
+			System.out.println("ok");
+		}
+
+	}
+
+}
+
+```
