@@ -444,7 +444,29 @@ public class RandomTest {
 
 }
 
+
+### 예제5(StringBuffer)
+
+```java
+package P496;
+
+public class StringBufferTest {
+
+	public static void main(String[] args) {
+		
+		// String은 변경 불가
+		StringBuffer sb = new StringBuffer("abcdef");
+		sb.append("ghi");
+		System.out.println(sb);
+		sb.reverse();
+		System.out.println(sb);
+		sb.delete(2,3);
+		System.out.println(sb);
+
+	}
+
+}
+
 ```
 ```java
-
 ```
