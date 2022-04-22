@@ -11,6 +11,63 @@
 - 자바 프로그램의 기본적인 클래스를 담은 패키지
 - 포함된 클래스와 인터페이스는 import 없이 사용
 
+
+### 예제1
+```java
+package P457;
+
+public class CustomerVO {
+	
+	private String id;
+	private String pwd;
+	private String name;
+	
+	public CustomerVO() {
+		
+	}
+
+	public CustomerVO(String id, String pwd, String name) {
+		this.id = id; 
+		this.pwd = pwd; 
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "CustomerVO [id=" + id + ", pwd=" + pwd + ", name=" + name + "]";
+	}
+	
+	
+	
+}
+
+```
+
 ```java
 package P457;
 
@@ -24,7 +81,11 @@ public class TestApp {
 		CustomerVO c = (CustomerVO)obj2;
 		System.out.println(c.getName());
 		
+		Object obj3 = 10; //왜 될까?
+		Object obj4 = new Integer(10);
+		
 	}
 
 }
+
 ```
