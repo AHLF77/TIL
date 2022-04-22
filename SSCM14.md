@@ -374,7 +374,7 @@ public class ItemVO {
 
 ```
 
-### 예제3
+### 예제3(달력)
 ```java
 package P496;
 
@@ -414,7 +414,35 @@ public class DateTest {
 
 
 ```
+
+### 예제4(랜덤)
 ```java
+package P496;
+
+import java.util.Random;
+
+public class RandomTest {
+
+	public static void main(String[] args) {
+		double d = Math.random(); // 0.0 <= x < 1.0
+		System.out.println(d);
+		
+		int i1 = (int)(Math.random() * 6) + 1;
+		System.out.println(i1);
+		
+		int i2 = (int)(Math.random() * 45) + 1;
+		System.out.println(i2);
+		
+		Random random = new Random();
+		int i3 = random.nextInt(45)+1;
+		
+		double dd = (random.nextDouble() * 10000000000.0) +1;
+		System.out.println(dd);
+		System.out.printf("%.0f",dd);
+		
+	}
+
+}
 
 ```
 ```java
