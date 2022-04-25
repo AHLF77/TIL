@@ -225,6 +225,59 @@ public class P1099 {
 
 
 ```
+### 영문자를 소문자로 전환하는 예제
+```java
+package ch05;
+
+public class P145 {
+
+	public static void main(String[] args) {
+		String s1 = "ABC";
+		String s2 = "ABC";
+		String s3 = s2.toLowerCase(); // s2 문자를 소문자로 재탄생 시킴.
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+		// 같은 번지를 참조한다.
+		// 쓰레기를 찾아서 없애버린다.
+		
+		char c = s3.charAt(0);
+		System.out.println(c);
+	}
+
+}
+
+```
+
+### 주소를 비교하는 예제
+```java
+package ch05;
+
+public class P146 {
+
+	public static void main(String[] args) {
+		int a = 10;
+		int b = 20;
+		if(a>b) {
+			System.out.println("OK");
+		}else {
+			System.out.println("NO");
+		}
+		
+		String s1 = "abc";
+		String s2 = "abc";
+		
+		if(s1 == s2) {// 주소를 비교한다.
+			System.out.println("Equal Reference ..");
+		}
+		if(s1.equals(s2)) { // 값을 비교한다.
+			System.out.println("Equal String ..");
+		}
+	}
+
+}
+
+```
 
 ### 주소값 예제
 ```java
@@ -246,7 +299,3 @@ public class P147 {
 
 ```
 
-### 주소값 예제
-```java
-
-```
