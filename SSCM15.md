@@ -173,6 +173,7 @@ public class MainThread2 { // 가장 많이 쓰이는 방법이다.
 ### Mysql
 - Oracle사에서 제작한 DBMS 소프트웨어로 오픈 소스로 제공
 - 무료(단. 상업용 사용 시 별도 라이선스 취득 필요)
+- 버전: Mysql Community 8.0
 
 ### DBA
 - Database Administration 해석
