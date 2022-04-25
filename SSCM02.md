@@ -155,3 +155,120 @@ public class P60 {
 }
 
 ```
+
+### MAX
+```java
+package ch03;
+
+public class P100 {
+
+	public static void main(String[] args) {
+		int a = 100;
+		int b = 200;
+		int result = Math.max(a, b);
+		System.out.println(result);
+
+	}
+
+}
+
+```
+
+### IF, ELSE 문(삼항연산자)
+```java
+package ch03;
+
+public class P101 {
+
+	public static void main(String[] args) {
+		int sum = 80;
+		char result = 0;
+		
+		// 90이상이면 'A'
+		// 80이상이면 'B'
+		// 70이상이면 'C'
+		// 70미만이면 'D'
+	
+	/*	if(sum >= 90) {
+			result = 'A';
+		}else if(sum >= 80) {
+			result = 'B';
+		}else {
+			result = 'C';
+		}*/
+		
+		// 삼항 연산자로 구현 하시오.
+			result = (sum >= 90) ? 'A' : (sum >= 80) ? 'B' : 'D';
+			System.out.println(result);
+	}
+
+}
+
+```
+
+### IF문 예제
+```java
+package ch03;
+
+public class P84 {
+
+	public static void main(String[] args) {
+		int a = 10;
+		int b = 0;
+		int result = 0;
+		if(b!=0) {
+		result = a/b;
+		}
+// double result = (double)a/(double)b;
+		System.out.println(result);
+// 괄호 안에 변수 선언을 할 경우 밖에서는 인식을 못합니다.
+		
+	}
+
+}
+
+```
+
+### 분자/분모 예제
+```java
+package ch03;
+
+public class P85 {
+
+	public static void main(String[] args) {
+		int a = 100;
+		double b = 0.0;
+		double result = 0.0;
+		
+		result = a/b;
+		if(Double.isInfinite(result)) {
+		System.out.println("분모가 0.0 입니다.");
+		}else {
+		System.out.println(result);
+		}
+	}
+
+}
+
+```
+
+### 직각삼각형의 빗변 길이 예제
+```java
+package ch03;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
+public class ws0405 {
+	public static final DecimalFormat df = new DecimalFormat("0.00");
+	
+	public static void main(String[] args) {
+        int a = 5;
+		int b = 7;
+		double result = Math.hypot(a, b);
+		df.setRoundingMode(RoundingMode.HALF_EVEN);
+		System.out.println(df.format(result));
+	}
+
+}
+```
