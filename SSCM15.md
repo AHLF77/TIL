@@ -421,7 +421,24 @@ CREATE TABLE CUST(
 );
 ```
 
-#### 값 생성
+#### 값 삽입
 ```SQL
 INSERT INTO table명 VALUES ();
+```
+
+#### 값 업데이트
+```SQL
+UPDATE CUST SET pwd='', name ='' WHERE id =''; 
+```
+- String 값으로 넣어야 함.
+
+#### 값 삭제
+```SQL
+DELETE FROM CUST WHERE id='';
+```
+- 삭제할 값
+
+#### 값 읽기
+```SQL
+SELECT * FROM table명;
 ```
