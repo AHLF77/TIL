@@ -156,7 +156,82 @@ public class P60 {
 
 ```
 
-### MAX
+### 단항 연산자, 이항 연산자, 비교 연산, 논리 연산
+```java
+package ch03;
+
+public class P64 {
+
+	public static void main(String[] args) {
+		/*int a =10;
+		int b = 20;
+		
+		// 단항 연산자
+		int aa = -a;
+		int bb = b++;
+		System.out.println(bb);
+		System.out.println(b);
+		*/
+		int c = 10;
+		int d = 10;
+		int sum = c++ + ++d;
+		System.out.println(sum);
+		System.out.println(c);
+		System.out.println(d);
+				
+		/*
+		// 이항 연산자
+		int result = a % b;
+		System.out.println(result);
+		
+		int data = 100;
+		// data = data + 1;
+		data += 1; // 위보다 훨씬 빠름(대입만 하면 끝나기 때문에)
+		
+		
+		//비교연산
+		int a1 =10;
+		int a2 = 20;
+		
+		if(a1 <= a2) {
+			System.out.println("OK");
+		}else {
+			System.out.println("FAIL");
+		}
+		
+		// 논리연산
+		int b1 = 30;
+		int b2 = 20;
+		int d1 = 10;
+		int d2 = 20;
+		
+		// || or
+		// && and
+		// (&&,&)두개는 두개를 먼저 비교하지만, 하나의 경우는 앞에 있는 것이 fail이면 fail로 뜬다.
+		// && 하면은 성능이 느려지는 단점이 있다.
+		
+		if( b1 > b2 && d1 > d2++) {
+			System.out.println("OK");
+		}else {
+			System.out.println("FAIL");
+		}
+		
+		//!는 NOT이다.
+		// not이 아니면 
+		if(!(b1 > b2)) {
+			System.out.println("b2이 크다.");
+		}else {
+			System.out.println("b1이 크다.");
+		}
+		
+		*/
+	}
+
+}
+
+```
+
+### Math.max(최대값)
 ```java
 package ch03;
 
@@ -229,7 +304,11 @@ public class P84 {
 
 ```
 
-### 분자/분모 예제
+### Infinity 연산
+- 무한대라는 의미
+- 정수 0은 정확한 0이지만 double이나 float의 경우는 0.0이어서 정확한 0이 아님
+- 그래서 double, float의 경우 Infinity가 나옴
+
 ```java
 package ch03;
 
@@ -246,6 +325,38 @@ public class P85 {
 		}else {
 		System.out.println(result);
 		}
+	}
+
+}
+
+```
+
+### 입력값의 NaN 검사
+- 잘못된 입력으로 인해 계산을 할 수 없음을 나타내는 기호
+- Not a Number
+- 반드시 검사를 거쳐야만 한다.
+
+```java
+package ch03;
+
+public class P86 {
+
+	public static void main(String[] args) {
+		// 객체형: 문자열, 객체
+		String str = "NaN";
+		char c ='A';
+		double a = Double.valueOf(str);
+		double result = 0.0;
+		
+		if(Double.isNaN(a)) {
+			System.out.println("입력 오류");
+		}else {
+			result = a * 100;
+		}
+		
+		System.out.println(result);
+		
+		
 	}
 
 }
