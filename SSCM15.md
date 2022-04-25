@@ -411,3 +411,17 @@ public class DeleteCust {
 ```
 
 ### MYSQL 문법
+
+#### 테이블 생성
+```SQL
+CREATE TABLE CUST(
+   id varchar(20) PRIMARY KEY,
+   pwd VARCHAR(20),
+   name VARCHAR(30)
+);
+```
+
+#### 값 생성
+```SQL
+INSERT INTO table명 VALUES ();
+```
