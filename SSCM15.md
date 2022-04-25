@@ -157,8 +157,6 @@ public class MainThread2 { // 가장 많이 쓰이는 방법이다.
 
 ```
 
-
-
 ## 데이터 베이스
 - 데이터의 집합
 - 데이터베이스를 관리 · 운영하는 역할
@@ -181,3 +179,90 @@ public class MainThread2 { // 가장 많이 쓰이는 방법이다.
 - Delete, Update시 항상 주의 할 것.
 - Update와 Insert를 혼돈하지 말자
 ※ Update는 올라와 있는 데이터를 수정하고, Insert는 값을 처음부터 생성하는 것.
+
+
+### Eclipse JAVA MYSQL 연동(CRUD)
+#### 데이터 삽입 구문
+```java
+package cust;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class InsertCust {
+
+	public static void main(String[] args) {
+		// JDBC(Java Database Connectivity) Program
+		
+		// 변수 선언
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO CUST VALUES (?,?,?)";
+		
+		// MySQL JDBC Driver Loading
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("MySQL JDBC Driver Loading.....");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// MySQL Connect
+		String url = "jdbc:mysql://192.168.0.137:3306/shopdb?serverTimezone=Asia/Seoul";
+		String mid = "admin1";
+		String mpwd = "111111";
+		try {
+			con = DriverManager.getConnection(url,mid,mpwd);
+			System.out.println("MySQL JDBC Driver Connected.....");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		// SQL을 이용한 요청
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "id12");
+			ps.setString(2, "pwd11");
+			ps.setString(3, "오말숙");
+			
+			// 요청 결과를 확인
+			int result = ps.executeUpdate();
+			System.out.println(result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//Close
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+
+}
+```
+#### 데이터 업데이트 구문
+```java
+
+```
+#### 데이터 삭제 구문
+```java
+
+```
+
+### MYSQL 문법
