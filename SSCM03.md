@@ -39,6 +39,56 @@ public class P90 {
 }
 
 ```
+### 계산기 예제
+```java
+package ch04;
+
+import java.util.Scanner;
+
+public class lastca0406 {
+
+	public static void main(String[] args) {
+		System.out.println("Start");
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Input 1 number: "); // 첫 번째 수
+		String num1 = sc.next();
+		System.out.println("Input 2 Number: "); // 두 번째 수
+		String num2 = sc.next();
+		System.out.println("연산자: "); // 연산자
+		String op = sc.next();
+		
+		int nm1 = Integer.parseInt(num1);
+		int nm2 = Integer.parseInt(num2);
+		int result1 = 0;
+		
+		if(op.equals("+")) {
+			result1 = nm1 + nm2;
+			System.out.printf("결과 : %s\n", result1 );
+		}else if(op.equals("-")) {
+			result1 = nm1 - nm2;
+			System.out.printf("결과 : %d\n", result1 );
+		}else if(op.equals("/")){
+			result1 = nm1 / nm2;
+			System.out.printf("결과 : %d\n", result1 );
+		}else if(op.equals("x")){
+			result1 = nm1 * nm2;
+			System.out.printf("결과 : %d\n", result1 );
+		}else {
+			System.out.printf("해당 연산은 존재하지 않음");
+		}
+		
+		String result2 = "";
+		result2 = (result1 >= 10) ? "큰 수" : (result1 >= 5) ? "중간수" : "작은수";
+		System.out.println(result2);
+		
+		sc.close();
+		System.out.println("END");
+	}
+
+}
+
+```
 
 ### 숫자 입력을 받고, 삼항 연산자로 변경하는 예제
 ```java
@@ -79,5 +129,124 @@ public class P108 {
 	}
 
 }
+
+```
+### OP 검증 예제
+```java
+package ch04;
+
+import java.util.Scanner;
+
+public class P1099 {
+// 
+	public static void main(String[] args) {
+		System.out.println("Start");
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Input Number 1..?");
+		String n1 = sc.next();
+		
+		System.out.println("Input Number 2..?");
+		String n2 = sc.next();
+		
+		System.out.println("Input Op..?");
+		String op = sc.next();
+				
+		
+		// OP 검증
+		
+		if (op.length() > 1 || 
+				(!op.equals("+") && 
+				!op.equals("-") && 
+				!op.equals("/") &&
+				!op.equals("x") )
+				) {
+			System.out.println("Bye");
+			sc.close();
+			return;
+		}
+		
+		
+		// 숫자만 입력 받는다.
+		
+		double num1 = 0.0;
+		double num2 = 0.0;
+		try {
+			num1 = Double.parseDouble(n1);
+			num2 = Double.parseDouble(n2);
+		}catch(Exception e) {
+			System.out.println("숫자를 입력 하세요. Bye...");
+			sc.close();
+			return;
+		}
+		
+		
+		//System.out.println(n1.length());
+		System.out.printf("입력한 내용은 %s %s %s  입니다. \n", n1, op, n2);
+		
+		// 연산처리
+		double result = 0.0;
+		
+		if(op.equals("+")) {
+			result = num1 + num2;
+		}else if(op.equals("-")) {
+			result = num1 - num2;
+		}else if(op.equals("/")) {
+			result = num1 / num2;
+		}else if(op.equals("x")) {
+			result = num1 * num2;
+		}else {
+			System.out.println("아니야");
+			sc.close();
+			return;
+		}
+		System.out.printf("결과: %.2f\n", result);
+		
+		String str = "";
+		str = (result < 0) ? "음수": "양수";
+		System.out.println(str);
+		
+		String str2 = "";
+		if(result >= 10) {
+			str2 = "큰수";
+		}else if(result >= 5) {
+			str2 = "중간수";
+		}else{
+			str2 = "작은수";
+		}
+		System.out.println(str2);
+		
+		
+		sc.close();
+		System.out.println("End");
+	}
+
+}
+
+
+```
+
+### 주소값 예제
+```java
+package ch05;
+
+public class P147 {
+
+	public static void main(String[] args) {
+		String s1 = "ABC";
+		String s2 = new String("ABC"); // heap에 새로운 주소가 만들어진다.
+		String s3 = "ABC";
+		String s4 = new String("ABC"); // heap에 새로운 주소가 만들어진다.
+		// s1과 s3는 같은 주소 이지만, s1과 s2는 다르고, s2와 s3가 다름
+		// 하지만 값은 다 같음.
+		// (heap) string pool에는 new라는 키워드로 새로 만들어진 String은 안들어가고, new라는 키워드가 없는 거만 string pool로 들어감
+	}
+
+}
+
+```
+
+### 주소값 예제
+```java
 
 ```
