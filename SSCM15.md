@@ -210,7 +210,7 @@ public class InsertCust {
 		}
 		
 		// MySQL Connect
-		String url = "jdbc:mysql://192.168.0.137:3306/shopdb?serverTimezone=Asia/Seoul";
+		String url = "jdbc:mysql://개인IP:3306/shopdb?serverTimezone=Asia/Seoul";
 		String mid = "admin1";
 		String mpwd = "111111";
 		try {
@@ -284,7 +284,7 @@ public class UpdateCust {
 		}
 		
 		// MySQL Connect
-		String url = "jdbc:mysql://192.168.0.137:3306/shopdb?serverTimezone=Asia/Seoul";
+		String url = "jdbc:mysql://개인IP:3306/shopdb?serverTimezone=Asia/Seoul";
 		String mid = "admin1";
 		String mpwd = "111111";
 		try {
@@ -362,7 +362,7 @@ public class DeleteCust {
 		}
 		
 		// MySQL Connect
-		String url = "jdbc:mysql://192.168.0.137:3306/shopdb?serverTimezone=Asia/Seoul";
+		String url = "jdbc:mysql://개인IP:3306/shopdb?serverTimezone=Asia/Seoul";
 		String mid = "admin1";
 		String mpwd = "111111";
 		try {
