@@ -334,6 +334,79 @@ public class UpdateCust {
 
 #### 데이터 삭제 구문
 ```java
+package cust;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class DeleteCust {
+
+	public static void main(String[] args) {
+		// JDBC(Java Database Connectivity) Program
+		
+		// 변수 선언
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "DELETE FROM CUST WHERE id=?"; // id로 삭제
+	//	String sql = "DELETE FROM CUST WHERE pwd=?"; //pwd로 삭제
+	//	String sql = "DELETE FROM CUST WHERE name=?"; // 이름으로 삭제
+		
+		// MySQL JDBC Driver Loading
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("MySQL JDBC Driver Loading.....");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// MySQL Connect
+		String url = "jdbc:mysql://192.168.0.137:3306/shopdb?serverTimezone=Asia/Seoul";
+		String mid = "admin1";
+		String mpwd = "111111";
+		try {
+			con = DriverManager.getConnection(url,mid,mpwd);
+			System.out.println("MySQL JDBC Driver Connected.....");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		// SQL을 이용한 요청
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "id12");
+        //  ps.setString(1, "pwd10");
+		//  ps.setString(1, "id12");
+			
+			// 요청 결과를 확인
+			int result = ps.executeUpdate();
+			System.out.println(result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//Close
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+
+}
 
 ```
 
