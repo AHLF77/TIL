@@ -15,4 +15,27 @@
 - 스레드를 짤 일이 없음.
 
 ```java
+package P576;
+
+public class MainThread {
+
+	public static void main(String[] args) {
+		System.out.println("Start...............");
+		MyThread1 t1= new MyThread1();
+		t1.start();
+		
+		MyThread2 t2 = new MyThread2();
+		Thread tt2 = new Thread(t2);
+		tt2.start();
+		
+		System.out.println("End..................");
+		
+		// End까지 한 번 찍고 메인 쓰레드가 돌면서, 다른 쓰레드 들이 돈다.
+	}
+
+}
+
+```
+
+```java
 ```
