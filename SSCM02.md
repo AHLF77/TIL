@@ -124,3 +124,34 @@ public class P48 {
 }
 
 ```
+
+### Float 변환 예제
+```java
+package ch02;
+
+public class P60 {
+
+	public static void main(String[] args) {
+		byte b1 =100;
+		float f1 = 2.5F;
+		double d2 = 2.5;
+		
+		byte bb = (byte)(b1 + b1);
+		System.out.println(bb);
+		
+		int result = 5 + b1;
+		
+		float ff = 500 + f1; // 실수로 변환이 되어 연산이 된다.
+		double dd = 50000000000000000000000000000.0 + d2;
+		
+		int result2 = 100 + (int)d2; // 정수와 실수를 같이 계산 시 실수가 계산이 된다.
+									// double로 바꿀 경우 전체에 잘못하면 영향을 받을 수가 있다.
+		System.out.println(result2);
+		
+		//실제로는 타이핑을 하여 계산을 해보아야 한다.
+
+	}
+
+}
+
+```
