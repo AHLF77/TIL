@@ -38,4 +38,49 @@ public class MainThread {
 ```
 
 ```java
+package P576;
+
+public class MyThread1 extends Thread{
+
+	@Override
+	public void run() {
+		int i = 0;
+		while(i <= 100){
+			i++;
+			System.out.println("MyThread1: "+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	
+}
+}
+
+```
+```java
+package P576;
+
+public class MyThread2 implements Runnable{
+
+	@Override
+	public void run() {
+		int i = 0;
+		while(i <= 100){
+			i++;
+			System.out.println("MyThread2: "+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
+	
+}
+
 ```
