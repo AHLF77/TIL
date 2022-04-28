@@ -17,4 +17,14 @@ use companydb;
 select * from emp;
 SELECT * FROM emp;
 SELECT * FROM dept;
+
+CREATE VIEW v_emp
+AS
+SELECT empno, empname FROM emp;
+dir
+mysql -u admin1 -p
+ use companydb;
+  show tables;
+   source dump.sql
+    show tables;
 ```
