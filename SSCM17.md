@@ -552,14 +552,136 @@ public class Sql {
 
 ### test 패키지
 ```java
+package test;
+
+
+import dao.EmployeeDao;
+
+import frame.Dao;
+import vo.EmployeeVo;
+
+public class CreateEmployee {
+
+	public static void main(String[] args) {
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		
+		EmployeeVo emp = new EmployeeVo("s1289", "신짱구", "대리", "범퍼카", (double) 123486, "2020-08-23");
+		
+		try {
+			dao.create(emp);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+}
+
 ```
 ```java
+package test;
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+
+public class DeleteEmployee {
+
+	public static void main(String[] args) {
+		
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		
+		try {
+			dao.delete("");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+}
 ```
 ```java
+package test;
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+public class UpdateEmployee {
+
+	public static void main(String[] args) {
+		Dao<String,EmployeeVo> dao = new EmployeeDao();
+	      
+	      EmployeeVo ev = new EmployeeVo("s1289", "신짱구", "과장", "회전그네", (double) 4000000, "2020-08-23");
+	      
+			try {
+				dao.update(ev);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+
+}
 ```
 ```java
+package test;
+
+import dao.EmployeeDao;
+
+import frame.Dao;
+import vo.EmployeeVo;
+
+
+public class SelectEmployee {
+
+	public static void main(String[] args) {
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		
+		EmployeeVo p = null;
+		try {
+			p = dao.select("u7824");
+			System.out.println(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
 ```
 ```java
+package test;
+
+import java.util.List;
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+
+public class SelectAllEmployee {
+
+	public static void main(String[] args) {
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		List<EmployeeVo> elist = null;
+		try {
+			elist = dao.select();
+			for(EmployeeVo empVo : elist) {
+			System.out.println(empVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
+
 ```
 
 ### vo 패키지
