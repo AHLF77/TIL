@@ -462,13 +462,104 @@ public class EmployeeDao extends Dao<String, EmployeeVo> {
 
 ### frame 패키지
 ```java
+package frame;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+public abstract class Dao<K,V> {
+	
+	// MySQL Connect
+	String url = "jdbc:mysql://172.30.1.41:3306/amusementparkdb?serverTimezone=Asia/Seoul";
+	String mid = "admin1";
+	String mpwd = "111111";
+	
+	
+	public Dao() {
+	// MySQL JDBC Driver Loading
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("MySQL JDBC Driver Loading.....");
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	}
+	
+	public Connection getConnection() throws SQLException { // 던진다.
+		Connection con = null;
+		con = DriverManager.getConnection(url,mid,mpwd);
+		return con;
+	}
+	
+	public void close(Connection con) {
+		if(con != null){
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+    public void close(PreparedStatement ps) {
+    	if(ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+    public void close(ResultSet rset) {
+    	if(rset != null) {
+			try {
+				rset.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+    
+    public abstract void create(V v) throws Exception;
+    public abstract void update(V v) throws Exception;
+    public abstract void delete(K k) throws Exception;
+    public abstract V select(K k) throws Exception;
+    public abstract List<V> select() throws Exception;
+    
+
+}
+
 ```
 ```java
-```
-```java
+package frame;
+
+public class Sql { 
+	
+	// 직원 sql 구문
+	public static String createEmployee = "INSERT INTO Employee VALUES (?,?,?,?,?,?)";
+	public static String deleteEmployee = "DELETE FROM Employee WHERE eid=?";
+	public static String updateEmployee = "UPDATE Employee SET ename=?, position=?, ridespart=?, Salary=?, regdate=? WHERE eid=?";
+	public static String selectEmployee = "SELECT * FROM Employee WHERE eid = ?";
+	public static String selectALLEmployee = "SELECT * FROM Employee";
+	
+}
+
 ```
 
 ### test 패키지
-
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
 
 ### vo 패키지
