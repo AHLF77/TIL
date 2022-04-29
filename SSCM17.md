@@ -1,11 +1,10 @@
-# 0429 프로젝트
+## 0429 미니 프로젝트
 
-## 7조 구성원: 김*준, 한*정, 강*성, 유*아
+## 7조 구성원: 김O준, 한O정, 강O성, 유O아
 
-### 놀이동산 직원 관리 프로그램
+## 놀이동산 직원 관리 프로그램
 
-#### app 패키지
-##### App
+### app 패키지
 ```java
 package app;
 
@@ -19,7 +18,6 @@ public class App {
 }
 
 ```
-##### App2
 ```java
 package app;
 
@@ -102,7 +100,6 @@ public class App2 {
 }
 
 ```
-##### ApUI
 ```java
 package app;
 
@@ -310,13 +307,168 @@ public class ApUI {
 } 
 ```
 
-#### dao 패키지
+### dao 패키지
+
+```java
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import frame.Dao;
+import frame.Sql;
+import vo.EmployeeVo;
+
+public class EmployeeDao extends Dao<String, EmployeeVo> {
+
+	@Override
+	public void create(EmployeeVo v) throws Exception {
+		// Connection
+				Connection con = null;
+				PreparedStatement ps = null;
+				try {
+				con = getConnection();
+				ps = con.prepareStatement(Sql.createEmployee);
+				ps.setString(1, v.getEid());
+				ps.setString(2, v.getEname());
+				ps.setString(3, v.getPosition());
+				ps.setString(4, v.getRidespart());
+				ps.setDouble(5, v.getSalary());
+				ps.setString(6, v.getRegdate());
+				ps.executeUpdate();
+				}catch(Exception e) {
+					throw new Exception("사용자 입력 오류");
+				}finally {
+					close(ps);
+					close(con);
+				}
+		
+	}
+
+	@Override
+	public void update(EmployeeVo v) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+		con = getConnection();
+		ps = con.prepareStatement(Sql.updateEmployee);
+		ps.setString(1, v.getEname());
+		ps.setString(2, v.getPosition());
+		ps.setString(3, v.getRidespart());
+		ps.setDouble(4, v.getSalary());
+		ps.setString(5, v.getRegdate());
+		ps.setString(6, v.getEid());
+		ps.executeUpdate();
+		}catch(Exception e) {
+			throw e;
+		}finally {
+			close(ps);
+			close(con);
+		}
+		
+	}
+
+	@Override
+	public void delete(String k) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+		con = getConnection();
+		ps = con.prepareStatement(Sql.deleteEmployee);
+		ps.setString(1, k);
+		int result = ps.executeUpdate();
+		if(result != 1) {
+			throw new Exception("삭제 항목이 없습니다.");
+		}
+		}catch(Exception e) {
+			throw e;
+		}finally {
+			close(ps);
+			close(con);
+		}
+		
+	}
+
+	@Override
+	public EmployeeVo select(String k) throws Exception {
+		
+		EmployeeVo emp = null;
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+		con = getConnection();
+		ps = con.prepareStatement(Sql.selectEmployee);
+		ps.setString(1, k);
+		rs=ps.executeQuery();
+		rs.next();
+		String eid = rs.getString("eid");
+		String ename = rs.getString("ename");
+		String position = rs.getString("position");
+		String ridespart = rs.getString("ridespart");
+		double Salary = rs.getDouble("Salary");
+		String regdate = rs.getString("regdate");
+		emp = new EmployeeVo(eid,ename,position,ridespart,Salary,regdate);
+		}catch(Exception e) {
+			throw e;
+		}finally {
+			close(rs);
+			close(ps);
+			close(con);
+		}
+		
+		return emp;
+	}
+
+	@Override
+	public List<EmployeeVo> select() throws Exception {
+		List<EmployeeVo> elist = new ArrayList<EmployeeVo>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			ps = con.prepareStatement(Sql.selectALLEmployee);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+			String eid = rs.getString("eid");
+			String ename = rs.getString("ename");
+			String position = rs.getString("position");
+			String ridespart = rs.getString("ridespart");
+			double Salary = rs.getDouble("Salary");
+			String regdate = rs.getString("regdate");
+			EmployeeVo emp = new EmployeeVo(eid,ename,position,ridespart,Salary,regdate);
+			elist.add(emp);
+			}
+			}catch(Exception e) {
+				throw e;
+			}finally {
+				close(rs);
+				close(ps);
+				close(con);
+			}
+		
+		return elist;
+	}
+
+}
+```
+
+### frame 패키지
+```java
+```
+```java
+```
+```java
+```
+
+### test 패키지
 
 
-#### frame 패키지
-
-
-#### test 패키지
-
-
-#### vo 패키지
+### vo 패키지
