@@ -6,29 +6,49 @@
 ### WHERE절
 - 조회하는 결과에 특정한 조건을 줘서 원하는 데이터만 보고 싶을 때 사용
 
-## GROUP BY절
-- 그룹으로 묶어주는 역할
+```sql
+SELECT * FROM usertbl
+WHERE height = 182;
+```
 
-## DISTINCT
+### GROUP BY절
+- 그룹으로 묶어주는 역할
+```sql
+
+```
+
+### DISTINCT
 - 중복된 것을 하나로 합쳐주는 것.
+
+### BETWEEN A AND B
+- A(180)와 B(183)사이의 조회
+```sql
+SELECT * FROM usertbl
+WHERE height between 180 AND 183;
+```
+
+### ORDER BY
+- 결과물에 미치지 않도록, 결과가 출력되는 순서
+- ASC : 오름차순(DEFAULT)
+- DESC : 내림차순
 
 ```sql
 SELECT * FROM usertbl
 WHERE addr = '서울'
 AND birthYear > 1970
 AND mobile1 IS NOT NULL;
+```
+
+```sql
+
 
 SELECT * FROM usertbl
 WHERE height > 170 AND birthYear < 1970;
 
 SELECT * FROM usertbl
-WHERE height = 182;
-
-SELECT * FROM usertbl
 WHERE height >= 180 AND height <= 183;
 
-SELECT * FROM usertbl
-WHERE height between 180 AND 183;
+
 
 SELECT * FROM usertbl
 WHERE height = 182 OR height = 170 OR height = 172;
@@ -38,6 +58,8 @@ WHERE height IN (182,170,172);
 
 SELECT * FROM usertbl
 WHERE date_format(mDate,'%Y') < '2010';
+
+### 
 
 -- 가입년도가 2005년과 2008년 사이에 회원을 조회 하시오.
 SELECT * FROM usertbl
