@@ -32,50 +32,39 @@ mysql -u admin1 -p
 mysql -u root -p
 ```
 
-7. CMD 창으로 SQL 접속
+7. CMD: 데이터베이스 변경
 ```sql
-mysql -u admin1 -p
-mysql -u root -p
+use companydb;
 ```
 
-7. DB 덤프를 받아 적용 시키기 & CMD 창 실행
+8. 테이블 조회
 ```sql
-
-use companydb;
 select * from emp;
 SELECT * FROM emp;
 SELECT * FROM dept;
-
-CREATE VIEW v_emp
-AS
-SELECT empno, empname FROM emp;
-dir
-mysql -u admin1 -p
- use companydb;
-  show tables;
-   source dump.sql
-    show tables;
-
-
-    SELECT * FROM emp;
-SELECT * FROM dept;
-
-CREATE VIEW v_emp
-AS
-SELECT empno, empname FROM emp;
-
-SELECT * FROM v_emp;
-
-
-SELECT empno, empname AS name FROM emp;
-SELECT empno, empname, salary * 0.2 FROM emp;
-SELECT empno, empname, salary * 0.2 AS fee FROM emp;
-show table status;
-SOURCE sqlDB.sql
-
 ```
 
+9. 뷰 생성
+```sql
+CREATE VIEW v_emp
+AS
+SELECT empno, empname FROM emp;
+```
 
+10. 테이블 보여주기
+```sql
+show tables;
+```
+
+11.  sql 집 모든 DB 복구
+```sql
+source dump.sql
+```
+
+12. 테이블 상태 출력 
+```sql
+show table status;
+```
 
 ## SQL WS
 1. 직원 중에 manager가 없는 직원을 조회 하시오.
