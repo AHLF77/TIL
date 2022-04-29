@@ -1,8 +1,13 @@
 # 0428 강의
 
-## SQL
-1. 시스템 구축 - MySQL
-2. DDL, DML
+## SQL 강의
+1. 시스템 구축 요약
+- 분석, 설계, 구현, 시험, 유지보수
+
+2. 데이터베이스 모델링
+- 현실세계에서 사용되는 데이터를 MySQL에 어떻게 옮겨 놓을 건이지 정하는 과정 
+
+3. DDL, DML
 - DDL: CREATE, DROP, ALTER
 - DML: SELECT, INSERT, DELETE, UPDATE
 
@@ -11,8 +16,31 @@
 - 테이블을 설계하고 구축
 - 안전성
 
+4. 스키마 생성법
 ```sql
 CREATE SCHEMA companydb;
+```
+
+5. 현재 데이터 베이스 보기
+```sql
+SHOW DATABASES; 
+```
+
+6. CMD 창으로 SQL 접속
+```sql
+mysql -u admin1 -p
+mysql -u root -p
+```
+
+7. CMD 창으로 SQL 접속
+```sql
+mysql -u admin1 -p
+mysql -u root -p
+```
+
+7. DB 덤프를 받아 적용 시키기 & CMD 창 실행
+```sql
+
 use companydb;
 select * from emp;
 SELECT * FROM emp;
@@ -46,6 +74,8 @@ show table status;
 SOURCE sqlDB.sql
 
 ```
+
+
 
 ## SQL WS
 1. 직원 중에 manager가 없는 직원을 조회 하시오.
