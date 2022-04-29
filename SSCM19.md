@@ -26,11 +26,24 @@ WHERE height = 182;
 SELECT * FROM usertbl
 WHERE height between 180 AND 183;
 ```
+#### 가입년도가 2005년과 2008년 사이에 회원을 조회하기.
+```sql
+SELECT * FROM usertbl
+WHERE date_format(mDate,'%Y') BETWEEN '2005' AND '2008';
+```
 
 ### ORDER BY
 - 결과물에 미치지 않도록, 결과가 출력되는 순서
 - ASC : 오름차순(DEFAULT)
 - DESC : 내림차순
+
+```sql
+SELECT * FROM usertbl 
+ORDER BY height DESC; 
+```
+
+
+
 
 ```sql
 SELECT * FROM usertbl
@@ -61,9 +74,7 @@ WHERE date_format(mDate,'%Y') < '2010';
 
 ### 
 
--- 가입년도가 2005년과 2008년 사이에 회원을 조회 하시오.
-SELECT * FROM usertbl
-WHERE date_format(mDate,'%Y') BETWEEN '2005' AND '2008';
+
 
 -- 가입년도가 2007, 2009년인 회원을 조회 하시오.
 SELECT * FROM usertbl
@@ -105,8 +116,7 @@ SELECT * FROM usertbl
 WHERE height IN (SELECT height FROM usertbl
 WHERE addr = '경남');
 
-SELECT * FROM usertbl 
-ORDER BY height DESC; -- ASC
+
 
 SELECT * FROM usertbl 
 ORDER BY height DESC, name ASC;
