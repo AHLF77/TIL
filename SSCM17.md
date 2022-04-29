@@ -563,3 +563,85 @@ public class Sql {
 ```
 
 ### vo 패키지
+```java
+package vo;
+
+
+public class EmployeeVo {
+	private String eid;
+	private String ename;
+	private String position;
+	private String ridespart; 
+	private Double Salary;
+	private String regdate;
+	
+	public EmployeeVo() {
+	
+	}
+
+	public EmployeeVo(String eid, String ename, String position, String ridespart, Double salary, String regdate) {
+		this.eid = eid;
+		this.ename = ename;
+		this.position = position;
+		this.ridespart = ridespart;
+		this.Salary = salary;
+		this.regdate = regdate;
+	}
+
+	public String getEid() {
+		return eid;
+	}
+
+	public void setEid(String eid) {
+		this.eid = eid;
+	}
+
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getRidespart() {
+		return ridespart;
+	}
+
+	public void setRidespart(String ridespart) {
+		this.ridespart = ridespart;
+	}
+
+	public Double getSalary() {
+		return Salary;
+	}
+
+	public void setSalary(Double salary) {
+		Salary = salary;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeVo [eid=" + eid + ", ename=" + ename + ", position=" + position + ", ridespart=" + ridespart
+				+ ", Salary=" + Salary + ", regdate=" + regdate + "]";
+	}
+	
+	
+}
+```
