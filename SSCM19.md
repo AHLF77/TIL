@@ -10,6 +10,14 @@
 SELECT * FROM usertbl
 WHERE height = 182;
 ```
+```sql
+SELECT * FROM usertbl
+WHERE height > 170 AND birthYear < 1970;
+```
+```sql
+SELECT * FROM usertbl
+WHERE height >= 180 AND height <= 183;
+```
 
 ### GROUP BY절
 - 그룹으로 묶어주는 역할
@@ -42,7 +50,25 @@ SELECT * FROM usertbl
 ORDER BY height DESC; 
 ```
 
+### ROLLUP
+- 분류 별로 합계 및 총합을 구할 시 사용
+```sql
 
+```
+
+### 날짜 형식(date_format)
+- 구분기호
+```sql
+-- 가입년도가 2007, 2009년인 회원을 조회 하시오.
+SELECT * FROM usertbl
+WHERE date_format(mDate,'%Y') IN ('2007', '2009');
+
+```
+```sql
+-- 가입 월이 04월, 07월인 회원을 조회 하시오.
+SELECT * FROM usertbl
+WHERE date_format(mDate,'%m') IN ('04', '07');
+```
 
 
 ```sql
@@ -55,11 +81,7 @@ AND mobile1 IS NOT NULL;
 ```sql
 
 
-SELECT * FROM usertbl
-WHERE height > 170 AND birthYear < 1970;
 
-SELECT * FROM usertbl
-WHERE height >= 180 AND height <= 183;
 
 
 
@@ -72,17 +94,11 @@ WHERE height IN (182,170,172);
 SELECT * FROM usertbl
 WHERE date_format(mDate,'%Y') < '2010';
 
-### 
 
 
 
--- 가입년도가 2007, 2009년인 회원을 조회 하시오.
-SELECT * FROM usertbl
-WHERE date_format(mDate,'%Y') IN ('2007', '2009');
 
--- 가입 월이 04월, 07월인 회원을 조회 하시오.
-SELECT * FROM usertbl
-WHERE date_format(mDate,'%m') IN ('04', '07');
+
 
 -- %Y %m %d %H %i %s
 
