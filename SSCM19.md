@@ -249,6 +249,7 @@ SELECT * FROM emp;
 SELECT deptno, titleno, ROUND(AVG(salary),1) AS salaryavg FROM emp
 GROUP BY deptno, titleno;
 ```
+
  2. 입사 년도 별 월급의 평균을 구하시오.
 ```sql
 SELECT date_format(hdate,'%Y') AS empdate, ROUND(AVG(salary),1)  AS salaryavg FROM emp
@@ -285,4 +286,17 @@ SELECT COUNT(DISTINCT(manager)) FROM emp;
 ```sql
 SELECT ROUND(AVG(salary),1) AS salaryavg FROM emp
 WHERE hdate BETWEEN '2000-01-01' AND '2002-12-31';
+```
+
+### WITH 절
+- 간단히 말해 이름이 부여된 서브쿼리
+- 한번 실행할 쿼리문내에 정의되어 있을 경우, 그 쿼리문안에서만 실행된다는 차이점이 있음.
+- 사용이유: 쿼리 성능을 높일 수 있도록, 자주 실행되는 구문을 한번만 parsing 될 수 있도록 함.
+
+```sql
+WITH temp(userID, total)
+AS 
+(SELECT userID, SUM(price*amount) FROM buytbl
+GROUP BY userID)
+SELECT total FROM temp;
 ```
