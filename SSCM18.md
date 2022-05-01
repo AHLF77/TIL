@@ -8,7 +8,10 @@
 - 현실세계에서 사용되는 데이터를 MySQL에 어떻게 옮겨 놓을 건이지 정하는 과정 
 
 3. DDL, DML
-- DDL: CREATE, DROP, ALTER
+- DDL(Data Definition Language): CREATE, DROP, ALTER
+  1. 데이터베이스, 테이블, 뷰, 인덱스 등의 데이터베이스 개체를 생성/삭제/변경하는 역할을 함.
+  2.트랜잭션이 발생하지 않음.
+  3. ROLLBACK, COMMIT을 시킬 수 없음.
 - DML: SELECT, INSERT, DELETE, UPDATE
 
 3. ERD
