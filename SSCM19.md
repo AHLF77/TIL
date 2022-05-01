@@ -328,10 +328,25 @@ GROUP BY addr ) a;
 ```
 
 ### CONCAT 문자열 연결 합치기
- -여러 문자열을 하나로 합쳐주는 역할
+- 여러 문자열을 하나로 합쳐주는 역할
+```sql
+SELECT CONCAT (prodName, groupName) FROM buytbl;
+```
 
- ```sql
- SELECT CONCAT (prodName, groupName) FROM buytbl;
- ```
+### IF문 & Case ~ When문
+- 쉽게 말해 조건문임.
+```sql
+SELECT userID, price * amount AS tt, IF (price * amount > 500, 'Hight', 'Low') AS level FROM buytbl;
+```
 
- 
+```sql
+SELECT userID, amount, 
+CASE
+	WHEN amount >= 1 AND amount < 2 THEN 'C'
+    WHEN amount >= 2 AND amount < 4 THEN 'B'
+    WHEN amount >= 4 AND amount < 6 THEN 'A'
+    ELSE 'C'
+END AS level    
+FROM buytbl;
+```
+
