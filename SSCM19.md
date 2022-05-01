@@ -320,3 +320,18 @@ SELECT b.* FROM(
 SELECT addr, MAX(height) FROM usertbl
 GROUP BY addr) b;
 ```
+
+```sql
+SELECT AVG(a.hmax) FROM(
+SELECT addr, MAX(height) AS hmax FROM usertbl
+GROUP BY addr ) a;
+```
+
+### CONCAT 문자열 연결 합치기
+ -여러 문자열을 하나로 합쳐주는 역할
+
+ ```sql
+ SELECT CONCAT (prodName, groupName) FROM buytbl;
+ ```
+
+ 
