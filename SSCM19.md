@@ -350,3 +350,18 @@ END AS level
 FROM buytbl;
 ```
 
+### IFNULL
+- 해당 Column의 값이 NULL을 반환할 때, 다른 값으로 출력할 수 있도록 하는 함수
+- 기본구조
+```sql
+SELECT IFNULL(Column명, "Null일 경우 대체 값") FROM 테이블명; 
+```
+```sql
+SELECT prodName, IFNULL(groupName, 'None') FROM buytbl;
+```
+
+### FORMAT 함수
+- 서식이 지정된 값을 반환
+```sql
+SELECT FORMAT(123456.123456,5);
+```
