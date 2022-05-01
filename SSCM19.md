@@ -380,3 +380,40 @@ SELECT mDate, ADDDATE(mDate, INTERVAL 1 YEAR),
 SUBDATE(mDate, INTERVAL 1 YEAR) 
 FROM usertbl;
 ```
+
+### 현재 연-월-일
+```sql
+SELECT CURDATE();
+```
+
+### 현재 시:분:초
+```sql
+SELECT CURTIME();
+```
+
+### 현재(연-월-일 시:분:초), 현재 년도
+```sql
+SELECT NOW();
+SELECT SYSDATE();
+SELECT YEAR(SYSDATE());
+```
+
+### 년,월 출력
+```sql
+SELECT YEAR(mDate) FROM usertbl;
+SELECT DATE_FORMAT(mDate, '%Y%m') FROM usertbl;
+```
+
+### DATEDIFF(날짜1, 날짜2)
+- 날짜1-날짜2를 일수로 결과를 나타냄
+- 즉, 날짜2에서 날짜1까지 차이
+```sql
+SELECT mDate, DATEDIFF(NOW(), mDate) FROM usertbl;
+```
+
+### PERIOD_DIFF(연월1, 연월2)
+- 주 인자의 개월수 차이를 구함(연월1 - 연월2)
+```sql
+SELECT mDate, PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'), DATE_FORMAT(mDate, '%Y%m')) 
+FROM usertbl;
+```
