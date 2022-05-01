@@ -8,11 +8,15 @@
 - 현실세계에서 사용되는 데이터를 MySQL에 어떻게 옮겨 놓을 건이지 정하는 과정 
 
 3. DDL, DML
-- DDL(Data Definition Language): CREATE, DROP, ALTER
-  1. 데이터베이스, 테이블, 뷰, 인덱스 등의 데이터베이스 개체를 생성/삭제/변경하는 역할을 함.
-  2.트랜잭션이 발생하지 않음.
-  3. ROLLBACK, COMMIT을 시킬 수 없음.
-- DML: SELECT, INSERT, DELETE, UPDATE
+- DDL(Data Definition Language): CREATE, DROP, ALTER()
+ 1. 데이터베이스, 테이블, 뷰, 인덱스 등의 데이터베이스 개체를 생성/삭제/변경하는 역할을 함.
+ 2. 트랜잭션이 발생하지 않음.
+ 3. ROLLBACK, COMMIT을 시킬 수 없음.
+
+- DML: SELECT, INSERT(삽입하는 명령어), DELETE(행 단위 삭제), UPDATE(데이터의 수정)
+ 1. 데이터를 조작하는데 사용되는 언어
+ 2. 사용 전에 테이블이 정의되어 있어야 함.
+ 3. 트랜잭션이 발생할 수 있음.
 
 3. ERD
 - 요구사항 정의
@@ -67,6 +71,13 @@ source dump.sql
 12. 테이블 상태 출력 
 ```sql
 show table status;
+```
+
+13. AUTO_INCREMENT
+- 자동으로 1부터 증가하는 값을 입력해 줌.
+- 아래 예제는 초기값을 1000으로 설정을 하였을 경우이다.
+```sql
+ALTER TABLE testTbl3 AUTO_INCREMENT=1000;
 ```
 
 ## SQL WS
