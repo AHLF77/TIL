@@ -306,3 +306,17 @@ AS
 GROUP BY userID)
 SELECT total FROM temp;
 ```
+
+```sql
+WITH emp(userID, max)
+AS 
+(SELECT addr, MAX(height) FROM usertbl
+GROUP BY addr)
+SELECT COUNT(userid) FROM emp;
+```
+
+```sql
+SELECT b.* FROM(
+SELECT addr, MAX(height) FROM usertbl
+GROUP BY addr) b;
+```
