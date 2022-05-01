@@ -47,6 +47,10 @@ SELECT userID, ROUND(AVG(price),1) FROM buytbl
 GROUP BY userID; 
 ```
 
+#### ROUND 함수
+- ROUND("값", "자리수")
+- 소수점 자리수를 지정
+
 #### 집계함수
 - AVG()
 - MIN
