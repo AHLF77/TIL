@@ -365,3 +365,18 @@ SELECT prodName, IFNULL(groupName, 'None') FROM buytbl;
 ```sql
 SELECT FORMAT(123456.123456,5);
 ```
+
+### INTERVAL, ADDDATE(날짜, 차이), SUBDATE(날짜, 차이)
+- INTERVAL: 두 Datetime 값의 차이를 저장하기 위해 사용
+- ADDDATE: 날짜/시간을 기준으로 시간을 더한 결과
+- SUBDATE: 날짜/시간을 기준으로 시간을 뺀 결과
+```sql
+SELECT mDate, ADDDATE(mDate, INTERVAL 30 DAY), 
+SUBDATE(mDate, INTERVAL 30 DAY) 
+FROM usertbl;
+```
+```sql
+SELECT mDate, ADDDATE(mDate, INTERVAL 1 YEAR), 
+SUBDATE(mDate, INTERVAL 1 YEAR) 
+FROM usertbl;
+```
