@@ -30,7 +30,13 @@ WHERE addr = '경남';
 ### GROUP BY절
 - 그룹으로 묶어주는 역할
 ```sql
+SELECT userID, AVG(price) FROM buytbl
+GROUP BY userID;
+```
 
+```sql
+SELECT userID, SUM(price) FROM buytbl
+GROUP BY userID;
 ```
 
 ### DISTINCT
