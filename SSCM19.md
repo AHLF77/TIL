@@ -29,6 +29,8 @@ WHERE addr = '경남';
 
 ### GROUP BY절
 - 그룹으로 묶어주는 역할
+- 집계 함수와 함께 쓰이며 데이터를 그룹화 해주는 역할을 함.
+
 ```sql
 SELECT userID, AVG(price) FROM buytbl
 GROUP BY userID;
@@ -38,6 +40,18 @@ GROUP BY userID;
 SELECT userID, SUM(price) FROM buytbl
 GROUP BY userID;
 ```
+
+#### 회원별 구매 금액의 평균 구하기
+```sql
+SELECT userID, ROUND(AVG(price),1) FROM buytbl
+GROUP BY userID; 
+```
+
+#### 집계함수
+- AVG()
+- MIN
+- MAX
+- COUNT
 
 ### DISTINCT
 - 중복된 것을 하나로 합쳐주는 것.
