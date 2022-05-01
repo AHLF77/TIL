@@ -417,3 +417,58 @@ SELECT mDate, DATEDIFF(NOW(), mDate) FROM usertbl;
 SELECT mDate, PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'), DATE_FORMAT(mDate, '%Y%m')) 
 FROM usertbl;
 ```
+
+
+### WorkShop Part2
+
+```sql
+SELECT * FROM emp;
+```
+1. 오늘 날짜 기준으로 입사 일부터 몇 일이 지났고 몇 달이 지났는지 출력 하시오.
+```sql
+SELECT hdate, DATEDIFF(NOW(), hdate) AS Cday, 
+PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'), 
+DATE_FORMAT(hdate, '%Y%m')) 
+AS Cmonth
+FROM emp;
+```
+
+2. 직원들 연봉이 4000이상이면 high, 2500 이상이면 middle, 2500이하면 low 출력
+```sql
+SELECT empno, salary, 
+CASE
+	WHEN salary < 2500 THEN 'low'
+    WHEN salary >= 2500 AND salary < 4000 THEN 'middle'
+    WHEN salary >= 4000 THEN 'high'
+END AS level    
+FROM emp;
+```
+
+```sql
+3. 부서별 연봉 평균의 합을 구하시오.
+SELECT SUM(a.salaryavg) FROM (SELECT AVG(salary) AS salaryavg FROM emp
+GROUP BY deptno) a;
+```
+
+```sql
+4. 부서 별 오늘날짜 기준으로 입사일 평균을 구하시오.
+SELECT deptno, AVG(DATEDIFF(NOW(), hdate)) AS Cdateavg FROM emp
+GROUP BY deptno;
+```
+
+```sql
+5. 이말숙 직원과 같은 해에 입사한 직원을 조회 하시오.
+SELECT empname, hdate FROM emp
+WHERE YEAR(hdate) = (SELECT YEAR(hdate) FROM emp
+WHERE empname = '이말숙');
+```
+
+```sql
+6. 부서별 최고 임금을 받는 직원의 평균을 구하고 그 평균 보다 많이 받는 직원을 조회 하시오.
+WITH temp(deptno, max)
+AS
+(SELECT deptno, MAX(salary) FROM emp
+GROUP BY deptno)
+SELECT empname, salary FROM emp
+WHERE salary > (SELECT AVG(max) FROM temp);
+```
