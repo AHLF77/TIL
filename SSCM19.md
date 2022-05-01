@@ -63,6 +63,12 @@ GROUP BY userID;
 SELECT DISTINCT addr FROM usertbl;
 ```
 
+#### groupName 별 구매 고객의 인원 수를 구하시오.
+```sql
+SELECT groupName, COUNT(DISTINCT(userID)) FROM buytbl
+GROUP BY groupName;
+```
+
 ### IN 연산자
 - WHERE절 뒤에 붙여서 칼럼이 특정 값을 가지고 있는지 확인하는 용도
 ```sql
@@ -187,4 +193,27 @@ WHERE name ='윤종신');
 SELECT * FROM usertbl
 WHERE height IN (SELECT height FROM usertbl
 WHERE addr = '경남');
+```
+
+### HAVING 절
+- WHERE와 비슷한 개념으로 조건을 제한하는 것이지만, 집계 함수에 대해서 조건을 제한하는 것
+- HAVING 절은 반듯이 GROUP BY절 뒤에 와야 한다.
+```sql
+SELECT userID, ROUND(AVG(price*amount),1) AS pavg FROM buytbl
+GROUP BY userID
+HAVING pavg > 100
+ORDER BY pavg DESC;
+```
+
+### COUNT 함수
+- 테이블에 존재하는 데이터 갯수 조회
+```sql
+SELECT COUNT(DISTINCT(userID)) FROM buytbl;
+```
+
+### AVG 함수
+- usertbl 회원 들의 평균 키보다 큰 회원을 조회하기
+```sql
+SELECT * FROM usertbl
+WHERE height > (SELECT AVG(height) FROM usertbl);
 ```
