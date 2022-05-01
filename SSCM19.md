@@ -115,6 +115,9 @@ ORDER BY name;
 ### ROLLUP
 - 분류 별로 합계 및 총합을 구할 시 사용
 ```sql
+SELECT num, groupName, SUM(price * amount) AS SUMAP FROM buytbl
+GROUP BY groupName, num
+WITH ROLLUP;
 
 ```
 
@@ -174,6 +177,14 @@ AND birthYear > 1970
 AND mobile1 IS NOT NULL;
 ```
 
+```sql
+SELECT userID, groupName, SUM(price * amount) as usum FROM buytbl
+GROUP BY userID, groupName
+HAVING userID IN ('BBK','KBS')
+AND groupNAME IS NOT NULL
+ORDER BY userID;
+```
+
 ### 윤종신 회원과 같은 주소지의 회원을 조회 하시오.
 ```sql
 SELECT * FROM usertbl
@@ -205,6 +216,15 @@ HAVING pavg > 100
 ORDER BY pavg DESC;
 ```
 
+#### kbs와 bbk의 데이터만 추출해라
+
+```sql
+SELECT userID, groupName, SUM(price * amount) as usum FROM buytbl
+GROUP BY userID, groupName
+HAVING userID IN ('BBK','KBS')
+ORDER BY userID;
+```
+
 ### COUNT 함수
 - 테이블에 존재하는 데이터 갯수 조회
 ```sql
@@ -216,4 +236,53 @@ SELECT COUNT(DISTINCT(userID)) FROM buytbl;
 ```sql
 SELECT * FROM usertbl
 WHERE height > (SELECT AVG(height) FROM usertbl);
+```
+
+### WorkShop Part1
+- emp 테이블에서 진행할 것.
+```sql
+SELECT * FROM emp;
+```
+
+ 1. 부서별, 직급별 연봉 평균을 구하시오.
+```sql
+SELECT deptno, titleno, ROUND(AVG(salary),1) AS salaryavg FROM emp
+GROUP BY deptno, titleno;
+```
+ 2. 입사 년도 별 월급의 평균을 구하시오.
+```sql
+SELECT date_format(hdate,'%Y') AS empdate, ROUND(AVG(salary),1)  AS salaryavg FROM emp
+GROUP BY date_format(hdate,'%Y');
+```
+
+ 3. 부서 별 입사 월을 기준으로 연봉의 합을 구하시오.
+```sql
+SELECT deptno, date_format(hdate,'%m') AS empdate, SUM(salary) AS salaryavg FROM emp
+GROUP BY deptno,date_format(hdate,'%m');
+```
+
+ 4. 이영업이 속한 부서의 연봉의 평균을 구하시오.
+```sql
+SELECT deptno, ROUND(AVG(salary),1) AS salaryavg FROM emp
+WHERE deptno = (SELECT deptno FROM emp
+WHERE empname = '이영업');
+```
+
+ 5. 홍영자 직급과 같은 직원들의 연봉 평균보다 많이 받는 직원을 구하시오.  
+```sql
+SELECT * FROM emp
+WHERE salary> (SELECT ROUND(AVG(salary),1) FROM emp
+WHERE titleno = (SELECT titleno FROM emp
+WHERE empname = '홍영자'));
+```
+
+ 6. 회사 내 매니저는 총 몇명인지 구하시오.
+```sql
+SELECT COUNT(DISTINCT(manager)) FROM emp;
+```
+
+ 7. 2000-01-01부터 2002-12-31일까지 입사한 직원들의 연봉 평균을 구하시오.
+```sql
+SELECT ROUND(AVG(salary),1) AS salaryavg FROM emp
+WHERE hdate BETWEEN '2000-01-01' AND '2002-12-31';
 ```
