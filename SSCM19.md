@@ -55,6 +55,11 @@ GROUP BY userID;
 - AVG()
 - MIN
 - MAX
+```sql
+-- 각 지역별 가장 키가 큰 키들의 평균을 구하시오.
+SELECT addr, MAX(height) FROM usertbl
+GROUP BY addr;
+```
 - COUNT
 
 ### DISTINCT
@@ -289,6 +294,7 @@ WHERE hdate BETWEEN '2000-01-01' AND '2002-12-31';
 ```
 
 ### WITH 절
+- CTE(기존의 뷰, 파생 테이블, 임시 테이블 등으로 사용되던 것을 대신할 수 있음.)를 표현
 - 간단히 말해 이름이 부여된 서브쿼리
 - 한번 실행할 쿼리문내에 정의되어 있을 경우, 그 쿼리문안에서만 실행된다는 차이점이 있음.
 - 사용이유: 쿼리 성능을 높일 수 있도록, 자주 실행되는 구문을 한번만 parsing 될 수 있도록 함.
