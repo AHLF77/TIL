@@ -1,6 +1,12 @@
 # 0502 강의
 
+## JOIN 
+- 두 개 이상의 테이블을 서로 묶어서 하나의 결과 집합으로 만들어 내는 것.
+- 1대 다 관계
+
 ## OUTER JOIN
+- 기준 테이블에만 데이터가 존재하면 조회가능
+
 1. 사원 정보를 출력 하시오.
 ```sql
 INSERT INTO emp VALUES ('1011', NULL, NULL, '이말자', NULL, 3000, SYSDATE());
@@ -18,6 +24,7 @@ RIGHT OUTER JOIN title t ON e.titleno = t.titleno;
 ```
 
 ## INNER JOIN
+- 기준 테이블과 조인 테이블 모두 데이터가 존재해야 조회가능
 ```sql
 SELECT d.deptname, AVG(e.salary) FROM emp e
 INNER JOIN dept d ON e.deptno = d.deptno
