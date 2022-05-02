@@ -6,6 +6,17 @@
 INSERT INTO emp VALUES ('1011', NULL, NULL, '이말자', NULL, 3000, SYSDATE());
 INSERT INTO title VALUES ('50','인턴');
 ```
+
+```sql
+SELECT * FROM emp e
+LEFT OUTER JOIN title t ON e.titleno = t.titleno;
+```
+
+```sql
+SELECT * FROM emp e
+RIGHT OUTER JOIN title t ON e.titleno = t.titleno;
+```
+
 ## INNER JOIN
 ```sql
 SELECT d.deptname, AVG(e.salary) FROM emp e
@@ -28,6 +39,13 @@ RIGHT OUTER JOIN title t ON e.titleno = t.titleno;
 ```sql
 SELECT * FROM emp e
 CROSS JOIN title;
+```
+## SELF JOIN(중요)
+- SELF JOIN을 사용하는 이유: 테이블을 바꿈으로써 트러블을 최소화하기 위해 테이블을 분리.
+1. 사원 이름과 매니져 이름을 출력 하시오. (단, 모든 직원을 출력 하시오.)
+```sql
+SELECT e1.empname, e2.empname FROM emp e1
+LEFT OUTER JOIN emp e2 ON e1.manager = e2.empno;
 ```
 
 ### WrokShop Part1
