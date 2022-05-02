@@ -27,3 +27,46 @@ END AS grade
 FROM emp;
 ```
 
+5. 부서 별 월급의 평균을 구하시오. (단, 평균이 3000 이상인 부서만 출력)
+```sql
+SELECT e.deptno, d.deptno, ROUND(AVG(salary),1) AS salaryavg FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+GROUP BY d.deptno
+HAVING ROUND(AVG(salary),1) >= 3000;
+```
+
+6. 부서 별 대리와 사원 연봉의 평균을 구하시오. (단, 평균이 2500 이상인 부서만 출력)
+```sql
+SELECT e.deptno, d.deptname, ROUND(AVG(salary),1) AS salaryavg FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+WHERE t.titlename IN ('대리','사원')
+GROUP BY d.deptno
+HAVING ROUND(AVG(salary),1) >= 2500;
+```
+
+7. 2000년 부터 2002년에 입사는 직원들의 월급의 평균을 구하시오.
+```sql
+SELECT ROUND(AVG(salary),1) AS salaryavg FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+WHERE DATE_FORMAT(hdate, '%Y') BETWEEN '2000' AND '2002';
+```
+
+8. 부서 별 월급의 합의 ranking을 1위부터 조회 하시오.
+```sql
+SELECT b.deptno, b.deptname, b.salarysum FROM
+(SELECT e.deptno, d.deptname, SUM(e.salary) AS salarysum FROM emp e
+LEFT OUTER JOIN dept d ON e.deptno = d.deptno
+LEFT OUTER JOIN title t ON e.titleno = t.titleno
+GROUP BY e.deptno) b
+ORDER BY b.salarysum DESC;
+```
+
+9. 서울에서 근무하는 직원들을 조회 하시오.
+```sql
+SELECT * FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+WHERE d.deptloc = '서울';
+```
