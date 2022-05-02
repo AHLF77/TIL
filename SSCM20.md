@@ -1,5 +1,34 @@
 # 0502 강의
 
+### WrokShop Part1
+
+1. 연봉이 1000 ~ 3000 사이의 사람들의 정보를 조회하시오
+```sql
+SELECT salary, empname FROM emp
+WHERE salary between 1000 AND 3000;
+```
+
+2. 이영업과 매니저가 같은 직원을 조회하여 그 직원들의 연봉 평균을 구하시오.
+```sql
+SELECT manager, ROUND(AVG(salary),1) AS salaryavg FROM emp
+WHERE manager = (SELECT manager FROM emp
+WHERE empname = '이영업'); 
+```
+
+3. 문제 성이 김씨인 직원들의 평균 연봉을 구하고 이들 평균 연봉 보다 낮은 연봉의 직원의 근속일수를 구하시오. (근속일수는 현재-입사일)
+```sql
+SELECT empname, salary, DATEDIFF(SYSDATE(),hdate) FROM emp
+WHERE salary < (SELECT ROUND(AVG(salary),1) FROM emp
+WHERE empname LIKE '%김%'); 
+```
+
+4. 이름이 '홍' 과 '이' 로 시작하는 사람들 평균 연봉들을 구하시오.
+```sql
+SELECT ROUND(AVG(salary),1) AS hlavg FROM emp
+WHERE empname LIKE '%홍%' OR empname LIKE'%이%';
+```
+
+### WrokShop Part2
 1. 직원정보를 출력 한다. 직원의 연봉 정보와 연봉의 세금 정보를 같이 출력 한다. (세금은 10%)
 ```sql
 SELECT empname, salary, ROUND((salary*0.1),1) AS tax FROM emp;
@@ -87,6 +116,7 @@ WHERE e.titleno = (SELECT titleno FROM emp
 WHERE empname = '김강국');
 ```
 
+### WrokShop Part3
 1. 2000 년 이후 입사 한 사원들의 정보를 출력.(사번, 이름, 타이틀, 부서, 지역)
 ```sql
 SELECT e.empno, e.empname, e.titleno, d.deptname, d.deptloc  FROM emp e
