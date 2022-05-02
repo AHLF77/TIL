@@ -114,3 +114,18 @@ GROUP BY d.deptno
 HAVING ROUND(AVG(salary),1);
 ```
 
+4. 홍영자 직원와 같은 부서 직원들의 근무 월수를 구하시오. 
+```sql
+SELECT e.empname, d.deptname, e.deptno, PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'), DATE_FORMAT(e.hdate, '%Y%m')) AS nwm FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+WHERE e.deptno = (SELECT e.deptno FROM emp e
+WHERE e.empname = '홍영자');
+```
+
+5. 입사 년수가 가장 많은 직원 순으로 정렬 하여 순위를 정한다. (이름, 부서명, 직위, 년수)
+```sql
+SELECT e.empname, d.deptname, t.titlename, (YEAR(NOW())-YEAR(e.hdate)) AS rey FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+ORDER BY rey DESC;
+```
