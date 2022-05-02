@@ -86,3 +86,31 @@ INNER JOIN title t ON e.titleno = t.titleno
 WHERE e.titleno = (SELECT titleno FROM emp
 WHERE empname = '김강국');
 ```
+
+1. 2000 년 이후 입사 한 사원들의 정보를 출력.(사번, 이름, 타이틀, 부서, 지역)
+```sql
+SELECT e.empno, e.empname, e.titleno, d.deptname, d.deptloc  FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+WHERE DATE_FORMAT(e.hdate, '%Y') >= '2000';
+```
+
+2. 부서 이름 별 월급의 평균을 구하시오. (단, 평균이 3000 이상인 부서만 출력)
+```sql
+SELECT d.deptname, ROUND(AVG(salary),1) AS salaryavg FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+GROUP BY d.deptname
+HAVING ROUND(AVG(salary),1) >= 3000;
+```
+
+3. 대구 지역의 직원 들의 평균 연봉을 구하시오.
+```sql
+SELECT d.deptloc, ROUND(AVG(salary),1) AS salaryavg FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+WHERE d.deptloc = '대구'
+GROUP BY d.deptno
+HAVING ROUND(AVG(salary),1);
+```
+
