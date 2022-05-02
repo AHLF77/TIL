@@ -82,6 +82,13 @@ LEFT OUTER JOIN dept d ON e.deptno = d.deptno
 LEFT OUTER JOIN title t ON e.titleno = t.titleno;
 ```
 
+6. 직원 정보(이름, 부서명, 직급명, 매니저명)를 출력한다.(단, 모든 직원 정보를 출력)
+```sql
+SELECT e.empname, d.deptname, t.titlename, e.manager FROM emp e
+LEFT OUTER JOIN dept d ON e.deptno = d.deptno
+LEFT OUTER JOIN title t ON e.titleno = t.titleno
+LEFT OUTER JOIN emp e2 ON e.manager = e2.empno;
+```
 
 ### WrokShop Part2
 1. 직원정보를 출력 한다. 직원의 연봉 정보와 연봉의 세금 정보를 같이 출력 한다. (세금은 10%)
