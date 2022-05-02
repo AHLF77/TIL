@@ -1,7 +1,36 @@
 # 0502 강의
 
-### WrokShop Part1
+## OUTER JOIN
+1. 사원 정보를 출력 하시오.
+```sql
+INSERT INTO emp VALUES ('1011', NULL, NULL, '이말자', NULL, 3000, SYSDATE());
+INSERT INTO title VALUES ('50','인턴');
+```
+## INNER JOIN
+```sql
+SELECT d.deptname, AVG(e.salary) FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+INNER JOIN title t ON e.titleno = t.titleno
+GROUP BY d.deptname;
+```
 
+## FULL
+- 전체 출력을 해야 할 경우 UNION을 사용.
+```sql
+SELECT * FROM emp e
+LEFT OUTER JOIN title t ON e.titleno = t.titleno
+UNION
+SELECT * FROM emp e
+RIGHT OUTER JOIN title t ON e.titleno = t.titleno;
+```
+
+## CROSS JOIN
+```sql
+SELECT * FROM emp e
+CROSS JOIN title;
+```
+
+### WrokShop Part1
 1. 연봉이 1000 ~ 3000 사이의 사람들의 정보를 조회하시오
 ```sql
 SELECT salary, empname FROM emp
