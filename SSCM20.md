@@ -70,3 +70,19 @@ INNER JOIN dept d ON e.deptno = d.deptno
 INNER JOIN title t ON e.titleno = t.titleno
 WHERE d.deptloc = '서울';
 ```
+
+10. 이영자가 속한 부서의 직원들을 조회 하시오.
+```sql
+SELECT e.empname,d.deptname FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+WHERE d.deptno = (SELECT deptno FROM emp
+WHERE empname = '이영자');
+```
+
+11. 김강국의 타이틀과 같은 직원들을 조회 하시오.
+```sql
+SELECT e.empname, t.titlename  FROM emp e
+INNER JOIN title t ON e.titleno = t.titleno
+WHERE e.titleno = (SELECT titleno FROM emp
+WHERE empname = '김강국');
+```
