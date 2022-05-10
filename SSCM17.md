@@ -988,3 +988,105 @@ public class EmployeeDao extends Dao<String, EmployeeVo> {
 }
 
 ```
+
+#### frame package
+```sql
+package frame;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import vo.EmployeeVo;
+
+public abstract class Dao<K,V> {
+	
+	// MySQL Connect
+	String url = "jdbc:mysql://172.30.1.12:3306/amusementparkdb?serverTimezone=Asia/Seoul";
+	String mid = "admin1";
+	String mpwd = "111111";
+	
+	
+	public Dao() {
+	// MySQL JDBC Driver Loading
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("MySQL JDBC Driver Loading.....");
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	}
+	
+	public Connection getConnection() throws SQLException { 
+		// 한 번 연결된 객체를 사용한다는 것 
+		// 즉, 연결되지 않은 경우에만 연결을 시도하겠다는 의미
+		Connection con = null;
+		con = DriverManager.getConnection(url,mid,mpwd);
+		return con;
+	}
+	
+	public void close(Connection con) {
+		if(con != null){
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+    public void close(PreparedStatement ps) {
+    	if(ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+    public void close(ResultSet rset) {
+    	if(rset != null) {
+			try {
+				rset.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+    
+    public abstract void create(V v) throws Exception;
+    public abstract void update(V v) throws Exception;
+    public abstract void delete(K k) throws Exception;
+    public abstract V select(K k) throws Exception;
+    public abstract List<V> select() throws Exception;
+    
+
+}
+
+```
+
+```sql
+package frame;
+
+public class Sql {
+	
+	// 직원 sql 구문
+	public static String createEmployee = "INSERT INTO Employee VALUES (?,?,?,?,?,?)"; // 직원 ID,직원 이름, 직책, 놀이기구 부서, 급여, 등록일을 삽입하는 SQL문
+	public static String deleteEmployee = "DELETE FROM Employee WHERE eid=?"; // 직원 아이디를 통한 삭제하는 SQL문 
+	public static String updateEmployee = "UPDATE Employee SET ename=?, position=?, ridespart=?, Salary=?, regdate=? WHERE eid=?"; // 현재 직원 정보를 업데이트하기 위한 SQL문
+	public static String selectEmployee = "SELECT * FROM Employee WHERE eid = ?"; // 직원 아이디로 조회 하는 SQL문
+	public static String selectALLEmployee = "SELECT * FROM Employee"; // 모든 직원을 조회하는 SQL문
+	
+	// 놀이기구 sql 구문
+	public static String createArpart = "INSERT INTO Arpart VALUES (?,?,?,?)"; // 놀이기구 ID, 놀이기구 이름, 놀이기구 설치 날짜, 놀이기구 등록일짜를 삽입하는 SQL문
+	public static String deleteArpart = "DELETE FROM Arpart WHERE apid=?"; // 놀이기구 아이디를 통한 삭제하는 SQL문 
+	public static String updateArpart = "UPDATE Arpart SET apname=?, installdate=? , recentdate=? WHERE apid=?"; // 현재 놀이기구 정보를 업데이트하기 위한 SQL문
+	public static String selectArpart = "SELECT * FROM Arpart WHERE apid = ?"; // 놀이기구 아이디로 조회 하는 SQL문
+	public static String selectALLArpart = "SELECT * FROM Arpart"; // 모든 놀이기구를 조회하는 SQL문	
+
+}
+
+```
