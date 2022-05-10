@@ -1258,18 +1258,111 @@ public class SelectAllEmployee { // 모든 직원들을 조회하는 테스트
 }
 
 ```
+
+- Select문
 ```java
+package test;
+
+import dao.ArpartDao;
+import frame.Dao;
+import vo.ArpartVo;
+
+
+public class SelectArpart {
+
+	public static void main(String[] args) { // 해당 놀이기구 ID를 조회하는 테스트
+		Dao<String, ArpartVo> dao = new ArpartDao();
+		
+		ArpartVo p = null;
+		try {
+			p = dao.select("H894653");
+			System.out.println(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
 
 ```
 ```java
+package test;
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+
+public class SelectEmployee {
+
+	public static void main(String[] args) { // 해당 놀이기구 직원을 조회하는 테스트
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		
+		EmployeeVo p = null;
+		try {
+			p = dao.select("u7824");
+			System.out.println(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
 
 ```
-```java
 
+- Update문
+```java
+package test;
+
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+public class UpdateArpart {
+
+	public static void main(String[] args) { // 해당 직원의 ID를 찾아 정보를 업데이트하는 테스트 
+		
+		Dao <String,EmployeeVo> dao = new EmployeeDao();
+	      
+	      EmployeeVo ev = new EmployeeVo("s1289", "신짱구", "과장", "회전그네", (double) 4000000, "2020-08-23");
+	      
+			try {
+				dao.update(ev);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+
+}
 ```
 ```java
+package test;
 
-```
-```java
 
+import dao.ArpartDao;
+import frame.Dao;
+import vo.ArpartVo;
+
+public class UpdateEmployee {
+
+	public static void main(String[] args) { // 해당 놀이기구의 ID를 찾아 정보를 업데이트하는 테스트 
+		
+		Dao <String,ArpartVo> dao = new ArpartDao();
+	      
+		ArpartVo ev = new ArpartVo("B234868", "부메랑", "2015-08-09", "2022-03-09");
+	      
+			try {
+				dao.update(ev);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+
+}
 ```
