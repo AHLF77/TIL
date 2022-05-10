@@ -83,15 +83,21 @@ ON DELETE CASCADE
 ON UPDATE CASCADE;
 ```
 
+```sql
 ALTER TABLE cart ADD FOREIGN KEY (pid) 
 REFERENCES product (id);
+```
 
 -- cust data
+```sql
 SELECT * FROM cust;
 INSERT INTO cust VALUES ('id01', 'lee','Busan','2019-03-02');
-INSERT INTO cust (id, name, regdate) VALUES ('id02', 'kim','2020-05-02'); -- 만약 주소를 넣고 싶지 않을 경우
+INSERT INTO cust (id, name, regdate) VALUES ('id02', 'kim','2020-05-02'); 
+-- 만약 주소만 제외하고 싶을 경우
+```
 
 -- cate data
+```sql
 SELECT * FROM cate;
 INSERT INTO cate VALUES (10, 'pants', NULL);
 INSERT INTO cate VALUES (11, 'short pants', 10);
@@ -99,8 +105,8 @@ INSERT INTO cate VALUES (11, 'short pants', 10);
 INSERT INTO cate VALUES (20, 'shirts', NULL);
 INSERT INTO cate VALUES (21, 'short shirts', 20);
 
-
 SELECT * FROM cate c1 INNER JOIN cate c2 ON c1.pid = c2.id;
+```
 
 -- product data
 SELECT * FROM product;
