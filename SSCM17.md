@@ -1415,3 +1415,167 @@ public class UpdateEmployee {
 
 }
 ```
+
+#### vo package
+```java
+package vo;
+
+
+public class ArpartVo { // 캡슐화
+	private String apid;
+	private String apname;
+	private String installdate; 
+	private String recentdate;
+	
+	public ArpartVo() {
+		
+	}
+
+
+	public ArpartVo(String apid, String apname, String installdate, String recentdate) {
+		this.apid = apid;
+		this.apname = apname;
+		this.installdate = installdate;
+		this.recentdate = recentdate;
+	}
+
+	public String getApid() {
+		return apid;
+	}
+
+
+	public void setApid(String apid) {
+		this.apid = apid;
+	}
+
+
+	public String getApname() {
+		return apname;
+	}
+
+
+	public void setApname(String apname) {
+		this.apname = apname;
+	}
+
+
+	public String getInstalldate() {
+		return installdate;
+	}
+
+
+	public void setInstalldate(String installdate) {
+		this.installdate = installdate;
+	}
+
+
+	public String getRecentdate() {
+		return recentdate;
+	}
+
+
+	public void setRecentdate(String recentdate) {
+		this.recentdate = recentdate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ArpartVo [apid=" + apid + ", apname=" + apname + ", installdate=" + installdate + ", recentdate="
+				+ recentdate + "]";
+	}
+	
+	
+	
+	
+}
+
+```
+
+```java
+package vo;
+
+
+public class EmployeeVo { // 캡슐화
+	private String eid;
+	private String ename;
+	private String position;
+	private String ridespart; 
+	private Double Salary;
+	private String regdate;
+	
+	public EmployeeVo() {
+		
+	}
+	
+	public EmployeeVo(String eid) {
+		this.eid = eid;
+	}
+
+	public EmployeeVo(String eid, String ename, String position, String ridespart, Double salary, String regdate) {
+		this.eid = eid;
+		this.ename = ename;
+		this.position = position;
+		this.ridespart = ridespart;
+		this.Salary = salary;
+		this.regdate = regdate;
+	}
+
+	public String getEid() {
+		return eid;
+	}
+
+	public void setEid(String eid) {
+		this.eid = eid;
+	}
+
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getRidespart() {
+		return ridespart;
+	}
+
+	public void setRidespart(String ridespart) {
+		this.ridespart = ridespart;
+	}
+
+	public Double getSalary() {
+		return Salary;
+	}
+
+	public void setSalary(Double salary) {
+		Salary = salary;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeVo [eid=" + eid + ", ename=" + ename + ", position=" + position + ", ridespart=" + ridespart
+				+ ", Salary=" + Salary + ", regdate=" + regdate + "]";
+	}
+	
+	
+}
+
+```
