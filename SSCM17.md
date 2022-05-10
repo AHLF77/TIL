@@ -990,7 +990,7 @@ public class EmployeeDao extends Dao<String, EmployeeVo> {
 ```
 
 #### frame package
-```sql
+```java
 package frame;
 
 import java.sql.Connection;
@@ -1068,7 +1068,7 @@ public abstract class Dao<K,V> {
 
 ```
 
-```sql
+```java
 package frame;
 
 public class Sql {
@@ -1088,5 +1088,188 @@ public class Sql {
 	public static String selectALLArpart = "SELECT * FROM Arpart"; // 모든 놀이기구를 조회하는 SQL문	
 
 }
+
+```
+
+#### test package
+- Create문
+```java
+package test;
+
+import dao.ArpartDao;
+import frame.Dao;
+import vo.ArpartVo;
+
+
+public class CreateArpart {
+
+	public static void main(String[] args) {
+		Dao<String, ArpartVo> dao = new ArpartDao();
+		
+		ArpartVo ap = new ArpartVo("J21894","자이로드롭","2009-08-05","2022-01-15");
+		
+		try {
+			dao.create(ap);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+}
+
+```
+```java
+package test;
+
+import dao.EmployeeDao;
+
+import frame.Dao;
+import vo.EmployeeVo;
+
+public class CreateEmployee {
+
+	public static void main(String[] args) {
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		
+		EmployeeVo emp = new EmployeeVo("s1289", "신짱구", "대리", "범퍼카", (double) 123486, "2020-08-23");
+		
+		try {
+			dao.create(emp);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+}
+
+```
+
+- Delete문
+```java
+package test;
+
+import dao.ArpartDao;
+import frame.Dao;
+import vo.ArpartVo;
+
+
+public class DeleteArpart {
+
+	public static void main(String[] args) {
+		
+		Dao<String, ArpartVo> dao = new ArpartDao();
+		
+		try {
+			dao.delete("R185374");// 놀이기구 아이디를 삽입하여 해당 직원 정보를 DELETE함
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+}
+
+```
+```java
+package test;
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+
+public class DeleteEmployee {
+
+	public static void main(String[] args) {
+		
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		
+		try {
+			dao.delete("");// 직원 아이디를 삽입하여 해당 직원 정보를 DELETE함
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+}
+
+```
+
+- SelectAll문
+```java
+package test;
+
+import java.util.List;
+
+import dao.EmployeeDao;
+import frame.Dao;
+import vo.EmployeeVo;
+
+
+public class SelectAllArpart { // 모든 놀이기구 정보들을 조회하는 테스트
+
+	public static void main(String[] args) {
+		Dao<String, EmployeeVo> dao = new EmployeeDao();
+		List<EmployeeVo> elist = null;
+		try {
+			elist = dao.select();
+			for(EmployeeVo empVo : elist) {
+			System.out.println(empVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
+
+```
+```java
+package test;
+
+import java.util.List;
+
+import dao.ArpartDao;
+import frame.Dao;
+import vo.ArpartVo;
+
+public class SelectAllEmployee { // 모든 직원들을 조회하는 테스트
+
+	public static void main(String[] args) {
+		Dao<String, ArpartVo> dao = new ArpartDao();
+		List<ArpartVo> elist = null;
+		try {
+			elist = dao.select();
+			for(ArpartVo empVo : elist) {
+			System.out.println(empVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
+
+```
+```java
+
+```
+```java
+
+```
+```java
+
+```
+```java
+
+```
+```java
 
 ```
