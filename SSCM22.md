@@ -1,16 +1,23 @@
 # 0503강의
+
+## 외래키,  
 -- DDL
+```sql
 DROP DATABASE IF EXISTS shoppingdb;
 CREATE DATABASE shoppingdb;
 USE shoppingdb;
+```
 
 -- 유령데이터를 먼저 지워야 한다.
+```sql
 DROP TABLE IF EXISTS cart;
 DROP TABLE IF EXISTS cust;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS cate;
+```
 
 -- cust table
+```sql
 CREATE TABLE cust(
 	id VARCHAR(10),
     name VARCHAR(20) NOT NULL,
@@ -19,7 +26,9 @@ CREATE TABLE cust(
 );
 ALTER TABLE cust ADD CONSTRAINT PRIMARY KEY(id); 
 ALTER TABLE cust ALTER COLUMN addr SET DEFAULT 'Seoul';
+```
 
+```sql
 -- cate table
 CREATE TABLE cate(
 	id INT,
@@ -29,9 +38,10 @@ CREATE TABLE cate(
 ALTER TABLE cate ADD CONSTRAINT PRIMARY KEY(id);
 ALTER TABLE cate ADD CONSTRAINT UNIQUE (name);
 ALTER TABLE cate ADD CONSTRAINT FOREIGN KEY (pid) REFERENCES cate(id);
-
+```
 -- ALTER TABLE cate CHANGE COLUMN name name VARCHAR(30) NOT NULL;
 
+```sql
 -- product table
 CREATE TABLE product(
 	id INT,
@@ -40,14 +50,17 @@ CREATE TABLE product(
     regdate DATE NOT NULL,
     cid INT 
 );
-
+```
+```sql
 ALTER TABLE product ADD CONSTRAINT PRIMARY KEY(id);
 ALTER TABLE product MODIFY id INT AUTO_INCREMENT;
 ALTER TABLE product AUTO_INCREMENT = 1000;
 ALTER TABLE product ADD CONSTRAINT CHECK (price > 0);
 
 ALTER TABLE product ADD CONSTRAINT FOREIGN KEY (cid) REFERENCES cate(id);
+```
 
+```sql
 -- cart table
 CREATE TABLE cart(
 	id INT,
@@ -55,14 +68,20 @@ CREATE TABLE cart(
     pid INT,
     regdate DATE
 );
+```
+
+```sql
 ALTER TABLE cart ADD CONSTRAINT PRIMARY KEY(id);
 ALTER TABLE cart MODIFY id INT AUTO_INCREMENT;
 ALTER TABLE cart AUTO_INCREMENT = 1000;
+```
 
+```sql
 ALTER TABLE cart ADD FOREIGN KEY (uid) 
 REFERENCES cust (id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
+```
 
 ALTER TABLE cart ADD FOREIGN KEY (pid) 
 REFERENCES product (id);
