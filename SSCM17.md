@@ -10,7 +10,56 @@
 5. 각 테이블의 CRUD 기능을 설계 한다. 
 6. 각 테이블의 DAO(Data Access Object)를 구현한다. 
 7. CRUD 기능에 대한 테스트 프로그램을 작성 한다. 
-8. Java Application을 구현 하여 각 기능을 통합 테스트 한다
+8. Java Application을 구현 하여 각 기능을 통합 테스트 한다.
+
+#### MySQL
+```sql
+DROP TABLE Employee;
+DROP TABLE Arpart;
+
+CREATE TABLE Employee(
+	eid VARCHAR(50) primary KEY,
+	ename VARCHAR(50),
+    position VARCHAR(50),
+    ridespart VARCHAR(50),
+    Salary Double,
+    regdate VARCHAR(30)
+);
+
+CREATE TABLE Arpart(
+	apid VARCHAR(30),
+	apname VARCHAR(30),
+    installdate VARCHAR(30),
+    recentdate VARCHAR(30)
+);
+
+-- CRUD
+-- Create
+INSERT INTO Employee VALUES ('l7824', '이순신', '매니저', '롤러코스터', 3500000, '2019-08-05'); 
+INSERT INTO Employee VALUES ('u7824', '을지문덕', '과장', '바이킹', 4500000, '2016-09-01'); 
+INSERT INTO Employee VALUES ('k7824', '강감찬', '대리', '회전목마', 4000000, '2018-07-05'); 
+
+INSERT INTO Arpart VALUES ('R185374', '롤러코스터','2010-08-03','2021-09-06');
+INSERT INTO Arpart VALUES ('B234868', '바이킹','2010-09-03','2021-10-10');
+INSERT INTO Arpart VALUES ('H894653', '회전목마','2010-10-03','2021-11-15'); 
+
+-- Update
+UPDATE Employee SET ename='을지문덕', position='과장', ridespart='후룸라이드', Salary=4500000, regdate='2016-09-01' WHERE eid='u7824';  
+
+UPDATE Arpart SET apname='후룸라이드',  installdate='2010-08-07',  recentdate= '2021-10-01' WHERE apid='B234868'; 
+
+-- Delete
+DELETE FROM Employee WHERE eid='k7824';
+
+DELETE FROM Arpart WHERE apid='B234868';
+
+-- Read
+SELECT * FROM Employee;
+SELECT * FROM Employee WHERE eid = 'l4962';
+
+SELECT * FROM Arpart;
+SELECT * FROM Arpart WHERE apid = 'H894653';
+```
 
 #### app package
 ```java
