@@ -157,6 +157,63 @@
 </html>
 
 ### P95
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Form tag</h1>
+	<form action="register" method="get">
+		<label for="iid">ID</label>
+		<input id="iid" type="text" name="id"><br>
+		<label for="ipwd">PWD</label>
+		<input id="ipwd" type="password" name="pwd"><br>
+		<label for="iage">AGE</label>
+		<input id="iage" type="number" name="age"><br>
+		<input type="submit" value="register">
+	</form>
+</body>
+</html>
 
 ### P98
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Form Tag</h1>
+	<form action="register2" method="POST">
+		<fieldset>
+			<legend>회원 가입</legend>	
+			ID<input type="text" name="id"><br>
+			PWD<input type="password" name="pwd"><br>
+			AGE<input type="number" name="age"><br>
+			BIRTH<input type="date" name="birth"><br>
+			GENDER<br>
+			<input type="radio" name="gender" value="f">Female<br>
+			<input type="radio" name="gender" value="m">Male<br>
+			<input type="radio" name="gender" value="a">Aje<br>
+			HOBBY<br>
+			<input type="checkbox" name="hobby" value="s">Study<br>
+			<input type="checkbox" name="hobby" value="t">Train<br>
+			<input type="checkbox" name="hobby" value="e">Eat<br>
+			Car<br>
+			<select name="car">
+				<option value="k1">K1</option>
+				<option value="k2">K2</option>
+				<option value="k3">K3</option>
+			</select><br>
+			Resume<br>
+			<textarea name="resume" rows="10" cols="100"></textarea>
+			<input type="hidden" name="loginid value="leejan">
+			<input type="range" name="range" size="10" step="1"><br>
+		</fieldset>
+		<input type="submit" value="REGISTER">
+		<input type="reset" value="RESET">
+	</form>
+</body>
+</html>
