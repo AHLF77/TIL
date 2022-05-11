@@ -218,3 +218,8 @@ spring.mvc.view.suffix=.jsp
 		alert("Clicked");
 	};
 ```
+
+### 오류와 검증
+- chrome에서 f12를 눌러서 Elements와 Console 탭만을 사용하여 오류를 잡아냄.
+- Elements 탭에서는 현재 HTML 페이지의 계층 구조와 각 태그에 적용된 스타일을 파악할 수 있습니다.
+- Console 탭은 오류를 확인하거나 자바스크립트 코드를 추라고 입력할 때 사용합니다.
