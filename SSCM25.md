@@ -49,6 +49,41 @@
 
 ## 입력 양식 태그
 - 사용자에게 정보를 입력받는 요소
+- form 태그는 method 속성의 방식으로 action 속성 장소에 데이터를 전달 
+<form action="전송위치" method="전송방식">
+</form>
+1. 전달 위치: 데이터를 전달할 목적지
+2. 전송방식
+- GET: 주소에 데이터를 직접 입력해 전달(비밀 유지 불가능)
+- POST: 별도의 방법을 사용해 데이터를 해당 주소로 전달(비밀 유지 가능)
+
+### 입력 양식의 종류
+1. form
+- 보이지 않음: 입력 양식의 시작과 끝 표시
+
+2. input
+- text : 글자 입력 양식 생성
+- button : 버튼 생성
+- checkbox : 체크 박스 생성
+- file : 파일 입력 양식 생성
+- hidden : 해당 내용 표시 안함
+- image : 이미지 형태 생성
+- password : 비밀번호 입력 양식 생성
+- radio : 라디오 버튼 생성
+- reset : 초기화 버튼 생성
+- submit : 제출 버튼 생성
+
+3. textarea
+- cols/rows : 여러 행의 글자 입력 양식 생성, cols는 너비를 지정하고 rows는 높이를 지정
+
+4. Select optgroup option
+- 선택 양식 생성  
+- 옵션 그룹화
+- 옵션 생성
+
+5. fieldset legend
+- 입력 양식의 그룹 지정
+- 입력 양식 그룹의 이름 지정
 
 ### P52(html 복습)
 <!DOCTYPE html>
@@ -223,6 +258,10 @@
 	</form>
 </body>
 </html>
+
+- 한 항목만 선택하기: select태그는 목록으로 보여 주는 항목 중 하나 또는 여러 개를 선택할 때 사용하는 입력 양식 요소
+- 여러 항목 선택하기: multiple 속성을 사용 
+- 선택 옵션 묶기: optgroup 태그를 사용해 선택 옵션을 그룹으로 묶을 수 있습니다.
 
 ### Maincontroller
 ```java
