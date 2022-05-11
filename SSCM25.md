@@ -24,3 +24,34 @@
 	<h2>Main Page</h2>
 </body>
 </html>
+
+
+### P79
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	a{
+		text-decoration: none;
+		color:green;
+	}
+	ol,ul{
+		list-style: none;
+	}
+	ol > li{
+		float:left;
+		margin:10px;
+	}
+</style>
+</head>
+<body>
+	<h1>list tag</h1>
+	<ol>
+		<li><a href="">First</a></li>
+		<li><a href="">Second</a></li>
+		<li><a href="">Third</a></li>
+	</ol>
+</body>
+</html>
