@@ -11,10 +11,21 @@
 ※ br 태그는 다른 글자 태그 내부에 삽입할 수 있지만 hr 태그는 안된다는 것입니다.
 
 ## 목록 태그
-- ul/ol.li : 순서가 없는/있는 목록 생성, 목록 요소 생성
+- ul : 순서가 없는 목록 생성
+- ol : 순서삭 있는 목록 생성
+- li : 목록 요소 생성
+※ 아래의 P79 참조
 
 ## 테이블 태그
-- table, tr, th, td: 표 생성
+- table : 표 삽입
+- tr : 표에 행 삽입
+- th : 표의 제목 셀 생성
+- td : 표의 일반 셀 생성
+
+## 테이블 태그의 속성
+- border(table): 표의 테두리 두께 지정
+- colspan(th,td): 셀의 너비 지정
+- rowspan(th,td): 셀의 높이 지정
 
 ## 미디어 태그
 - img, audio, video: 이미지, 오디오, 비디오 삽입
@@ -27,8 +38,16 @@
 
 ※ 권장하지는 않음.
 
+## 웹 페이지 내부에 연결하기
+<a href="http://www.naver.com">네이버</a>
+1. 이동할 웹페이지
+2. 출력 글자
 
-### P52
+※ 빈 링크
+<li><a href="#">언론사 전체보기</a></li>
+- 속성에 '#'을 넣어 처리
+
+### P52(html 복습)
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -136,3 +155,8 @@
 	<video src="mv/movie.mp4" controls="controls"></video>
 </body>
 </html>
+
+### P95
+
+
+### P98
