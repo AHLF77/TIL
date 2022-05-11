@@ -55,3 +55,34 @@
 	</ol>
 </body>
 </html>
+
+
+### P82
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table > thead > tr > th{
+		color:red;
+		width: 300px;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+	<h1>Table</h1>
+	<table>
+	<thead>
+		<tr><th>id</th><th>name</th><th>age</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>id01</td><td>lee</td><td>10</td></tr>
+		<tr><td>id02</td><td>kim</td><td>20</td></tr>
+		<tr><td rowspan="2">id03</td><td colspan="2">nae</td><td>30</td></tr>
+		<tr><td>yang</td><td>40</td></tr>
+	</tbody>
+	</table>
+</body>
+</html>
