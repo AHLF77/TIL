@@ -10,7 +10,7 @@
  2) Spring Web
 6. pom.xml 추가
  - 42번 째 줄에 추가
-```html
+```xml
         <!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -64,3 +64,50 @@ spring.mvc.view.suffix=.jsp
 
 11. 오류 메시지는 f12에 콘솔에서 확인이 가능.
 
+#### html 구성
+- html1/src/main/webapp/main.html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+	h1{
+		color:red;
+		background:black;
+	}
+</style>
+<script>
+	function go(){
+		alert('Clicked');
+	};
+</script>
+</head>
+<body>
+	<h1>Main Page</h1>
+	<button onclick="go()">Click</button>
+	<img src = "img/logo.png">
+</body>
+</html>
+```
+
+- html1/src/main/webapp/p52.html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="css/p52.css">
+	<script src="js/p52.js"></script>
+</head>
+<body>
+	<!-- Comments -->
+	<button onclick = "go()">Click</button>
+	<h1>Header1</h1>
+	<h2>Header2</h2>
+	<img src="img/logo.png">
+</body>
+</html>
+```
