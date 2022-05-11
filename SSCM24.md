@@ -111,3 +111,32 @@ spring.mvc.view.suffix=.jsp
 </body>
 </html>
 ```
+
+#### png
+- html1/src/main/resources/static/img/logo.png
+
+#### css
+- html1/src/main/resources/static/css/p52.css
+```css
+@charset "EUC-KR";
+
+h1{
+	color:red;
+	}
+	h2{
+	color:blue;
+	}
+
+```
+
+#### java script
+- html1/src/main/resources/static/css/p52.js
+```javascript
+/**
+ * 2020.05.10
+ */
+ 
+ 	function go(){
+		alert("Clicked");
+	};
+```
