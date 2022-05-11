@@ -56,6 +56,17 @@
 <body></body> : 사용자에게 실제로 보이는 부분을 작성하는 곳
 <html></html> : 모든 HTML 페이지의 기본 요소로, 모든 태그는 이 HTML 태그 내부에 작성
 
+## lang
+<html lang="ko">
+- 한국어
+
+## head 태그 내부에 넣을 수 있는 태그
+- meta: 웹 페이지에 추가 정보 전달
+- title: 페이지 제목 지정
+- script: 웹 페이지에 스크립트 추가
+- link: 웹 페이지에 다른 파일 추가
+- style: 웹 페이지에 스타일 시트 추가
+- base: 웹 페이지의 기본 경로 지정
 
 ### 이클립스 초기 설정
 1. new project
@@ -122,7 +133,8 @@ spring.mvc.view.suffix=.jsp
 
 11. 오류 메시지는 f12에 콘솔에서 확인이 가능.
 
-#### html 구성
+#### html 작성과 실행
+
 - html1/src/main/webapp/main.html
 ```html
 <!DOCTYPE html>
@@ -143,8 +155,10 @@ spring.mvc.view.suffix=.jsp
 </script>
 </head>
 <body>
+	<!-- go 함수 불러오기 -->
 	<h1>Main Page</h1>
 	<button onclick="go()">Click</button>
+	<!-- 사진 불러오기 -->
 	<img src = "img/logo.png">
 </body>
 </html>
@@ -176,9 +190,12 @@ spring.mvc.view.suffix=.jsp
 #### css
 - html1/src/main/resources/static/css/p52.css
 ```css
-@charset "EUC-KR";
 
-h1{
+<!-- 외부 스타일리스트를 불러오게 함 -->
+<!-- h1을 불러가기 할 시 빨강 -->
+<!-- h2를 불러가기 할 시 파랑 -->
+@charset "EUC-KR";
+	h1{
 	color:red;
 	}
 	h2{
@@ -189,11 +206,14 @@ h1{
 
 #### java script
 - html1/src/main/resources/static/css/p52.js
+
 ```javascript
 /**
  * 2020.05.10
  */
- 
+
+<!-- 버튼 클릭 시, 경고 창을 출력하는 것 -->
+<!-- go() 함수로 저장 -->
  	function go(){
 		alert("Clicked");
 	};
