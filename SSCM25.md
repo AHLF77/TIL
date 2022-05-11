@@ -1,5 +1,20 @@
 # 0511강의
 
+## 글자태그
+- h1 ~ h6 제목 글자 생성
+- p, br, hr: 본문 생성
+- a : 하이퍼 링크 생성
+- b, i, small, sub, sup, ins, del: 글자 모양 지정
+
+## 목록 태그
+- ul/ol.li : 순서가 없는/있는 목록 생성, 목록 요소 생성
+
+## 테이블 태그
+- table, tr, th, td: 표 생성
+
+## 미디어 태그
+- img, audio, video: 이미지, 오디오, 비디오 삽입
+
 ### P52
 <!DOCTYPE html>
 <html lang="ko">
