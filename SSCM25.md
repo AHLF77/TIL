@@ -2,9 +2,13 @@
 
 ## 글자태그
 - h1 ~ h6 제목 글자 생성
-- p, br, hr: 본문 생성
+- p : 본문 문단 생성
+- br : 줄바꿈 
+- hr: 수평 줄 삽입
 - a : 하이퍼 링크 생성
 - b, i, small, sub, sup, ins, del: 글자 모양 지정
+
+※ br 태그는 다른 글자 태그 내부에 삽입할 수 있지만 hr 태그는 안된다는 것입니다.
 
 ## 목록 태그
 - ul/ol.li : 순서가 없는/있는 목록 생성, 목록 요소 생성
@@ -14,6 +18,15 @@
 
 ## 미디어 태그
 - img, audio, video: 이미지, 오디오, 비디오 삽입
+
+## 특수문자 표기
+- &nbsp; = 공백생성
+<body>
+	<h1>공백 &nbsp 글자</h1>
+</body>
+
+※ 권장하지는 않음.
+
 
 ### P52
 <!DOCTYPE html>
@@ -99,5 +112,27 @@
 		<tr><td>yang</td><td>40</td></tr>
 	</tbody>
 	</table>
+</body>
+</html>
+
+### P85
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	img{
+		width:150px;
+		border:2px dolid red;
+	}
+</style>
+</head>
+<body>
+	<h1>media tag</h1>
+	<img src="https://via.placeholder.com/150x100">
+	<a href=""><img src="img/logo.png" alt="No img"></a>
+	<br>
+	<video src="mv/movie.mp4" controls="controls"></video>
 </body>
 </html>
