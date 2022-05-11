@@ -47,6 +47,9 @@
 <li><a href="#">언론사 전체보기</a></li>
 - 속성에 '#'을 넣어 처리
 
+## 입력 양식 태그
+- 사용자에게 정보를 입력받는 요소
+
 ### P52(html 복습)
 <!DOCTYPE html>
 <html lang="ko">
@@ -149,9 +152,12 @@
 </head>
 <body>
 	<h1>media tag</h1>
+	<!-- 동영상을 불러오는 동안 다른 이미지 보여 주기 -->
 	<img src="https://via.placeholder.com/150x100">
+	<!-- 로고 이미지 삽입-->
 	<a href=""><img src="img/logo.png" alt="No img"></a>
 	<br>
+	<!-- 웹 브라우저 제약이 없도록 비디오 삽입 -->
 	<video src="mv/movie.mp4" controls="controls"></video>
 </body>
 </html>
@@ -217,3 +223,78 @@
 	</form>
 </body>
 </html>
+
+### Maincontroller
+```java
+package com.multi;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MainController {
+	
+	@RequestMapping("/register")
+	public void register(String id, String pwd, int age) {
+		System.out.println(id+""+pwd+""+age);
+	}
+	
+	@RequestMapping("/register2")
+	public void register2(String id, String pwd, int age, 
+			String birth, String gender, 
+			String hobby, String car,
+			String resume,
+			String loginid, int range) {
+		System.out.println(id+""+pwd+""+age);
+		System.out.println(birth+""+gender+""+hobby);
+		System.out.println(resume+""+loginid+""+range);
+	}
+
+}
+
+```
+
+## 로그인 예제 살펴보기
+
+```java
+package com.multi.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+@RestController
+public class MainController {
+
+	@RequestMapping("/")
+	public ModelAndView main(ModelAndView mv) { // Main 홈 화면
+		mv.addObject("w", "Welcome !!");
+		mv.setViewName("main");
+		return mv;
+	}
+	
+	@RequestMapping("/register_view")
+	public String register_view(ModelAndView mv) { // Register 글자 클릭 시
+		return "register.jsp";
+	}
+	
+	@RequestMapping("/login_view")
+	public ModelAndView login_view(ModelAndView mv) { // Login 글자 클릭 시 로그인 페이지로 이동
+		mv.setViewName("login");
+		return mv;
+	}
+	
+	@RequestMapping("/login")
+	public ModelAndView login(ModelAndView mv,
+			String id, String pwd) { // Login의 ID, PWD 값 비교
+		if(id.equals("qqq") && pwd.equals("111")) { 
+			mv.addObject("ii", id);
+			mv.setViewName("loginok");
+		}else {
+			mv.setViewName("loginfail");
+		}
+		return mv;
+	}
+}
+
+```
