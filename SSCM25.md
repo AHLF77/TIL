@@ -262,6 +262,8 @@
 - 한 항목만 선택하기: select태그는 목록으로 보여 주는 항목 중 하나 또는 여러 개를 선택할 때 사용하는 입력 양식 요소
 - 여러 항목 선택하기: multiple 속성을 사용 
 - 선택 옵션 묶기: optgroup 태그를 사용해 선택 옵션을 그룹으로 묶을 수 있습니다.
+- legend 태그: 입력 양식을 그룹으로 묶고 이름을 지정할 수 있음.
+
 
 ### Maincontroller
 ```java
@@ -294,7 +296,7 @@ public class MainController {
 ```
 
 ## 로그인 예제 살펴보기
-
+- MainController
 ```java
 package com.multi.controller;
 
@@ -336,4 +338,99 @@ public class MainController {
 	}
 }
 
+```
+
+- 로그인
+```javascript
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Login Page</h1>
+	<form action="login" method="post">
+		<label for="iid">ID</label>
+		<input id="iid" type="text" name="id"><br>
+		<label for="ipwd">PWD</label>
+		<input id="ipwd" type="password" name="pwd"><br>
+		<input type="submit" value="login">
+	</form>
+</body>
+</html>
+```
+
+- 로그인 실패 시
+```javascript
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>LOGIN FAIL</h1>
+</body>
+</html>
+```
+
+- 로그인 성공 시
+```javascript
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>LOGIN SUCCESS</h1>
+	<h2>${ii } 환영합니다.</h2>
+</body>
+</html>
+```
+
+- 메인 페이지
+```javascript
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Main Page</h1>
+	<h2>${w} </h2>
+	<h3><a href="register_view">REGISTER</a></h3>
+	<h3><a href="login_view">LOGIN</a></h3>
+</body>
+</html>
+```
+
+- 등록 페이지
+```javascript
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Register Page</h1>
+</body>
+</html>
 ```
