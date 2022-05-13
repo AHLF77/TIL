@@ -31,6 +31,15 @@ h1{color:red;}
 - input 태그는 이름이 모두 같지만 type 속성에 따라 형태가 다릅니다. 그래서 input 태그를 선택할 때는 속성 선택자를 많이 사용합니다.
 - ex) <input type="password">
 
+## 후손 선택자
+- 특정한 태그의 후손을 선택할 때 사용
+- 선택자A 선택자B: 선택자A의 후손인 선택자B 선택
+
+## 후손 선택자
+- 특정한 태그의 자손을 선택할 때 사용
+- 선택자A > 선택자B: 선택자A의 자손인 선택자B 선택
+
+- P135
 ```jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
