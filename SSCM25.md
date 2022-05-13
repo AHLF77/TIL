@@ -450,7 +450,7 @@ public class MainController {
 ```
 
 - 시맨틱 태그
-
+```jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -507,3 +507,4 @@ public class MainController {
 	<p>Paragraph</p>
 </body>
 </html>
+```
