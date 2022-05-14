@@ -599,6 +599,7 @@ footer{
 ```
 
 ### day03ws 과제(애플 홈페이지 예제)
+- MainController 
 ```java
 package com.shop.controller;
 
@@ -614,6 +615,351 @@ public class MainController {
 		return mv;
 	}
 }
+
+```
+```jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+/* Global CSS start -----------------------------*/
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+ul,ol{
+	list-style: none;
+}
+/* Global CSS end -----------------------------*/
+
+/* Header CSS start -----------------------------*/
+header{
+	width:600px;
+	height:100px;
+	background: red;
+	margin:0 auto;
+}
+header > h1 {
+	text-align: center;
+	line-height: 100px;
+}
+/* Header CSS end -----------------------------*/
+
+/* Nav CSS start -----------------------------*/
+nav{
+	width:600px;
+	height:30px;
+	background:pink;
+	margin:0 auto;	
+}
+nav > ul{
+	width:500px;
+	margin:0 auto;	
+}
+nav > ul > li{
+	float:left;
+	width:125px;
+	line-height: 30px;
+}
+nav > ul > li > a{
+	display: block;
+	text-align: center;
+}
+/* Nav CSS end -----------------------------*/
+
+/* Section CSS start -----------------------------*/
+section{
+	width:600px;
+	height:500px;
+	background:gray;
+	margin:0 auto;
+}
+section > aside{
+	float:left;
+}
+section #left_aside{
+	width:100px;
+	height:500px;
+	background: yellow;
+}
+section #center_aside{
+	width:400px;
+	height:500px;
+	background: white;
+}
+section #right_aside{
+	width:100px;
+	height:500px;
+	background:gray;
+}
+/* Section CSS end -----------------------------*/
+
+/* Footer CSS start -----------------------------*/
+footer{
+	width:600px;
+	height:30px;
+	background:black;
+	margin:0 auto;
+}
+/* Footer CSS end -----------------------------*/
+
+</style>
+</head>
+<body>
+	<header>
+	<h1>HTML5 & CSS3.0</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="">HTML5</a></li>
+			<li><a href="">CSS3</a></li>
+			<li><a href="">JavaScript</a></li>
+			<li><a href="">AJAX</a></li>
+		</ul>
+	</nav>
+	<section>
+		<aside id="left_aside"></aside>
+		<aside id="center_aside"></aside>
+		<aside id="right_aside"></aside>
+	</section>
+	<footer></footer>
+</body>
+</html>
+```
+
+- main css
+```css
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Oleo+Script+Swash+Caps:wght@700&family=Water+Brush&display=swap');
+
+/* Global CSS start ------------------------------------- */
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+a {
+	text-decoration: none;
+	color: #0B615E;
+	font-family: 'Oleo Script Swash Caps', cursive;
+	font-size: 106.3%;
+	
+}
+
+ul, ol {
+	list-style: none;
+}
+
+button {
+    margin: 10px;
+    padding: 30px;
+    margin: 20px 15px 20px 15px;
+}
+/* Global CSS end --------------------------------------- */
+
+/* Header CSS start ------------------------------------- */
+header {
+	width: 100%;
+	height: 100px;
+	background: white;
+	font-size: 200%;
+	margin: 0 auto;
+	text-align: center;
+}
+header>h1>img{
+	height: 100px;
+}
+/* Header CSS end --------------------------------------- */
+
+/* Nav CSS start ------------------------------------- */
+nav {
+	width: 100%;
+	height: 50px;
+	background: #FFFACD;
+	margin: 0 auto;
+}
+
+nav>ul {
+	width: 500px;
+	margin: 0 auto;
+}
+
+nav>ul>li {
+	float: left;
+	width: 125px;
+	line-height: 50px;
+}
+
+nav>ul>li>a {
+	display: block;
+	text-align: center;
+}
+
+
+nav>ul>li>a:hover {
+	color: blue;
+	font-size: 1.5em;
+}
+/* Nav CSS end --------------------------------------- */
+
+/* Section CSS start ------------------------------------- */
+section {
+	width: 100%;
+	height: 600px;
+	background: gray;
+	margin: 0 auto;
+}
+
+section > aside {
+	float: left;
+}
+
+section > #left_aside {
+	width: 16%;
+	height: 600px;
+	background: #8258FA;
+}
+section > #left_aside>.btn_1{
+	position: relative;
+    border: none;
+    min-width: 300px;
+    min-height: 50px;
+    background: linear-gradient(
+        90deg,
+        rgba(129, 230, 217, 1) 0%,
+        rgba(79, 209, 197, 1) 100%
+    );
+    border-radius: 1000px;
+    color: darkslategray;
+    cursor: pointer;
+    box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+    font-weight: 700;
+    transition: 0.3s;
+    
+}
+
+section > #left_aside >.btn_1:hover{
+	    transform: scale(1.2);
+	}
+section > #left_aside >.btn_1:hover:after{
+	content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00ffcb;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+	}
+
+section > #left_aside>.btn_2{
+	position: relative;
+    border: none;
+    min-width: 300px;
+    min-height: 50px;
+    background: linear-gradient(
+        90deg,
+        rgba(129, 230, 217, 1) 0%,
+        rgba(79, 209, 197, 1) 100%
+    );
+    border-radius: 1000px;
+    color: darkslategray;
+    cursor: pointer;
+     box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+section > #left_aside >.btn_2:hover{
+	    transform: scale(1.2);
+	}
+section > #left_aside >.btn_2:hover:after{
+	content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00ffcb;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+	}
+
+section > #left_aside>.btn_3{
+	position: relative;
+    border: none;
+    min-width: 300px;
+    min-height: 50px;
+    background: linear-gradient(
+        90deg,
+        rgba(129, 230, 217, 1) 0%,
+        rgba(79, 209, 197, 1) 100%
+    );
+    border-radius: 1000px;
+    color: darkslategray;
+    cursor: pointer;
+     box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+section > #left_aside >.btn_3:hover{
+	    transform: scale(1.2);
+	}
+section > #left_aside >.btn_3:hover:after{
+	content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00ffcb;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+	}
+
+section > #center_aside {
+	width: 68%;
+	height: 600px;
+	background: white;
+}
+section > #center_aside > div > img{
+	width: 100%;
+	height: 600px;
+}
+
+section > #right_aside {
+	width: 16%;
+	height: 600px;
+	background: #0431B4;
+}
+
+
+/* Section CSS end --------------------------------------- */
+
+/* Footer CSS start --------------------------------------- */
+footer {
+	height: 30px;
+	background: #6E6E6E;
+}
+/* Footer CSS end --------------------------------------- */
 
 ```
 
