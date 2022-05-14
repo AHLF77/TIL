@@ -51,6 +51,19 @@ h1{color:red;}
 - :nth-child(수열): 형제 관계에서 앞에서 수열 번째로 등장하는 태그 선택
 - :nth-last-child(수열): 형제 관계에서 뒤에서 수열 번째로 등장하는 태그 선택
 
+## CSS3 단위
+### 크기 단위
+- 크기는 CSS3에서 가장 많이 사용하는 단위
+- % : 백분율 단위
+- em : 배수 단위
+- px : 픽셀 단위
+
+### URL 단위
+- 이미지나 글꼴 파일으르 불러올 때는 URL 단위를 사용.
+- background-image 속성을 사용하면 배경 이미지를 지정할 수 있음.
+- background-image 속성에는 url('경로') 형태로 URL 단위를 입력함.
+
+## 박스 속성
 
 #### P135
 - focus: 사용자가 입력 시 집중할 수 있도록 하는 문법
@@ -167,3 +180,51 @@ h1{color:red;}
  	  	background-image: url('img/bg.jpg');
  	  }
 ```
+
+#### P159
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Koulen&family=Oleo+Script+Swash+Caps:wght@700&display=swap" rel="stylesheet">
+
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	div{
+		width: 200px;
+		height: 200px;
+		border: 5px dashed red;
+		border-radius: 50px 50px 50px 50px;
+		margin: 20px;
+		padding: 10px;
+	}
+	p{
+		/* display: none;	
+		 visibility: hidden; */
+		 display: inline-bock;
+		 width:100px;
+		 font-family: 'Koulen', cursive;
+	}
+	span{
+		font-family: 'Oleo Script Swash Caps', cursive;
+	}
+</style>
+</head>
+<body>
+
+	<span>Span1</span><span>Span2</span>
+	<p>Paragraph</p>
+	<span>Span3</span><span>Span4</span>
+	
+	<h1>P159</h1>
+	<div><span>TEXT</span></div>
+</body>
+</html>
