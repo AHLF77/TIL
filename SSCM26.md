@@ -111,6 +111,23 @@ h1{color:red;}
 - background: 한 번에 모든 배경 속성 입력
 1. ex: background: green url('brabbit.png') no-repeat fixed 50% 50%/100% 100%;  
 
+## 글자 속성
+- 글자 크기를 지정하는 font-size 속성
+- 글꼴을 지정하는 font-family 속성에 설치된 글꼴 입력
+
+### 글자의 스타일과 두께
+- font-style 속성은 글자의 스타일을 지정
+- font-weight 속성은 글자 두께를 지정
+- box-shadow 그림자 효과를 만들어주는 속성
+1. box-shadow: offset-x | offset-y | blur-radius | spread-radius | color
+
+### 글자 정렬
+- text-align 속성은 글자 정렬을 지정
+- line-height 글자 높이를 지정하는 속성
+
+### 링크 글자의 정렬
+-text-decoration : 태그에 적용되는 밑줄을 제거해주는 역할
+
 #### P135
 - focus: 사용자가 입력 시 집중할 수 있도록 하는 문법
 ```jsp
