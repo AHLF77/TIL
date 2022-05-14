@@ -1070,9 +1070,142 @@ footer {
 </html>
 ```
 - macbook.html
-
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" bordercolor="blue" align = "center" >
+    	<tr bgcolor="blue" align ="center" width = 600px;>
+		<p><td colspan = "3" span style="color:white"><img src="img/macbook.jpg" alt="No img" width ="1380" height="300"></td></p>
+    	</tr>
+    	<tr align = "center" bgcolor="skybule">
+    	<td width="276"><b>모델종류</b></td>
+		<td width="276"><b>맥북 프로 16inch</b></td>
+		<td width="276"><b>맥북 프로 14inch</b></td>
+    	</tr>
+    	<tr>
+		<td>프로세서</td>
+		<td>M1 MAX</td>
+		<td>M1 PRO</td>
+    	</tr>
+    	<tr>
+		<td>디스플레이</td>
+		<td>16.2inch</td>
+		<td>14.2inch</td>
+    	</tr>
+    	<tr>
+		<td>카메라</td>
+		<td>1080만 화소</td>
+		<td>1080만 화소</td>
+    	</tr>
+    	<tr>
+		<td>무게</td>
+		<td>2.3kg</td>
+		<td>1.6kg</td>
+    	</tr>
+    	<tr>
+		<td>배터리</td>
+		<td>Li-Polymer 100 Wh</td>	
+		<td>Li-Polymer 70 Wh</td>
+		<tr>
+		<td>단자정보</td>
+		<td>C type, HDMI</td>	
+		<td>C type, HDMI</td>
+    	</tr>
+    	<tr>
+		<td>가격</td>
+		<td>350만원</td>	
+		<td>260만원</td>
+    	</tr>
+    	<tr>
+		<td>색상</td>
+		<td>실버, 스페이스 그레이</td>	
+		<td>실버, 스페이스 그레이</td>
+    	</tr>
+		</table>
+		<div>
+      <button onclick="history.back()">뒤로가기</button>
+      </div>
+</body>
+</html>
+```
 
 - watch.html
-
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" bordercolor="blue" align = "center" >
+    	<tr bgcolor="blue" align ="center" width = 600px;>
+		<p><td colspan = "4" span style="color:white"><img src="img/watch.png" alt="No img" width ="1380" height="300"></td></p>
+    	</tr>
+    	<tr align = "center" bgcolor="skybule">
+    	<td width="276"><b>모델종류</b></td>
+		<td width="276"><b>애플워치7</b></td>
+		<td width="276"><b>애플워치SE</b></td>
+		<td width="276"><b>애플워치3</b></td>
+    	</tr>
+    	<tr>
+		<td>프로세서</td>
+		<td>S7+U1</td>
+		<td>S6</td>
+		<td>S4</td>
+    	</tr>
+    	<tr>
+		<td>디스플레이</td>
+		<td>2inch</td>
+		<td>1.9inch</td>
+		<td>1.7inch</td>
+    	</tr>
+    	<tr>
+		<td>카메라</td>
+		<td>없음</td>
+		<td>없음</td>
+		<td>없음</td>
+    	</tr>
+    	<tr>
+		<td>무게</td>
+		<td>38g</td>
+		<td>36g</td>
+		<td>40g</td>
+    	</tr>
+    	<tr>
+		<td>배터리</td>
+		<td>303mAh</td>	
+		<td>8000mAh</td>
+		<td>7000mAh</td>
+		<tr>
+		<td>단자정보</td>
+		<td>없음(마그네틱)</td>	
+		<td>없음(마그네틱)</td>
+		<td>없음(마그네틱)</td>
+    	</tr>
+    	<tr>
+		<td>가격</td>
+		<td>47만원</td>	
+		<td>37만원</td>
+		<td>25만원</td>
+    	</tr>
+    	<tr>
+		<td>색상</td>
+		<td>미드나이트, 스타라이드, 그린, 블루, 레드</td>	
+		<td>스페이스 그레이, 실버, 골드</td>
+		<td>스페이스 그레이, 실버, 골드</td>
+    	</tr>
+		</table>
+		<div>
+      <button onclick="history.back()">뒤로가기</button>
+      </div>
+</body>
+</html>
+```
 
 # 반응형 웹에 대한 내용은 다음 SSCM27에서 다루도록 하자.
