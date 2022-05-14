@@ -64,6 +64,33 @@ h1{color:red;}
 - background-image 속성에는 url('경로') 형태로 URL 단위를 입력함.
 
 ## 박스 속성
+- 사각 영역을 생성하고, 이 영역이나 이것을 둘러싼 테두리에 크기, 색상, 위치 등과 관련한 속성을 지정함으로써 스타일을 변경
+- margin: 테두리와 다른 태그 사이의 테두리 바깥쪽 여백
+- border: 테두리
+- padding: 테두리와 글자 사이의 테두리 안쪽 여백, 배경색은 padding 영역까지만 적용
+- width: 글자를 감싸는 영역의 가로 크기
+- height: 글자를 감싸는 영역의 세로 크기
+
+## 박스 테두리
+- 테두리 두께는 border-width 속성을 사용하고, 테두리 형태는 border-style 속성을 사용하며, 테두리 색상은 border-color 속성을 사용.
+- border-radius 속성을 사용하면 박스 테두리를 둥글게 만들 수 있음.(4개를 입력하면 각 값에 맞게 모서리가 둥글게 됨.)
+
+## 가시 속성
+- 태그가 화면에 보이는 방식을 지정
+- 대표적으로 diplay 속성을 가지고 있음.
+- 박스를 인라인 형식, 블록 형식, 인라인-블록 형식으로 사용
+- display:키워드(none, block, inline, inline-block)
+- none: 화면에 보이지 않음.
+- block: 블록 박스 형식으로 지정
+- inline: 인라인 박스 형식으로 지정
+- inline-block: 블록과 인라인의 중간 형태로 지정.
+
+※ display:none과 visibility:hidden 속성의 차이점
+- display:none은 화면 상 어떤 영역을 차지하지 않고 완전히 삭제된 것처럼 보이게 하지만 visibility:hidden의 경우 해당 요소가 보이지 않을 뿐 요소가 존재하는 영역은 확실히 보이게 됨.
+
+## 배경 속성
+- back ground
+
 
 #### P135
 - focus: 사용자가 입력 시 집중할 수 있도록 하는 문법
@@ -226,5 +253,53 @@ h1{color:red;}
 	
 	<h1>P159</h1>
 	<div><span>TEXT</span></div>
+</body>
+</html>
+
+#### P189
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Koulen&family=Oleo+Script+Swash+Caps:wght@700&display=swap" rel="stylesheet">
+<style>
+.big_bt{
+	width:150px;
+	height:70px;
+	background-color: #FF6A00;
+	border: 10px solid #FFFFFF;
+	border-radius: 30px;
+	box-shadow: 5px 5px 5px #A9A9A9;
+}
+.big_bt > a{
+	text-decoration: none;
+	color: black;
+	display: block;
+	line-height: 70px;
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+	font-family: 'Oleo Script Swash Caps', cursive;
+}
+.big_bt > a:hover{
+	color:yellow;
+}
+.big_bt:hover{
+	background: blue;
+	border: 10px solid black;
+}
+</style>
+</head>
+<body>
+	<h1>P189</h1>
+	<div class="big_bt">
+		<a href="#">Click</a>
+	</div>
 </body>
 </html>
