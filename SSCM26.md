@@ -617,127 +617,71 @@ public class MainController {
 }
 
 ```
+- main
 ```jsp
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-/* Global CSS start -----------------------------*/
-*{
-	margin:0;
-	padding:0;
-}
-a{
-	text-decoration: none;
-	color:black;
-}
-ul,ol{
-	list-style: none;
-}
-/* Global CSS end -----------------------------*/
+<link rel="stylesheet" href="css/main.css">
 
-/* Header CSS start -----------------------------*/
-header{
-	width:600px;
-	height:100px;
-	background: red;
-	margin:0 auto;
-}
-header > h1 {
-	text-align: center;
-	line-height: 100px;
-}
-/* Header CSS end -----------------------------*/
 
-/* Nav CSS start -----------------------------*/
-nav{
-	width:600px;
-	height:30px;
-	background:pink;
-	margin:0 auto;	
-}
-nav > ul{
-	width:500px;
-	margin:0 auto;	
-}
-nav > ul > li{
-	float:left;
-	width:125px;
-	line-height: 30px;
-}
-nav > ul > li > a{
-	display: block;
-	text-align: center;
-}
-/* Nav CSS end -----------------------------*/
-
-/* Section CSS start -----------------------------*/
-section{
-	width:600px;
-	height:500px;
-	background:gray;
-	margin:0 auto;
-}
-section > aside{
-	float:left;
-}
-section #left_aside{
-	width:100px;
-	height:500px;
-	background: yellow;
-}
-section #center_aside{
-	width:400px;
-	height:500px;
-	background: white;
-}
-section #right_aside{
-	width:100px;
-	height:500px;
-	background:gray;
-}
-/* Section CSS end -----------------------------*/
-
-/* Footer CSS start -----------------------------*/
-footer{
-	width:600px;
-	height:30px;
-	background:black;
-	margin:0 auto;
-}
-/* Footer CSS end -----------------------------*/
-
-</style>
 </head>
+
 <body>
+
 	<header>
-	<h1>HTML5 & CSS3.0</h1>
+		<h1><img src="img/logo.png" alt="No img"></h1>
 	</header>
+
 	<nav>
 		<ul>
-			<li><a href="">HTML5</a></li>
-			<li><a href="">CSS3</a></li>
-			<li><a href="">JavaScript</a></li>
-			<li><a href="">AJAX</a></li>
+			<li><a href="macbook.html">MacBook</a></li>
+			<li><a href="ipad.html">iPad</a></li>
+			<li><a href="iphone.html">iPhone</a></li>
+			<li><a href="watch.html">Watch</a></li>
 		</ul>
 	</nav>
+
 	<section>
-		<aside id="left_aside"></aside>
-		<aside id="center_aside"></aside>
-		<aside id="right_aside"></aside>
+		<aside id="left_aside">
+		
+			<button class="btn_1",
+			onclick="window.open('https://www.apple.com/kr/retail/')">
+			Market Location</button>
+		
+			<button class="btn_2",
+			onclick="window.open('https://www.apple.com/kr/privacy/')">
+			Privacy</button>
+			
+			<button class="btn_3", 
+			onclick="window.open('https://www.youtube.com/user/Apple')">
+			Youtube</button>
+			
+		</aside>
+		<aside id="center_aside">
+		 <div>
+		 <img src="img/applesupport.jpg" alt="No img">
+		 </div>
+		</aside>
+		<aside id="right_aside">
+			<div>
+				<img src="https://via.placeholder.com/330X600">
+			</div>
+		</aside>
 	</section>
-	<footer></footer>
+
+	<footer> Copyright © 2022 Apple.Inc.fd.h </footer>
 </body>
 </html>
 ```
 
-- main css
+- main
 ```css
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Oleo+Script+Swash+Caps:wght@700&family=Water+Brush&display=swap');
@@ -961,7 +905,20 @@ footer {
 }
 /* Footer CSS end --------------------------------------- */
 
+
+
 ```
+
+- ipad.html
+
+
+- iphone.html
+
+
+- macbook.html
+
+
+- watch.html
 
 
 # 반응형 웹에 대한 내용은 다음 SSCM27에서 다루도록 하자.
