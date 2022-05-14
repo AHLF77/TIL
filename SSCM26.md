@@ -905,16 +905,170 @@ footer {
 }
 /* Footer CSS end --------------------------------------- */
 
-
-
 ```
 
 - ipad.html
-
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" bordercolor="blue" align = "center" >
+    	<tr bgcolor="blue" align ="center" width = 600px;>
+		<p><td colspan = "5" span style="color:white"><img src="img/ipad.png" alt="No img" width ="1380" height="300"></td></p>
+    	</tr>
+    	<tr align = "center" bgcolor="skybule">
+    	<td width="276"><b>모델종류</b></td>
+		<td width="276"><b>아이패드 프로</b></td>
+		<td width="276"><b>아이패드 에어</b></td>
+		<td width="276"><b>아이패드 9세대</b></td>
+		<td width="276"><b>아이패드 미니 6세대</b></td>
+    	</tr>
+    	<tr>
+		<td>프로세서</td>
+		<td>M1</td>
+		<td>M1</td>
+		<td>A13</td>
+		<td>A15</td>
+    	</tr>
+    	<tr>
+		<td>디스플레이</td>
+		<td>12.9inch, 11inch</td>
+		<td>10.9inch</td>
+		<td>10.2inch</td>
+		<td>8.3inch</td>
+    	</tr>
+    	<tr>
+		<td>카메라</td>
+		<td>1300만 화소</td>
+		<td>1000만 화소</td>
+		<td>800만 화소</td>
+		<td>700만 화소</td>
+    	</tr>
+    	<tr>
+		<td>무게</td>
+		<td>450g, 420g</td>
+		<td>410g</td>
+		<td>460g</td>
+		<td>350g</td>	
+    	</tr>
+    	<tr>
+		<td>배터리</td>
+		<td>10,000mAh, 9,000mAh</td>	
+		<td>8000mAh</td>
+		<td>7000mAh</td>
+		<td>5000mAh</td>
+		<tr>
+		<td>단자정보</td>
+		<td>C type</td>	
+		<td>C type</td>
+		<td>Lightning 8-pin</td>
+		<td>C type</td>
+    	</tr>
+    	<tr>
+		<td>가격</td>
+		<td>120만원, 100만원</td>	
+		<td>70만원</td>
+		<td>50만원</td>
+		<td>60만원</td>
+    	</tr>
+    	<tr>
+		<td>색상</td>
+		<td>실버, 스페이스 그레이</td>	
+		<td>블루, 스타라이트</td>
+		<td>실버, 스페이스 그레이</td>
+		<td>블루, 스타라이트</td>
+    	</tr>
+		</table>
+</body>
+</html>
+```
 
 - iphone.html
-
-
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" bordercolor="blue" align = "center" >
+    	<tr bgcolor="blue" align ="center" width = 600px;>
+		<p><td colspan = "5" span style="color:white"><img src="img/iphone.jpg" alt="No img" width ="1380" height="300"></td></p>
+    	</tr>
+    	<tr align = "center" bgcolor="skybule">
+    	<td width="276"><b>모델종류</b></td>
+		<td width="276"><b>아이폰13 Pro MAX, 아이폰13 Pro</b></td>
+		<td width="276"><b>아이폰13, 아이폰13 mini</b></td>
+		<td width="276"><b>아이폰se 3세대</b></td>
+		<td width="276"><b>아이폰12, 아이폰12 mini</b></td>
+    	</tr>
+    	<tr>
+		<td>프로세서</td>
+		<td>A15</td>
+		<td>A15</td>
+		<td>A15</td>
+		<td>A14</td>
+    	</tr>
+    	<tr>
+		<td>디스플레이</td>
+		<td>6.7inch, 6.1inch</td>
+		<td>6.1inch, 5.4inch</td>
+		<td>4.7inch</td>
+		<td>6.1inch, 5.4inch<//td>
+    	</tr>
+    	<tr>
+		<td>카메라</td>
+		<td>1600만 화소</td>
+		<td>1200만 화소</td>
+		<td>800만 화소</td>
+		<td>1200만 화소</td>
+    	</tr>
+    	<tr>
+		<td>무게</td>
+		<td>250g, 200g</td>
+		<td>180g, 170g</td>
+		<td>112g</td>
+		<td>160g, 140g</td>	
+    	</tr>
+    	<tr>
+		<td>배터리</td>
+		<td>4500mAh, 4000mAh</td>	
+		<td>3600mAh, 3000mAh</td>
+		<td>2000mAh</td>
+		<td>3400mAh, 2800mAh</td>
+		<tr>
+		<td>단자정보</td>
+		<td>Lightning 8-pin</td>	
+		<td>Lightning 8-pin</td>
+		<td>Lightning 8-pin</td>
+		<td>Lightning 8-pin</td>
+    	</tr>
+    	<tr>
+		<td>가격</td>
+		<td>160만원, 120만원</td>	
+		<td>95만원, 85만원</td>
+		<td>55만원</td>
+		<td>70만원, 60만원</td>
+    	</tr>
+    	<tr>
+		<td>색상</td>
+		<td>그래파이트, 블루, 그린, 레드, 골드, 실버, 퍼플</td>	
+		<td>블루, 그린, 스타라이트, 화이트, 퍼플, 블랙</td>
+		<td>실버, 스페이스 그레이</td>
+		<td>그린, 스타라이트, 화이트, 퍼플, 블랙</td>
+    	</tr>
+		</table>
+		<div>
+      <button onclick="history.back()">뒤로가기</button>
+      </div>
+</body>
+</html>
+```
 - macbook.html
 
 
