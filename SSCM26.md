@@ -421,6 +421,7 @@ ex) box-shadow (오른쪽) (아래) (흐림도) (색상)
 </html>
  
 ### day033 spring(html과 spring을 통한 웹 페이지 구성 예제)
+- Main Controller
 ```java
 package com.multi.controller;
 
@@ -598,7 +599,23 @@ footer{
 ```
 
 ### day03ws 과제(애플 홈페이지 예제)
+```java
+package com.shop.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class MainController {
+	@RequestMapping("/")
+	public ModelAndView main(ModelAndView mv) {
+		mv.setViewName("main");
+		return mv;
+	}
+}
+
+```
 
 
 # 반응형 웹에 대한 내용은 다음 SSCM27에서 다루도록 하자.
