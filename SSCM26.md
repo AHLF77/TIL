@@ -89,8 +89,27 @@ h1{color:red;}
 - display:none은 화면 상 어떤 영역을 차지하지 않고 완전히 삭제된 것처럼 보이게 하지만 visibility:hidden의 경우 해당 요소가 보이지 않을 뿐 요소가 존재하는 영역은 확실히 보이게 됨.
 
 ## 배경 속성
-- back ground
-
+- background-image: 배경 이미지 삽입(ex: url('bg.png');)
+- background-size: 배경 이미지 크기 지정(ex: size: 100%;, size: 100%, 250px;)
+- background-repeat: 배경 이미지의 반복 형태 지정
+1. repeat-x: x축 방향으로만 이미지가 반복
+2. repeat-y: y축 방향으로만 이미지가 반복
+- background-attachment: 배경 이미지의 부탁 형태 지정
+1. scroll 기본값으로, 이미지가 요소에 상대적인 위치.
+2. fixed  이미지가  윈도우 창에 상대적인 위치.
+3. local 스크롤할 때 요소의 내용에 상대적인 위치.
+- background-position: 배경 이미지의 위치 지정
+1. left top 왼쪽 상단
+2. left center 왼쪽 중앙
+3. left bottom 왼쪽 맨아래
+4. right top 오른쪽 상단
+5. right center 오른쪽 중앙
+6. right bottom 오른쪽 맨아래
+7. center top 가운데 상단
+8. center center 정 가운데
+9. center bottom 가운데 맨아래
+- background: 한 번에 모든 배경 속성 입력
+1. ex: background: green url('brabbit.png') no-repeat fixed 50% 50%/100% 100%;  
 
 #### P135
 - focus: 사용자가 입력 시 집중할 수 있도록 하는 문법
@@ -301,5 +320,48 @@ h1{color:red;}
 	<div class="big_bt">
 		<a href="#">Click</a>
 	</div>
+</body>
+</html>
+
+#### P192
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+	.box{
+		width:100px;
+		height:100px;
+		position: absolute;
+		opacity: 0.7;
+		/*float:left;*/
+	}
+	.box:nth-child(1){
+		background-color:red;
+		left:10px;
+		top:10px;
+		z-index: 100;
+	}
+	.box:nth-child(2){
+		background-color:blue;
+		left:50px;
+		top:50px;
+		z-index: 10;
+	}
+	.box:nth-child(3){
+		background-color:green;
+		left:90px;
+		top:90px;
+		z-index: 20;
+	}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
 </body>
 </html>
