@@ -421,6 +421,62 @@ ex) box-shadow (오른쪽) (아래) (흐림도) (색상)
 </html>
  
 ### day033 spring(html과 spring을 통한 웹 페이지 구성 예제)
+```java
+package com.multi.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class MainController {
+
+	@RequestMapping("/")
+	public ModelAndView main(ModelAndView mv) {
+		mv.addObject("w","Welcome!!!"); //main.jsp에 있는 c tag를 불러옴
+		mv.setViewName("main");
+		return mv;
+	}
+	
+	@RequestMapping("/p105")
+	public ModelAndView p105(ModelAndView mv) {
+		mv.setViewName("p105");
+		return mv;
+	}
+	
+	@RequestMapping("/p135")
+	public ModelAndView p135(ModelAndView mv) {
+		mv.setViewName("p135");
+		return mv;
+	}
+	
+	@RequestMapping("/p139")
+	public ModelAndView p139(ModelAndView mv) {
+		mv.setViewName("p139");
+		return mv;
+	}
+	
+	@RequestMapping("/p159")
+	public ModelAndView p159(ModelAndView mv) {
+		mv.setViewName("p159");
+		return mv;
+	}
+	
+	@RequestMapping("/p189")
+	public ModelAndView p189(ModelAndView mv) {
+		mv.setViewName("p189");
+		return mv;
+	}
+	
+	@RequestMapping("/p192")
+	public ModelAndView p192(ModelAndView mv) {
+		mv.setViewName("p192");
+		return mv;
+	}
+	
+}
+
+```
 ```jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -542,3 +598,7 @@ footer{
 ```
 
 ### day03ws 과제(애플 홈페이지 예제)
+
+
+
+# 반응형 웹에 대한 내용은 다음 SSCM27에서 다루도록 하자.
