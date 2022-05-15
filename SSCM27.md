@@ -205,12 +205,20 @@ footer{
 
 - js
 ```jsp
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<div class="center">
+	<h1>JavaScript Page</h1>
+</div>
 ```
 
 - html5
 ```jsp
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<div class="center">
+	<h1>HTML5 Page</h1>
+</div>
 ```
 
 - css3
