@@ -125,3 +125,69 @@ footer{
 }
 /* Footer CSS end -----------------------------*/
 ```
+
+- media
+```jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximun-scale=1">
+<title>Insert title here</title>
+<style>
+	@media screen and (max-width: 767px){
+		body{
+			background: red;
+		}
+	}
+	@media screen and (min-width: 768px) and (max-width: 959px){
+		body{
+			background: green;
+		}
+	}
+	@media screen and (min-width: 960px){
+		body{
+			background: blue;
+		}
+	}
+</style>
+</head>
+<body>
+	<h1>Media Page</h1>
+	<p>이순신(李舜臣, 1545년 4월 28일 ~ 1598년 12월 16일 
+	(음력 11월 19일))은 조선 중기의 무신이었다. 본관은 덕수(德水), 
+	자는 여해(汝諧), 시호는 충무(忠武)였으며, 한성 출신이었다. 
+	문반 가문 출신으로 1576년(선조 9년) 무과(武科)에 급제하여 그 관직이 동구비보 권관, 훈련원 봉사, 발포진 
+	수군만호, 조산보 만호, 
+	전라좌도 수군절도사를 거쳐 정헌대부 삼도수군통제사에 이르렀다.
+	</p>
+</body>
+</html>
+```
+
+- main
+```jsp
+
+```
+
+- js
+```jsp
+
+```
+
+- html5
+```jsp
+
+```
+
+- css3
+```jsp
+
+```
+
+- center
+```jsp
+
+```
