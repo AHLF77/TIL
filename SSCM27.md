@@ -520,3 +520,46 @@ footer{
 }
 /* Footer CSS end -----------------------------*/
 ```
+
+### template
+- template/food
+<div>
+	<h1>Food1 Main</h1>
+</div>
+<div>
+	<h1>Food2 Main</h1>
+</div>
+<div>
+	<h1>Food3 Main</h1>
+</div>
+<div>
+	<h1>Food Main</h1>
+</div>
+
+- template/home
+<div>
+	<h1>Home Main</h1>
+</div>
+<div>
+	<h1>Home1 Main</h1>
+</div>
+<div>
+	<h1>Home2 Main</h1>
+</div>
+<div>
+	<h1>Home3 Main</h1>
+</div>
+
+- template/wear
+<div>
+	<h1>Wear Main</h1>
+</div>
+<div>
+	<h1>Wear1 Main</h1>
+</div>
+<div>
+	<h1>Wear2 Main</h1>
+</div>
+<div>
+	<h1>Wear3 Main</h1>
+</div>
