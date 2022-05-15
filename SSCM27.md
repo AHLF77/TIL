@@ -1,5 +1,26 @@
 # 0514강의(반응형 웹)
 
+## 반응형 웹이란?
+- 웹 페이지 하나로도 데스크톱, 태블릿PC, 스마트폰에 맞게 디자인이 자동으로 반응해서 변경되는 웹 페이지를 의미
+- 개발: 미디어 쿼리를 사용
+
+## 반응형 웹을 위한 설정
+1. 뷰포트 설정
+- meta 태그는 웹 페이지에 투가 정보를 제공할 때 사용
+- name 속성에 viewport가 입력된 meta 태그를 viewport meta태그 라고 함.
+<meta name="viewport" content="user-scalable=no,initial-scale=1, maximum-scale=1">
+- 입력할 수 있는 태그 값
+| 값   | 설명   | 예 |
+| ------ | ------ | --------- |
+| width  | 화면너비 | width=240 |
+| height | 화면 높이  | height=800 |
+| initial-scale | 초기 확대 비율 | initial-scale=2.0  |
+| user-scalable | 확대 및 축소 가능 여부 | user-scalable=no  |
+| minimum-scale | 최소 축소 비율   | minimum-scale=1.0  |
+| maximum-scale | 최대 확대 비율 | maximum-scale=2.0  |
+| target-densitydpi | DPI 지정 | target-densitydpi=medium-dpi |
+
+### 반응형 웹 예제
 - main
 ```java
 package com.shop.controller;
