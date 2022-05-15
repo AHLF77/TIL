@@ -20,6 +20,19 @@
 | maximum-scale | 최대 확대 비율 | maximum-scale=2.0 |
 | target-densitydpi | DPI 지정 | target-densitydpi=medium-dpi |
 
+2. 미디어 쿼리 설정
+- 웹 페이지가 표시되는 장치에 '반응'하도록 하여 반응형 웹을 구현할 수 있도록 함
+- 이때 사용하는 것이 미디어 쿼리임.
+ 1. @-규칙@-rule이란 스타일시트 내부에서 특정한 규칙을 표현하는데 사용
+ 2. 외부 스타일을 가져오는 @import규칙, 글똘을 추가로 정의하는 @font-face 규칙 등이 있음
+- @media 규칙
+@media (<미디어 쿼리>){
+    <CSS 코드>
+}
+
+- media 속성
+<link rel="stylesheet" href="<파일이름>" media="<미디어 쿼리>">
+
 ### 반응형 웹 예제
 - main
 ```java
