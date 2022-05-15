@@ -13,11 +13,11 @@
 | 값   | 설명   | 예 |
 | ------ | ------ | --------- |
 | width  | 화면너비 | width=240 |
-| height | 화면 높이  | height=800 |
-| initial-scale | 초기 확대 비율 | initial-scale=2.0  |
-| user-scalable | 확대 및 축소 가능 여부 | user-scalable=no  |
-| minimum-scale | 최소 축소 비율   | minimum-scale=1.0  |
-| maximum-scale | 최대 확대 비율 | maximum-scale=2.0  |
+| height | 화면 높이 | height=800 |
+| initial-scale | 초기 확대 비율 | initial-scale=2.0 |
+| user-scalable | 확대 및 축소 가능 여부 | user-scalable=no |
+| minimum-scale | 최소 축소 비율 | minimum-scale=1.0 |
+| maximum-scale | 최대 확대 비율 | maximum-scale=2.0 |
 | target-densitydpi | DPI 지정 | target-densitydpi=medium-dpi |
 
 ### 반응형 웹 예제
