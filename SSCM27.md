@@ -289,7 +289,7 @@ footer{
 </div>
 ```
 
-## 반응형 웹을 위한 설정
+## Spring을 통한 반응형 웹
 - MainController
 ```java
 package com.shop.controller;
@@ -304,6 +304,9 @@ public class MainController {
 	@RequestMapping("/")
 	public String main(Model m) {
 		m.addAttribute("center", "center");
+        /* /라는 url에 매핑되도록 하였고 특이한 점은 Model을 매개변수로 전달받고 있습니다. 
+        매개변수로 전달받은 m.addAttribute("key", "value"); 메소드를 이용하여 view 전달할 데이터를 key, value쌍으로하여 전달할 수 있습니다.*/
+        // m은 크게 신경을 안써도 된다.
 		return "main";
 	}
 }
@@ -629,3 +632,4 @@ footer{
 </aside>
 <aside id="right_aside" th:include="${scenter} ? ${scenter} : @{wear/wearmain}">
 </aside>
+
