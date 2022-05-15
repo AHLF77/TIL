@@ -563,3 +563,69 @@ footer{
 <div>
 	<h1>Wear3 Main</h1>
 </div>
+
+- main
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header>
+	<h1><a href="/">Shoping Mall</a></h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="home">home</a></li>
+			<li><a href="food">food</a></li>
+			<li><a href="wear">wear</a></li>
+			<li><a href="media">Media</a></li>
+		</ul>
+	</nav>
+	<section th:include="${center}">
+	</section>
+	<footer></footer>
+</body>
+</html>
+
+- home
+<aside id="left_aside">
+	<ul>
+		<li><a href="home1">home1</a></li>
+		<li><a href="home2">home2</a></li>
+		<li><a href="home3">home3</a></li>
+	</ul>
+</aside>
+<aside id="right_aside" th:include="${scenter} ? ${scenter} : @{home/homemain}">
+	
+</aside>
+
+- center
+<div class="center">
+	<h1>Main Center</h1>
+</div>
+
+- food
+<aside id = "left_aside">
+	<ul>
+		<li><a href="food1">food1</a></li>
+		<li><a href="food2">food2</a></li>
+		<li><a href="food3">food3</a></li>
+	</ul>
+</aside>
+<aside id="right_aside" th:include="${scenter} ? ${scenter} : @{food/foodmain}">
+
+</aside>
+
+- wear
+<aside id="left_aside">
+	<ul>
+		<li><a href="wear1">wear1</a></li>
+		<li><a href="wear2">wear2</a></li>
+		<li><a href="wear3">wear3</a></li>
+	</ul>
+</aside>
+<aside id="right_aside" th:include="${scenter} ? ${scenter} : @{wear/wearmain}">
+</aside>
