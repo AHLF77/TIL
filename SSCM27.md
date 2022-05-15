@@ -312,16 +312,125 @@ public class MainController {
 
 - WearController
 ```java
+package com.shop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class WearController {
+
+	@RequestMapping("/wear")
+	public String wear(Model m) {
+		m.addAttribute("center", "wear");
+		return "main";
+	}
+	
+	@RequestMapping("/wear1")
+	public String wear1(Model m) {
+		m.addAttribute("center", "wear");
+		m.addAttribute("scenter", "wear/wear1");
+		return "main";
+	}
+	
+	@RequestMapping("/wear2")
+	public String wear2(Model m) {
+		m.addAttribute("center", "wear");
+		m.addAttribute("scenter", "wear/wear2");
+		return "main";
+	}
+	
+	@RequestMapping("/wear3")
+	public String wear3(Model m) {
+		m.addAttribute("center", "wear");
+		m.addAttribute("scenter", "wear/wear3");
+		return "main";
+	}
+}
 
 ```
 
 - HomeController
 ```java
+package com.shop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HomeController {
+	
+	@RequestMapping("/home")
+	public String home(Model m) {
+		m.addAttribute("center", "home");
+		return "main";
+	}
+	
+	@RequestMapping("/home1")
+	public String home1(Model m) {
+		m.addAttribute("center", "home");
+		m.addAttribute("scenter", "home/home1");
+		return "main";
+	}
+
+	@RequestMapping("/home2")
+	public String home2(Model m) {
+		m.addAttribute("center", "home");
+		m.addAttribute("scenter", "home/home2");
+		return "main";
+	}
+	
+	@RequestMapping("/home3")
+	public String home3(Model m) {
+		m.addAttribute("center", "home");
+		m.addAttribute("scenter", "home/home3");
+		return "main";
+	}
+}
 
 ```
 
 - FoodController
 ```java
+package com.shop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class FoodController {
+	
+	@RequestMapping("/food")
+	public String food(Model m) {
+		m.addAttribute("center", "food");
+		return "main";
+	}
+	
+	@RequestMapping("/food1")
+	public String food1(Model m) {
+		m.addAttribute("center", "food");
+		m.addAttribute("scenter", "food/food1");
+		return "main";
+	}
+	
+	@RequestMapping("/food2")
+	public String food2(Model m) {
+		m.addAttribute("center", "food");
+		m.addAttribute("scenter", "food/food2");
+		return "main";
+	}
+	
+	@RequestMapping("/food3")
+	public String food3(Model m) {
+		m.addAttribute("center", "food");
+		m.addAttribute("scenter", "food/food3");
+		return "main";
+	}
+
+}
 
 ```
 
