@@ -471,5 +471,28 @@ function getdata(){
 
 - js06
 ```html
+<meta charset="UTF-8">
+<script>
+function calc(){
+	var txt = document.querySelector('#data').value;
+	// alert(txt);
+	if(txt == '' || txt == null){
+		document.querySelector('#result').innerHTML = 'Bye';
+		return;
+	};
+	//'1+3'
+	var result = eval(txt);
+	if(!isFinite(result)){
+		result = 'Input Error...';
+	}
+	document.querySelector('#result').innerHTML = result;
+	document.querySelector('#data').value = '';
+	
+};
+</script>
 
+<h1>JS06 Main</h1>
+<input type="text" id="data">
+<button onclick="calc();">Calc</button>
+<h3 id="result"></h3>
 ```
