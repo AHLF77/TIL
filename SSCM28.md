@@ -307,3 +307,71 @@ window.onload = function(){
 <h2 id="hh2">Header2</h2>
 <h3 id="hh3">Header3</h3>
 ```
+
+- js02
+```html
+<meta charset="UTF-8">
+<script>
+window.onload = function(){
+	var h2 = document.querySelector('#hh2');
+	var num = 100;
+	var b = true;
+	var str = '100';
+	var v;
+	// array
+	var a = [1,2,3,4,5];
+	// object
+	// JSON(JavaScript Object Notation)
+	var obj = {id:'id01', name:'han', age:27};
+	// function
+	var f = function(){
+		return 333;
+	};
+	
+	var type = typeof(f);
+	h2.innerHTML = type + ' ' + f();
+	
+}
+</script>
+
+<h1>JS02 Main</h1>
+<h2 id="hh2"></h2>
+```
+
+- js03
+```html
+<meta charset="UTF-8">
+<script>
+window.onload = function(){	
+	var num1 = Math.min(0, 150, 30, 20, -8, -200); // returns -200
+	var num2 = Math.max(0, 150, 30, 20, -8, -200); // returns 150
+	var num3 = Math.random(); // returns a random number
+	var num4 = Math.round(4.7); // returns 5
+	var num5 = Math.round(4.4); // returns 4
+	var num6 = Math.ceil(4.4); // returns 5
+	var num7 = Math.floor(4.7); // returns 4
+	var num8 = Math.floor(Math.random() * 11);// returns a random number between 0 and 10
+	document.querySelector('#result').innerHTML = num2;
+	var txt = document.querySelector('#email').innerHTML;
+	// alert(txt);
+	var id = txt.substring(0, txt.indexOf('@'));
+	var domain = txt.substring(txt.indexOf('@')+1, txt.indexof('.'));
+	
+	document.querySelector('#id').innerHTML = id;
+	document.querySelector('#domain').innerHTML = domain;
+	
+};
+</script>
+
+
+<h1>JS03 Main</h1>
+<h3 id = "result"></h3>
+<h4 id = "email">gjhan@naver.com</h4>
+<h4 id = "id"></h4>
+<h4 id = "domain"></h4>
+
+
+
+
+
+```
