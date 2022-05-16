@@ -1,5 +1,6 @@
 # 0516강의(JavaScript)
 
+### src/main/java(com.shop.controller)
 - MainController
 ```java
 package com.shop.controller;
@@ -264,3 +265,5 @@ public class JsController {
 </div>
 
 ```
+
+#### template/js
