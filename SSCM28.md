@@ -154,9 +154,8 @@ public class JsController {
      .row.content {height:auto;} 
    }
 </style>
-<script>
 
-</script>
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -186,9 +185,7 @@ public class JsController {
 	<div class="container-fluid text-center">    
 	  <div class="row content">
 	    <div class="col-sm-1 sidenav"
-	    th:insert="${left} ? ${left} : left"> 
-	    >
-
+	    th:insert="${left} ? ${left} : left">
 	    </div>
 	    <div class="col-sm-9 text-left" 
 	    th:insert="${center} ? ${center} : center"> 
@@ -369,9 +366,61 @@ window.onload = function(){
 <h4 id = "email">gjhan@naver.com</h4>
 <h4 id = "id"></h4>
 <h4 id = "domain"></h4>
+```
 
+- js04
+```html
+<meta charset="UTF-8">
+<style>
+	#result{
+		width:300px;
+		border: 2px solid red;
+	}
+	#result > #tb01 {
+		width:200px; 
+		border: 2px solid blue;
+	}
+</style>
+<script>
+function getdata(){
+	// JSON
+	var a = [
+		{id:'id01',name:'lee',age:10},
+		{id:'id02',name:'kim',age:20},
+		{id:'id03',name:'han',age:30},
+		{id:'id04',name:'soo',age:40},
+		{id:'id05',name:'koo',age:50}
+	];
+	var txt = '';
+	txt += '<table id="tb01">';
+	txt += '<thead>';
+	txt += '<tr><th>ID</th><th>NAME</th><th>AGE</th></tr>';
+	txt += '</thead>';
+	txt += '<tbody>';
+	for(var i in a){
+		txt += '<tr>';
+		txt += '<td>'+a[i].id+'</td>';
+		txt += '<td>'+a[i].name+'</td>';
+		txt += '<td>'+a[i].age+'</td>';
+		txt += '</tr>';
+	};
+	txt += '</tbody>';
+	txt += '</table>';
+	document.querySelector('#result').innerHTML = txt;
+};
+</script>
 
+<h1>JS04 Main</h1>
+<h2><a href="#" onclick="getdata();">Click</a></h2>
+<div id="result"></div>
+```
 
+- js05
+```html
 
+```
+
+- js06
+```html
 
 ```
