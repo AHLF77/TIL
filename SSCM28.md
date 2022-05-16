@@ -417,7 +417,56 @@ function getdata(){
 
 - js05
 ```html
-
+<meta charset="UTF-8">
+<script>
+	function a(n){ // var를 넣으면 함수를 두개로 인식을 해버린다. 
+		var result = n * 1000;
+		return result;
+	};
+	var b = function(n,m){
+		var result = n * m;
+		return result;
+	};
+	var result = b(100,222);
+	//alert(result);
+	
+	function c(){ // 함수도 리턴이 가능하다.
+		return function(){
+			return 100;
+		};
+	};
+	
+	var r1 = c();
+	var result2 = r1();
+	// alert(result2);
+	
+	function d(f){
+			var result = f()*2;
+			return result;
+	};
+	var dd = function(){
+		return 100;
+	};
+	var result3 = d(dd); /* 함수안에 함수를 넣을 수 있음.(JavaScript에서만 가능) */
+	// alert(result3);
+	
+	function display(){
+		setInterval(function(){
+			var d = new Date();
+			var result = d.getHours()+' '+d.getMinutes()+' '+d.getSeconds();
+			document.querySelector('#time').innerHTML = result;
+		},
+		1000);
+	};
+	
+	window.onload = function(){
+		display();
+	};
+	
+	
+</script>
+<h1>JS05 Main</h1>
+<h2 id ="time"></h2>
 ```
 
 - js06
