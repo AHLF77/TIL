@@ -267,3 +267,43 @@ public class JsController {
 ```
 
 #### template/js
+- center
+```html
+<meta charset="UTF-8">
+
+<h1>JS Main</h1>
+```
+
+- js01
+```html
+<meta charset="UTF-8">
+<style>
+	#hh2{
+		background-color: black;
+	}
+</style>
+
+<script>
+
+function h2(){
+	alert('Alert.............');
+	var h2 = document.querySelector('#hh2');	
+	h2.innerHTML = 'replace text';
+};
+window.onload = function(){
+	var h3 = document.querySelector('#hh3');
+	var i = 10;
+	var j = 20;
+	var result = i + j;
+	console.log("i+j = " + result);
+	h3.innerHTML = result;
+};
+
+</script>
+
+
+<h1>JS01 Main</h1>
+<button onclick="h2();">CLick</button>
+<h2 id="hh2">Header2</h2>
+<h3 id="hh3">Header3</h3>
+```
