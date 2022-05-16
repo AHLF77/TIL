@@ -106,3 +106,22 @@ public class JsController {
 }
 
 ```
+
+
+### template
+```html
+<meta charset="UTF-8">
+
+<h1>환영 합니다.</h1>
+<p>Lorem consequat.</p>
+<hr>
+<h3>Test</h3>
+<p>Lorem ipsum...</p>
+```
+
+```html
+<meta charset="UTF-8">
+<p><a href="#">main1</a></p>
+<p><a href="#">main2</a></p>
+<p><a href="#">main3</a></p>
+```
