@@ -199,3 +199,61 @@ public class JqController {
 }
 
 ```
+
+#### template/jq
+- jq01
+```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	$('h1').css('color', 'red');
+	$('#hh1').html('<a href ="#">Click</a>');
+	var txt = $('h1)').eq(0).text();
+	$('h1').eq(1).text(txt);
+	$('h1 > a').click(function(){
+		alert('a');
+	});
+});	
+</script>
+
+<h1>JQ01 Main</h1>
+
+<h1>Header1</h1>
+<h1 id="hh1">Header2</h1>
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
+
+```html
+
+```
