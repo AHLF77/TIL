@@ -296,8 +296,70 @@ PWD<input type="password" name="pwd"><span></span><br>
 
 ```
 
+- jq03
 ```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	
+	$('#login_form > input[name="id"]').blur(function(){
+		var id = $(this).val();
+		if(id == ''){
+			$(this).focus();
+		};
+	});
+	$('#login_form > input[name="pwd"]').blur(function(){
+		var pwd = $(this).val();
+		if(pwd == ''){
+			$(this).focus();
+		};
+	});
+	
+	$('button').click(function(){
+		var id = $('input[name="id"]').val();
+		var pwd = $('input[name="pwd"]').val();
+		// LOGIN 버튼 클릭 시
+		// id와 pwd가 공란인지 확인 후
+		// focus 이동 및 span 메시지 출력
+		if(id == ''){
+			$('#sid').text('ID는 필수 항목 입니다.');
+			$('input[name="id"]').focus();
+			return;
+		};
+		
+		if(pwd == ''){
+			$('#spwd').text('비밀번호는 필수 항목 입니다.');
+			$('input[name="pwd"]').focus();
+			return;
+		};
+		
+		$('#login_form').attr({
+			'action':'loginimpl',
+			'method':'post'
+		});
+		$('#login_form').submit();
+		
+		});
+});
+</script>
 
+<div class="container col-sm-4">
+
+<h1>JQ03 Main</h1>
+<form id="login_form">
+ <div class="form-group">
+	<label for="id">ID:</label>
+	<input type="text" class="form-control" id="id" name="id"> 
+	<span id="sid"></span>
+ </div>
+ <div class="form-group">
+	<label for="pwd">Password:</label>
+	<input type="password" class="form-control" id="pwd" name="pwd"> 
+ 	<span id="spwd"></span>
+ </div>
+</form>
+<button class="btn btn-default">Submit</button>
+</div>
 ```
 
 - loginok
@@ -312,22 +374,6 @@ PWD<input type="password" name="pwd"><span></span><br>
 ```html
 <meta charset="UTF-8">
 <h1>Login Fail</h1>
-```
-
-```html
-
-```
-
-```html
-
-```
-
-```html
-
-```
-
-```html
-
 ```
 
 ```html
