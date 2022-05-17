@@ -222,7 +222,77 @@ $(document).ready(function(){
 <h1 id="hh1">Header2</h1>
 ```
 
+- jq02
 ```html
+<meta charset="UTF-8">
+<style>
+ .b{
+ color: gray;
+ background: blue;
+ }
+</style>
+<script>
+$(document).ready(function(){
+	
+	
+	$('button').on({
+		'click':function(){
+			$(this).css({'color':'gray', 'background':'blue'});
+		},
+		'mouseenter':function(){
+			$('h1').text('mouse enter');
+			$(this).addClass('b');
+		},
+		'mouseleave':function(){
+			$('h1').text('mouse leave');
+			$(this).removeClass('b');
+		}
+	});
+	/*
+	$('button').mouseenter(function(){
+		$('h1').text('mouse enter');	
+	});
+	$('button').mouseleave(function(){
+		$('h1').text('mouse leave');
+	});
+	$('button').click(function(){
+		$(this).css({'color':'gray', 'background':'blue'});
+	});
+	*/
+	
+	$('h2').hover(function(){
+		$(this).addClass('b');
+	},function(){
+		$(this).removeClass('b');
+	});
+	
+	$('input[name="id"]').focus(function(){
+		$(this).addClass('b');
+		$('form > span:eq(0)').text("ID를 입력 하시오.");
+	});
+	$('input[name="id"]').blur(function(){
+		$(this).removeClass('b');
+		var txt = $(this).val();
+		if(txt == ''){
+			$(this).focus();
+		};
+		if(txt.length == 5){
+			$('form > span:eq(0)').text('ID는 5개 이상이어야 합니다.');
+		};
+	});
+	
+});
+</script>
+
+<h1>JQ02 Main</h1>
+
+<h2>Header2</h2>
+<button>Button</button>
+<form>
+ID<input type="text" name="id"><span></span><br>
+PWD<input type="password" name="pwd"><span></span><br>
+<input type="submit" name="login"><br>
+</form>
 
 ```
 
