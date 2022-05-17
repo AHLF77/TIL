@@ -300,12 +300,18 @@ PWD<input type="password" name="pwd"><span></span><br>
 
 ```
 
+- loginok
 ```html
+<meta charset="UTF-8">
 
+<h1>Login SUCCESS</h1>
+<h2><span th:text="${loginid}"></span>님 환영합니다.</h2>
 ```
 
+- loginfail
 ```html
-
+<meta charset="UTF-8">
+<h1>Login Fail</h1>
 ```
 
 ```html
