@@ -496,3 +496,64 @@ function calc(){
 <button onclick="calc();">Calc</button>
 <h3 id="result"></h3>
 ```
+
+- js07
+```html
+<meta charset="UTF-8">
+<script>
+function calc(n){
+	//alert(n);
+	if(n == '='){
+		var data = document.querySelector('#inputdisplay').value;
+		var result = eval(data);
+		document.querySelector('#resultdisplay').value = result
+		return;
+	}
+	var data = document.querySelector('#inputdisplay').value;
+	data += n;
+	document.querySelector('#inputdisplay').value = data;
+};
+
+</script>
+<h1>Calculator</h1>
+<table border="1">
+<tbody>
+	<tr>
+		<td colspan="4"><input type="text" id="inputdisplay"></td>
+	</tr>
+	<tr>
+		<td colspan="4"><input type="text" id="resultdisplay"></td>
+	</tr>
+	
+	
+	<tr>	
+		<td><button style=width:100%; onclick="calc('1');">1</button></td>
+		<td><button style=width:100%; onclick="calc('2');">2</button></td>
+		<td><button style=width:100%; onclick="calc('3');">3</button></td>
+		<td><button style=width:100%; onclick="calc('+');">+</button></td>
+	</tr>
+	
+	<tr>
+		<td><button style=width:100%; onclick="calc('4');">4</button></td>
+		<td><button style=width:100%; onclick="calc('5');">5</button></td>
+		<td><button style=width:100%; onclick="calc('6');">6</button></td>
+		<td><button style=width:100%; onclick="calc('-');">-</button></td>
+	</tr>
+		<tr>
+		<td><button style=width:100%; onclick="calc('7');">7</button></td>
+		<td><button style=width:100%; onclick="calc('8');">8</button></td>
+		<td><button style=width:100%; onclick="calc('9');">9</button></td>
+		<td><button style=width:100%; onclick="calc('*');">*</button></td>
+		</tr>
+	<tr>
+		<td><button style=width:100%; onclick="calc('=');">=</button></td>
+		<td><button style=width:100%; onclick="calc('0');">0</button></td>
+		<td><button style=width:100%; onclick="calc('.');">.</button></td>
+		<td><button style=width:100%; onclick="calc('/');">/</button></td>
+	</tr>
+	<tr>
+		<td colspan="4"><button style=width:100%; onclick="calc('ac');">AC</button></td>
+	</tr>
+</tbody>
+</table>
+```
