@@ -592,26 +592,18 @@ $(document).ready(function(){
 
 - jq13
 ```html
+
+```
+
+- jq14
+```html
+
+```
+
+- register ok
+```html
 <meta charset="UTF-8">
-<style>
-#simg{
-	width:800px;
-	height:150px;
-	margin:5px;
-}
-</style>
 
-<script>
-$(document).ready(function(){
-	var getdata = function(){
-		for(var i=0; i<11; i++){
-		$('#data').append('<img id="simg" src="img/a1.png">');
-		};
-	};
-	getdata();
-});
-</script>
-<h1>JQ13 Main</h1>
-
-<div id="data"></div>
+<h1>Register SUCCESS</h1>
+<h2><span th:text="${rname}"></span>님 등록완료되었습니다.</h2>
 ```
