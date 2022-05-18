@@ -156,6 +156,26 @@ public class JqController {
 }
 
 ```
+- left
+```html
+<meta charset="UTF-8">
+
+<p><a href="jq01">jq01</a></p>
+<p><a href="jq02">jq02</a></p>
+<p><a href="jq03">jq03</a></p>
+<p><a href="jq04">jq04</a></p>
+<p><a href="jq05">jq05</a></p>
+<p><a href="jq06">jq06</a></p>
+<p><a href="jq07">jq07</a></p>
+<p><a href="jq08">jq08</a></p>
+<p><a href="jq09">jq09</a></p>
+<p><a href="jq10">jq10</a></p>
+<p><a href="jq06">jq11</a></p>
+<p><a href="jq07">jq12</a></p>
+<p><a href="jq08">jq13</a></p>
+<p><a href="jq09">jq14</a></p>
+<p><a href="jq10">jq15</a></p>
+```
 
 - jq05
 ```html
@@ -219,4 +239,26 @@ $(document).ready(function(){
 <button id="hide">Hide</button>
 
 <div id="result"></div>
+```
+
+- jq06
+```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	var txt = $('h1').text();
+	txt += ':New';
+	$('h1').text(txt);
+	$('h2 > a').attr('href','http://www.naver.com');
+});
+</script>
+
+<h1>JQ06 Main</h1>
+
+<h1>Header1</h1>
+<h2><a href="#">Click</a></h2>
+<form>
+	
+</form>
+
 ```
