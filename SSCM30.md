@@ -262,3 +262,87 @@ $(document).ready(function(){
 </form>
 
 ```
+
+- jq07
+```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	$('#name_help').hide();
+	$('#pwd_help').hide();
+	
+	$('#name').keyup(function(){
+		$('#name_help').hide();
+	});
+	
+	$('#pwd').keyup(function(){
+		$('#pwd_help').hide();
+	});
+	
+	$("#register_bt").click(function(){
+		
+		var name = $('#name').val();
+		var pwd = $('#pwd').val();
+		
+		if(name == ''){
+			$('#name_help').show();
+			$('#name').focus();
+			return;
+		}
+		
+		if(pwd == ''){
+			$('#pwd_help').show();
+			$('#pwd').focus();
+			return;
+		}
+		
+		$("#register_form").attr({
+			'action':'registerimpl',
+			'method':'get'
+		});
+		$("#register_form").submit();
+	
+	});
+});
+</script>
+
+<div class="container col-sm-6">
+	<h1>Register</h1>
+	<form id="register_form">
+	<div class="form-group">
+	  <label for="name">Name:</label>
+	  <input type="text" name="name" class="form-control" id="name" placeholder="Input Name">
+	  <span id="name_help" class="help-block">아이디를 기입해주세요.</span>
+	</div>
+	<div class="form-group">
+	  <label for="pwd">Password:</label>
+	  <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Input Password">
+	  <span id="pwd_help" class="help-block">비밀번호를 기입해 주세요.</span>
+	</div>
+	<div class="form-group">
+		<label class="checkbox-inline"><input type="checkbox" name="ch" value="op1">Option1</label>
+		<label class="checkbox-inline"><input type="checkbox" name="ch" value="op2">Option2</label>
+		<label class="checkbox-inline"><input type="checkbox" name="ch" value="op3">Option3</label>
+	</div>
+	<div class="radio">
+  		<label><input type="radio" name="optradio" value="op1" checked>Option 1</label>
+	</div>
+	<div class="radio">
+  		<label><input type="radio" name="optradio" value="op2">Option 2</label>
+	</div>
+		<div class="radio">
+  		<label><input type="radio" name="optradio" value="op3">Option 3</label>
+	</div>
+	<div class="form-group">
+  		<label for="sel1">Select list:</label>
+  		<select class="form-control" id="sel1" name="sel">
+    		<option value="1">1</option>
+    		<option value="2">2</option>
+    		<option value="3">3</option>
+    		<option value="4">4</option>
+ 		 </select>
+	</div>
+	<button id="register_bt" type="button" class="btn btn-success">REGISTER</button>
+	</form>
+</div>
+```
