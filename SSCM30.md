@@ -444,3 +444,89 @@ $(document).ready(function(){
 	</form>
 </div>
 ```
+
+- jq10
+```html
+<meta charset="UTF-8">
+<style>
+	#result{
+	border: 5px solid red;
+	}
+	.myclass{
+	color:red;
+	background:black;
+	}
+</style>
+<script>
+$(document).ready(function(){
+	/*
+	$('h1').css({
+		'color':'red',
+		'background':'black'
+	});
+	*/
+	$('h1').hover(function(){
+		$(this).addClass('myclass');
+	}, function(){
+		$(this).removeClass('myclass');
+	});
+	
+	$('button').addClass('myclass');
+	
+	var i = 1;
+	
+	$('#append').click(function(){
+		$('#result').append('<h4>Add Element: '+i+'</h4>');
+		i++;
+		$('button').addClass('myclass');
+		$('button').not($(this)).removeClass('myclass');
+	});
+	$('#prepend').click(function(){
+		$('#result').prepend('<h4>Add Element: '+i+'</h4>');
+		i++;
+		$('button').addClass('myclass');
+		$('button').not($(this)).removeClass('myclass');
+	});
+	$('#after').click(function(){
+		$('#result').after('<h4>Add Element: '+i+'</h4>');
+		i++;
+		$('button').addClass('myclass');
+		$('button').not($(this)).removeClass('myclass');
+	});
+	$('#before').click(function(){
+		$('#result').before('<h4>Add Element: '+i+'</h4>');
+		i++;
+		$('button').addClass('myclass');
+		$('button').not($(this)).removeClass('myclass');
+	});
+	$('#remove').click(function(){
+		$('#result').remove();
+		$('h4').remove();
+		$('button').addClass('myclass');
+		$('button').not($(this)).removeClass('myclass');
+	});
+	$('#empty').click(function(){
+		$('#result').empty();
+		$('h4').empty();
+		$('button').addClass('myclass');
+		$('button').not($(this)).removeClass('myclass');
+	});
+	$('#append').click(function(){});
+	$('#prepend').click(function(){});
+	$('#after').click(function(){});
+	$('#before').click(function(){});
+	$('#remove').click(function(){});
+	$('#empty').click(function(){});
+});
+</script>
+<h1>JQ09 Main</h1>
+<button id="append">append</button>
+<button id="prepend">prepend</button>
+<button id="after">after</button>
+<button id="before">before</button>
+<button id="remove">remove</button>
+<button id="empty">empty</button>
+<hr>
+<div id="result">
+</div>
+```
