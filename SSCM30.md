@@ -570,3 +570,22 @@ $(document).ready(function(){
 <h1>JQ11 Main</h1>
 <input type="number" id="n1" maxlength="7">-<input type="number" id="n2">
 ```
+
+- jq12
+```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	var imgs = ['img/a1.png','img/a2.jpg','img/a3.jpg'];
+	var cnt = 0;
+	setInterval(function(){
+		$('#image').attr('src', imgs[cnt % imgs.length]);
+		$('h1').text(cnt);
+		cnt++;
+	}, 1000);
+});
+</script>
+
+<h1>JQ12 Main</h1>
+<img id="image">
+```
