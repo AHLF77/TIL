@@ -589,3 +589,29 @@ $(document).ready(function(){
 <h1>JQ12 Main</h1>
 <img id="image">
 ```
+
+- jq13
+```html
+<meta charset="UTF-8">
+<style>
+#simg{
+	width:800px;
+	height:150px;
+	margin:5px;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+	var getdata = function(){
+		for(var i=0; i<11; i++){
+		$('#data').append('<img id="simg" src="img/a1.png">');
+		};
+	};
+	getdata();
+});
+</script>
+<h1>JQ13 Main</h1>
+
+<div id="data"></div>
+```
