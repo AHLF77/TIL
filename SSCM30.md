@@ -597,7 +597,55 @@ $(document).ready(function(){
 
 - jq14
 ```html
+<meta charset="UTF-8">
+<style>
+	table{
+		width:500px;
+		border:2px solid red;
+	}
+</style>
+<script>
+function getdata() {
+	var data = [
+		{id:'id01',name:'lee',age:10},
+		{id:'id02',name:'kim',age:20},
+		{id:'id03',name:'han',age:30},
+		{id:'id04',name:'soo',age:40},
+		{id:'id05',name:'koo',age:50}
+	];
+	
+	var txt = '';
+	$(data).each(function(index, item){
+		txt += '<tr>';
+		txt += '<td>'+item.id+'</td>';
+		txt += '<td>'+item.name+'</td>';
+		txt += '<td>'+item.age+'</td>';
+		txt += '</tr>';
+	});
+	$('table > tbody').append(txt);
+	
+};
 
+$(document).ready(function(){
+	getdata();
+	$(window).scroll(function(){
+				var doch = $(document).height();
+				var winh = $(window).scrollTop()+$(window).height();
+				if(doch <= winh + 50){
+					getdata();				
+				};
+	});
+});
+</script>
+<h1>JQ14 Main</h1>
+
+<table>
+	<thead>
+		<tr><th>ID</th><th>PWD</th><th>AGE</th></tr>
+	</thead>
+	<tbody>	
+	</tbody>
+</table>
 ```
 
 - register ok
