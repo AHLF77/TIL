@@ -677,6 +677,75 @@ $(document).ready(function(){
 </table>
 ```
 
+- jq14
+```html
+<meta charset="UTF-8">
+<style>
+#simg{
+	width:100%;
+	height:400px;
+}
+
+	.b{
+		color: black;
+		background:#BDBDBD;
+	}
+	.btn-default{
+	margin-top: 50px;
+	width: 100%;
+  	height: 50px;
+    border: 0;
+  	outline: none;
+  	border-radius: 40px;
+  	background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+  	color: white;
+  	font-size: 1.5em;
+  	letter-spacing: 2px;
+	}
+	.form-control{
+	border:0; 
+	padding-top:2; 
+	}
+	
+</style>
+<script>
+$(document).ready(function(){
+	var imgs = ['img/a1.png','img/a2.jpg','img/a3.jpg', 'img/a4.png','img/a5.jpg'];
+	var cnt = 0;
+	var auto = null;
+	
+	$('#forward').click(function(){
+		cnt++;
+	$('#simg').attr('src',imgs[Math.abs(cnt % imgs.length)]);
+	});
+	
+	$('#auto').click(function(){
+		auto= setInterval(function(){
+		cnt++
+		$('#simg').attr('src',imgs[Math.abs(cnt % imgs.length)]);
+		}, 500);
+		});
+	
+	$('#back').click(function(){
+		cnt--;
+	$('#simg').attr('src',imgs[Math.abs(cnt % imgs.length)]);
+	});
+	
+	$('#stop').click(function(){
+		clearInterval(auto);
+	});
+	
+});
+</script>
+
+<h1>JQ15 WS</h1>
+<button id="forward">Foward</button>
+<button id="auto">AUTO</button>
+<button id="back">BACK</button>
+<button id="stop">STOP</button>
+<img id="simg">
+```
+
 - register ok
 ```html
 <meta charset="UTF-8">
