@@ -170,11 +170,11 @@ public class JqController {
 <p><a href="jq08">jq08</a></p>
 <p><a href="jq09">jq09</a></p>
 <p><a href="jq10">jq10</a></p>
-<p><a href="jq06">jq11</a></p>
-<p><a href="jq07">jq12</a></p>
-<p><a href="jq08">jq13</a></p>
-<p><a href="jq09">jq14</a></p>
-<p><a href="jq10">jq15</a></p>
+<p><a href="jq11">jq11</a></p>
+<p><a href="jq12">jq12</a></p>
+<p><a href="jq13">jq13</a></p>
+<p><a href="jq14">jq14</a></p>
+<p><a href="jq15">jq15</a></p>
 ```
 
 - jq05
@@ -445,7 +445,7 @@ $(document).ready(function(){
 </div>
 ```
 
-- jq10
+- jq09
 ```html
 <meta charset="UTF-8">
 <style>
@@ -530,3 +530,27 @@ $(document).ready(function(){
 <div id="result">
 </div>
 ```
+
+- jq10
+```html
+<meta charset="UTF-8">
+
+<script>
+$(document).ready(function(){
+	$('#box').css({
+		'width':'100px',
+		'height':'100px',
+		'background':'red'
+	}).animate({
+		'width':'500px',
+		'opacity':'0.6'
+	},500);
+});
+</script>
+
+<h1>JQ10 Main</h1>
+
+<div id="box"></div>
+
+```
+
