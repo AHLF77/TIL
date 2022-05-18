@@ -592,7 +592,36 @@ $(document).ready(function(){
 
 - jq13
 ```html
+<meta charset="UTF-8">
+<style>
+#simg{
+	width:800px;
+	height:150px;
+	margin:5px;
+}
+</style>
 
+<script>
+$(document).ready(function(){
+	var getdata = function(){
+		for(var i=0; i<11; i++){
+		$('#data').append('<img id="simg" src="img/a1.png">');
+		};
+	};
+	getdata();
+	$(window).scroll(function(){
+	/* $('h1').text($(document).height()+''+$(window).scrollTop()+''+$(window).height()); */ 
+		var doch = $(document).height();
+		var winh = $(window).scrollTop()+$(window).height()
+		if(doch <= winh + 50){
+		 getdata();				
+		};
+	});
+});
+</script>
+<h1>JQ13 Main</h1>
+
+<div id="data"></div>
 ```
 
 - jq14
