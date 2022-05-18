@@ -554,3 +554,19 @@ $(document).ready(function(){
 
 ```
 
+- jq11
+```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	$('#n1').keyup(function(){
+		if($(this).val().length > 6){
+			$('#n2').focus();
+		};
+	});
+	
+});
+</script>
+<h1>JQ11 Main</h1>
+<input type="number" id="n1" maxlength="7">-<input type="number" id="n2">
+```
