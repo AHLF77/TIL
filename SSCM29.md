@@ -375,7 +375,3 @@ $(document).ready(function(){
 <meta charset="UTF-8">
 <h1>Login Fail</h1>
 ```
-
-```html
-
-```
