@@ -147,3 +147,37 @@ public class AjController {
 	}
 }
 ```
+
+- aj01
+```html
+<meta charset="UTF-8">
+
+<script>
+function display(data){
+	$('h3').text(data);
+};
+
+function getdata(){
+	
+	$.ajax({
+		url: 'gettime',
+		 success: function(data){
+			 display(data);
+		 },
+		 error:function(e){
+			 alert('Error'+e.responseText);
+		 }
+	});
+	
+};
+
+$(document).ready(function() {
+	timer = setInterval(function () {
+		getdata();
+	}, 1000);
+});
+</script>
+<h1>AJ01 Main</h1>
+
+<h3></h3>
+```
