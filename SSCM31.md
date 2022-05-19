@@ -363,3 +363,14 @@ PWDCheck<input type="password" name="pwd2"><span id="secondpwd"></span><br>
 ```html
 
 ```
+
+- registerok
+```html
+<meta charset="UTF-8">
+
+<h1>Register SUCCESS</h1>
+<h2><span th:text="${rnamed}"></span>님 가입을 환영합니다.</h2>
+<h2><span th:text="${rid}"></span></h2>
+<h2><span th:text="${rpwd2}"></span></h2>
+<h2><span th:text="${rgenderse}"></span></h2>
+```
