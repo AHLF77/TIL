@@ -58,7 +58,6 @@ public class AJAXController {
 		return data;
 	}
 }
-
 ```
 
 - AjController
@@ -75,6 +74,14 @@ public class AjController {
 	@RequestMapping("/ajax")
 	public String ajax(Model m) {
 		m.addAttribute("center", "ajax/center");
+		m.addAttribute("left", "ajax/left");
+		return "main";
+	}
+	
+	@RequestMapping("/register_formimpl")
+	public String register_formimpl(Model m,String id, String pwd) {
+		System.out.println(id+" "+pwd);
+		m.addAttribute("center", "ajax/registerok");
 		m.addAttribute("left", "ajax/left");
 		return "main";
 	}
@@ -207,4 +214,50 @@ $(document).ready(function() {
 <h1>AJ01 Main</h1>
 
 <h3></h3>
+```
+
+- aj02
+```html
+<meta charset="UTF-8">
+<style>
+	#result{
+		width:500px;
+		border:2px solid red;
+	}
+</style>
+
+<script>
+function display(data) {
+	var txt = '<h2>'+data+'</h2>';
+	$('#result').html(txt);
+};
+
+function getdata(txt) {
+	$.ajax({
+		url:'search',
+		data:{'s':txt}, 
+		success:function(data){
+			alert(data);
+		}
+	});
+};
+
+$(document).ready(function(){
+	$('button').click(function(){
+		var txt = $('#txt').val();
+		getdata(txt);		
+	});
+	
+});
+</script>
+
+<h1>AJ02 Main</h1>
+<input type="text" id="txt">
+<button>GETDATA</button>
+<div id= "result"></div>
+```
+
+- aj03
+```html
+
 ```
