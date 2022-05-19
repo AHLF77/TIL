@@ -259,5 +259,93 @@ $(document).ready(function(){
 
 - aj03
 ```html
+<meta charset="UTF-8">
+<style>
+	#result{
+		width:500px;
+		border:2px solid red;
+	}
+</style>
+
+<script>
+
+function checkid(id){
+	$.ajax({
+		url:'checkid',
+		data:{'id': id},
+		success:function(data){
+			if(data == '1'){
+				$('#iid').text('사용가능 합니다.');
+			}else{
+				$('#iid').text('사용 불가능 합니다.');
+			}
+		}
+	});
+};
+
+function checkpwd(pwd){
+	$.ajax({
+		url:'checkpwd',
+		data:{'pwd': pwd},
+		success:function(data){
+			if(data == '1'){
+				$('#secondpwd').text('비밀번호가 일치합니다.');
+			}else{
+				$('#secondpwd').text('비밀번호가 일치하지 않습니다.');
+			}
+		}
+	});
+	
+};
+
+$(document).ready(function(){
+	
+	$('button').attr('disabled','disabled');
+	
+	$('button').click(function(){
+		
+		$('register_form').attr({
+			'action':'register_formimpl',
+			'method':'post'
+		});
+		$('register_form').submit();
+	});
+	
+	$('input[name="pwd2"]').keyup(function(){
+		var pwd = $('input[name="pwd"]').val();
+		var pwd2 = $('input[name="pwd2"]').val();
+		if(pwd == pwd2){
+			$('#secondpwd').text('비밀번호가 일치합니다.');
+			$('button').removeAttr('disabled');
+		}else{
+			$('#secondpwd').text('비밀번호가 일치하지 않습니다.');
+		}
+	});
+	
+	$('input[name="id"]').keyup(function(){
+		var id = $(this).val();
+		// 길이가 3자리 미만이면 span에 "3자리 이상이어야 합니다." 출력
+		if(id.length < 3){
+			$('#iid').text('3자리 이상이어야 합니다.')
+		}else{
+			$('#iid').text('');
+			checkid(id);
+		}
+	});
+	
+	
+});
+</script>
+<h1>AJ03 Main</h1>
+<form id="register_form">
+ID<input type="text" name="id"><span id="iid"></span><br>
+PWD1<input type="password" name="pwd"><span id="firstpwd"></span><br>
+PWDCheck<input type="password" name="pwd2"><span id="secondpwd"></span><br>
+<button>REGISTER</button>
+</form>
+```
+
+- jq04
+```html
 
 ```
