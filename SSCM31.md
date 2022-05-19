@@ -359,8 +359,120 @@ PWDCheck<input type="password" name="pwd2"><span id="secondpwd"></span><br>
 </form>
 ```
 
-- jq04
+- aj04
 ```html
+<meta charset="UTF-8">
+<style>
+.reg_bt{
+	margin-top: 50px;
+	width: 100px;
+  	height: 50px;
+    border: 0;
+  	outline: none;
+  	border-radius: 40px;
+  	background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+  	color: white;
+  	font-size: 1.5em;
+  	letter-spacing: 2px;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+	
+	// 등록 버튼
+	$("#register_bt").click(function(){
+		
+		var id = $('#id').val();
+		var pwd2 = $('#pwd2').val();
+		var named = $('#named').val();
+		var genderse = $('#select').val();
+		
+		
+		$("#register_form").attr({
+			'action':'register_formimpl2',
+			'method':'post'
+		});
+		$("#register_form").submit();
+	
+	});
+	
+	
+	// 아이디 제약 조건 설정
+	$('input[name="id"]').keyup(function(){
+		var id = $('input[name="id"]').val();
+		if(id.length < 7){
+			$('#iid').text('아이디를 7자리 이상 설정해 주세요.');
+		}else{
+			$('#iid').hide();
+		}
+	});
+	
+	// 비밀번호 제약 조건 설정(특수문자, 영문, 숫자 8자리 이상)
+	$('input[name="pwd1"]').keyup(function(){
+		var pwd1 = $('input[name="pwd1"]').val();
+		var pwdcheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		if(false === pwdcheck.test(pwd1)){
+			$('#pwd').text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+		}else if(true === pwdcheck.test(pwd1)){
+			$('#pwd').text('양호');
+		}else{
+			$('#pwd').hide();
+		}
+		
+	});
+	
+	// 비밀번호 확인
+	$('input[name="pwd2"]').keyup(function(){
+		var pwd1 = $('input[name="pwd1"]').val();
+		var pwd2 = $('input[name="pwd2"]').val();
+		if(pwd1 != pwd2){
+			$('#recheck').text('비밀번호가 일치하지 않습니다.');
+		}else{
+			$('#recheck').hide();
+		}
+	});
+	
+});
+</script>
+
+<h1>AJ04 Register Main</h1>
+<div class="container col-sm-8">
+	<form id="register_form">
+	
+	<div class="form-group">
+	<label for="id">아이디</label><br>
+	<input type="text" name="id" placeholder="아이디를 입력하세요."><span id="iid"></span><br>
+	</div>
+	
+	<div class="form-group">
+	<label for="pwd1">비밀번호</label><br>
+	<input type="password" name="pwd1" placeholder="비밀번호를 입력하세요."><span id="pwd"></span><br>
+	</div>
+	
+	<div class="form-group">
+	<label for="pwd2">비밀번호 재확인</label><br>
+	<input type="password" name="pwd2"><span id="recheck"></span><br>
+	</div>
+	
+	<div class="form-group">
+	<label for="named">이름</label><br>
+	<input type="text" name="named"><span id="nm"></span><br>
+	</div>
+	
+	<div class="form-group">
+	<label for="select">성별</label><br>
+	<select class="form-control" id="select" name="gendersel">
+	<option value="male">male</option>
+	<option value="female">female</option>
+	
+	</select>
+	</div>
+	<button id="register_bt" class="reg_bt">등록</button>
+	</form>
+</div>
+
+
 
 ```
 
