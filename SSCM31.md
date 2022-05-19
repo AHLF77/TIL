@@ -31,16 +31,18 @@ public class AJAXController {
 		return result;
 	}
 	
+	/*
 	@RequestMapping("/checkpwd")
-	public Object checkpwd(String id) {
-		String result = "";
+	public Object checkpwd(String pwd) {
+		String result2 = "";
 		if(id.equals("aaaa") || id.equals("bbbb") || id.equals("cccc")) {
-			result = "0";
+			result2 = "0";
 		}else {
-			result = "1";
+			result2 = "1";
 		}
-		return result;
+		return result2;
 	}
+	*/
 	
 	@RequestMapping("/search")
 	@ResponseBody
@@ -56,6 +58,7 @@ public class AJAXController {
 		return data;
 	}
 }
+
 ```
 
 - AjController
