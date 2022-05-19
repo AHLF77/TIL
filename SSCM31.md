@@ -86,6 +86,19 @@ public class AjController {
 		return "main";
 	}
 	
+	@RequestMapping("/register_formimpl2")
+	public String register_formimpl2(Model m, 
+			String id, String pwd2, String named, String genderse) {
+		System.out.printf("%s %s %s %s", id, pwd2, named, genderse);
+		m.addAttribute("rid",id);
+		m.addAttribute("rpwd2",pwd2);
+		m.addAttribute("rnamed",named);
+		m.addAttribute("rgenderse",genderse);
+		m.addAttribute("center", "ajax/registerok");
+		m.addAttribute("left", "ajax/left");
+		return "main";
+	}
+	
 	@RequestMapping("/aj01")
 	public String aj01(Model m) {
 		m.addAttribute("center", "ajax/aj01");
@@ -156,6 +169,7 @@ public class AjController {
 		return "main";
 	}
 }
+
 ```
 
 - center
