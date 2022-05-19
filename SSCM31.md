@@ -150,6 +150,15 @@ public class AjController {
 	}
 }
 ```
+
+- center
+```html
+<meta charset="UTF-8">
+
+<h1>AJAX Main</h1>
+
+```
+
 - left
 ```html
 <meta charset="UTF-8">
