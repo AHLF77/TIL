@@ -150,6 +150,21 @@ public class AjController {
 	}
 }
 ```
+- left
+```html
+<meta charset="UTF-8">
+
+<p><a href="aj01">aj01</a></p>
+<p><a href="aj02">aj02</a></p>
+<p><a href="aj03">aj03</a></p>
+<p><a href="aj04">aj04</a></p>
+<p><a href="aj05">aj05</a></p>
+<p><a href="aj06">aj06</a></p>
+<p><a href="aj07">aj07</a></p>
+<p><a href="aj08">aj08</a></p>
+<p><a href="aj09">aj09</a></p>
+<p><a href="aj10">aj10</a></p>
+```
 
 - aj01
 ```html
