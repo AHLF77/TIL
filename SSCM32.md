@@ -320,3 +320,95 @@ $(document).ready(function() {
 <button id="inverted">Inverted</button>
 <button id="polar">Polar</button>
 ```
+
+- aj07
+```html
+<meta charset="UTF-8">
+<style>
+	#container{
+		width: 500px;
+		height: 400px;
+	}
+</style>
+<script>
+function display(data){
+	const chart = Highcharts.chart('container', {
+	    title: {
+	        text: 'Chart.update'
+	    },
+	    subtitle: {
+	        text: 'Plain'
+	    },
+	    xAxis: {
+	        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	    },
+	    series: [{
+	        type: 'column',
+	        colorByPoint: true,
+	        data: data,
+	        showInLegend: false
+	    }]
+	});
+	
+	document.getElementById('plain').addEventListener('click', () => {
+	    chart.update({
+	        chart: {
+	            inverted: false,
+	            polar: false
+	        },
+	        subtitle: {
+	            text: 'Plain'
+	        }
+	    });
+	});
+
+	document.getElementById('inverted').addEventListener('click', () => {
+	    chart.update({
+	        chart: {
+	            inverted: true,
+	            polar: false
+	        },
+	        subtitle: {
+	            text: 'Inverted'
+	        }
+	    });
+	});
+
+	document.getElementById('polar').addEventListener('click', () => {
+	    chart.update({
+	        chart: {
+	            inverted: false,
+	            polar: true
+	        },
+	        subtitle: {
+	            text: 'Polar'
+	        }
+	    });
+	});
+	
+};
+
+function getdata(){
+	$.ajax({
+		url:'getchart',
+		success:function(data){
+			display(data);
+		}
+	});
+};
+
+$(document).ready(function() {
+	$('#getdata').click(function(){
+		getdata();
+	});
+});
+
+</script>
+<h1>AJ07 Main</h1>
+<button id="getdata">GET DATA</button>
+<div id="container"></div>
+<button id="plain">Plain</button>
+<button id="inverted">Inverted</button>
+<button id="polar">Polar</button>
+ 
+```
