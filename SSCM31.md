@@ -251,7 +251,7 @@ function getdata(txt) {
 		url:'search',
 		data:{'s':txt}, 
 		success:function(data){
-			alert(data);
+			display(data);
 		}
 	});
 };
@@ -411,7 +411,7 @@ $(document).ready(function () {
 	// 비밀번호 제약 조건 설정(특수문자, 영문, 숫자 8자리 이상)
 	$('input[name="pwd1"]').keyup(function(){
 		var pwd1 = $('input[name="pwd1"]').val();
-		var pwdcheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		var pwdcheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$/;
 		if(false === pwdcheck.test(pwd1)){
 			$('#pwd').text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
 		}else if(true === pwdcheck.test(pwd1)){
@@ -471,9 +471,6 @@ $(document).ready(function () {
 	<button id="register_bt" class="reg_bt">등록</button>
 	</form>
 </div>
-
-
-
 ```
 
 - registerok
