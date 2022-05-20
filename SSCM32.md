@@ -23,6 +23,18 @@ public class AJAXController {
 		return "서버시간: "+d.toString();
 	}
 	
+	@RequestMapping("/getchart")
+	public Object getchart() {
+		JSONArray ja = new JSONArray();
+		// [10,20,33,44,...]
+		for(int i=0; i< 15; i++) {
+			Random r = new Random();
+			int data = r.nextInt(50)+1;
+			ja.add(data);
+		}
+		return ja;
+	}
+	
 	@RequestMapping("/checkid")
 	public Object checkid(String id) {
 		String result = "";
@@ -77,7 +89,6 @@ public class AJAXController {
 		return ja;	
 	}
 }
-
 ```
 
 - main
