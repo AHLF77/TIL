@@ -13,7 +13,13 @@
 
 <script>
 function display(data){
-	
+	var str = '';
+	$(data).each(function(index,item){
+		str += '<h3>';
+		str += item.id+' '+item.name+' '+item.age;
+		str += '</h3>';
+	});
+	$('#result').html(str);
 };
 
 function getdata(){
@@ -27,9 +33,10 @@ function getdata(){
 };
 
 $(document).ready(function(){
-	$('button').click(function(){
+	getdata();
+	setInterval(() => {
 		getdata();
-	});
+	}, 3000);
 });
 </script>
 
