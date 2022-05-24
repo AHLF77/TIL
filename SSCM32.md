@@ -108,6 +108,7 @@ public class AJAXController {
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fa61433b35290130f3b741d1f5190c95"></script>
 
 <style>
    /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -411,4 +412,77 @@ $(document).ready(function() {
 <button id="inverted">Inverted</button>
 <button id="polar">Polar</button>
  
+```
+
+- aj08
+```html
+<meta charset="UTF-8">
+<style>
+	#map{
+		width:500px;
+		height:400px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+$(document).ready(function(){
+	var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.5126252, 127.1026583), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+	var mapTypeControl = new kakao.maps.MapTypeControl();
+
+	// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+	// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+	map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+	var zoomControl = new kakao.maps.ZoomControl();
+	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+	
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	
+	var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    	iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+    	position : iwPosition, 
+    	content : iwContent 
+	});
+  
+	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	infowindow.open(map, marker); 
+	
+	
+	$('#go1').click(function(){
+	    var moveLatLon = new kakao.maps.LatLng(37.5126252, 127.1026583);
+	    map.setCenter(moveLatLon);
+	});
+	
+	$('#go2').click(function(){
+		var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
+	    map.panTo(moveLatLon);
+	});
+});
+</script>
+
+<h1>AJ08 Main</h1>
+<button id="go1">G01</button>
+<button id="go2">G02</button> 
+<div id="map"></div>
 ```
