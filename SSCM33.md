@@ -138,6 +138,26 @@ $(document).ready(function(){
 	// 마커를 지도에 표시합니다.
 	marker.setMap(map);
 	
+	var iwContent = 
+	'<div style="padding:5px;">Hello World!</div><h3><a href="">GO</a></h3><img width="50px" src="img/subwaylo.png">'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    content : iwContent
+	});
+	
+	// 마커에 마우스오버 이벤트를 등록합니다
+	kakao.maps.event.addListener(marker, 'mouseover', function() {
+	  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+	    infowindow.open(map, marker);
+	});
+
+	// 마커에 마우스아웃 이벤트를 등록합니다
+	kakao.maps.event.addListener(marker, 'mouseout', function() {
+	    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+	    infowindow.close();
+	});
+	
 });
 </script>
 
