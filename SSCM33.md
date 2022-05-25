@@ -147,15 +147,15 @@ $(document).ready(function(){
 	});
 	
 	// 마커에 마우스오버 이벤트를 등록합니다
-	kakao.maps.event.addListener(marker, 'mouseover', function() {
+	kakao.maps.event.addListener(marker, 'mouseout', function() {
 	  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-	    infowindow.open(map, marker);
+	    infowindow.close();
 	});
 
 	// 마커에 마우스아웃 이벤트를 등록합니다
-	kakao.maps.event.addListener(marker, 'mouseout', function() {
+	kakao.maps.event.addListener(marker, 'click', function() {
 	    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-	    infowindow.close();
+	    location.href="aj06";
 	});
 	
 });
@@ -163,5 +163,66 @@ $(document).ready(function(){
 
 <h1>AJ09 Main</h1>
 
+<div id="map"></div>
+```
+
+- aj10
+```html
+<meta charset="UTF-8">
+<style>
+	#map{
+		width:700px;
+		height:400px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+var map = null;
+function gomap(loc){
+	var latlng = null;
+	if(loc == 's'){
+		latlng = new kakao.maps.LatLng(37.55041692365908, 126.91037178013711);
+	}else if(loc == 'b'){
+		latlng = new kakao.maps.LatLng(35.17642453774257, 129.16669784099807);
+	}else if(loc == 'k'){
+		latlng = new kakao.maps.LatLng(35.16173425533525, 126.88758871719189);
+	}
+	map.panTo(latlng);
+};
+
+function displaymap(lat, lng){
+	var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.503376, 127.049776), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };
+
+	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다.
+};
+
+// #서울 37.55041692365908, 126.91037178013711
+// #부산 35.17642453774257, 129.16669784099807
+// #광주 35.16173425533525, 126.88758871719189
+
+$(document).ready(function(){
+	displaymap();
+	$('#s').click(function(){
+		gomap('s');
+	});
+	$('#b').click(function(){
+		gomap('b');
+	});
+	$('#k').click(function(){
+		gomap('k');
+	});
+
+});
+
+</script>
+
+<h1>AJ10 Main</h1>
+<button id="s">Seoul</button>
+<button id="b">Busan</button>
+<button id="k">kwangju</button>
 <div id="map"></div>
 ```
