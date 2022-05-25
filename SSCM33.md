@@ -178,14 +178,71 @@ $(document).ready(function(){
 </style>
 <script>
 var map = null;
+function displaymarker(pos){
+	$(pos).each(function(index,item){
+		var marker = new kakao.maps.Marker({
+			map:map,
+			position: new kakao.maps.LatLng(item.lat, item.lng)
+		});
+		var infowindow = new kakao.maps.InfoWindow({
+			content: item.content
+		});
+		kakao.maps.event.addListener(marker, 'mouseover', function() {
+			infowindow.open(map,marker);
+		});
+		kakao.maps.event.addListener(marker, 'mouseout', function() {
+			  infowindow.close();
+		});
+		kakao.maps.event.addListener(marker, 'click', function() {
+			  location.href=item.target;
+		});
+	});
+	
+};
+
+function getmarkers(loc){
+	var pos = null;
+	pos = [
+		{
+	        content: '<div>카카오1</div>', 
+	        lat: 37.56451692365908, 
+	        lng: 126.91457178013711,
+	        target: 'js01'
+	    },
+	    {
+	    	content: '<div>카카오2</div>', 
+	        lat: 37.57661692365908, 
+	        lng: 126.93667178013711,
+	        target: 'js02'
+	    },
+	    {
+	    	content: '<div>카카오3</div>', 
+	        lat: 37.58771692365908, 
+	        lng: 126.95777178013711,
+	        target: 'js03'
+	    },
+	    {
+	    	content: '<div>카카오4</div>', 
+	        lat: 37.59991692365908, 
+	        lng: 126.98997178013711,
+	        target: 'js04'
+	    }
+	];
+	displaymarker(pos);
+};
+
 function gomap(loc){
 	var latlng = null;
+	var positions = null;
 	if(loc == 's'){
 		latlng = new kakao.maps.LatLng(37.55041692365908, 126.91037178013711);
+		getmarkers('s');
 	}else if(loc == 'b'){
 		latlng = new kakao.maps.LatLng(35.17642453774257, 129.16669784099807);
+		getmarkers('b');
 	}else if(loc == 'k'){
 		latlng = new kakao.maps.LatLng(35.16173425533525, 126.88758871719189);
+		getmarkers('k');
 	}
 	map.panTo(latlng);
 };
@@ -225,4 +282,9 @@ $(document).ready(function(){
 <button id="b">Busan</button>
 <button id="k">kwangju</button>
 <div id="map"></div>
+```
+
+- aj10
+```html
+
 ```
