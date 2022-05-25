@@ -284,7 +284,104 @@ $(document).ready(function(){
 <div id="map"></div>
 ```
 
-- aj10
+- aj11
+```html
+<meta charset="UTF-8">
+<style>
+	#map{
+		width:700px;
+		height:400px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+var map = null;
+function displaymarker(pos){
+	$(pos).each(function(index,item){
+		var marker = new kakao.maps.Marker({
+			map:map,
+			position: new kakao.maps.LatLng(item.lat, item.lng)
+		});
+		var infowindow = new kakao.maps.InfoWindow({
+			content: item.content
+		});
+		kakao.maps.event.addListener(marker, 'mouseover', function() {
+			infowindow.open(map,marker);
+		});
+		kakao.maps.event.addListener(marker, 'mouseout', function() {
+			  infowindow.close();
+		});
+		kakao.maps.event.addListener(marker, 'click', function() {
+			  location.href=item.target;
+		});
+	});
+	
+};
+
+function getmarkers(loc){
+	$.ajax({
+		url:'getmarkers',
+		data:{'loc':loc},
+		success:function(data){
+			displaymarker(data);
+		}
+	});
+};
+
+function gomap(loc){
+	var latlng = null;
+	var positions = null;
+	if(loc == 's'){
+		latlng = new kakao.maps.LatLng(37.55041692365908, 126.91037178013711);
+		getmarkers('s');
+	}else if(loc == 'b'){
+		latlng = new kakao.maps.LatLng(35.17642453774257, 129.16669784099807);
+		getmarkers('b');
+	}else if(loc == 'k'){
+		latlng = new kakao.maps.LatLng(35.16173425533525, 126.88758871719189);
+		getmarkers('k');
+	}
+	map.panTo(latlng);
+};
+
+function displaymap(lat, lng){
+	var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.503376, 127.049776), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };
+
+	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다.
+};
+
+// #서울 37.55041692365908, 126.91037178013711
+// #부산 35.17642453774257, 129.16669784099807
+// #광주 35.16173425533525, 126.88758871719189
+
+$(document).ready(function(){
+	displaymap();
+	$('#s').click(function(){
+		gomap('s');
+	});
+	$('#b').click(function(){
+		gomap('b');
+	});
+	$('#k').click(function(){
+		gomap('k');
+	});
+
+});
+
+</script>
+
+<h1>AJ11 Main</h1>
+<button id="s">Seoul</button>
+<button id="b">Busan</button>
+<button id="k">kwangju</button>
+<div id="map"></div>
+```
+
+- aj12
 ```html
 
 ```
