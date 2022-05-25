@@ -383,5 +383,37 @@ $(document).ready(function(){
 
 - aj12
 ```html
+<meta charset="UTF-8">
 
+<script>
+function display(data){
+	$('h3').text(data);
+};
+
+function getdata(loc){
+	
+	$.ajax({
+		url:'https://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa',
+		data:{'serviceKey':'','pageNo':'', 'numOfRows':'', 
+			'dataType':'', 'regId':loc,'tmFc':'202205250600'},
+		success:function(data){
+			alert(data);
+		}
+	});
+	
+};
+
+$(document).ready(function() {
+	$('#s').click(function(){
+		getdata('11B0000');
+	});
+	$('#i').click(function(){
+		getdata('11D10000');
+	});
+});
+</script>
+<h1>AJ12 Main</h1>
+<button id="s">Seoul</button>
+<button id="i">Incheon</button>
+<div id="result"></div>
 ```
