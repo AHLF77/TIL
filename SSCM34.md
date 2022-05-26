@@ -554,3 +554,42 @@ public class UserVO {
 ```
 
 ### Day013
+#### com.frame
+- Dao(interface)
+```java
+package com.frame;
+
+import java.util.List;
+
+public interface Dao<K,V> {
+	public void insert(V v);
+	public void delete(K k);
+	public void update(V v);
+	public V select(K k);
+	public List select();
+}
+```
+
+- Service(interface)
+```java
+package com.frame;
+
+import java.util.List;
+
+public interface Service<K,V> {
+	public void register(V v);
+	public void remove(K k);
+	public void modify(V v);
+	public V get(K k);
+	public List<V> get();
+}
+
+```
+
+#### com.test
+
+
+#### com.user
+
+
+#### com.vo
