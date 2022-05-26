@@ -413,7 +413,76 @@ public interface Service<V> {
 ```
 
 #### com.multi.user
+- UserDao
+```java
+package com.multi.user;
 
+import com.multi.frame.Dao;
+import com.multi.vo.UserVO;
+
+public class UserDao implements Dao<UserVO> {
+
+	@Override
+	public void insert(UserVO v) {
+		System.out.println("Inserted: "+v);
+	}
+	
+	
+}
+
+```
+
+- UserOracleDao
+```java
+package com.multi.user;
+
+import com.multi.frame.Dao;
+import com.multi.vo.UserVO;
+
+public class UserOracleDao implements Dao<UserVO> {
+
+	@Override
+	public void insert(UserVO v) {
+		System.out.println("Inserted Oracle: "+v);
+	}
+
+}
+
+```
+
+- UserService
+```java
+package com.multi.user;
+
+import com.multi.frame.Dao;
+import com.multi.frame.Service;
+import com.multi.vo.UserVO;
+
+public class UserService implements Service<UserVO> {
+
+	Dao<UserVO> dao;
+	
+	public Dao<UserVO> getDao() {
+		return dao;
+	}
+
+	public void setDao(Dao<UserVO> dao) {
+		this.dao = dao;
+	}
+
+	public UserService() {
+		dao = new UserDao();
+	}
+	
+	@Override
+	public void register(UserVO v) {
+		dao.insert(v);
+	}
+	
+	
+}
+
+```
 
 #### com.multi.vo
 - UserVO
