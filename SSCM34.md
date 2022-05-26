@@ -359,6 +359,62 @@ public interface TV {
 ```
 
 ### Day012
+#### com.multi.controller
+- controller
+```java
+package com.multi.controller;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.multi.frame.Service;
+import com.multi.user.UserService;
+import com.multi.vo.UserVO;
+
+public class Controller {
+
+	public static void main(String[] args) {
+		System.out.println("Spring Start .."); //스프링이 시작되는 곳 
+		
+		ApplicationContext factory =
+		new ClassPathXmlApplicationContext("spring.xml"); // xml 파일을 가지고
+		
+		//IoC (Inversion Of Control) 제어 역행 loosely coupled
+		//Service service = new UserService(); tightly coupled
+		Service service = (Service)factory.getBean("uservice");
+		
+		UserVO user = new UserVO("id01", "pwd01", "lee");
+		service.register(user);
+		
+	}
+
+}
+```
+
+#### com.multi.frame
+- Dao
+```java
+package com.multi.frame;
+
+public interface Dao<V> {
+	public void insert(V v);
+}
+
+```
+
+- Service
+```java
+package com.multi.frame;
+
+public interface Service<V> {
+	public void register(V v);
+}
+
+```
+
+#### com.multi.user
+
+
+#### com.multi.vo
 
 ### Day013
