@@ -110,14 +110,61 @@ public class UserVO {
 
 ```
 
-- com.multi.controller
+#### com.multi.controller
+- Controller
+```java
+package com.multi.controller;
 
-- com.multi.frame
+import com.multi.frame.Service;
+import com.multi.user.UserService;
+import com.multi.vo.UserVO;
 
-- com.multi.user
+public class Controller {
 
-- com.multi.vo
+	public static void main(String[] args) {
+		Service service = null;
+		
+		service = new UserService();
+		
+		UserVO user = new UserVO("id01", "pwd01", "lee");
+		service.register(user);
+		
+	}
 
+}
+```
+#### com.multi.frame
+- Dao
+```java
+package com.multi.frame;
+
+public interface Dao<V> {
+	public void insert(V v);
+}
+
+```
+
+- Service
+```java
+package com.multi.frame;
+
+public interface Service<V> {
+	public void register(V v);
+}
+
+```
+
+#### com.multi.user
+- 
+```java
+
+```
+
+#### com.multi.vo
+- 
+```java
+
+```
 
 ### Day011
 
