@@ -13,7 +13,6 @@
 
 ### Day01
 #### com.multi
-
 - controller
 ```java
 package com.multi;
@@ -30,6 +29,87 @@ public class Controller {
 
 }
 ````
+
+- dao
+```java
+package com.multi;
+
+public class Dao {
+	public void insert(UserVO user) {
+		//SQL DB Insert
+		System.out.println("Inserted: "+user);
+	}
+}
+```
+
+- Service
+```java
+package com.multi;
+
+public class Service {
+	Dao dao;
+	
+	public Service() {
+		dao = new Dao();
+	}
+	public void register(UserVO user){
+		dao.insert(user);
+	}
+}
+```
+
+- UserVo
+```java
+package com.multi;
+
+public class UserVO {
+	private String id;
+	private String pwd;
+	private String name;
+	
+	public UserVO() {
+	
+	}
+
+	public UserVO(String id, String pwd, String name) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVO [id=" + id + ", pwd=" + pwd + ", name=" + name + "]";
+	}
+	
+}
+
+```
+
 - com.multi.controller
 
 - com.multi.frame
