@@ -134,7 +134,7 @@ public class Controller {
 }
 ```
 #### com.multi.frame
-- Dao
+- Dao(interface)
 ```java
 package com.multi.frame;
 
@@ -144,7 +144,7 @@ public interface Dao<V> {
 
 ```
 
-- Service
+- Service(interface)
 ```java
 package com.multi.frame;
 
@@ -155,15 +155,99 @@ public interface Service<V> {
 ```
 
 #### com.multi.user
-- 
+- UserDao
 ```java
+package com.multi.user;
 
+import com.multi.frame.Dao;
+import com.multi.vo.UserVO;
+
+public class UserDao implements Dao<UserVO> {
+
+	@Override
+	public void insert(UserVO v) {
+		System.out.println("Inserted: "+v);
+	}
+	
+	
+}
+```
+
+- UserService
+```java
+package com.multi.user;
+
+import com.multi.frame.Dao;
+import com.multi.frame.Service;
+import com.multi.vo.UserVO;
+
+public class UserService implements Service<UserVO> {
+
+	Dao<UserVO> dao;
+	
+	public UserService() {
+		dao = new UserDao();
+	}
+	
+	@Override
+	public void register(UserVO v) {
+		dao.insert(v);
+	}
+	
+	
+}
 ```
 
 #### com.multi.vo
-- 
+- UserVO
 ```java
+package com.multi.vo;
 
+public class UserVO {
+	private String id;
+	private String pwd;
+	private String name;
+	
+	public UserVO() {
+	
+	}
+
+	public UserVO(String id, String pwd, String name) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVO [id=" + id + ", pwd=" + pwd + ", name=" + name + "]";
+	}
+	
+}
 ```
 
 ### Day011
