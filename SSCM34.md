@@ -587,9 +587,55 @@ public interface Service<K,V> {
 ```
 
 #### com.test
+- Service
+```java
 
+```
+
+- Service
+```java
+
+```
+
+- Service
+```java
+
+```
+
+- Service
+```java
+
+```
 
 #### com.user
+- Service
+```java
 
+```
+
+- Service
+```java
+
+```
 
 #### com.vo
+- Service
+```java
+
+```
+
+- spring
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 		
+ 		<bean id="udao" class="com.user.UserDao"></bean>
+ 		<bean id="uservice" class="com.user.UserService">
+ 			<property name="dao" ref="udao"></property>
+ 		
+ 		</bean>
+ 		
+</beans>
+```
