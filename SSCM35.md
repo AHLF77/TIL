@@ -378,6 +378,111 @@ public class UserService implements Service<String, UserVO> {
 
 ```
 
+#### com.vo
+- ProductVO
+```java
+package com.vo;
+
+public class ProductVO {
+	private int id;
+	private String name;
+	private int price;
+	
+	public ProductVO() {
+		
+	}
+
+	public ProductVO(int id, String name, int price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductVO [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
+	
+	
+}
+
+```
+- UserVO
+```java
+package com.vo;
+
+public class UserVO {
+	private String id;
+	private String pwd;
+	private String name;
+	
+	public UserVO() {
+	
+	}
+
+	public UserVO(String id, String pwd, String name) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVO [id=" + id + ", pwd=" + pwd + ", name=" + name + "]";
+	}
+	
+}
+
+```
+
 ### day021
 
 
