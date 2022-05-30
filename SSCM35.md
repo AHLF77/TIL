@@ -1141,6 +1141,103 @@ public class UserService implements Service<String, UserVO> {
 }
 
 ```
+#### com.vo
+- ProductVO
+```java
+package com.user;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.frame.Dao;
+import com.vo.UserVO;
+
+@Repository("userDao")
+public class UserDao implements Dao<String, UserVO> {
+
+	@Override
+	public void insert(UserVO v) {
+		System.out.println("Inserted: "+v);
+	}
+
+	@Override
+	public void delete(String k) {
+		System.out.println("Deleted: "+k);
+	}
+
+	@Override
+	public void update(UserVO v) {
+		System.out.println("Updated: "+v);
+	}
+
+	@Override
+	public UserVO select(String k) {
+		UserVO user = new UserVO(k,"pwd02","kim");
+		return user;
+	}
+
+	@Override
+	public List<UserVO> select() {
+		ArrayList<UserVO> list = new ArrayList<UserVO>();
+		list.add(new UserVO("id01","pwd01","lee"));
+		list.add(new UserVO("id02","pwd02","kim"));
+		list.add(new UserVO("id03","pwd03","han"));
+		list.add(new UserVO("id04","pwd04","yang"));
+		list.add(new UserVO("id05","pwd05","james"));
+		return list;
+	}
+
+}
+
+```
+- UserVO
+```java
+package com.user;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.frame.Dao;
+import com.frame.Service;
+import com.vo.UserVO;
+@org.springframework.stereotype.Service("uservice")
+public class UserService implements Service<String, UserVO> {
+
+	@Autowired
+	Dao<String, UserVO> dao;
+	
+	@Override
+	public void register(UserVO v) {
+		dao.insert(v);
+	}
+
+	@Override
+	public void remove(String k) {
+		dao.delete(k);
+	}
+
+	@Override
+	public void modify(UserVO v) {
+		dao.update(v);
+	}
+
+	@Override
+	public UserVO get(String k) {
+		return dao.select(k);
+	}
+
+	@Override
+	public List<UserVO> get() {
+		return dao.select();
+	}
+
+}
+
+```
 
 - spring
 ```xml
@@ -1158,7 +1255,122 @@ public class UserService implements Service<String, UserVO> {
 </beans>
 ```
 ### day022
+#### com.frame
+- Dao
+```java
+package com.frame;
 
+import java.util.List;
+
+public interface Dao<K,V> {
+	public void insert(V v);
+	public void delete(K k);
+	public void update(V v);
+	public V select(K k);
+	public List select();
+}
+
+```
+- LoggerAdvice
+```java
+package com.frame;
+
+import java.util.Date;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+
+public class LoggerAdvice {
+	public void beforeLog(JoinPoint jp){
+		Object [] arg = jp.getArgs();
+		Signature si = jp.getSignature();
+		
+		Date d = new Date();
+		System.out.println(d.toString()+
+				" Before Log:"+si.getName()+":"+
+				":"+arg[0]);
+	}
+	public void afterLog(JoinPoint jp){
+		Signature si = jp.getSignature();
+		System.out.println("After Log:"+si.getName());
+	}
+	public void afterReturnLog(JoinPoint jp,Object returnVal){
+		Signature si = jp.getSignature();
+		System.out.println("afterReturnLog:"+si.getName()+":"+returnVal);
+	}
+	public void afterEx(JoinPoint jp, Exception exObj){
+		Signature si = jp.getSignature();
+		System.out.println("afterEx Log:"+si.getName());
+		System.out.println("Exception:"+exObj.getMessage());
+	}
+	public Object around(ProceedingJoinPoint process){
+		Object result = null;
+		Signature si = process.getSignature();	
+		String className = process.getTarget().toString(); 
+		long start = System.currentTimeMillis();
+		//System.out.println("Before:"+si.getName()+" "+className);
+		try {
+			result = process.proceed();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(
+				si.getName()+" 함수 실행 시간 "+(end-start)+"ms");
+		//System.out.println("After:"+si.getName()+" "+className);
+		return result;
+	}
+}
+```
+
+- Service
+```java
+package com.frame;
+
+import java.util.List;
+
+public interface Service<K,V> {
+	public void register(V v);
+	public void remove(K k);
+	public void modify(V v);
+	public V get(K k);
+	public List<V> get();
+}
+
+```
+
+- spring
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       ">
+	<context:component-scan base-package="com.*"/>
+
+	<bean id="logAdvice" class="com.frame.LoggerAdvice"/>
+ 	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.user.*Service.*(..))" 
+		id="mypoint"/>
+		<aop:aspect id="MyAspect" ref="logAdvice">
+			<aop:after method="afterLog"  pointcut-ref="mypoint"/>
+		</aop:aspect>
+	</aop:config>
+ 	
+</beans>
+```
+- <aop:before method="beforeLog"  pointcut-ref="mypoint"/>
+- <aop:around method="around"  pointcut-ref="mypoint"/>
 
 ### day023
 
