@@ -279,6 +279,105 @@ public class ProductUpdateTest {
 
 ```
 
+#### com.user
+- UserDao
+```java
+package com.user;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.frame.Dao;
+import com.vo.UserVO;
+
+public class UserDao implements Dao<String, UserVO> {
+
+	@Override
+	public void insert(UserVO v) {
+		System.out.println("Inserted: "+v);
+	}
+
+	@Override
+	public void delete(String k) {
+		System.out.println("Deleted: "+k);
+	}
+
+	@Override
+	public void update(UserVO v) {
+		System.out.println("Updated: "+v);
+	}
+
+	@Override
+	public UserVO select(String k) {
+		UserVO user = new UserVO(k,"pwd02","kim");
+		return user;
+	}
+
+	@Override
+	public List<UserVO> select() {
+		ArrayList<UserVO> list = new ArrayList<UserVO>();
+		list.add(new UserVO("id01","pwd01","lee"));
+		list.add(new UserVO("id02","pwd02","kim"));
+		list.add(new UserVO("id03","pwd03","han"));
+		list.add(new UserVO("id04","pwd04","yang"));
+		list.add(new UserVO("id05","pwd05","james"));
+		return list;
+	}
+
+}
+
+```
+- UserService
+```java
+package com.user;
+
+import java.util.List;
+
+import com.frame.Dao;
+import com.frame.Service;
+import com.vo.UserVO;
+
+public class UserService implements Service<String, UserVO> {
+
+	Dao<String, UserVO> dao;
+	
+	public Dao<String, UserVO> getDao() {
+		return dao;
+	}
+
+	public void setDao(Dao<String, UserVO> dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	public void register(UserVO v) {
+		dao.insert(v);
+	}
+
+	@Override
+	public void remove(String k) {
+		dao.delete(k);
+	}
+
+	@Override
+	public void modify(UserVO v) {
+		dao.update(v);
+	}
+
+	@Override
+	public UserVO get(String k) {
+		return dao.select(k);
+	}
+
+	@Override
+	public List<UserVO> get() {
+		return dao.select();
+	}
+
+}
+
+```
+
 ### day021
 
 
