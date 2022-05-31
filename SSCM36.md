@@ -379,3 +379,206 @@ public class ProductUpdateTest {
 
 }
 ```
+
+- UserDelete
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.UserVO;
+
+public class UserDeleteTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<String, UserVO> service = 
+				(Service<String, UserVO>) factory.getBean("uservice");
+	
+		try {
+			service.remove("id88");
+		} catch (Exception e) {
+			System.out.println("해당 아이디는 존재하지 않습니다.");
+			//e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- UserInsert
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.UserVO;
+
+public class UserInsertTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<String, UserVO> service = 
+				(Service<String, UserVO>) factory.getBean("uservice");
+	
+		UserVO u = new UserVO("id89","pwd89","lee");
+		try {
+			service.register(u); // 등록 시 주의 해야해 라는 문구
+		} catch (Exception e) {
+			System.out.println("입력 오류가 발생하였습니다.");
+			//e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- UserSearchName
+```java
+package com.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.service.UserService;
+import com.vo.UserVO;
+
+public class UserSearchNameTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+			
+		UserService service = 
+				(UserService) factory.getBean("uservice");
+		
+		List<UserVO> list = null;
+		try {
+			list = service.searchname("말");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(UserVO userVO : list) {
+			System.out.println(userVO);
+		}
+	}
+
+}
+```
+
+- UserSelectAll
+```java
+package com.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.service.UserService;
+import com.vo.UserVO;
+
+public class UserSelectAllTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		//Service<String,UserVO> service = 
+		//(Service<String, UserVO>) factory.getBean("uservice");
+		
+		UserService service = 
+				(UserService) factory.getBean("uservice");
+		
+		List<UserVO> list = null;
+		try {
+			list = service.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(UserVO userVO : list) {
+			System.out.println(userVO);
+		}
+	}
+
+}
+```
+
+- UserSelect
+```java
+package com.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.UserVO;
+
+public class UserSelectTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<String, UserVO> service = 
+				(Service<String, UserVO>) factory.getBean("uservice");
+		
+		UserVO user = null;
+		try {
+			user = service.get("id89");
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+			System.out.println(user);
+
+	}
+
+}
+
+```
+
+- UserUpdate
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.UserVO;
+
+public class UserUpdateTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<String, UserVO> service = 
+				(Service<String, UserVO>) factory.getBean("uservice");
+	
+		UserVO u = new UserVO("id89", "pwd45","yang");
+		try {
+			service.modify(u);
+		} catch (Exception e) {
+			e.printStackTrace();	
+		}
+	}
+
+}
+```
