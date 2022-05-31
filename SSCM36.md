@@ -83,3 +83,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 </mapper>
 ```
+
+#### com.frame
+- Service(interface)
+```java
+
+```
