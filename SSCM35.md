@@ -2559,8 +2559,142 @@ public class UserService implements Service<String, UserVO> {
 ```
 
 #### com.test
+- ProductDelete
+```java
+package com.test;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductDeleteTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ProductVO> service = 
+				(Service<Integer, ProductVO>) factory.getBean("pservice");
+	
+		service.remove(1);
+	}
+
+}
+
+```
+- ProductInsert
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductInsertTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<String, ProductVO> service = 
+				(Service<String, ProductVO>) factory.getBean("pservice");
+	
+		ProductVO p = new ProductVO("shirts", 35000, 1.6);
+		service.register(p);
+	}
+
+}
+
+```
+- ProductSelectAll
+```java
+package com.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductSelectAllTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<String, ProductVO> service = 
+				(Service<String, ProductVO>) factory.getBean("pservice");
+		
+		List<ProductVO> list = null;
+		list = service.get();
+		
+		for(ProductVO productVO : list) {
+			System.out.println(productVO);
+		}
+	}
+
+}
+```
+- ProductSelect
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductSelectTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ProductVO> service = 
+				(Service<Integer, ProductVO>) factory.getBean("pservice");
+		
+		ProductVO product = null;
+		product = service.get(2);
+		
+			System.out.println(product);
+
+	}
+
+}
+
+```
+- ProductUpdate
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductUpdateTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ProductVO> service = 
+				(Service<Integer, ProductVO>) factory.getBean("pservice");
+	
+		ProductVO p = new ProductVO(4, "jeans3", 60000, 1.1);
+		service.modify(p);
+	}
+
+}
+```
 
 #### com.vo
 - ProductVO
