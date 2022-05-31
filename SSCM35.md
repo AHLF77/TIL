@@ -2465,14 +2465,106 @@ public interface UserMapper {
 ```
 
 #### com.service
+- ProductService(interface)
+```java
+package com.service;
 
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.frame.Service;
+import com.mapper.ProductMapper;
+import com.vo.ProductVO;
+
+@org.springframework.stereotype.Service("pservice")
+public class ProductService implements Service<Integer, ProductVO>{
+
+	@Autowired
+	ProductMapper dao;
+
+	@Override
+	public void register(ProductVO v) {
+		dao.insert(v);
+	}
+
+	@Override
+	public void remove(Integer k) {
+		dao.delete(k);
+	}
+
+	@Override
+	public void modify(ProductVO v) {
+		dao.update(v);
+	}
+
+	@Override
+	public ProductVO get(Integer k) {
+		return dao.select(k);
+	}
+
+	@Override
+	public List<ProductVO> get() {
+		return dao.selectall();
+	}
+	
+	
+	
+}
+```
+
+- UserService(interface)
+```java
+package com.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.frame.Service;
+import com.mapper.UserMapper;
+import com.vo.UserVO;
+@org.springframework.stereotype.Service("uservice")
+public class UserService implements Service<String, UserVO> {
+
+	@Autowired
+	UserMapper dao;
+	
+	@Override
+	public void register(UserVO v) {
+		dao.insert(v);
+	}
+
+	@Override
+	public void remove(String k) {
+		dao.delete(k);
+	}
+
+	@Override
+	public void modify(UserVO v) {
+		dao.update(v);
+	}
+
+	@Override
+	public UserVO get(String k) {
+		return dao.select(k);
+	}
+
+	@Override
+	public List<UserVO> get() {
+		return dao.selectall();
+	}
+
+}
+```
 
 #### com.test
 
 
 
 #### com.vo
+
+
 
 - spring
 ```xml
