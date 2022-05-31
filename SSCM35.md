@@ -1855,10 +1855,205 @@ public class ProductService implements Service<Integer, ProductVO>{
 
 
 #### com.user
+- UserDao
+```java
+package com.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.frame.Dao;
+import com.vo.UserVO;
+
+@Repository("userDao")
+public class UserDao implements Dao<String, UserVO> {
+
+	@Override
+	public void insert(UserVO v) {
+		System.out.println("Inserted: "+v);
+	}
+
+	@Override
+	public void delete(String k) {
+		System.out.println("Deleted: "+k);
+	}
+
+	@Override
+	public void update(UserVO v) {
+		System.out.println("Updated: "+v);
+	}
+
+	@Override
+	public UserVO select(String k) {
+		UserVO user = new UserVO(k,"pwd02","kim");
+		return user;
+	}
+
+	@Override
+	public List<UserVO> select() {
+		ArrayList<UserVO> list = new ArrayList<UserVO>();
+		list.add(new UserVO("id01","pwd01","lee"));
+		list.add(new UserVO("id02","pwd02","kim"));
+		list.add(new UserVO("id03","pwd03","han"));
+		list.add(new UserVO("id04","pwd04","yang"));
+		list.add(new UserVO("id05","pwd05","james"));
+		return list;
+	}
+
+}
+```
+
+- UserService
+```java
+package com.user;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.frame.Dao;
+import com.frame.Service;
+import com.vo.UserVO;
+@org.springframework.stereotype.Service("uservice")
+public class UserService implements Service<String, UserVO> {
+
+	@Autowired
+	Dao<String, UserVO> dao;
+	
+	@Override
+	public void register(UserVO v) {
+		dao.insert(v);
+	}
+
+	@Override
+	public void remove(String k) {
+		dao.delete(k);
+	}
+
+	@Override
+	public void modify(UserVO v) {
+		dao.update(v);
+	}
+
+	@Override
+	public UserVO get(String k) {
+		return dao.select(k);
+	}
+
+	@Override
+	public List<UserVO> get() {
+		return dao.select();
+	}
+
+}
+```
 
 #### com.vo
+- ProductVO
+```java
+package com.vo;
 
+public class ProductVO {
+	private int id;
+	private String name;
+	private int price;
+	
+	public ProductVO() {
+		
+	}
 
+	public ProductVO(int id, String name, int price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductVO [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
+	
+	
+}
+
+```
+
+- UserVO
+```java
+package com.vo;
+
+public class UserVO {
+	private String id;
+	private String pwd;
+	private String name;
+	
+	public UserVO() {
+	
+	}
+
+	public UserVO(String id, String pwd, String name) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVO [id=" + id + ", pwd=" + pwd + ", name=" + name + "]";
+	}
+	
+}
+```
 
 ### day024
