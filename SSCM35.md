@@ -2428,8 +2428,41 @@ public interface Service<K,V> {
 ```
 
 #### com.mapper
+- ProductMapper(interface)
+```java
+package com.mapper;
 
+import java.util.List;
 
+import com.vo.ProductVO;
+
+public interface ProductMapper {
+	public void insert(ProductVO obj);
+	public void delete(int obj);
+	public void update(ProductVO obj);
+	
+	public ProductVO select(int obj);
+	public List<ProductVO> selectall();
+}
+```
+- UserMapper(interface)
+```java
+package com.mapper;
+
+import java.util.List;
+
+import com.vo.UserVO;
+
+public interface UserMapper {
+	public void insert(UserVO obj);
+	public void delete(String obj);
+	public void update(UserVO obj);
+	
+	public UserVO select(String obj);
+	public List<UserVO> selectall();
+	
+}
+```
 
 #### com.service
 
@@ -2440,3 +2473,58 @@ public interface Service<K,V> {
 
 
 #### com.vo
+
+- spring
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       ">
+	
+	<context:component-scan base-package="com.*"/>
+ 	<tx:annotation-driven transaction-manager="txManager"/> 
+ 	
+ 	<!-- 1. Database Setting -->
+ 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+ 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/shopdb?serverTimezone=Asia/Seoul"/>
+ 		<property name="username" value="admin1"/>
+ 		<property name="password" value="111111"/>
+ 	</bean>
+
+ 	<!-- 2. Transaction Setting -->
+ 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+ 		<property name="dataSource" ref="dataSource"/>
+ 	</bean>
+ 	
+ 	<!-- 3. MyBatis Setting -->
+ 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+ 		<property name="dataSource" ref="dataSource"/>
+ 		<property name="configLocation" value="classpath:com/config/mybatis.xml"/>
+ 	</bean>
+ 	
+ 	<!-- 3-1. Mapper Setting -->
+ 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+ 		<property name="basePackage" value="com.mapper"/>
+ 	</bean>
+ 	
+ 	<!-- 4. Spring Mybatis Connect -->
+ 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+ 		<constructor-arg ref="sqlSessionFactory"/>
+ 	</bean>
+
+ 	
+</beans>
+```
