@@ -1492,3 +1492,27 @@ public class ItemVO {
 	
 }
 ```
+
+### workbench
+#### shopdb(item)
+```sql
+SELECT * FROM ITEM;
+CREATE TABLE item(
+   id INT,
+   name VARCHAR(20) NOT NULL,
+   price INT  NOT NULL,
+   imgname VARCHAR(20),
+   regdate DATE  NOT NULL
+);
+ALTER TABLE item ADD PRIMARY KEY (id);
+ALTER TABLE item MODIFY id INT AUTO_INCREMENT;
+ALTER TABLE item AUTO_INCREMENT = 1000;
+
+INSERT INTO item (name,price,imgname,regdate) VALUES('pants1',10000,'pants1.jpg',CURRENT_DATE());
+INSERT INTO item (name,price,imgname,regdate) VALUES('pants2',20000,'pants2.jpg',CURRENT_DATE());
+INSERT INTO item (name,price,imgname,regdate) VALUES('pants3',30000,'pants3.jpg',CURRENT_DATE());
+INSERT INTO item (name,price,imgname,regdate) VALUES('pants4',40000,'pants4.jpg',CURRENT_DATE());
+INSERT INTO item VALUES(NULL,'pants5',50000,'pants5.jpg',CURRENT_DATE());
+
+SELECT * FROM ITEM WHERE PRICE BETWEEN 10000 AND 30000;
+```
