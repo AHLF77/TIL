@@ -1682,6 +1682,87 @@ public class ProductVO {
 - <aop:around method="around"  pointcut-ref="mypoint"/>
 
 ### day023
+#### com.frame
+- Dao(interface)
+```java
+package com.frame;
+
+import java.util.List;
+
+public interface Dao<K,V> {
+	public void insert(V v);
+	public void delete(K k);
+	public void update(V v);
+	public V select(K k);
+	public List select();
+}
+
+```
+- LoggerAdvice
+```java
+package com.frame;
+
+import java.util.Date;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
+public class LoggerAdvice {
+		@Around("execution(* com.*.*Service.*(..))")
+	public Object around(ProceedingJoinPoint process){
+		Object result = null;
+		Signature si = process.getSignature();	
+		String className = process.getTarget().toString(); 
+		long start = System.currentTimeMillis();
+		System.out.println("***Before:"+si.getName()+" "+className);
+		try {
+			result = process.proceed();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(
+				si.getName()+" 함수 실행 시간 "+(end-start)+"ms");
+		System.out.println("***After:"+si.getName()+" "+className);
+		return result;
+	}
+}
+
+```
+- Service(interface)
+```java
+package com.frame;
+
+import java.util.List;
+
+public interface Service<K,V> {
+	public void register(V v);
+	public void remove(K k);
+	public void modify(V v);
+	public V get(K k);
+	public List<V> get();
+}
+```
+
+#### com.product
+
+
+#### com.test
+
+
+#### com.user
+
+
+#### com.vo
+
 
 
 ### day024
