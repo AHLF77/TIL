@@ -1104,14 +1104,102 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 ```
 
 #### com.frame
+- Service(interface)
+```java
+package com.frame;
 
+import java.util.List;
+
+public interface Service<K,V> {
+	public void register(V v) throws Exception;
+	public void remove(K k) throws Exception;
+	public void modify(V v) throws Exception;
+	public V get(K k) throws Exception;
+	public List<V> get() throws Exception;
+}
+```
 
 #### com.mapper
+- ItemMapper(interface)
+```java
+package com.mapper;
 
+import java.util.Date;
+import java.util.List;
 
+import com.vo.ItemVO;
+
+public interface ItemMapper {
+
+	public void insert(ItemVO obj) throws Exception;
+	public void delete(int obj) throws Exception;
+	public void update(ItemVO obj) throws Exception;
+	
+	public ItemVO select(int obj) throws Exception;
+	public List<ItemVO> selectall() throws Exception;
+	public List<ItemVO> searchname(String name) throws Exception;
+	public List<ItemVO> getprice(Integer price1, Integer price2) throws Exception;
+	public List<ItemVO> getrdate(Date regdate) throws Exception;
+}
+```
 #### com.service
+- ItemService
+```java
+package com.service;
 
+import java.util.Date;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.frame.Service;
+import com.mapper.ItemMapper;
+import com.vo.ItemVO;
+
+@org.springframework.stereotype.Service("iservice")
+public class ItemService implements Service<Integer, ItemVO>{
+
+	@Autowired
+	ItemMapper dao;
+	
+	@Override
+	public void register(ItemVO v) throws Exception {
+		dao.insert(v);
+	}
+
+	@Override
+	public void remove(Integer k) throws Exception {
+		dao.delete(k);
+	}
+
+	@Override
+	public void modify(ItemVO v) throws Exception {
+		dao.update(v);
+	}
+
+	@Override
+	public ItemVO get(Integer k) throws Exception {
+		return dao.select(k);
+	}
+
+	@Override
+	public List<ItemVO> get() throws Exception {
+		return dao.selectall();
+	}
+	
+	public List<ItemVO> searchname(String name) throws Exception{
+		return dao.searchname(name);
+	}
+
+	public List<ItemVO> getprice(int price1, int price2) throws Exception{
+		return dao.getprice(price1, price2);
+	}
+	
+	public List<ItemVO> getrdate(Date getrdate) throws Exception{
+		return dao.getrdate(getrdate);
+	}
+}
+```
 #### com.test
 
 
