@@ -87,5 +87,56 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 #### com.frame
 - Service(interface)
 ```java
+package com.frame;
 
+import java.util.List;
+
+public interface Service<K,V> {
+	public void register(V v) throws Exception;
+	public void remove(K k) throws Exception;
+	public void modify(V v) throws Exception;
+	public V get(K k) throws Exception;
+	public List<V> get() throws Exception;
+}
+```
+
+#### com.mapper
+- ProductMapper(interface)
+```java
+package com.mapper;
+
+import java.util.List;
+
+import com.vo.ProductVO;
+
+public interface ProductMapper {
+	public void insert(ProductVO obj) throws Exception;
+	public void delete(int obj) throws Exception;
+	public void update(ProductVO obj) throws Exception;
+	
+	public ProductVO select(int obj) throws Exception;
+	public List<ProductVO> selectall() throws Exception;
+	public List<ProductVO> searchname(String name) throws Exception;
+	public List<ProductVO> getrate(double rate) throws Exception;
+
+}
+```
+
+- UserMapper(interface)
+```java
+package com.mapper;
+
+import java.util.List;
+
+import com.vo.UserVO;
+
+public interface UserMapper {
+	public void insert(UserVO obj) throws Exception;
+	public void delete(String obj) throws Exception;
+	public void update(UserVO obj) throws Exception;
+	
+	public UserVO select(String obj) throws Exception;
+	public List<UserVO> selectall() throws Exception;
+	public List<UserVO> searchname(String name) throws Exception;
+}
 ```
