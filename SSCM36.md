@@ -318,10 +318,64 @@ public class ProductSelectAllTest {
 
 - ProductSelect
 ```java
+package com.test;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductSelectTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ProductVO> service = 
+				(Service<Integer, ProductVO>) factory.getBean("pservice");
+		
+		ProductVO product = null;
+		try {
+			product = service.get(2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(product);
+
+	}
+
+}
 ```
 
 - ProductUpdate
 ```java
+package com.test;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ProductVO;
+
+public class ProductUpdateTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ProductVO> service = 
+				(Service<Integer, ProductVO>) factory.getBean("pservice");
+	
+		ProductVO p = new ProductVO(2, "jeans2", 10000, 2.8);
+		try {
+			service.modify(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+	}
+
+}
 ```
