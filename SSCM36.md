@@ -1201,7 +1201,151 @@ public class ItemService implements Service<Integer, ItemVO>{
 }
 ```
 #### com.test
+- ItemDelete
+```java
+package com.test;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ItemVO;
+
+public class ItemDeleteTest {
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ItemVO> service = 
+				(Service<Integer, ItemVO>) factory.getBean("iservice");
+	
+		try {
+			service.remove(1003);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+	}
+}
+```
+- ItemGetPrice
+```java
+package com.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.service.ItemService;
+import com.vo.ItemVO;
+
+public class ItemGetPriceTest {
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+		
+		ItemService service = 
+				(ItemService) factory.getBean("iservice");
+		
+		List<ItemVO> list = null;
+		try {
+			list = service.getprice(10000, 30000); // 제품 금액이 특정 구간(10000~30000)인 item을 검색
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(ItemVO itemVO : list) {
+			System.out.println(itemVO);
+		}
+	}
+
+}
+```
+
+- ItemGetRdate
+```java
+
+```
+
+- ItemInsert
+```java
+package com.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.frame.Service;
+import com.vo.ItemVO;
+
+public class ItemInsertTest {
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+	
+		Service<Integer, ItemVO> service = 
+				(Service<Integer, ItemVO>) factory.getBean("iservice");
+	
+		ItemVO i = new ItemVO("shirts1", 80000,"shirts1.png");
+		try {
+			service.register(i);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+	}
+}
+```
+
+- ItemSearchName
+```java
+package com.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.service.ItemService;
+import com.vo.ItemVO;
+
+public class ItemSearchNameTest {
+
+	public static void main(String[] args) {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+			
+		ItemService service = 
+				(ItemService) factory.getBean("iservice");
+		
+		List<ItemVO> list = null;
+		try {
+			list = service.searchname("i"); //Item 이름에 알파벳 검색
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(ItemVO itemVO : list) {
+			System.out.println(itemVO);
+		}
+	}
+}
+```
+
+- ItemSelectAll
+```java
+
+```
+
+- ItemSelect
+```java
+
+```
+
+- ItemUpdate
+```java
+
+```
 
 #### com.vo
 - ItemVO
