@@ -1051,7 +1051,7 @@ public class UserVO {
 ### day032
 #### com.config
 - mybatis
-```java
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
@@ -1068,7 +1068,7 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 ```
 
 - itemmapper
-```java
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
@@ -1097,7 +1097,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM ITEM WHERE PRICE BETWEEN #{param1} AND #{param2}
 	</select>
 	<select id="getrdate" parameterType="date" resultType="item">
-		SELECT * FROM ITEM WHERE REGDATE > #{regdate}
+		SELECT * FROM ITEM WHERE #{regdate} > REGDATE
 	</select>
 	
 </mapper>
@@ -1195,11 +1195,12 @@ public class ItemService implements Service<Integer, ItemVO>{
 		return dao.getprice(price1, price2);
 	}
 	
-	public List<ItemVO> getrdate(Date getrdate) throws Exception{
-		return dao.getrdate(getrdate);
+	public List<ItemVO> getrdate(Date regdate) throws Exception{
+		return dao.getrdate(regdate);
 	}
 }
 ```
+
 #### com.test
 - ItemDelete
 ```java
@@ -1265,7 +1266,42 @@ public class ItemGetPriceTest {
 
 - ItemGetRdate
 ```java
+package com.test;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.service.ItemService;
+import com.vo.ItemVO;
+
+
+public class ItemGetRdateTest {
+	public static void main(String[] args) {
+		
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("spring.xml");
+		
+		ItemService service = 
+				(ItemService) factory.getBean("iservice");
+		
+		
+		List<ItemVO> list = null;
+		try {
+			list = service.getrdate(Timestamp.valueOf(LocalDateTime.now()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(ItemVO itemVO : list) {
+			System.out.println(itemVO);
+		}
+	}
+
+}
 ```
 
 - ItemInsert
