@@ -321,15 +321,66 @@ public class CustVO {
 
 - custdetail
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Detail Page</h1>
+	<h3 th:text="${dcust.id}"></h3>
+	<h3 th:text="${dcust.pwd}"></h3>
+	<h3 th:text="${dcust.name}"></h3>
+	<a href="" th:href="@{/custdelete(id=${dcust.id})}">DELETE</a>
+	<a href="" th:href="@{/custupdate(id=${dcust.id})}">UPDATE</a>
+</body>
+</html>
 ```
 
 - custselect
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Select Page</h1>
+	<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${allcust}">
+				<td><a href="custdetail" th:href="@{/custdetail(id=${c.id})}" th:text="${c.id}">ID</a></td>
+				<td th:text="${c.name}">NAME</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
 ```
 
 - custupdate
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Update Page</h1>
+	<form action="custupdateimpl" method="post">
+	ID: <span th:text="${ucust.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${ucust.id}">
+	
+	PWD<input type="text" name="pwd" value="" th:value="${ucust.pwd}"><br>
+	NAME<input type="text" name="name" value="" th:value="${ucust.name}"><br>
+	<input type="submit" value="UPDATE"><br>
+	</form>
+</body>
+</html>
 ```
