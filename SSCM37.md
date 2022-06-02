@@ -412,14 +412,65 @@ class CustTests {
 
 - CustDeleteTests
 ```java
+package com.multi;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustDeleteTests {
+
+	@Autowired
+	CustBiz biz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			biz.remove("id23");
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
 
 - CustInsertTests
 ```java
+package com.multi;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustInsertTests {
+
+	@Autowired
+	CustBiz biz;
+	
+	@Test
+	void contextLoads() {
+		CustVO c = new CustVO("id23","pwd23","han");
+		try {
+			biz.register(c);
+			System.out.println("Register OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
 
 - CustSelectAllTests
