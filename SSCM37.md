@@ -475,18 +475,108 @@ class CustInsertTests {
 
 - CustSelectAllTests
 ```java
+package com.multi;
 
+import java.util.List;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustSelectAllTests {
+
+	@Autowired
+	CustBiz biz;
+	
+	@Test
+	void contextLoads() {
+		List<CustVO> list = null;
+		try {
+			list = biz.get();
+			System.out.println("Select All Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(CustVO custvo : list) {
+			System.out.println(custvo);
+		}
+		
+	}
+
+}
 ```
 
 - CustSelectTests
 ```java
+package com.multi;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustSelectTests {
+
+	@Autowired
+	CustBiz biz;
+	
+	@Test
+	void contextLoads() {
+		
+		CustVO cust = null;
+		try {
+			cust = biz.get("id22");
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(cust);
+		
+	}
 
 
+}
 ```
 
 - CustUpdateTests
 ```java
+package com.multi;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustUpdateTests {
+
+	@Autowired
+	CustBiz biz;
+	
+	@Test
+	void contextLoads() {
+		CustVO c = new CustVO("id22","pwd1752","malsook");
+		try {
+			biz.modify(c);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
