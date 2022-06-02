@@ -1097,7 +1097,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM ITEM WHERE PRICE BETWEEN #{param1} AND #{param2}
 	</select>
 	<select id="getrdate" parameterType="date" resultType="item">
-		SELECT * FROM ITEM WHERE #{regdate} > REGDATE
+		SELECT * FROM ITEM WHERE regdate >= #{date}
 	</select>
 	
 </mapper>
@@ -1111,6 +1111,7 @@ package com.frame;
 import java.util.List;
 
 public interface Service<K,V> {
+	/* 느슨하게 하기 위해*/
 	public void register(V v) throws Exception;
 	public void remove(K k) throws Exception;
 	public void modify(V v) throws Exception;
@@ -1139,7 +1140,7 @@ public interface ItemMapper {
 	public List<ItemVO> selectall() throws Exception;
 	public List<ItemVO> searchname(String name) throws Exception;
 	public List<ItemVO> getprice(Integer price1, Integer price2) throws Exception;
-	public List<ItemVO> getrdate(Date regdate) throws Exception;
+	public List<ItemVO> getrdate(String date) throws Exception;
 }
 ```
 #### com.service
@@ -1195,8 +1196,8 @@ public class ItemService implements Service<Integer, ItemVO>{
 		return dao.getprice(price1, price2);
 	}
 	
-	public List<ItemVO> getrdate(Date regdate) throws Exception{
-		return dao.getrdate(regdate);
+	public List<ItemVO> getrdate(String date) throws Exception{
+		return dao.getrdate(date);
 	}
 }
 ```
@@ -1291,7 +1292,7 @@ public class ItemGetRdateTest {
 		
 		List<ItemVO> list = null;
 		try {
-			list = service.getrdate(Timestamp.valueOf(LocalDateTime.now()));
+			list = service.getrdate("2022-05-29");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
