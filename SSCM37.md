@@ -249,3 +249,87 @@ public class CustVO {
 	private String name;
 }
 ```
+
+### src/main/resources
+#### templates
+- main
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Main Page</h1>
+	<h3><a href="custadd">Cust ADD</a></h3>
+	<h3><a href="custselect">Cust SELECT</a></h3>
+</body>
+</html>
+```
+
+- custadd
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Add Page</h1>
+	<form action="custaddimpl" method="post">
+	ID<input type="text" name="id"><br>
+	PWD<input type="text" name="pwd"><br>
+	NAME<input type="text" name="name"><br>
+	<input type="submit" value="REGISTER"><br>
+	</form>
+</body>
+</html>
+```
+
+- custaddfail
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Add Fail Page</h1>
+</body>
+</html>
+```
+
+- custaddok
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Add OK Page</h1>
+	<h3 th:text="${rcust.id}"></h3>
+	<h3 th:text="${rcust.name}"></h3>
+	<h3>님이 등록 되었습니다.</h3>
+</body>
+</html>
+```
+
+- custdetail
+```html
+
+```
+
+- custselect
+```html
+
+```
+
+- custupdate
+```html
+
+```
