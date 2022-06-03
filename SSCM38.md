@@ -53,3 +53,109 @@ public class ProductBiz implements Biz<Integer, ProductVO>{
 	
 }
 ```
+
+#### com.multi.controller
+- MainController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@Controller
+public class MainController {
+	
+	@Autowired
+	ProductBiz biz;
+	
+	@RequestMapping("/")
+	public String main() {
+		return "main";	
+	}
+	
+	@RequestMapping("productadd")
+	public String productadd() {
+		return "productadd";	
+	}
+	
+	@RequestMapping("productaddimpl")
+	public ModelAndView productaddimpl(ModelAndView mv, ProductVO prod) {
+		String next= "productaddok";
+		try {
+			biz.register(prod);
+			mv.addObject("rproduct",prod);
+		} catch (Exception e) {
+			next = "productaddfail";
+		}
+		mv.setViewName(next);
+		return mv;
+	}
+	
+	@RequestMapping("productselect")
+	public ModelAndView productselect(ModelAndView mv) {
+		List<ProductVO> list = null;
+		try {
+			list = biz.get();
+			mv.addObject("allproduct", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mv.setViewName("productselect");
+		return mv;	
+	}
+	
+	@RequestMapping("productdetail")
+	public ModelAndView productdetail(ModelAndView mv, Integer id) {
+		ProductVO prod = null;
+		try {
+			prod = biz.get(id);
+			mv.addObject("dproduct", prod);
+		} catch (Exception e) {
+			
+		}
+		mv.setViewName("productdetail");
+		return mv;	
+	}
+	
+	@RequestMapping("productdelete")
+	public String productdelete(Integer id) {
+		try {
+			biz.remove(id);
+		} catch (Exception e) {
+			
+		}
+		return "redirect:productselect";	
+	}
+	
+	@RequestMapping("productupdate")
+	public ModelAndView productupdate(ModelAndView mv, Integer id) {
+		ProductVO prod = null;
+		try {
+			prod = biz.get(id);
+			mv.addObject("uproduct", prod);
+		} catch (Exception e) {
+			
+		}
+		mv.setViewName("productupdate");
+		return mv;	
+	}
+	
+	@RequestMapping("productupdateimpl")
+	public String productupdateimpl(ProductVO prod) {
+		String next= "productupdateok";
+		try {
+			biz.modify(prod);
+		} catch (Exception e) {
+			
+		}
+		return "redirect:productdetail?id="+prod.getId();
+	}
+}
+```
