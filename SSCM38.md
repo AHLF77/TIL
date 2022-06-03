@@ -199,3 +199,31 @@ public interface ProductMapper {
 }
 
 ```
+
+#### com.multi.mapper
+- productmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ProductMapper">
+	
+	<select id="select" parameterType="int" resultType="productVO">
+		SELECT * FROM PRODUCT WHERE ID=#{id}
+	</select>
+	<select id="selectall" resultType="productVO">
+		SELECT * FROM PRODUCT ORDER BY 1
+	</select>
+	<insert id="insert" parameterType="productVO">
+		INSERT INTO PRODUCT VALUES (NULL, #{name},#{price},SYSDATE(),#{rate})
+	</insert>
+	<update id="update" parameterType="productVO">
+		UPDATE PRODUCT SET NAME=#{name}, PRICE=#{price}, RATE=#{rate} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM PRODUCT WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+```
