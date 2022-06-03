@@ -442,7 +442,34 @@ class ProductDeleteTests {
 
 - ProductInsertTests
 ```java
+package com.multi;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductInsertTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO p = new ProductVO(16,"sweater", 56000, null, 3.8);
+		try {
+			pbiz.register(p);
+			System.out.println("Register OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
 
 - ProductSelectAllTests
