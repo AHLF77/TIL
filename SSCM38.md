@@ -263,3 +263,21 @@ public class ProductVO {
 
 }
 ```
+
+### src/main/resources
+#### templates
+- main
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Main Page</h1>
+	<h3><a href="productadd">Product ADD</a></h3>
+	<h3><a href="productselect">Product SELECT</a></h3>
+</body>
+</html>
+```
