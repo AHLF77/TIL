@@ -281,3 +281,48 @@ public class ProductVO {
 </body>
 </html>
 ```
+
+- productadd
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Add Page</h1>
+	<form action="productaddimpl" method="post">
+	상품이름<input type="text" name="name"><br>
+	가격<input type="number" name="price"><br>
+	상품등급<input type="text" name="rate"><br>
+	<input type="submit" value="제출"><br>
+	</form>
+</body>
+</html>
+```
+
+- productaddfail
+```html
+
+```
+
+- productaddok
+```html
+
+```
+
+- productdetail
+```html
+
+```
+
+- productselect
+```html
+
+```
+
+- productupdate
+```html
+
+```
