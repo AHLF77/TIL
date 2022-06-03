@@ -550,5 +550,32 @@ class ProductSelectTests {
 
 - ProductUpdateTests
 ```java
+package com.multi;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductUpdateTests {
+
+	@Autowired
+	ProductBiz biz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO p = new ProductVO(2, "suit1", 90000, 5.8);
+		try {
+			biz.modify(p);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
