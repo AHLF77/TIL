@@ -405,3 +405,57 @@ public class ProductVO {
 </body>
 </html>
 ```
+
+### src/test/java
+#### com.multi
+- ProductDeleteTests
+```java
+package com.multi;
+
+import org.junit.jupiter.api.Test;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductDeleteTests {
+
+	@Autowired
+	ProductBiz biz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			biz.remove(8);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+```
+
+- ProductInsertTests
+```java
+
+```
+
+- ProductSelectAllTests
+```java
+
+```
+
+- ProductSelectTests
+```java
+
+```
+
+- ProductUpdateTests
+```java
+
+```
