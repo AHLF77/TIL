@@ -512,7 +512,40 @@ class ProductSelectAllTests {
 
 - ProductSelectTests
 ```java
+package com.multi;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelectTests {
+
+	@Autowired
+	ProductBiz biz;
+	
+	@Test
+	void contextLoads() {
+		
+		ProductVO prod = null;
+		try {
+			prod = biz.get(7);
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(prod);
+		
+	}
+
+
+}
 ```
 
 - ProductUpdateTests
