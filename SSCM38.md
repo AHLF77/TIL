@@ -355,10 +355,53 @@ public class ProductVO {
 
 - productselect
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Select Page</h1>
+	<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>REGDATE</th><th>RATE</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${allproduct}">
+				<td><a href="productdetail" th:href="@{/productdetail(id=${p.id})}" th:text="${p.id}">ID</a></td>
+				<td th:text="${p.name}">NAME</td>
+				<td th:text="${p.price}">PRICE</td>
+				<td th:text="${#dates.format(p.regdate, 'yyyy/MM/dd')}">REGDATE</td>
+				<td th:text="${p.rate}">RATE</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
 ```
 
 - productupdate
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Update Page</h1>
+	<form action="productupdateimpl" method="post">
+	아이디: <span th:text="${uproduct.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${uproduct.id}">
+	
+	이름:<input type="text" name="name" value="" th:value="${uproduct.name}"><br>
+	상품가격: <input type="text" name="price" value="" th:value="${uproduct.price}"><br>
+	등록일짜: <span th:text="${#dates.format(uproduct.regdate, 'yyyy/MM/dd')}"></span><br>
+	상품 등급: <input type="text" name="rate" value="" th:value="${uproduct.rate}"><br>
+	
+	<input type="submit" value="UPDATE"><br>
+	</form>
+</body>
+</html>
 ```
