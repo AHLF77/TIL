@@ -318,7 +318,18 @@ public class ProductVO {
 
 - productaddok
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Add OK Page</h1>
+	<h3 th:text="${rproduct.name}"></h3>
+	<h3>상품이 등록 되었습니다.</h3>
+</body>
+</html>
 ```
 
 - productdetail
