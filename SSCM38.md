@@ -304,7 +304,16 @@ public class ProductVO {
 
 - productaddfail
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Add Fail Page</h1>
+</body>
+</html>
 ```
 
 - productaddok
