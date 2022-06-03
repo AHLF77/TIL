@@ -334,7 +334,23 @@ public class ProductVO {
 
 - productdetail
 ```html
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Detail Page</h1>
+	<h3 th:text="${dproduct.id}"></h3>
+	<h3 th:text="${dproduct.name}"></h3>
+	<h3 th:text="${dproduct.price}"></h3>
+	<h3 th:text="${#dates.format(dproduct.regdate, 'yyyy/MM/dd')}"></h3>
+	<h3 th:text="${dproduct.rate}"></h3>
+	<a href="" th:href="@{/productdelete(id=${dproduct.id})}">DELETE</a>
+	<a href="" th:href="@{/productupdate(id=${dproduct.id})}">UPDATE</a>
+</body>
+</html>
 ```
 
 - productselect
