@@ -219,6 +219,84 @@ public class ProductVO {
 
 ### src/main/resources
 #### templates
+- chart
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+<style>
+	#container{
+		width:500px;
+		height:400px;
+		border:2px solid red;
+	}
+</style>
+<script>
+
+function display(gdata){
+	Highcharts.chart('container', {
+	    chart: {
+	        type: 'line'
+	    },
+	    title: {
+	        text: 'My Shop'
+	    },
+	    subtitle: {
+	        text: 'Pants Shop'
+	    },
+	    xAxis: {
+	        categories: gdata.cate
+	    },
+	    yAxis: {
+	        title: {
+	            text: 'Price'
+	        }
+	    },
+	    plotOptions: {
+	        line: {
+	            dataLabels: {
+	                enabled: true
+	            },
+	            enableMouseTracking: false
+	        }
+	    },
+	    series: [{
+	        name: 'Pants',
+	        data: gdata.data
+	    }]
+	});
+};
+
+function getData(){
+	$.ajax({
+		url:'chartimpl',
+		success:function(data){
+			display(data);
+		}
+	});
+};
+
+$(document).ready(function(){
+	getData();
+});
+</script>
+
+</head>
+<body>
+	<h1> Chart Page</h1>
+	<div id="container"></div>
+</body>
+</html>
+```
 - main
 ```html
 <!DOCTYPE html>
