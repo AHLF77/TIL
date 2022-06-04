@@ -222,3 +222,29 @@ public class CustController {
 	
 }
 ```
+
+- MainController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@Controller
+public class MainController {
+	
+	@RequestMapping("/")
+	public String main() {
+		return "main";
+	}
+	
+	
+}
+```
