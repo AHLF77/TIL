@@ -404,6 +404,28 @@ public class CustVO {
 <hr>
 ```
 
+- custupdate
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Update Page</h1>
+	<form action="custupdateimpl" method="post">
+	ID: <span th:text="${ucust.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${ucust.id}">
+	
+	PWD<input type="text" name="pwd" value="" th:value="${ucust.pwd}"><br>
+	NAME<input type="text" name="name" value="" th:value="${ucust.name}"><br>
+	<input type="submit" value="UPDATE"><br>
+	</form>
+</body>
+</html>
+```
+
 #### templates/cust
 ```html
 
