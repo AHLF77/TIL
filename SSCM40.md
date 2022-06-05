@@ -348,6 +348,62 @@ public class CustVO {
 ```html
 <meta charset="UTF-8">
 
+<h1>환영 합니다.</h1>
+<p>Lorem consequat.</p>
+<hr>
+<h3>Test</h3>
+<p>Lorem ipsum...</p>
+```
+
+- left
+```html
+<meta charset="UTF-8">
+<p><a href="#">main1</a></p>
+<p><a href="#">main2</a></p>
+<p><a href="#">main3</a></p>
+```
+
+- login
+```html
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+  	<h2>Horizontal form</h2>
+  </div>
+  <form class="form-horizontal" action="/action_page.php">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-6">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-6">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+```
+
+#### templates/cust
+- center
+```html
+<meta charset="UTF-8">
+
 <h1>CUST Main Page</h1>
 <hr>
 ```
@@ -424,9 +480,4 @@ public class CustVO {
 	</form>
 </body>
 </html>
-```
-
-#### templates/cust
-```html
-
 ```
