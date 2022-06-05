@@ -341,3 +341,37 @@ public class CustVO {
 }
 
 ```
+
+### src/main/resources
+#### templates
+- center
+```html
+<meta charset="UTF-8">
+
+<h1>CUST Main Page</h1>
+<hr>
+```
+
+- custdetail
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Update Page</h1>
+	<h3 th:text="${dcust.id}"></h3>
+	<h3 th:text="${dcust.pwd}"></h3>
+	<h3 th:text="${dcust.name}"></h3>
+	<a href="" th:href="@{custdelete(id=${dcust.id})}">DELETE</a>
+	<a href="" th:href="@{custupdate(id=${dcust.id})}">UPDATE</a>
+</body>
+</html>
+```
+
+#### templates/cust
+```html
+
+```
