@@ -371,6 +371,39 @@ public class CustVO {
 </html>
 ```
 
+- custselect
+```html
+<meta charset="UTF-8">
+
+<h1>CUST Select Page</h1>
+<style>
+	#result{
+		width:300px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+	
+</script>
+<div id="result">
+<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th></tr>
+		</thead>
+		<tbody>
+		
+		<tr th:each="c:${allcust}">
+				<td><a href="custdetail" th:href="@{custdetail(id=${c.id})}" th:text="${c.id}">ID</a></td>
+				<td th:text="${c.name}">NAME</td>
+				</tr>
+		
+		</tbody>
+		
+	</table>
+</div>
+<hr>
+```
+
 #### templates/cust
 ```html
 
