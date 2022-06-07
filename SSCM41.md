@@ -420,14 +420,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("productupdate")
-	public ModelAndView productupdate(ModelAndView mv, Integer cnt) {
+	public ModelAndView productupdate(ModelAndView mv, Integer id) {
 		mv.setViewName("main");
 		mv.addObject("left","product/left");
 		mv.addObject("center","product/productupdate");
 		
 		ProductVO prod = null;
 		try {
-			prod = pbiz.get(cnt);
+			prod = pbiz.get(id);
 			mv.addObject("uproduct", prod);
 		} catch (Exception e) {
 			
@@ -447,9 +447,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("productdelete")
-	public String productdelete(Integer cnt) {
+	public String productdelete(Integer id) {
 		try {
-			pbiz.remove(cnt);
+			pbiz.remove(id);
 		} catch (Exception e) {
 			
 		}
