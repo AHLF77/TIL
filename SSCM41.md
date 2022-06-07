@@ -151,3 +151,129 @@ public class ProductBiz implements Biz<Integer, ProductVO>{
 }
 
 ```
+
+### src/main/java
+#### com.multi.controller
+- CustController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@Controller
+@RequestMapping("/cust")
+public class CustController {
+
+	@Autowired
+	CustBiz biz;
+	
+	@RequestMapping("")
+	public ModelAndView main(ModelAndView mv) {
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		mv.addObject("center", "cust/center");
+		return mv;
+	}
+	@RequestMapping("/register")
+	public ModelAndView register(ModelAndView mv) {
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		mv.addObject("center", "cust/register");
+		return mv;
+	}
+	@RequestMapping("/registerimpl")
+	public ModelAndView registerimpl(ModelAndView mv,CustVO obj) {
+		System.out.println(obj);
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		try {
+			biz.register(obj);
+			mv.addObject("center", "cust/registerok");
+			mv.addObject("rcust", obj);
+		} catch (Exception e) {
+			mv.addObject("center", "cust/registerfail");
+		}
+		return mv;
+	}
+	@RequestMapping("/custselect")
+	public ModelAndView custselect(ModelAndView mv) {
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		List<CustVO> list = null;
+		try {
+			list = biz.get();
+			mv.addObject("center", "cust/custselect");
+			mv.addObject("allcust", list);
+		} catch (Exception e) {
+			mv.addObject("center", "cust/registerfail");
+		}
+		return mv;
+	}
+	@RequestMapping("/custdetail")
+	public ModelAndView detail(ModelAndView mv, String id) {
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		CustVO obj = null;
+		try {
+			obj = biz.get(id);
+			mv.addObject("center", "cust/custdetail");
+			mv.addObject("dcust", obj);
+		} catch (Exception e) {
+			mv.addObject("center", "cust/registerfail");
+		}
+		return mv;
+	}
+	@RequestMapping("/custdelete")
+	public String custdelete(String id) {
+		try {
+			biz.remove(id);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:custselect";
+	}
+	@RequestMapping("/custupdate")
+	public ModelAndView custupdate(ModelAndView mv, String id) {
+		CustVO cust = null;
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		try {
+			cust = biz.get(id);
+			mv.addObject("ucust", cust);
+			mv.addObject("center", "cust/custupdate");
+		} catch (Exception e) {
+				
+		}
+		return mv;
+	}
+	@RequestMapping("/custupdateimpl")
+	public String custupdateimpl(CustVO cust) {
+		try {
+			biz.modify(cust);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:custdetail?id="+cust.getId();
+	}
+}
+
+```
+
+- MainController
+```java
+
+
+```
+
+- ProductController
+```java
+
+```
