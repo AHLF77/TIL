@@ -792,10 +792,16 @@ $(document).ready(function(){
 
 - logintop
 ```html
+<meta charset="UTF-8">
 
+<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 ```
 
 - logouttop
 ```html
+<meta charset="UTF-8">
 
+<li><a href="/logout">
+<span th:text="${session.logincust.name}"></span>
+<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 ```
