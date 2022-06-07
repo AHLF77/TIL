@@ -769,3 +769,23 @@ $(document).ready(function(){
 </div>
 
 ```
+
+- loginfail
+```html
+<meta charset="UTF-8">
+
+<h1>LOGIN Fail</h1>
+<p>ID 또는 PWD가 틀립니다.</p>
+<hr>
+```
+
+- loginok
+```html
+<meta charset="UTF-8">
+
+<h1>환영 합니다.</h1>
+<p>Login OK</p>
+<hr>
+<h3 th:text="${logincust.id} + '님 로그인 성공' ">Test</h3>
+
+```
