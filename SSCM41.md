@@ -552,3 +552,24 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <p><a href="register">Product Register</a></p>
 <p><a href="productselect">Product Select</a></p>
 ```
+
+- productdetail
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Update Page</h1>
+	<h3 th:text="${dproduct.last_insert_id()}"></h3>
+	<h3 th:text="${dproduct.name}"></h3>
+	<h3 th:text="${dproduct.price}"></h3>
+	<h3 th:text="${#dates.format(dproduct.regdate, 'yyyy/MM/dd')}"></h3>
+	<h3 th:text="${dproduct.rate}"></h3>
+	<a href="" th:href="@{productdelete(id=${dproduct.last_insert_id()})}">DELETE</a>
+	<a href="" th:href="@{productupdate(id=${dproduct.last_insert_id()})}">UPDATE</a>
+</body>
+</html>
+```
