@@ -533,3 +533,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 </mapper>
 ```
+
+### src/src/resources
+#### templates/product
+- center
+```html
+<meta charset="UTF-8">
+
+<h1>Product Main Page</h1>
+<hr>
+```
+
+- left
+```html
+<meta charset="UTF-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<p><a href="register">Product Register</a></p>
+<p><a href="productselect">Product Select</a></p>
+```
