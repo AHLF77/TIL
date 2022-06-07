@@ -703,3 +703,16 @@ RATE<br><input type="text" name="rate"><br>
 <p th:text="${cnt}+'번째 제품이 입력 되었습니다.'">
 <hr>
 ```
+
+### src/src/resources
+#### templates
+- center
+```html
+<meta charset="UTF-8">
+
+<h1 th:text="#{home.welcome('hi','han')}">환영 합니다.</h1>
+<p th:text="#{tel}">Lorem consequat.</p>
+<hr>
+<h3>Test</h3>
+<p>Lorem ipsum...</p>
+```
