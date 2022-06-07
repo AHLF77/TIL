@@ -601,3 +601,23 @@ RATE<br><input type="text" name="rate"><br>
 <hr>
 
 ```
+
+- registerfail
+```html
+<meta charset="UTF-8">
+
+<h1>Product Page</h1>
+<p>Register Fail</p>
+<hr>
+
+```
+
+- registerok
+```html
+<meta charset="UTF-8">
+
+<h1>Product Page</h1>
+<p>Register OK</p>
+<p th:text="${cnt}+'번째 제품이 입력 되었습니다.'">
+<hr>
+```
