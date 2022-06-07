@@ -716,3 +716,56 @@ RATE<br><input type="text" name="rate"><br>
 <h3>Test</h3>
 <p>Lorem ipsum...</p>
 ```
+
+- left
+```html
+<meta charset="UTF-8">
+
+<p><a href="#">main1</a></p>
+<p><a href="#">main2</a></p>
+<p><a href="#">main3</a></p>
+```
+
+- login
+```html
+<script>
+$(document).ready(function(){
+	$('#login_bt').click(function(){
+		
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl'
+		});
+		
+		$('#login_form').submit();
+	});
+});
+</script>
+
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+  	<h2>Login form</h2>
+  </div>
+  <form class="form-horizontal" id="login_form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="id">ID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-6">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+      <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button id="login_bt" class="btn btn-default">LOGIN</button>
+    </div>
+  </div>
+  </form>
+ 
+</div>
+
+```
