@@ -553,23 +553,36 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <p><a href="productselect">Product Select</a></p>
 ```
 
-- productdetail
+- productselect
 ```html
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Product Update Page</h1>
-	<h3 th:text="${dproduct.last_insert_id()}"></h3>
-	<h3 th:text="${dproduct.name}"></h3>
-	<h3 th:text="${dproduct.price}"></h3>
-	<h3 th:text="${#dates.format(dproduct.regdate, 'yyyy/MM/dd')}"></h3>
-	<h3 th:text="${dproduct.rate}"></h3>
-	<a href="" th:href="@{productdelete(id=${dproduct.last_insert_id()})}">DELETE</a>
-	<a href="" th:href="@{productupdate(id=${dproduct.last_insert_id()})}">UPDATE</a>
-</body>
-</html>
+
+<h1>Product Select Page</h1>
+<style>
+	#result{
+		width:300px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+	
+</script>
+<div id="result">
+	<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>REGDATE</th><th>RATE</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${allproduct}">
+				<td><a href="productdetail" th:href="@{productdetail(id=${p.id})}" th:text="${p.id}">ID</a></td>
+				<td th:text="${p.name}">NAME</td>
+				<td th:text="${p.price}">PRICE</td>
+				<td th:text="${#dates.format(p.regdate, 'yyyy/MM/dd')}">REGDATE</td>
+				<td th:text="${p.rate}">RATE</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<hr>
+
 ```
