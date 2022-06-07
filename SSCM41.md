@@ -586,3 +586,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <hr>
 
 ```
+
+- register
+```html
+<meta charset="UTF-8">
+
+<h1>Product Register Page</h1>
+<form action="registerimpl" method="POST">
+NAME<br><input type="text" name="name"><br>
+PRICE<br><input type="text" name="price"><br>
+RATE<br><input type="text" name="rate"><br>
+<input type="submit" name="REGISTER"><br>
+</form>
+<hr>
+
+```
