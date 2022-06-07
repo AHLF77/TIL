@@ -645,6 +645,30 @@ public class ProductVO {
 </html>
 ```
 
+- productupdate
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Update Page</h1>
+	<form action="productupdateimpl" method="post">
+	ID: <span th:text="${uproduct.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${uproduct.id}">
+	NAME:<input type="text" name="name" value="" th:value="${uproduct.name}"><br>
+	PRODUCT: <input type="text" name="price" value="" th:value="${uproduct.price}"><br>
+	REGDATE: <span th:text="${#dates.format(uproduct.regdate, 'yyyy/MM/dd')}"></span><br>
+	RATE: <input type="text" name="rate" value="" th:value="${uproduct.rate}"><br>
+	
+	<input type="submit" value="UPDATE"><br>
+	</form>
+</body>
+</html>
+```
+
 - register
 ```html
 <meta charset="UTF-8">
