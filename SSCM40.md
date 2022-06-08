@@ -634,3 +634,40 @@ public class ProductVO {
 }
 
 ```
+
+### src/main/resources
+#### messages
+<!-- 중국, 영어, 한국어 세 가지의 언어를 설정하면 각 나라에 맞게 설정되어 출력-->
+- message_en_US
+```properties
+home.welcome= Welcome to My Shopping Mall
+tel=010-7777-8982
+```
+
+- message_ko_KR
+```properties
+home.welcome= \uD658\uC601\uD569\uB2C8\uB2E4. {0} {1}
+tel=010-9999-9898
+```
+
+- message_zn_CN
+```properties
+home.welcome= Ni hao... 
+tel=010-5562-2312
+```
+
+- message
+```properties
+home.welcome= {0}\uB2D8 \uD658\uC601 \uD569\uB2C8\uB2E4.
+tel=010-0000-0000
+```
+
+#### templates
+
+
+
+#### templates/cust
+
+
+
+#### templates/product
