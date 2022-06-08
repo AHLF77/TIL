@@ -471,7 +471,7 @@ public interface Biz<K,V> {
 ```
 
 #### com.multi.mapper
-- CustMapper
+- CustMapper(interface)
 ```java
 package com.multi.mapper;
 
@@ -494,7 +494,7 @@ public interface CustMapper {
 
 ```
 
-- ProductMapper
+- ProductMapper(interface)
 ```java
 package com.multi.mapper;
 
@@ -515,4 +515,62 @@ public interface ProductMapper {
 	public List <ProductVO> selectall() throws Exception;
 	public int selectcnt() throws Exception;
 }
+```
+
+#### com.multi.mybatis
+- custmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CustMapper">
+	
+	<select id="select" parameterType="String" resultType="custVO">
+		SELECT * FROM CUST WHERE ID=#{id}
+	</select>
+	<select id="selectall" resultType="custVO">
+		SELECT * FROM CUST
+	</select>
+	<insert id="insert" parameterType="custVO">
+		INSERT INTO CUST VALUES (#{id},#{pwd},#{name})
+	</insert>
+	<update id="update" parameterType="custVO">
+		UPDATE CUST SET PWD=#{pwd},NAME=#{name} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM CUST WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+```
+
+- productmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ProductMapper">
+	
+	<select id="select" parameterType="int" resultType="productVO">
+		SELECT * FROM PRODUCT WHERE ID=#{id}
+	</select>
+	<select id="selectcnt" resultType="int">
+		SELECT last_insert_id() as cnt
+	</select>
+	<select id="selectall" resultType="productVO">
+		SELECT * FROM PRODUCT ORDER BY 1
+	</select>
+	<insert id="insert" parameterType="productVO">
+		INSERT INTO PRODUCT VALUES (NULL, #{name},#{price},SYSDATE(),#{rate})
+	</insert>
+	<update id="update" parameterType="productVO">
+		UPDATE PRODUCT SET NAME=#{name}, PRICE=#{price}, RATE=#{rate} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM PRODUCT WHERE ID=#{id}
+	</delete>
+	
+</mapper>
 ```
