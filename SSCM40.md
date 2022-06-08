@@ -1012,3 +1012,131 @@ NAME<br><input type="text" name="name"><br>
 ```
 
 #### templates/product
+- center
+```html
+<meta charset="UTF-8">
+
+<h1>Product Main Page</h1>
+<hr>
+```
+
+- left
+```html
+<meta charset="UTF-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<p><a href="register">Product Register</a></p>
+<p><a href="productselect">Product Select</a></p>
+```
+
+- productdetail
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Update Page</h1>
+	<h3 th:text="${dproduct.id}"></h3>
+	<h3 th:text="${dproduct.name}"></h3>
+	<h3 th:text="${dproduct.price}"></h3>
+	<h3 th:text="${#dates.format(dproduct.regdate, 'yyyy/MM/dd')}"></h3>
+	<h3 th:text="${dproduct.rate}"></h3>
+	<a href="" th:href="@{productdelete(id=${dproduct.id})}">DELETE</a>
+	<a href="" th:href="@{productupdate(id=${dproduct.id})}">UPDATE</a>
+</body>
+</html>
+```
+
+- productselect
+```html
+<meta charset="UTF-8">
+
+<h1>Product Select Page</h1>
+<style>
+	#result{
+		width:300px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+	
+</script>
+<div id="result">
+	<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th><th>PRICE</th><th>REGDATE</th><th>RATE</th></tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${allproduct}">
+				<td><a href="productdetail" th:href="@{productdetail(id=${p.id})}" th:text="${p.id}">ID</a></td>
+				<td th:text="${p.name}">NAME</td>
+				<td th:text="${p.price}">PRICE</td>
+				<td th:text="${#dates.format(p.regdate, 'yyyy/MM/dd')}">REGDATE</td>
+				<td th:text="${p.rate}">RATE</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<hr>
+```
+
+- productupdate
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Product Update Page</h1>
+	<form action="productupdateimpl" method="post">
+	ID: <span th:text="${uproduct.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${uproduct.id}">
+	NAME:<input type="text" name="name" value="" th:value="${uproduct.name}"><br>
+	PRODUCT: <input type="text" name="price" value="" th:value="${uproduct.price}"><br>
+	REGDATE: <span th:text="${#dates.format(uproduct.regdate, 'yyyy/MM/dd')}"></span><br>
+	RATE: <input type="text" name="rate" value="" th:value="${uproduct.rate}"><br>
+	
+	<input type="submit" value="UPDATE"><br>
+	</form>
+</body>
+</html>
+```
+
+- register
+```html
+<meta charset="UTF-8">
+
+<h1>Product Register Page</h1>
+<form action="registerimpl" method="POST">
+NAME<br><input type="text" name="name"><br>
+PRICE<br><input type="text" name="price"><br>
+RATE<br><input type="text" name="rate"><br>
+<input type="submit" name="REGISTER"><br>
+</form>
+<hr>
+
+```
+
+- registerfail
+```html
+<meta charset="UTF-8">
+
+<h1>Product Page</h1>
+<p>Register Fail</p>
+<hr>
+```
+
+- registerok
+```html
+<meta charset="UTF-8">
+
+<h1>Product Page</h1>
+<p>Register OK</p>
+<p th:text="${cnt}+'번째 제품이 입력 되었습니다.'">
+<hr>
+```
