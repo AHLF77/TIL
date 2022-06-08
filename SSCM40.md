@@ -846,9 +846,175 @@ class CustUpdateTests {
 ```
 
 #### com.multi.product
-- 
+- ProductDeleteTests
 ```java
+package com.multi.product;
 
+import org.junit.jupiter.api.Test;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductDeleteTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			pbiz.remove(19);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- ProductInsertTests
+```java
+package com.multi.product;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductInsertTests {
+	
+	@Autowired
+	ProductBiz pbiz;
+
+	@Test
+	void contextLoads() {
+		ProductVO c = new ProductVO(0,"ppp", 999999, null,3.4);
+		try {
+			pbiz.register(c);
+			System.out.println("Registered OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- ProductSelectAllTests
+```java
+package com.multi.product;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CustVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelectAllTests {
+	
+	@Autowired
+	ProductBiz biz;
+
+	@Test
+	void contextLoads() {
+		List<ProductVO> list = null;
+		try {
+			list = biz.get();
+			for (ProductVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- ProductSelectTests
+```java
+package com.multi.product;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelectTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		
+		ProductVO prod = null;
+		try {
+			prod = pbiz.get(21);
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(prod);
+		
+	}
+
+
+}
+
+```
+
+- ProductUpdateTests
+```java
+package com.multi.product;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductUpdateTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO p = new ProductVO(24, "blouse", 40000, 7.8);
+		try {
+			pbiz.modify(p);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
 
 
