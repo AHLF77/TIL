@@ -635,6 +635,80 @@ public class ProductVO {
 
 ```
 
+### src/test/java
+#### com.multi
+- LoginTests
+```java
+package com.multi;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class LoginTests {
+
+	@Autowired
+	CustBiz cbiz;
+	
+	@Test
+	void contextLoads() {
+		CustVO cust;
+		try {
+			cust = cbiz.get("id01");
+			System.out.println(cust);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+}
+```
+
+#### com.multi.cust
+- CustDeleteTests
+```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustDeleteTests {
+
+	@Autowired
+	CustBiz biz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			biz.remove("qq");
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+#### com.multi.product
+- LoginTests
+```java
+
+```
+
+
 ### src/main/resources
 #### messages
 <!-- 중국, 영어, 한국어 세 가지의 언어를 설정하면 각 나라에 맞게 설정되어 출력-->
