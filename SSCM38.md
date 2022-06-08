@@ -3,7 +3,7 @@
 ## Springboot 2차
 - product 테이블을 이용한 CRUD 작성
 
-## day042
+## day0412
 
 ### src/main/java
 #### com.multi.biz
