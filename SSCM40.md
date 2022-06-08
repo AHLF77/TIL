@@ -1,4 +1,5 @@
-## day0413
+# 0607 강의
+## day051
 
 ### src/main/java
 #### com.multi.biz
@@ -93,11 +94,63 @@ public class ProductBiz implements Biz<Integer, ProductVO>{
 		return dao.selectall();
 	}
 	
+	public int getcnt() throws Exception{
+		return dao.selectcnt();
+	}
+	
 }
-
 ```
 
 #### com.multi.controller
+- AJAXController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@RestController
+public class AJAXController {
+	
+	@Autowired
+	ProductBiz pbiz;
+	
+	@RequestMapping("/chartimpl")
+	public Object chartimpl() {
+		
+		JSONObject jo = new JSONObject();
+		JSONArray ja1 = new JSONArray();
+		JSONArray ja2 = new JSONArray();
+		
+		List<ProductVO> list = null;
+		
+		try {
+			list= pbiz.get();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		for (ProductVO p : list) {
+			ja1.add(p.getName());
+			ja2.add(p.getPrice());
+		}
+		jo.put("cate", ja1);
+		jo.put("data", ja2);
+		
+		return jo;
+	}
+}
+```
+
 - CustController
 ```java
 package com.multi.controller;
@@ -115,111 +168,98 @@ import com.multi.vo.CustVO;
 @Controller
 @RequestMapping("/cust")
 public class CustController {
-	
+
 	@Autowired
 	CustBiz biz;
 	
 	@RequestMapping("")
 	public ModelAndView main(ModelAndView mv) {
 		mv.setViewName("main");
-		mv.addObject("left","cust/left");
-		mv.addObject("center","cust/center");
+		mv.addObject("left", "cust/left");
+		mv.addObject("center", "cust/center");
 		return mv;
 	}
-	
 	@RequestMapping("/register")
 	public ModelAndView register(ModelAndView mv) {
 		mv.setViewName("main");
-		mv.addObject("left","cust/left");
-		mv.addObject("center","cust/register");
+		mv.addObject("left", "cust/left");
+		mv.addObject("center", "cust/register");
 		return mv;
 	}
-	
 	@RequestMapping("/registerimpl")
 	public ModelAndView registerimpl(ModelAndView mv,CustVO obj) {
+		System.out.println(obj);
 		mv.setViewName("main");
-		mv.addObject("left","cust/left");
+		mv.addObject("left", "cust/left");
 		try {
 			biz.register(obj);
-			mv.addObject("center","cust/registerok");
+			mv.addObject("center", "cust/registerok");
 			mv.addObject("rcust", obj);
 		} catch (Exception e) {
-			mv.addObject("center","cust/registerfail");
+			mv.addObject("center", "cust/registerfail");
 		}
 		return mv;
 	}
-	
 	@RequestMapping("/custselect")
 	public ModelAndView custselect(ModelAndView mv) {
 		mv.setViewName("main");
-		mv.addObject("left","cust/left");
-		mv.addObject("center","cust/custselect");
-
+		mv.addObject("left", "cust/left");
 		List<CustVO> list = null;
 		try {
 			list = biz.get();
+			mv.addObject("center", "cust/custselect");
 			mv.addObject("allcust", list);
 		} catch (Exception e) {
-			
+			mv.addObject("center", "cust/registerfail");
 		}
 		return mv;
 	}
-	
-
-	
-	@RequestMapping("custdetail")
-	public ModelAndView custdetail(ModelAndView mv, String id) {
-		CustVO cust = null;
-		try {
-			cust = biz.get(id);
-			mv.addObject("dcust", cust);
-		} catch (Exception e) {
-			
-		}
+	@RequestMapping("/custdetail")
+	public ModelAndView detail(ModelAndView mv, String id) {
 		mv.setViewName("main");
-		mv.addObject("left","cust/left");
-		mv.addObject("center","cust/custdetail");
+		mv.addObject("left", "cust/left");
+		CustVO obj = null;
+		try {
+			obj = biz.get(id);
+			mv.addObject("center", "cust/custdetail");
+			mv.addObject("dcust", obj);
+		} catch (Exception e) {
+			mv.addObject("center", "cust/registerfail");
+		}
 		return mv;
 	}
-
-	
-	@RequestMapping("custupdate")
-	public ModelAndView custupdate(ModelAndView mv, String id) {
-		mv.setViewName("main");
-		mv.addObject("left","cust/left");
-		mv.addObject("center","cust/custupdate");
-		
-		CustVO cust = null;
-		try {
-			cust = biz.get(id);
-			mv.addObject("ucust", cust);
-		} catch (Exception e) {
-			
-		}
-		return mv;	
-	}
-	
-	@RequestMapping("custupdateimpl")
-	public String custupdateimpl(CustVO cust) {
-		String next= "custupdateok";
-		try {
-			biz.modify(cust);
-		} catch (Exception e) {
-			
-		}
-		return "redirect:custdetail?id="+cust.getId();
-	}
-	
-	@RequestMapping("custdelete")
+	@RequestMapping("/custdelete")
 	public String custdelete(String id) {
 		try {
 			biz.remove(id);
 		} catch (Exception e) {
-			
+				
 		}
-		return "redirect:custselect";	
+		return "redirect:custselect";
 	}
-	
+	@RequestMapping("/custupdate")
+	public ModelAndView custupdate(ModelAndView mv, String id) {
+		CustVO cust = null;
+		mv.setViewName("main");
+		mv.addObject("left", "cust/left");
+		try {
+			cust = biz.get(id);
+			mv.addObject("ucust", cust);
+			mv.addObject("center", "cust/custupdate");
+		} catch (Exception e) {
+				
+		}
+		return mv;
+	}
+	@RequestMapping("/custupdateimpl")
+	public String custupdateimpl(CustVO cust) {
+		try {
+			biz.modify(cust);
+		} catch (Exception e) {
+				
+		}
+		return "redirect:custdetail?id="+cust.getId();
+	}
 }
 ```
 
@@ -227,30 +267,195 @@ public class CustController {
 ```java
 package com.multi.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.multi.biz.CustBiz;
 import com.multi.vo.CustVO;
 
 @Controller
 public class MainController {
+
+	@Autowired
+	CustBiz cbiz;
 	
 	@RequestMapping("/")
 	public String main() {
 		return "main";
 	}
 	
+	@RequestMapping("/login")
+	public String login(Model m) {
+		m.addAttribute("center", "login");
+		return "main";
+	}
+	@RequestMapping("/logout")
+	public String logout(Model m, HttpSession session) {
+		if(session != null) {
+			session.invalidate();
+		}
+		return "main";
+	}
+	
+	
+	@RequestMapping("/loginimpl")
+	public String loginimpl(Model m, String id, String pwd, HttpSession session) {
+		String next = "";
+		CustVO cust = null;
+		try {
+			cust = cbiz.get(id);
+			if(cust != null) {
+				if(cust.getPwd().equals(pwd)) {
+					session.setAttribute("logincust", cust);
+					m.addAttribute("logincust", cust);
+					next = "loginok";
+				}else {
+					throw new Exception();
+				}
+			}else {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			next="loginfail";
+		}
+	
+		m.addAttribute("center", next);
+		return "main";
+	}
+	
+	
 	
 }
 ```
 
+- ProductController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@Controller
+@RequestMapping("product")
+public class ProductController {
+	
+	@Autowired
+	ProductBiz pbiz;
+	
+	@RequestMapping("")
+	public ModelAndView main(ModelAndView mv) {
+		mv.setViewName("main");
+		mv.addObject("left","product/left");
+		mv.addObject("center","product/center");
+		return mv;
+	}
+	
+	@RequestMapping("/register")
+	public String register(Model m) {
+		m.addAttribute("left","product/left");
+		m.addAttribute("center","product/register");
+		return "main";
+	}
+	
+	@RequestMapping("/registerimpl")
+	public ModelAndView registerimpl(ModelAndView mv, ProductVO obj) {
+		mv.setViewName("main");
+		mv.addObject("left","product/left");
+		try {
+			pbiz.register(obj);
+			int cnt = pbiz.getcnt();
+			mv.addObject("cnt", cnt);
+			mv.addObject("center","product/registerok");
+		} catch (Exception e) {
+			mv.addObject("center","product/registerfail");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("/productselect")
+	public ModelAndView productselect(ModelAndView mv) {
+		mv.setViewName("main");
+		mv.addObject("left","product/left");
+		mv.addObject("center","product/productselect");
+
+		List<ProductVO> list = null;
+		try {
+			list = pbiz.get();
+			mv.addObject("allproduct", list);
+		} catch (Exception e) {
+			
+		}
+		return mv;
+	}
+	
+	@RequestMapping("productdetail")
+	public ModelAndView productdetail(ModelAndView mv, Integer id) {
+		ProductVO prod = null;
+		try {
+			prod = pbiz.get(id);
+			mv.addObject("dproduct", prod);
+		} catch (Exception e) {
+			
+		}
+		mv.setViewName("main");
+		mv.addObject("left","product/left");
+		mv.addObject("center","product/productdetail");
+		return mv;
+	}
+	
+	@RequestMapping("productupdate")
+	public ModelAndView productupdate(ModelAndView mv, Integer id) {
+		mv.setViewName("main");
+		mv.addObject("left","product/left");
+		mv.addObject("center","product/productupdate");
+		
+		ProductVO prod = null;
+		try {
+			prod = pbiz.get(id);
+			mv.addObject("uproduct", prod);
+		} catch (Exception e) {
+			
+		}
+		return mv;	
+	}
+	
+	@RequestMapping("productupdateimpl")
+	public String productupdateimpl(ProductVO prod) {
+		String next= "productupdateok";
+		try {
+			pbiz.modify(prod);
+		} catch (Exception e) {
+			
+		}
+		return "redirect:productdetail?id="+prod.getId();
+	}
+	
+	@RequestMapping("productdelete")
+	public String productdelete(Integer id) {
+		try {
+			pbiz.remove(id);
+		} catch (Exception e) {
+			
+		}
+		return "redirect:productselect";	
+	}
+}
+```
+
 #### com.multi.frame
-- Biz
+- Biz(interface)
 ```java
 package com.multi.frame;
 
@@ -263,221 +468,4 @@ public interface Biz<K,V> {
 	public V get(K k) throws Exception;
 	public List<V> get() throws Exception;
 }
-```
-
-#### com.multi.mapper
-- CustMapper
-```java
-package com.multi.mapper;
-
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-
-import com.multi.vo.CustVO;
-
-@Repository
-@Mapper
-public interface CustMapper {
-	public void insert(CustVO cust) throws Exception;
-	public void delete(String id) throws Exception;
-	public void update(CustVO cust) throws Exception;
-	public CustVO select(String id) throws Exception;
-	public List <CustVO> selectall() throws Exception;
-}
-
-```
-
-#### com.multi.mybatis
-- custmapper
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.multi.mapper.CustMapper">
-	
-	<select id="select" parameterType="String" resultType="custVO">
-		SELECT * FROM CUST WHERE ID=#{id}
-	</select>
-	<select id="selectall" resultType="custVO">
-		SELECT * FROM CUST
-	</select>
-	<insert id="insert" parameterType="custVO">
-		INSERT INTO CUST VALUES (#{id},#{pwd},#{name})
-	</insert>
-	<update id="update" parameterType="custVO">
-		UPDATE CUST SET PWD=#{pwd},NAME=#{name} WHERE ID=#{id}
-	</update>
-	<delete id="delete" parameterType="String">
-		DELETE FROM CUST WHERE ID=#{id}
-	</delete>
-	
-</mapper>
-```
-
-#### com.multi.vo
-- CustVO
-```java
-package com.multi.vo;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class CustVO {
-
-	private String id;
-	private String pwd;
-	private String name;
-}
-
-```
-
-### src/main/resources
-#### templates
-- center
-```html
-<meta charset="UTF-8">
-
-<h1>환영 합니다.</h1>
-<p>Lorem consequat.</p>
-<hr>
-<h3>Test</h3>
-<p>Lorem ipsum...</p>
-```
-
-- left
-```html
-<meta charset="UTF-8">
-<p><a href="#">main1</a></p>
-<p><a href="#">main2</a></p>
-<p><a href="#">main3</a></p>
-```
-
-- login
-```html
-<div class="container">
-  <div class="col-sm-offset-2 col-sm-10">
-  	<h2>Horizontal form</h2>
-  </div>
-  <form class="form-horizontal" action="/action_page.php">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-6">
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-6">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-```
-
-#### templates/cust
-- center
-```html
-<meta charset="UTF-8">
-
-<h1>CUST Main Page</h1>
-<hr>
-```
-
-- custdetail
-```html
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Cust Update Page</h1>
-	<h3 th:text="${dcust.id}"></h3>
-	<h3 th:text="${dcust.pwd}"></h3>
-	<h3 th:text="${dcust.name}"></h3>
-	<a href="" th:href="@{custdelete(id=${dcust.id})}">DELETE</a>
-	<a href="" th:href="@{custupdate(id=${dcust.id})}">UPDATE</a>
-</body>
-</html>
-```
-
-- custselect
-```html
-<meta charset="UTF-8">
-
-<h1>CUST Select Page</h1>
-<style>
-	#result{
-		width:300px;
-		border: 2px solid blue;
-	}
-</style>
-<script>
-	
-</script>
-<div id="result">
-<table>
-		<thead>
-			<tr><th>ID</th><th>NAME</th></tr>
-		</thead>
-		<tbody>
-		
-		<tr th:each="c:${allcust}">
-				<td><a href="custdetail" th:href="@{custdetail(id=${c.id})}" th:text="${c.id}">ID</a></td>
-				<td th:text="${c.name}">NAME</td>
-				</tr>
-		
-		</tbody>
-		
-	</table>
-</div>
-<hr>
-```
-
-- custupdate
-```html
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Cust Update Page</h1>
-	<form action="custupdateimpl" method="post">
-	ID: <span th:text="${ucust.id}"></span><br>
-	<input type="hidden" name="id" value="" th:value="${ucust.id}">
-	
-	PWD<input type="text" name="pwd" value="" th:value="${ucust.pwd}"><br>
-	NAME<input type="text" name="name" value="" th:value="${ucust.name}"><br>
-	<input type="submit" value="UPDATE"><br>
-	</form>
-</body>
-</html>
 ```
