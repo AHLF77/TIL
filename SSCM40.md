@@ -665,47 +665,350 @@ tel=010-0000-0000
 #### templates
 - main
 ```html
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2b21c3f8da84a6df87f98d92e21da425&libraries=services"></script>
 
+
+
+<style>
+   /* Remove the navbar's default margin-bottom and rounded borders */ 
+   .navbar {
+     margin-bottom: 0;
+     border-radius: 0;
+   }
+   
+   /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+   .row.content {height: 700px}
+   
+   /* Set gray background color and 100% height */
+   .sidenav {
+     padding-top: 20px;
+     background-color: #f1f1f1;
+     height: 100%;
+   }
+   
+   /* Set black background color, white text and some padding */
+   footer {
+     background-color: #555;
+     color: white;
+     padding: 15px;
+   }
+   
+   /* On small screens, set height to 'auto' for sidenav and grid */
+   @media screen and (max-width: 767px) {
+     .sidenav {
+       height: auto;
+       padding: 15px;
+     }
+     .row.content {height:auto;} 
+   }
+</style>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="#">한글</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li><a href="/">Home</a></li>
+	        <li><a href="/cust/">Cust</a></li>
+	        <li><a href="/product/">Product</a></li>
+	      </ul>
+	    
+	      <ul class="nav navbar-nav navbar-right"> 	
+	      	<li th:if="${session.logincust == null}"><a href="/login">
+	      	    <span class="glyphicon glyphicon-log-in">
+	      	    </span> Login</a></li>
+	      	<li th:unless="${session.logincust == null}"><a href="/logout">
+				<span th:text="${session.logincust.name}"></span>
+				<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	      </ul>
+	    
+	    
+	    </div>
+	  </div>
+	</nav>
+	  
+	<div class="container-fluid text-center">    
+	  <div class="row content">
+	    <div class="col-sm-1 sidenav"
+	    th:insert="${left} ? ${left} : left">
+	    </div>
+	    <div class="col-sm-9 text-left" 
+	    th:insert="${center} ? ${center} : center"> 
+	    </div>
+	    <div class="col-sm-2 sidenav">
+	      <div class="well">
+	        <p>ADS</p>
+	      </div>
+	      <div class="well">
+	        <p>ADS</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<footer class="container-fluid text-center">
+	  <p>Footer Text</p>
+	</footer>
+</body>
+</html>
 ```
 
 - center
 ```html
+<meta charset="UTF-8">
 
+<h1 th:text="#{home.welcome('hi','han')}">환영 합니다.</h1>
+<p th:text="#{tel}">Lorem consequat.</p>
+<hr>
+<h3>Test</h3>
+<p>Lorem ipsum...</p>
 ```
 
 - left
 ```html
+<meta charset="UTF-8">
 
+<p><a href="#">main1</a></p>
+<p><a href="#">main2</a></p>
+<p><a href="#">main3</a></p>
 ```
 
 - login
 ```html
+<script>
+$(document).ready(function(){
+	$('#login_bt').click(function(){
+		
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl'
+		});
+		
+		$('#login_form').submit();
+	});
+});
+</script>
+
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+  	<h2>Login form</h2>
+  </div>
+  <form class="form-horizontal" id="login_form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="id">ID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-6">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+      <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button id="login_bt" class="btn btn-default">LOGIN</button>
+    </div>
+  </div>
+  </form>
+ 
+</div>
 
 ```
 
 - loginfail
 ```html
+<meta charset="UTF-8">
 
+<h1>LOGIN Fail</h1>
+<p>ID 또는 PWD가 틀립니다.</p>
+<hr>
 ```
 
 - loginok
 ```html
+<meta charset="UTF-8">
+
+<h1>환영 합니다.</h1>
+<p>Login OK</p>
+<hr>
+<h3 th:text="${logincust.id} + '님 로그인 성공' ">Test</h3>
 
 ```
 
 - logintop
 ```html
+<meta charset="UTF-8">
 
+<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 ```
 
-- loginouttop
+- logouttop
 ```html
+<meta charset="UTF-8">
 
+<li><a href="/logout">
+<span th:text="${session.logincust.name}"></span>
+<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 ```
 
 
 #### templates/cust
+- center
+```html
+<meta charset="UTF-8">
 
+<h1>Cust Main Page</h1>
+<p>Lorem consequat.</p>
+<p th:utext="#{home.welcome(han)}"> 
+<p th:utext="#{tel}"> 
+<hr>
 
+```
+
+- custdetail
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Update Page</h1>
+	<h3 th:text="${dcust.id}"></h3>
+	<h3 th:text="${dcust.pwd}"></h3>
+	<h3 th:text="${dcust.name}"></h3>
+	<a href="" th:href="@{custdelete(id=${dcust.id})}">DELETE</a>
+	<a href="" th:href="@{custupdate(id=${dcust.id})}">UPDATE</a>
+</body>
+</html>
+```
+
+- custselect
+```html
+<meta charset="UTF-8">
+
+<h1>CUST Select Page</h1>
+<style>
+	#result{
+		width:300px;
+		border: 2px solid blue;
+	}
+</style>
+<script>
+	
+</script>
+<div id="result">
+<table>
+		<thead>
+			<tr><th>ID</th><th>NAME</th></tr>
+		</thead>
+		<tbody>
+		
+		<tr th:each="c:${allcust}">
+				<td><a href="custdetail" th:href="@{custdetail(id=${c.id})}" th:text="${c.id}">ID</a></td>
+				<td th:text="${c.name}">NAME</td>
+				</tr>
+		
+		</tbody>
+		
+	</table>
+</div>
+<hr>
+
+```
+
+- custupdate
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cust Update Page</h1>
+	<form action="custupdateimpl" method="post">
+	ID: <span th:text="${ucust.id}"></span><br>
+	<input type="hidden" name="id" value="" th:value="${ucust.id}">
+	
+	PWD<input type="text" name="pwd" value="" th:value="${ucust.pwd}"><br>
+	NAME<input type="text" name="name" value="" th:value="${ucust.name}"><br>
+	<input type="submit" value="UPDATE"><br>
+	</form>
+</body>
+</html>
+```
+
+- left
+```html
+<meta charset="UTF-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<p th:if="#{session.logincust != null}"><a href="register">Cust Register</a></p>
+<p><a href="custselect">Cust Select</a></p>
+```
+
+- register
+```html
+<meta charset="UTF-8">
+
+<h1>CUST Register Page</h1>
+<form action="registerimpl" method="POST">
+ID<br><input type="text" name="id"><br>
+PWD<br><input type="text" name="pwd"><br>
+NAME<br><input type="text" name="name"><br>
+<input type="submit" name="REGISTER"><br>
+</form>
+<hr>
+
+```
+
+- registerfail
+```html
+<meta charset="UTF-8">
+
+<h1>CUST Page</h1>
+<p>Register Fail</p>
+<hr>
+
+```
+
+- registerok
+```html
+<meta charset="UTF-8">
+
+<h1>CUST Page</h1>
+<p>Register OK</p>
+<p th:text="${rcust.id} + '환영합니다.'"></p>
+<hr>
+
+```
 
 #### templates/product
