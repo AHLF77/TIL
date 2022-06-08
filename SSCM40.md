@@ -663,7 +663,45 @@ tel=010-0000-0000
 ```
 
 #### templates
+- main
+```html
 
+```
+
+- center
+```html
+
+```
+
+- left
+```html
+
+```
+
+- login
+```html
+
+```
+
+- loginfail
+```html
+
+```
+
+- loginok
+```html
+
+```
+
+- logintop
+```html
+
+```
+
+- loginouttop
+```html
+
+```
 
 
 #### templates/cust
