@@ -1,5 +1,6 @@
 # 0603 강의
-## day0413(1)
+## day0413
+- Product 테이블을 이용한 chart 출력
 
 ### src/main/java
 #### com.multi.biz
@@ -160,12 +161,11 @@ public interface ProductMapper {
 	public ProductVO select(int id) throws Exception;
 	public List <ProductVO> selectall() throws Exception;
 }
-
 ```
 
-#### com.multi.mapper
+#### com.multi.mybatis
 - productmapper
-```xml
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
@@ -298,6 +298,7 @@ $(document).ready(function(){
 </body>
 </html>
 ```
+
 - main
 ```html
 <!DOCTYPE html>
