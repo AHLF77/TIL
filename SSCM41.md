@@ -544,22 +544,140 @@ public class MainController {
 }
 ```
 
-- ProductController
+#### com.multi.frame
+- Biz(interface)
 ```java
-package com.multi.controller;
+package com.multi.frame;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
 
-@Controller
-@RequestMapping("/product")
-public class ProductController {
+import org.springframework.transaction.annotation.Transactional;
 
-	@RequestMapping("/select")
-	public String select(Model m) {
-		m.addAttribute("center", "product/productselect");
-		return "index";
-	}
+public interface Biz<K,V> {
+	@Transactional
+	public void register(V v) throws Exception;
+	public void modify(V v) throws Exception;
+	public void remove(K k) throws Exception;
+	public V get(K k) throws Exception;
+	public List<V> get() throws Exception;
+}
+
+```
+
+#### com.multi.mapper
+- CartMapper(interface)
+```java
+package com.multi.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import com.multi.vo.CartVO;
+import com.multi.vo.CateVO;
+
+@Repository
+@Mapper
+public interface CartMapper {
+
+	public void insert(CartVO obj) throws Exception;
+	public void delete(int obj) throws Exception;
+	public void update(CartVO obj) throws Exception;
+	public CartVO select(int obj) throws Exception;
+	public List<CartVO> selectall() throws Exception;
+}
+```
+
+- CateMapper(interface)
+```java
+package com.multi.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import com.multi.vo.CateVO;
+
+@Repository
+@Mapper
+public interface CateMapper {
+
+	public void insert(CateVO obj) throws Exception;
+	public void delete(int obj) throws Exception;
+	public void update(CateVO obj) throws Exception;
+	public CateVO select(int obj) throws Exception;
+	public List<CateVO> selectall() throws Exception;
+	public List<CateVO> selectmain() throws Exception;
+}
+```
+
+- CustMapper(interface)
+```java
+package com.multi.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@Repository
+@Mapper
+public interface CustMapper {
+
+	public void insert(CustVO obj) throws Exception;
+	public void delete(String obj) throws Exception;
+	public void update(CustVO obj) throws Exception;
+	public CustVO select(String obj) throws Exception;
+	public List<CustVO> selectall() throws Exception;
+	
+}
+```
+
+- MainMapper(interface)
+```java
+package com.multi.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@Mapper
+public interface MainMapper {
+
+	public int getcustcnt() throws Exception;
+	public int getproductcnt() throws Exception;
+	public int getcatecnt() throws Exception;
+	public int getcartcnt() throws Exception;
+}
+```
+
+- ProductMapper(interface)
+```java
+package com.multi.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import com.multi.vo.ProductAVGVO;
+import com.multi.vo.ProductVO;
+
+@Repository
+@Mapper
+public interface ProductMapper {
+
+	public void insert(ProductVO obj) throws Exception;
+	public void delete(int obj) throws Exception;
+	public void update(ProductVO obj) throws Exception;
+	public ProductVO select(int obj) throws Exception;
+	public List<ProductVO> selectall() throws Exception;
+	public List<ProductVO> selectall2() throws Exception;
+	public List<ProductAVGVO> selectall3() throws Exception;
 }
 ```
