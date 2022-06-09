@@ -338,3 +338,228 @@ public class CartController {
 }
 
 ```
+
+- CateController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+
+@Controller
+@RequestMapping("cate")
+public class CateController {
+	
+	@Autowired
+	CateBiz biz;
+	
+	@RequestMapping("cateadd")
+	public String add(Model m) {
+		m.addAttribute("center","cate/cateadd");
+		return "index";
+	}
+	
+	@RequestMapping("/cateaddimpl")
+	public String cateaddimpl(Model m, CateVO obj) {
+		try {
+			biz.register(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:catedetail?id="+obj.getId();
+
+	}
+
+	
+	@RequestMapping("/cateselect")
+	public String cateselect(Model m) {
+		List<CateVO> list = null;
+		try {
+			list = biz.get();
+			m.addAttribute("catelist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center","cate/cateselect");
+		return "index";
+	}
+	
+	@RequestMapping("/catedetail")
+	public String catedetail(Model m, Integer id) {
+		CateVO obj = null;
+		try {
+			obj = biz.get(id);
+			m.addAttribute("dcate", obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center","cate/catedetail");
+		return "index";
+	}
+	
+	@RequestMapping("/cateupdate")
+	public String cateupdate(Model m, CateVO obj) {
+		try {
+			biz.modify(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:catedetail?id="+obj.getId();
+
+	}
+
+}
+```
+
+- CustController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@Controller
+@RequestMapping("/cust")
+public class CustController {
+
+	@Autowired
+	CustBiz biz;
+	
+	@RequestMapping("add")
+	public String add(Model m) {
+		m.addAttribute("center", "cust/add");
+		return "index";
+	}
+	
+	@RequestMapping("addimpl")
+	public String addimpl(Model m, CustVO obj) {
+		
+		try {
+			biz.register(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:custdetail?id="+obj.getId();
+	}
+	
+	@RequestMapping("/select")
+	public String select(Model m) {
+		List<CustVO> list = null;
+		try {
+			list = biz.get();
+			m.addAttribute("clist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "cust/custselect");
+		return "index";
+	}
+	
+	@RequestMapping("/custdetail")
+	public String custdetail(Model m, String id) {
+		CustVO obj = null;
+		try {
+			obj = biz.get(id);
+			m.addAttribute("dcust", obj);
+		} catch (Exception e) {
+					
+			e.printStackTrace();
+		}
+		
+		m.addAttribute("center","cust/custdetail");
+		return "/index";
+	}
+	
+	@RequestMapping("/update")
+	public String update(Model m, CustVO obj) {
+		
+		try {
+			biz.modify(obj);
+		} catch (Exception e) {		
+			e.printStackTrace();
+		}
+		
+		
+		return "redirect:custdetail?id="+obj.getId();
+	}
+	
+}
+```
+
+- MainController
+```java
+package com.multi.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.multi.biz.MainBiz;
+
+@Controller
+public class MainController {
+	
+	@Autowired
+	MainBiz biz;
+
+	@RequestMapping("/")
+	public String main(Model m) {
+		int custcnt = 0;
+		int productcnt = 0;
+		int catecnt = 0;
+		int cartcnt = 0;
+		try {
+			custcnt = biz.getCustCnt();
+			productcnt = biz.getProductCnt();
+			catecnt = biz.getCateCnt();
+			cartcnt = biz.getCartCnt();
+			m.addAttribute("custcnt", custcnt);
+			m.addAttribute("productcnt", productcnt);	
+			m.addAttribute("catecnt", catecnt);
+			m.addAttribute("cartcnt", cartcnt);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
+}
+```
+
+- ProductController
+```java
+package com.multi.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
+
+	@RequestMapping("/select")
+	public String select(Model m) {
+		m.addAttribute("center", "product/productselect");
+		return "index";
+	}
+}
+```
