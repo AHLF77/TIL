@@ -232,3 +232,109 @@ public class ProductBiz implements Biz<Integer, ProductVO> {
 	}
 }
 ```
+
+#### com.multi.controller
+- AJAXController
+```java
+package com.multi.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.multi.biz.CateBiz;
+import com.multi.biz.CustBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@RestController
+public class AJAXController {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Autowired
+	CateBiz cabiz;
+	
+	@RequestMapping("checkcustid")
+	public String checkcustid(String id) {
+		String result = "";
+		CustVO c = null;
+		
+		try {
+			c = cubiz.get(id);
+			if(c == null) {
+				result = "0";
+			}else {
+				result = "1";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping("checkcateid")
+	public String checkcateid(Integer id) {
+		String result = "";
+		CateVO ca = null;
+		
+		if(id.equals("") || id == null) {
+			return "1";
+		}
+		try {
+			ca = cabiz.get(id);
+			if(ca == null) {
+				result = "0";
+			}else {
+				result = "1";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+}
+```
+
+- CartController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.multi.biz.CartBiz;
+import com.multi.biz.CateBiz;
+import com.multi.vo.CartVO;
+import com.multi.vo.CateVO;
+
+@Controller
+@RequestMapping("cart")
+public class CartController {
+	
+	@Autowired
+	CartBiz biz;
+		
+	@RequestMapping("/cartselect")
+	public String cartselect(Model m) {
+		List<CartVO> list = null;
+		try {
+			list = biz.get();
+			m.addAttribute("cartlist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center","cart/cartselect");
+		return "index";
+	}
+	
+}
+
+```
