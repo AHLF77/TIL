@@ -857,3 +857,164 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 </mapper>
 ```
+
+#### com.multi.vo
+- CartVO
+```java
+package com.multi.vo;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class CartVO {
+	private int id;
+	private String uid;
+	private int pid;
+	private Date regdate;
+	private int cnt;
+	
+	private String pname;
+	private int pprice;
+	private String catename;
+	
+	
+		
+	public CartVO(String uid, int pid, int cnt) {
+		this.uid = uid;
+		this.pid = pid;
+		this.cnt = cnt;
+	}
+
+
+
+	public CartVO(int id, int cnt) {
+		this.id = id;
+		this.cnt = cnt;
+	}
+	
+}
+```
+
+- CateVO
+```java
+package com.multi.vo;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class CateVO {
+	private int id;
+	private String name;
+	private int pid;
+	
+	public CateVO(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+		
+}
+```
+
+- CustVO
+```java
+package com.multi.vo;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class CustVO {
+	private String id;
+	private String name;
+	private String addr;
+	private Date regdate;
+	private String pwd;
+	
+	public CustVO(String id, String name, String addr, String pwd) {
+		this.id = id;
+		this.name = name;
+		this.addr = addr;
+		this.pwd = pwd;
+	}	
+		
+}
+```
+
+- ProductAVGVO
+```java
+
+```
+
+- ProductVO
+```java
+package com.multi.vo;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class ProductVO {
+	private int id;
+	private String name;
+	private int price;
+	private Date regdate;
+	private int cid;
+	private String imgname;
+	private String catename;
+	private String maincatename;
+	
+	public ProductVO(String name, int price, int cid, String imgname) {
+		this.name = name;
+		this.price = price;
+		this.cid = cid;
+		this.imgname = imgname;
+	}
+	
+	public ProductVO(int id, String name, int price, int cid, String imgname) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.cid = cid;
+		this.imgname = imgname;
+	}	
+	
+}
+```
