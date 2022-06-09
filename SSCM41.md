@@ -1596,3 +1596,149 @@ public class ProductVO {
     </div>
 </div>
 ```
+
+#### templates/cate
+- cateadd
+```html
+<meta charset="UTF-8">
+
+<script>
+
+function sendId(id){
+	$.ajax({
+		url:'/checkcateid',
+		data:{'id':id},
+		success:function(data){
+			if(data == '1'){
+				$('#idspan').text('사용 불가능한 ID');
+			}else{
+				$('#idspan').text('사용 가능한 ID');
+			}
+		}
+	});
+};
+
+$(document).ready(function(){
+	$('input[name="id"]').keyup(function(){
+		var id = $(this).val(); 
+		sendId(id);
+	});
+	
+	$('#registerbtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'cateaddimpl' 
+		});
+		$('.user').submit();
+	});
+});
+
+</script>
+
+
+  <div class="col-lg-6">
+      <div class="p-5">
+          <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Category Register</h1>
+          </div>
+          <form class="user">
+              <div class="form-group">
+                  ID: <span id="idspan"></span><input type="number" class="form-control form-control-item" name="id">
+              </div>
+              <div class="form-group">
+                  NAME: <input type="text" class="form-control form-control-item" name="name">
+              </div>
+              <div class="form-group">
+                  PID: <input type="number" class="form-control form-control-item" name="pid">
+              </div>
+              <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
+                  REGISTER
+              </a>
+             
+          </form>
+         
+      </div>
+  </div>
+
+```
+
+- catedetail
+```html
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'cateupdate'
+		});
+		$('.user').submit();
+	});
+});
+
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Category Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" name="id" th:value="${dcate.id}" readonly="readonly">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" name="name" th:value="${dcate.name}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" name="pid"  th:value="${dcate.pid}">
+            </div>
+            
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                UPDATE
+            </a>
+            
+        </form>
+        
+    </div>
+</div>
+```
+
+- cateselect
+```html
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Category Tables</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PID</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PID</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr th:each="ca : ${catelist}">
+                        <td><a href="" th:text="${ca.id}" th:href="@{catedetail(id=${ca.id})}">id</a></td>
+                        <td th:text="${ca.name}">name</td>
+                        <td th:text="${ca.pid}">pid</td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+```
