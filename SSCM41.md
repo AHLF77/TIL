@@ -681,3 +681,179 @@ public interface ProductMapper {
 	public List<ProductAVGVO> selectall3() throws Exception;
 }
 ```
+
+#### com.multi.mybatis
+- cartmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CartMapper">
+	
+	<select id="select" parameterType="int" resultType="cartVO">
+		SELECT c.id, cu.id AS uid, ca.name AS catename, 
+		p.id AS pid, p.name AS pname, p.price as pprice, c.regdate, c.cnt FROM cart c
+		INNER JOIN cust cu ON c.uid = cu.id
+		INNER JOIN product p ON c.pid = p.id
+		INNER JOIN cate ca ON ca.id = p.cid
+		WHERE c.id = #{id}
+	</select>
+	<select id="selectall" resultType="cartVO">
+		SELECT c.id, cu.id AS uid, ca.name AS catename, 
+		p.id AS pid, p.name AS pname, p.price as pprice, c.regdate, c.cnt FROM cart c
+		INNER JOIN cust cu ON c.uid = cu.id
+		INNER JOIN product p ON c.pid = p.id
+		INNER JOIN cate ca ON ca.id = p.cid
+	</select>
+	<insert id="insert" parameterType="cartVO">
+		INSERT INTO CART VALUES (NULL, #{uid},#{pid},CURDATE(),#{cnt});
+	</insert>
+	<update id="update" parameterType="cartVO">
+		UPDATE CART SET CNT=#{cnt} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM CART WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+```
+
+- catemapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CateMapper">
+	
+	<select id="select" parameterType="int" resultType="cateVO">
+		SELECT * FROM CATE WHERE ID=#{id}
+	</select>
+	<select id="selectall" resultType="cateVO">
+		SELECT * FROM CATE
+	</select>
+	<select id="selectmain" resultType="cateVO">
+		SELECT * FROM CATE WHERE pid IS NULL
+	</select>
+	<insert id="insert" parameterType="cateVO">
+		<if	test="pid != 0"> 
+			INSERT INTO CATE VALUES (#{id},#{name},#{pid})
+		</if>
+		<if	test="pid == 0"> 
+			INSERT INTO CATE VALUES (#{id},#{name},NULL)
+		</if>
+	</insert>
+	<update id="update" parameterType="cateVO">
+		<if	test="pid != 0"> 
+		 	UPDATE CATE SET NAME=#{name},PID=#{pid} WHERE ID=#{id}
+		</if>
+		<if	test="pid == 0"> 
+		 	UPDATE CATE SET NAME=#{name} WHERE ID=#{id}
+		</if>
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM CATE WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+```
+
+- custmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CustMapper">
+	
+	<select id="select" parameterType="String" resultType="custVO">
+		SELECT * FROM CUST WHERE ID=#{id}
+	</select>
+	<select id="selectall" resultType="custVO">
+		SELECT * FROM CUST
+	</select>
+	<insert id="insert" parameterType="custVO">
+		INSERT INTO CUST VALUES (#{id},#{name},#{addr},SYSDATE(), #{pwd})
+	</insert>
+	<update id="update" parameterType="custVO">
+		UPDATE CUST SET NAME=#{name},ADDR=#{addr},PWD=#{pwd} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM CUST WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+```
+
+- mainmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.MainMapper">
+	
+	<select id="getcustcnt" resultType="int">
+		SELECT COUNT(*) FROM CUST
+	</select>
+	<select id="getproductcnt" resultType="int">
+		SELECT COUNT(*) FROM PRODUCT
+	</select>
+	<select id="getcatecnt" resultType="int">
+		SELECT COUNT(*) FROM CATE
+	</select>
+	<select id="getcartcnt" resultType="int">
+		SELECT COUNT(*) FROM CART
+	</select>
+	
+</mapper>
+```
+
+- productmapper
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ProductMapper">
+	
+	<select id="select" parameterType="int" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		WHERE p.id = #{id}
+	</select>
+	<select id="selectall" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+	</select>
+	<select id="selectall2" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename, c2.name as maincatename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		INNER JOIN cate c2 ON c.pid = c2.id
+	</select>
+	<select id="selectall3" resultType="productAVGVO">
+		SELECT c.name as catename, AVG(p.price) as avg
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		GROUP BY catename
+	</select>
+	<insert id="insert" parameterType="productVO">
+		INSERT INTO PRODUCT VALUES (NULL, #{name},#{price},curdate(),#{cid},#{imgname})
+	</insert>
+	<update id="update" parameterType="productVO">
+		UPDATE PRODUCT SET NAME=#{name},PRICE=#{price},CID=#{cid},IMGNAME=#{imgname} 
+		WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM PRODUCT WHERE ID=#{id}
+	</delete>
+	
+</mapper>
+```
