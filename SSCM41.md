@@ -1871,5 +1871,44 @@ $(document).ready(function(){
 
 - custselect
 ```html
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"> Cust Tables</h1>
 
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>PWD</th>
+                        <th>NAME</th>
+                        <th>ADDRESS</th>
+                        <th>REGDATE</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>PWD</th>
+                        <th>NAME</th>
+                        <th>ADDRESS</th>
+                        <th>REGDATE</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr th:each="c : ${clist}">
+                        <td><a href="" th:text="${c.id}" th:href="@{custdetail(id=${c.id})}">id</a></td>
+                        <td th:text="${c.pwd}">pwd</td>
+                        <td th:text="${c.name}">name</td>
+                        <td th:text="${c.addr}">addr</td>
+                        <td th:text="${#dates.format(c.regdate,'yyyy/MM/dd')}">regdate</td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 ```
