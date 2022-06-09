@@ -1742,3 +1742,82 @@ $(document).ready(function(){
     </div>
 </div>
 ```
+
+#### templates/cust
+- add
+```html
+<meta charset="UTF-8">
+
+<script>
+
+function sendId(id){
+	$.ajax({
+		url:'/checkcustid',
+		data:{'id':id},
+		success:function(data){
+			if(data == '1'){
+				$('#ispan').text('사용 불가능한 ID');
+			}else{
+				$('#ispan').text('사용 가능한 ID');
+			}
+		}
+	});
+};
+
+$(document).ready(function(){
+	$('input[name="id"]').keyup(function(){
+		var id = $(this).val(); 
+		sendId(id);
+	});
+	
+	$('#registerbtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'addimpl' 
+		});
+		$('.user').submit();
+	});
+});
+
+</script>
+
+
+  <div class="col-lg-6">
+      <div class="p-5">
+          <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Customer Register</h1>
+          </div>
+          <form class="user">
+              <div class="form-group">
+                  ID: <span id="ispan"></span><input type="text" class="form-control form-control-item" name="id">
+              </div>
+              <div class="form-group">
+                 PWD: <input type="password" class="form-control form-control-item" name="pwd">
+              </div>
+              <div class="form-group">
+                  NAME: <input type="text" class="form-control form-control-item" name="name">
+              </div>
+              <div class="form-group">
+                 ADDR: <input type="text" class="form-control form-control-item" name="addr">
+              </div>
+              
+              <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
+                  REGISTER
+              </a>
+             
+          </form>
+         
+      </div>
+  </div>
+
+```
+
+- custdetail
+```html
+
+```
+
+- custselect
+```html
+
+```
