@@ -1814,7 +1814,59 @@ $(document).ready(function(){
 
 - custdetail
 ```html
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});
+});
 
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="id" th:value="${dcust.id}" readonly="readonly">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="pwd"  th:value="${dcust.pwd}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="name"  th:value="${dcust.name}">
+            </div>
+           
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="addr"  th:value="${dcust.addr}">
+            </div>
+            
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                    name="regdate" th:value="${#dates.format(dcust.regdate,'yyyy/MM/dd')}" readonly="readonly">
+            </div>
+             
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                UPDATE
+            </a>
+            
+        </form>
+        
+    </div>
+</div>
 ```
 
 - custselect
