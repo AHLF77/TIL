@@ -1849,8 +1849,19 @@ $(document).ready(function(){
 
 - catedetail
 ```html
+<meta charset="UTF-8">
+
 <script>
 $(document).ready(function(){
+	$('#deletebtn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('삭제 하시겠습니까?');
+		if(c == true){
+			location.href='catedelete?id='+id;
+		}
+		
+	});
+	
 	$('#updatebtn').click(function(){
 		$('.user').attr({
 			'method':'post',
@@ -1866,6 +1877,7 @@ $(document).ready(function(){
     <div class="p-5">
         <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Category Information</h1>
+        	<h1 th:if = "${msg != null}" th:text="${msg}"></h1>
         </div>
         <form class="user">
             <div class="form-group">
@@ -1877,11 +1889,22 @@ $(document).ready(function(){
             </div>
             
             <div class="form-group">
-                <input type="text" class="form-control form-control-user" name="pid"  th:value="${dcate.pid}">
+				<select name="pid" class="form-control form-control-item">
+                  <option value="0">TOP</option>
+                  <option th:each="s : ${slist}" 
+                  th:value="${s.id}" 
+                  th:text="${s.name}"
+                  th:selected="${dcate.pid}==${s.id}">
+                  </option>
+                  </select>
             </div>
             
             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
                 UPDATE
+            </a>
+            
+            <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
+                DELETE
             </a>
             
         </form>
