@@ -322,7 +322,7 @@ public class CartController {
 	@Autowired
 	CartBiz biz;
 		
-	@RequestMapping("/cartselect")
+	@RequestMapping("cartselect")
 	public String cartselect(Model m) {
 		List<CartVO> list = null;
 		try {
@@ -332,11 +332,10 @@ public class CartController {
 			e.printStackTrace();
 		}
 		m.addAttribute("center","cart/cartselect");
-		return "index";
+		return "/index";
 	}
 	
 }
-
 ```
 
 - CateController
@@ -354,7 +353,7 @@ import com.multi.biz.CateBiz;
 import com.multi.vo.CateVO;
 
 @Controller
-@RequestMapping("cate")
+@RequestMapping("/cate")
 public class CateController {
 	
 	@Autowired
@@ -362,8 +361,17 @@ public class CateController {
 	
 	@RequestMapping("cateadd")
 	public String add(Model m) {
+		List<CateVO> list = null;
+		
+		try {
+			list=biz.getmain();
+			m.addAttribute("slist",list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		m.addAttribute("center","cate/cateadd");
-		return "index";
+		return "/index";
 	}
 	
 	@RequestMapping("/cateaddimpl")
@@ -389,20 +397,24 @@ public class CateController {
 			e.printStackTrace();
 		}
 		m.addAttribute("center","cate/cateselect");
-		return "index";
+		return "/index";
 	}
 	
 	@RequestMapping("/catedetail")
 	public String catedetail(Model m, Integer id) {
+		
 		CateVO obj = null;
+		List<CateVO> list = null;
 		try {
 			obj = biz.get(id);
+			list = biz.getmain();
 			m.addAttribute("dcate", obj);
+			m.addAttribute("slist", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		m.addAttribute("center","cate/catedetail");
-		return "index";
+		return "/index";
 	}
 	
 	@RequestMapping("/cateupdate")
@@ -416,6 +428,22 @@ public class CateController {
 		return "redirect:catedetail?id="+obj.getId();
 
 	}
+	
+	@RequestMapping("/catedelete")
+	public String catedelete(int id,Model m) {
+		try {
+			biz.remove(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			m.addAttribute("msg","삭제불가");
+			return "redirect:catedetail?id="+id;
+		}
+		
+		return "redirect:cateselect";
+
+	}
+	
+	
 
 }
 ```
