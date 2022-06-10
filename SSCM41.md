@@ -2018,7 +2018,6 @@ $(document).ready(function(){
          
       </div>
   </div>
-
 ```
 
 - custdetail
@@ -2120,4 +2119,71 @@ $(document).ready(function(){
         </div>
     </div>
 </div>
+```
+
+#### templates/product
+- add
+```html
+<meta charset="UTF-8">
+
+<script>
+
+$(document).ready(function(){
+
+	$('#registerbtn').click(function(){
+		$('.user').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',
+			'action':'addimpl' 
+		});
+		$('.user').submit();
+	});
+});
+
+</script>
+
+
+  <div class="col-lg-6">
+      <div class="p-5">
+          <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Product Register</h1>
+          </div>
+          <form class="user">
+              <div class="form-group">
+                  NAME: <input type="text" class="form-control form-control-item" name="name">
+              </div>
+              <div class="form-group">
+                 PRICE: <input type="number" class="form-control form-control-item" name="price">
+              </div>
+              <div class="form-group">
+                  CATEGORY:
+                  <select name = "cid" class="form-control form-control-item">
+                  <option th:each="c:${clist}" 
+                  th:if="${c.pid != 0}"
+                  th:value="${c.id}" th:text="${c.id}+${c.name}">
+                  </option>
+                  </select>
+              </div>
+              <div class="form-group">
+                 IMG: <input type="file" class="form-control form-control-item" name="mf">
+              </div>
+              
+              <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
+                  REGISTER
+              </a>
+             
+          </form>
+         
+      </div>
+  </div>
+```
+
+- detail
+```html
+
+```
+
+- product
+```html
+
 ```
