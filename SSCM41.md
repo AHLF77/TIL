@@ -2422,10 +2422,72 @@ class CartSelectAllTests {
 
 - CartSelectTests
 ```java
+package com.multi.cart;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CartBiz;
+import com.multi.vo.CartVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class CartSelectTests {
+
+	@Autowired
+	CartBiz biz;
+	
+	@Test
+	void contextLoads() {
+		List<CartVO> list = null;
+		try {
+			list = biz.get();
+			for (CartVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
 ```
 
 - CartUpdateTests
 ```java
+package com.multi.cart;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CartBiz;
+import com.multi.biz.CateBiz;
+import com.multi.biz.CustBiz;
+import com.multi.vo.CartVO;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CartUpdateTests {
+
+	@Autowired
+	CartBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		CartVO c = new CartVO(1005, 9);
+		try {
+			cabiz.modify(c);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
