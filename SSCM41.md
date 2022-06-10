@@ -2255,7 +2255,56 @@ $(document).ready(function(){
 </div>
 ```
 
-- product
+- productselect
 ```html
+<style>
+	td>img{
+		width: 50px;
+	}
+</style>
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"> Product Tables</h1>
 
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>REGDATE</th>
+                        <th>CATEGORY</th>
+                        <th>ImgName</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>REGDATE</th>
+                        <th>CATEGORY</th>
+                        <th>ImgName</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr th:each="p : ${productlist}">
+                        <td><a href="" th:text="${p.id}" th:href="@{detail(id=${p.id})}">id</a></td>
+                        <td th:text="${p.name}">name</td>
+                        <td th:text="${p.price}">price</td>
+                        <td th:text="${#dates.format(p.regdate,'yyyy/MM/dd')}">REGDATE</td>
+                        <td th:text="${p.catename}">CATEGORY</td>
+                        <td>
+                        	<img th:src="@{'/img/'+${p.imgname}}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 ```
