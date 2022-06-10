@@ -1799,8 +1799,9 @@ function sendId(id){
 };
 
 $(document).ready(function(){
-	$('input[name="id"]').keyup(function(){
-		var id = $(this).val(); 
+	$('input[name="id"]').blur(function(){
+		var id = $(this).val();
+		//alert(id);
 		sendId(id);
 	});
 	
@@ -1829,7 +1830,12 @@ $(document).ready(function(){
                   NAME: <input type="text" class="form-control form-control-item" name="name">
               </div>
               <div class="form-group">
-                  PID: <input type="number" class="form-control form-control-item" name="pid">
+                  PID: 
+                  <select name="pid" class="form-control form-control-item">
+                  <option value="0">TOP</option>
+                  <option th:each="c : ${slist}" th:value="${c.id}" th:text="${c.id} + ${c.name}">:</option>
+                  
+                  </select>
               </div>
               <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
                   REGISTER
@@ -1839,7 +1845,6 @@ $(document).ready(function(){
          
       </div>
   </div>
-
 ```
 
 - catedetail
