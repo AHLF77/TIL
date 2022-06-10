@@ -1942,7 +1942,8 @@ $(document).ready(function(){
                     <tr th:each="ca : ${catelist}">
                         <td><a href="" th:text="${ca.id}" th:href="@{catedetail(id=${ca.id})}">id</a></td>
                         <td th:text="${ca.name}">name</td>
-                        <td th:text="${ca.pid}">pid</td>
+                        <td th:if="${ca.pid == 0}" th:text="TOP">pid</td>
+                        <td th:unless="${ca.pid == 0}" th:text="${ca.pid}">pid</td>
                     </tr> 
                 </tbody>
             </table>
