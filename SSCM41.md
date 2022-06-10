@@ -572,6 +572,7 @@ public class MainController {
 }
 ```
 
+
 #### com.multi.frame
 - Biz(interface)
 ```java
@@ -590,6 +591,117 @@ public interface Biz<K,V> {
 	public List<V> get() throws Exception;
 }
 
+```
+
+- ProductController
+```java
+package com.multi.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.multi.biz.CateBiz;
+import com.multi.biz.ProductBiz;
+import com.multi.frame.Util;
+import com.multi.vo.CateVO;
+import com.multi.vo.ProductVO;
+
+@Controller
+@RequestMapping("/product")
+public class ProductController {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Autowired
+	CateBiz cbiz;
+	
+	@RequestMapping("/add")
+	public String add(Model m) {
+		List<CateVO> list = null;
+		try {
+			list = cbiz.get();
+			m.addAttribute("clist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "product/add");
+		return "/index";
+	}
+	
+	@RequestMapping("/productselect")
+	public String productselect(Model m) {
+		List<ProductVO> list = null;
+		try {
+			list = pbiz.get();
+			m.addAttribute("productlist",list);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "product/productselect");
+		return "/index";
+	}
+	
+	@RequestMapping("/addimpl")
+	public String addimpl(Model m, ProductVO p) {
+		// name, price, cid, mf(->imgname)
+		String imgname = p.getMf().getOriginalFilename();
+		p.setImgname(imgname);
+		
+		try {
+			pbiz.register(p);
+			Util.saveFile(p.getMf());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:productselect";
+	}
+	
+	@RequestMapping("/detail")
+	public String detail(Model m, Integer id) {
+		ProductVO obj = null;
+		List<ProductVO> list = null;
+		try {
+			obj = pbiz.get(id);
+			m.addAttribute("dproduct", obj);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		m.addAttribute("center","product/detail");
+		return "/index";
+	}
+	
+	@RequestMapping("/update")
+	public String update(Model m, ProductVO obj) {
+		try {
+			pbiz.modify(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:detail?id="+obj.getId();
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(int id, Model m) {
+		try {
+			pbiz.remove(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:productselect?id="+id;
+	}
+	
+	
+}
 ```
 
 #### com.multi.mapper
