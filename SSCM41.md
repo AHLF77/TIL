@@ -566,7 +566,7 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "index";
+		return "/index";
 	}
 	
 }
