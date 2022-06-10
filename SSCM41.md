@@ -2308,3 +2308,58 @@ $(document).ready(function(){
     </div>
 </div>
 ```
+
+
+
+### src/test/java
+#### com.multi.cart
+- CartDeleteTests
+```java
+package com.multi.cart;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CartBiz;
+
+@SpringBootTest
+class CartDeleteTests {
+
+	@Autowired
+	CartBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			cabiz.remove(1013);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- CartInsertTests
+```java
+
+```
+
+- CartSelectAllTests
+```java
+
+```
+
+- CartSelectTests
+```java
+
+```
+
+- CartUpdateTests
+```java
+
+```
