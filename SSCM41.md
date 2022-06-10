@@ -1727,7 +1727,7 @@ public class ProductVO {
 - cartselect
 ```html
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Category Tables</h1>
+<h1 class="h3 mb-2 text-gray-800">Cart Tables</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -1738,28 +1738,37 @@ public class ProductVO {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>UID</th>
-                        <th>PID</th>
+                        <th>CUST ID</th>
+                        <th>PRODUCT ID</th>
+                        <th>PRODUCT NAME</th>
+                        <th>PRODUCT PRICE</th>
+                        <th>CATEGORY</th>
                         <th>REGDATE</th>
-                        <th>CNT</th>
+                        <th>COUNT</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>UID</th>
-                        <th>PID</th>
+                        <th>CUST ID</th>
+                        <th>PRODUCT ID</th>
+                        <th>PRODUCT NAME</th>
+                        <th>PRODUCT PRICE</th>
+                        <th>CATEGORY</th>
                         <th>REGDATE</th>
-                        <th>CNT</th>
+                        <th>COUNT</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <tr th:each="car : ${cartlist}">
-                       <td font-weight bold th:text="${car.id}">id</td>
+                        <td th:text="${car.id}">id</td>
                         <td th:text="${car.uid}">uid</td>
                         <td th:text="${car.pid}">pid</td>
+                        <td th:text="${car.pname}">product name</td>
+                        <td th:text="${car.pprice}">product price</td>
+                        <td th:text="${car.catename}">categoty name</td>
                         <td th:text="${#dates.format(car.regdate,'yyyy/MM/dd')}">regdate</td>
-                        <td th:text="${car.cnt}">pid</td>
+                        <td th:text="${car.cnt}">count</td>
                     </tr> 
                 </tbody>
             </table>
