@@ -2346,11 +2346,77 @@ class CartDeleteTests {
 
 - CartInsertTests
 ```java
+package com.multi.cart;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CartBiz;
+import com.multi.vo.CartVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class CartInsertTests {
+
+	@Autowired
+	CartBiz biz;
+	
+	@Test
+	void contextLoads() {
+		//(NULL, 'id01',1006,CURDATE(),3);
+		CartVO obj = new CartVO("id06",1016,2);
+		try {
+			biz.register(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+
 
 ```
 
 - CartSelectAllTests
 ```java
+package com.multi.cart;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CartBiz;
+import com.multi.biz.CateBiz;
+import com.multi.vo.CartVO;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CartSelectAllTests {
+
+	@Autowired
+	CartBiz carbiz;
+	
+	@Test
+	void contextLoads() {
+		List<CartVO> list = null;
+		try {
+			list = carbiz.get();
+			System.out.println("Select All Success");
+			for(CartVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 
 ```
 
