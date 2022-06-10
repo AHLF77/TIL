@@ -2180,7 +2180,79 @@ $(document).ready(function(){
 
 - detail
 ```html
+<meta charset="UTF-8">
 
+<script>
+$(document).ready(function(){
+	$('#deletebtn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('삭제 하시겠습니까?');
+		if(c == true){
+			location.href='delete?id='+id;
+		}
+		
+	});
+	
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});
+});
+
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="id" th:value="${dproduct.id}" readonly="readonly">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="name"  th:value="${dproduct.name}">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="price"  th:value="${dproduct.price}">
+            </div>
+           
+           <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="regdate" th:value="${#dates.format(dproduct.regdate,'yyyy/MM/dd')}" readonly="readonly">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control form-control-item"
+                    name="category"  th:value="${dproduct.catename}">
+            </div>
+             
+            <div class="form-group">
+                <input type="file" class="form-control form-control-item"
+                    name="imgname"  th:value="@{'/img/'+${dproduct.imgname}}">
+            </div>
+            
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                UPDATE
+            </a>
+            
+            <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
+                DELETE
+            </a>
+            
+        </form>
+        
+    </div>
+</div>
 ```
 
 - product
