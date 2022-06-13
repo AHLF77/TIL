@@ -2709,6 +2709,21 @@ $(document).ready(function(){
 </div>
 ```
 
+- application properties
+```properties
+server.port=8088
+
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/shoppingdb?serverTimezone=Asia/Seoul
+
+spring.datasource.username=admin
+spring.datasource.password=
+
+mybatis.type-aliases-package=com.multi.vo
+mybatis.mapper-locations=com/multi/mybatis/*.xml
+
+spring.servlet.multipart.max-file-size=10MB
+```
 
 
 ### src/test/java
