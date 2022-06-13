@@ -2789,9 +2789,6 @@ class CartInsertTests {
 	}
 
 }
-
-
-
 ```
 
 - CartSelectAllTests
@@ -2905,4 +2902,106 @@ class CartUpdateTests {
 	}
 
 }
+```
+
+#### com.multi.cate
+- CateDeleteTests
+```java
+package com.multi.cate;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+
+@SpringBootTest
+class CateDeleteTests {
+
+	@Autowired
+	CateBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			cabiz.remove(61);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- CateDeleteTests
+```java
+package com.multi.cate;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+
+@SpringBootTest
+class CateInsertTests {
+
+	@Autowired
+	CateBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		CateVO obj = new CateVO(31, "big hat", 30);
+		try {
+			cabiz.register(obj);
+			System.out.println("Register OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- CateSelectAllTests
+```java
+package com.multi.cate;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CateSelectAllTests {
+
+	@Autowired
+	CateBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		List<CateVO> list = null;
+		try {
+			list = cubiz.get();
+			System.out.println("Select All Success");
+			for(CateVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
 ```
