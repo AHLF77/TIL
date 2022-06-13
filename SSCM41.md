@@ -580,12 +580,18 @@ public class CustController {
 ```java
 package com.multi.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.MainBiz;
+import com.multi.vo.AdminVO;
+import com.multi.vo.ProductVO;
 
 @Controller
 public class MainController {
@@ -611,6 +617,62 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return "/index";
+	}
+	
+	@RequestMapping("search")
+	public String search(Model m, String txt) {
+		List<ProductVO> list = null;
+		
+		try {
+			list = biz.searchProduct(txt);
+			m.addAttribute("sproduct", list);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "search");
+		return "/index";
+	}
+	
+	@RequestMapping("login")
+	public String login(Model m) {
+		m.addAttribute("center", "login");
+		return "/index";
+	}
+	
+	@RequestMapping("logout")
+	public String logout(Model m, HttpSession session) {
+		if(session != null) {
+			session.invalidate();
+		}
+		return "/index";
+	}
+	
+	@RequestMapping("loginimpl")
+	public String loginimpl(Model m, String id, String pwd, HttpSession session) {
+		String next = "";
+		AdminVO ad = null;
+		
+		try {
+			ad = biz.getAdmin(id);
+			if(ad != null) {
+				if(ad.getPwd().equals(pwd)) {
+					session.setAttribute("loginadmin", ad);
+					m.addAttribute("loginadmin", ad);
+					next = "loginok";
+				}else {
+					throw new Exception();
+				}
+				}else {
+					throw new Exception();
+				}
+			
+		} catch (Exception e) {
+			next="loginfail";
+		}
+		
+		m.addAttribute("center", next);
 		return "/index";
 	}
 	
