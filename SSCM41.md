@@ -3426,3 +3426,79 @@ class GetAdminTests {
 	}
 }
 ```
+
+- ProductCountTests
+```java
+package com.multi.main;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.MainBiz;
+
+@SpringBootTest
+class ProductCountTests {
+
+	@Autowired
+	MainBiz biz;
+	
+	@Test
+	void contextLoads() {
+		
+		int count;
+		try {
+			count = biz.getProductCnt();
+			System.out.println(count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			
+		
+	}
+
+
+}
+```
+
+- ProductSearchTests
+```java
+package com.multi.main;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.MainBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSearchTests {
+
+	@Autowired
+	MainBiz biz;
+	
+	@Test
+	void contextLoads() {
+		
+		List<ProductVO> list = null;;
+		try {
+			list = biz.searchProduct("pa");
+			for(ProductVO p: list) {
+				System.out.println(p);
+			};
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			
+		
+	}
+
+
+}
+
+```
