@@ -820,116 +820,39 @@ public interface Biz<K,V> {
 
 ```
 
-- ProductController
+- Util
 ```java
-package com.multi.controller;
+package com.multi.frame;
 
-import java.util.List;
+import java.io.FileOutputStream;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.multi.biz.CateBiz;
-import com.multi.biz.ProductBiz;
-import com.multi.frame.Util;
-import com.multi.vo.CateVO;
-import com.multi.vo.ProductVO;
-
-@Controller
-@RequestMapping("/product")
-public class ProductController {
-
-	@Autowired
-	ProductBiz pbiz;
-	
-	@Autowired
-	CateBiz cbiz;
-	
-	@RequestMapping("/add")
-	public String add(Model m) {
-		List<CateVO> list = null;
+public class Util {
+	public static void saveFile(MultipartFile mf) {
+		String dir = "C:\\spring\\shopadmin\\src\\main\\resources\\static\\img\\";
+		String dir2 = "C:\\spring\\shop\\src\\main\\resources\\static\\img\\";
+		byte [] data;
+		String imgname = mf.getOriginalFilename();
 		try {
-			list = cbiz.get();
-			m.addAttribute("clist", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		m.addAttribute("center", "product/add");
-		return "/index";
-	}
-	
-	@RequestMapping("/productselect")
-	public String productselect(Model m) {
-		List<ProductVO> list = null;
-		try {
-			list = pbiz.get();
-			m.addAttribute("productlist",list);
-		} catch (Exception e) {
+			data = mf.getBytes();
+			FileOutputStream fo = 
+					new FileOutputStream(dir+imgname);
+			fo.write(data);
+			fo.close();
 			
-			e.printStackTrace();
-		}
-		m.addAttribute("center", "product/productselect");
-		return "/index";
-	}
-	
-	@RequestMapping("/addimpl")
-	public String addimpl(Model m, ProductVO p) {
-		// name, price, cid, mf(->imgname)
-		String imgname = p.getMf().getOriginalFilename();
-		p.setImgname(imgname);
-		
-		try {
-			pbiz.register(p);
-			Util.saveFile(p.getMf());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "redirect:productselect";
-	}
-	
-	@RequestMapping("/detail")
-	public String detail(Model m, Integer id) {
-		ProductVO obj = null;
-		List<ProductVO> list = null;
-		try {
-			obj = pbiz.get(id);
-			m.addAttribute("dproduct", obj);
+			FileOutputStream fo2 = 
+					new FileOutputStream(dir2+imgname);
+			fo2.write(data);
+			fo2.close();
+		}catch(Exception e) {
 			
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		
-		m.addAttribute("center","product/detail");
-		return "/index";
 	}
-	
-	@RequestMapping("/update")
-	public String update(Model m, ProductVO obj) {
-		try {
-			pbiz.modify(obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "redirect:detail?id="+obj.getId();
-	}
-	
-	@RequestMapping("/delete")
-	public String delete(int id, Model m) {
-		try {
-			pbiz.remove(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "redirect:productselect?id="+id;
-	}
-	
 	
 }
 ```
+
 
 #### com.multi.mapper
 - CartMapper(interface)
