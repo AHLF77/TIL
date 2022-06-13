@@ -2692,10 +2692,10 @@ $(document).ready(function(){
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr th:each="p : ${productlist}">
-                        <td><a href="" th:text="${p.id}" th:href="@{detail(id=${p.id})}">id</a></td>
-                        <td th:text="${p.name}">name</td>
-                        <td th:text="${p.price}">price</td>
+ 						<tr th:each="p:${plist}">
+                        <td><a href="" th:text="${p.id}" th:href="@{detail(id=${p.id})}">ID</a></td>
+                        <td th:text="${p.name}">NAME</td>
+                        <td th:text="${p.price}">PRICE</td>
                         <td th:text="${#dates.format(p.regdate,'yyyy/MM/dd')}">REGDATE</td>
                         <td th:text="${p.catename}">CATEGORY</td>
                         <td>
