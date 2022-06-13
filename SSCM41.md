@@ -1090,6 +1090,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.MainMapper">
 	
+	<select id="getadmin" parameterType="string" resultType="adminVO">
+		SELECT * FROM ADMIN WHERE ID=#{id}
+	</select>
+	
 	<select id="getcustcnt" resultType="int">
 		SELECT COUNT(*) FROM CUST
 	</select>
@@ -1101,6 +1105,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<select id="getcartcnt" resultType="int">
 		SELECT COUNT(*) FROM CART
+	</select>
+	<select id="searchproduct" parameterType="string" resultType="productVO">
+	SELECT p.id, p.name, p.regdate, p.imgname,
+	p.cid, p.price, c.name as catename
+	FROM product p
+	INNER JOIN cate c ON p.cid = c.id
+	WHERE p.name LIKE CONCAT('%',#{txt},'%')
 	</select>
 	
 </mapper>
