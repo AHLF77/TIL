@@ -2936,7 +2936,7 @@ class CateDeleteTests {
 
 ```
 
-- CateDeleteTests
+- CateInsertTests
 ```java
 package com.multi.cate;
 
@@ -3119,8 +3119,8 @@ class CateUpdateTests {
 }
 ```
 
-#### com.multi.cate
-- CateDeleteTests
+#### com.multi.cust
+- CustDeleteTests
 ```java
 package com.multi.cust;
 
@@ -3151,7 +3151,7 @@ class CustDeleteTests {
 }
 ```
 
-- CateDeleteTests
+- CustInsertTests
 ```java
 package com.multi.cust;
 
@@ -3288,6 +3288,75 @@ class CustUpdateTests {
 		}
 		
 	}
+
+}
+
+```
+
+#### com.multi.main
+- CartCountTests
+```java
+package com.multi.main;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.MainBiz;
+
+@SpringBootTest
+class CartCountTests {
+
+	@Autowired
+	MainBiz biz;
+	
+	@Test
+	void contextLoads() {
+		
+		int count;
+		try {
+			count = biz.getCartCnt();
+			System.out.println(count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+
+}
+```
+
+- CateCountTests
+```java
+package com.multi.main;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.MainBiz;
+
+@SpringBootTest
+class CateCountTests {
+
+	@Autowired
+	MainBiz biz;
+	
+	@Test
+	void contextLoads() {
+		
+		int count;
+		try {
+			count = biz.getCateCnt();
+			System.out.println(count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			
+		
+	}
+
 
 }
 
