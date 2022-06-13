@@ -3182,3 +3182,80 @@ class CustInsertTests {
 
 }
 ```
+
+- CustSelectAllTests
+```java
+package com.multi.cust;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustSelectAllTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		List<CustVO> list = null;
+		try {
+			list = cubiz.get();
+			System.out.println("Select All Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(CustVO custvo : list) {
+			System.out.println(custvo);
+		}
+		
+	}
+
+}
+
+```
+
+- CustSelectTests
+```java
+package com.multi.cust;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustSelectTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		
+		CustVO obj = null;
+		try {
+			obj = cubiz.get("id01");
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(obj);
+		
+	}
+
+
+}
+```
