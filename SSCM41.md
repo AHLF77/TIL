@@ -2034,17 +2034,72 @@ $(document).ready(function(){
 
 - loginfail
 ```html
+<meta charset="UTF-8">
 
+<h1>LOGIN Fail</h1>
+<p>ID 또는 PWD가 틀립니다.</p>
+<hr>
 ```
 
 - loginok
 ```html
+<meta charset="UTF-8">
 
+<h1>환영 합니다.</h1>
+<p>Login OK</p>
+<hr>
+<h3 th:text="${loginadmin.id} + '님 로그인 성공' ">Test</h3>
 ```
 
 - search
 ```html
+<style>
+	#main{
+		width:200px;
+	}
+</style>
 
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Search Page</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row" th:each="p:${sproduct}">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-12 col-md-12 mb-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-xl-4">
+                        <a th:href="@{/product/detail(id=${p.id})}"> 
+                            <img id="main" th:src="@{'/img/'+${p.imgname}}">
+                        </a>
+                        </div>
+                        <div class="col-xl-8">
+	                        <div class="h5 font-weight-bold text-primary mb-0"
+	                        th:text="${p.catename}">
+                                Category</div>  
+                            <div class="h5 font-weight-bold text-primary mb-0"
+                            th:text="${p.name}">
+                                Customer Count</div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800"
+                            th:text="${p.price}">
+                            	30000
+                            </div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800"
+                            th:text="${#dates.format(p.regdate,'yyyy/MM/dd')}">
+                            	2020-06-10
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+    </div>
 ```
 
 #### templates/cart
