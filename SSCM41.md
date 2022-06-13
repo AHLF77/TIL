@@ -2572,8 +2572,6 @@ $(document).ready(function(){
 
 - detail
 ```html
-<meta charset="UTF-8">
-
 <script>
 $(document).ready(function(){
 	$('#deletebtn').click(function(){
@@ -2589,7 +2587,7 @@ $(document).ready(function(){
 		$('.user').attr({
 			'enctype':'multipart/form-data',
 			'method':'post',
-			'action':'update'
+			'action':'update' 
 		});
 		$('.user').submit();
 	});
@@ -2597,54 +2595,64 @@ $(document).ready(function(){
 
 </script>
 
-<div class="col-lg-6">
-    <div class="p-5">
-        <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
-        </div>
-        <form class="user">
-            <div class="form-group">
-                <input type="text" class="form-control form-control-item"
-                    name="id" th:value="${dproduct.id}" readonly="readonly">
-            </div>
-            
-            <div class="form-group">
-                <input type="text" class="form-control form-control-item"
-                    name="name"  th:value="${dproduct.name}">
-            </div>
-            
-            <div class="form-group">
-                <input type="text" class="form-control form-control-item"
-                    name="price"  th:value="${dproduct.price}">
-            </div>
-           
-           <div class="form-group">
-                <input type="text" class="form-control form-control-item"
-                    name="regdate" th:value="${#dates.format(dproduct.regdate,'yyyy/MM/dd')}" readonly="readonly">
-            </div>
-            
-            <div class="form-group">
-                <input type="text" class="form-control form-control-item"
-                    name="category"  th:value="${dproduct.catename}">
-            </div>
-             
-            <div class="form-group">
-                <input type="file" class="form-control form-control-item"
-                    name="imgname"  th:value="@{'/img/'+${dproduct.imgname}}">
-            </div>
-            
-            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
-                UPDATE
-            </a>
-            
-            <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
+<style>
+.form-group > img{
+	width:200px; 
+}
+</style>
+
+  <div class="col-lg-6">
+      <div class="p-5">
+          <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Product Information</h1>
+          </div>
+
+          <form class="user">
+         	  <div class="form-group">
+         	  	  <img th:src="@{'/img/'+${dproduct.imgname}}">
+         	  	  <input type="hidden" name="imgname" th:value="${dproduct.imgname}">
+          	  </div>
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-item"
+                      name="id" value="id01" th:value="${dproduct.id}" readonly="readonly">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-item"
+                      name="name" value="pwd01" th:value="${dproduct.name}">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-item"
+                      name="price" value="number" th:value="${dproduct.price}">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-item"
+                      name="regdate" value="number" th:value="${#dates.format(dproduct.regdate,'yyyy/MM/dd')}">
+              </div>
+              <div class="form-group">
+                 <select name="cid" class="form-control form-control-item">
+                 	<option th:each="c:${clist}" 
+                 	th:if="${c.pid != 0}"
+                 	th:value="${c.id}" 
+                 	th:text="${c.name}"
+                 	th:selected="${c.id} == ${dproduct.cid}"
+                 	>
+                 	</option>
+                 </select>
+              </div>
+              <div class="form-group">
+                  <input type="file" class="form-control form-control-item"
+                      name="mf">
+              </div>
+              <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                  UPDATE
+              </a>
+              <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
                 DELETE
-            </a>
-            
-        </form>
-        
-    </div>
-</div>
+              </a>
+          </form>
+         
+      </div>
+  </div>
 ```
 
 - productselect
