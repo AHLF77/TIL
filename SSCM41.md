@@ -3118,3 +3118,67 @@ class CateUpdateTests {
 
 }
 ```
+
+#### com.multi.cate
+- CateDeleteTests
+```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustDeleteTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			cubiz.remove("id02");
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+```
+
+- CateDeleteTests
+```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustInsertTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		CustVO c = new CustVO("id04","choi","Busan","pwd04");
+		try {
+			cubiz.register(c);
+			System.out.println("Register OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+```
