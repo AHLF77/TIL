@@ -3502,3 +3502,36 @@ class ProductSearchTests {
 }
 
 ```
+
+#### com.multi.product
+- ProductDeleteTests
+```java
+package com.multi.product;
+
+import org.junit.jupiter.api.Test;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductDeleteTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			pbiz.remove(1013);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+```
