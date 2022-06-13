@@ -3259,3 +3259,36 @@ class CustSelectTests {
 
 }
 ```
+
+- CustUpdateTests
+```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustUpdateTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		CustVO c = new CustVO("id02", "han","Gyeonggi","pwd22");
+		try {
+			cubiz.modify(c);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
