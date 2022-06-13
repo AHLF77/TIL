@@ -2403,6 +2403,15 @@ $(document).ready(function(){
 ```html
 <script>
 $(document).ready(function(){
+	$('#deletebtn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('삭제 하시겠습니까?');
+		if(c == true){
+			location.href='delete?id='+id;
+		}
+		
+	});
+	
 	$('#updatebtn').click(function(){
 		$('.user').attr({
 			'method':'post',
@@ -2449,6 +2458,10 @@ $(document).ready(function(){
             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
                 UPDATE
             </a>
+            
+             <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
+                DELETE
+              </a>
             
         </form>
         
