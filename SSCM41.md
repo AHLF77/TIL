@@ -1992,6 +1992,7 @@ $(document).ready(function(){
 - login
 ```html
 <script>
+<script>
 $(document).ready(function(){
 	$('#login_bt').click(function(){
 		
@@ -2007,7 +2008,8 @@ $(document).ready(function(){
 
 <div class="container">
   <div class="col-sm-offset-2 col-sm-10">
-  	<h2>Login</h2>
+  	<h2>Admin Login</h2>
+  	<h5 th:text="${msg}"></h5>
   </div>
   <form class="form-horizontal" id="login_form">
     <div class="form-group">
