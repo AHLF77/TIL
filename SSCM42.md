@@ -499,3 +499,24 @@ public interface ProductMapper {
 	public List<ProductVO> selectproduct(int id) throws Exception;
 }
 ```
+
+#### com.multi.mybatis
+- cartmapper
+```xml
+
+```
+
+- catemapper
+```xml
+
+```
+
+- custmapper
+```xml
+
+```
+
+- productmapper
+```xml
+
+```
