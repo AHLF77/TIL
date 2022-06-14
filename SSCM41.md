@@ -3718,5 +3718,32 @@ class ProductSelectTests {
 
 - ProductUpdateTests
 ```java
+package com.multi.product;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductUpdateTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO p = new ProductVO(1006,"zara",25000,11,"2.jpg");
+		try {
+			pbiz.modify(p);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
