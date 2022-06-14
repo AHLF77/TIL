@@ -1173,3 +1173,167 @@ class CateInsertTests {
 
 }
 ```
+
+- CateSelectAllTests
+```java
+package com.multi.cate;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CateSelectAllTests {
+
+	@Autowired
+	CateBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		List<CateVO> list = null;
+		try {
+			list = cubiz.get();
+			System.out.println("Select All Success");
+			for(CateVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- CateSelectMainTests
+```java
+package com.multi.cate;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CateSelectMainTests {
+
+	@Autowired
+	CateBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		List<CateVO> list = null;
+		try {
+			list = cubiz.getmain();
+			System.out.println("Select All Success");
+			for(CateVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- CateSelectSubTests
+```java
+package com.multi.cate;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CateSelectSubTests {
+
+	@Autowired
+	CateBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		List<CateVO> list = null;
+		try {
+			list = cubiz.selectsub(20);
+			System.out.println("Select Sub Success");
+			for(CateVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- CateSelectTests
+```java
+package com.multi.cate;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.biz.CustBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CateSelectTests {
+
+	@Autowired
+	CateBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		
+		CateVO obj = null;
+		try {
+			obj = cabiz.get(70);
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(obj);
+		
+	}
+
+
+}
+
+```
+
+- CateInsertTests
+```java
+
+```
+
