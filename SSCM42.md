@@ -1543,3 +1543,134 @@ class CustUpdateTests {
 }
 
 ```
+
+#### com.multi.product
+- ProductDeleteTests
+```java
+package com.multi.product;
+
+import org.junit.jupiter.api.Test;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductDeleteTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			pbiz.remove(1016);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- ProductInsertTests
+```java
+package com.multi.product;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductInsertTests {
+
+	@Autowired
+	ProductBiz biz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO obj = new ProductVO("UNIQLO",19000, 21,"6.png");
+		System.out.println("Register OK");
+		try {
+			biz.register(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+
+
+```
+
+- ProductSelect2Tests
+```java
+package com.multi.product;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CustVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelect2Tests {
+	
+	@Autowired
+	ProductBiz pbiz;
+
+	@Test
+	void contextLoads() {
+		List<ProductVO> list = null;
+		try {
+			list = pbiz.get2();
+			for (ProductVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
