@@ -503,12 +503,81 @@ public interface ProductMapper {
 #### com.multi.mybatis
 - cartmapper
 ```xml
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CartMapper">
+	
+	<select id="select" parameterType="int" resultType="cartVO">
+		SELECT c.id, cu.id AS uid, ca.name AS catename, 
+		p.id AS pid, p.name AS pname, p.price as pprice, c.regdate, c.cnt FROM cart c
+		INNER JOIN cust cu ON c.uid = cu.id
+		INNER JOIN product p ON c.pid = p.id
+		INNER JOIN cate ca ON ca.id = p.cid
+		WHERE c.id = #{id}
+	</select>
+	<select id="selectall" resultType="cartVO">
+		SELECT c.id, cu.id AS uid, ca.name AS catename, 
+		p.id AS pid, p.name AS pname, p.price as pprice, c.regdate, c.cnt FROM cart c
+		INNER JOIN cust cu ON c.uid = cu.id
+		INNER JOIN product p ON c.pid = p.id
+		INNER JOIN cate ca ON ca.id = p.cid
+	</select>
+	<insert id="insert" parameterType="cartVO">
+		INSERT INTO CART VALUES (NULL, #{uid},#{pid},CURDATE(),#{cnt});
+	</insert>
+	<update id="update" parameterType="cartVO">
+		UPDATE CART SET CNT=#{cnt} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM CART WHERE ID=#{id}
+	</delete>
+	
+</mapper>
 ```
 
 - catemapper
 ```xml
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CateMapper">
+	
+	<select id="select" parameterType="int" resultType="cateVO">
+		SELECT * FROM CATE WHERE ID=#{id}
+	</select>
+	<select id="selectsub" parameterType="int" resultType="cateVO">
+		SELECT * FROM CATE WHERE PID=#{pid}
+	</select>
+	<select id="selectall" resultType="cateVO">
+		SELECT * FROM CATE
+	</select>
+	<select id="selectmain" resultType="cateVO">
+		SELECT * FROM CATE WHERE pid IS NULL
+	</select>
+	<insert id="insert" parameterType="cateVO">
+		<if	test="pid != 0"> 
+			INSERT INTO CATE VALUES (#{id},#{name},#{pid})
+		</if>
+		<if	test="pid == 0"> 
+			INSERT INTO CATE VALUES (#{id},#{name},NULL)
+		</if>
+	</insert>
+	<update id="update" parameterType="cateVO">
+		<if	test="pid != 0"> 
+		 	UPDATE CATE SET NAME=#{name},PID=#{pid} WHERE ID=#{id}
+		</if>
+		<if	test="pid == 0"> 
+		 	UPDATE CATE SET NAME=#{name} WHERE ID=#{id}
+		</if>
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM CATE WHERE ID=#{id}
+	</delete>
+	
+</mapper>
 ```
 
 - custmapper
