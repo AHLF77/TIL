@@ -3571,7 +3571,38 @@ class ProductInsertTests {
 
 - ProductSelect2Tests
 ```java
+package com.multi.product;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CustVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelect2Tests {
+	
+	@Autowired
+	ProductBiz pbiz;
+
+	@Test
+	void contextLoads() {
+		List<ProductVO> list = null;
+		try {
+			list = pbiz.get2();
+			for (ProductVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
 ```
 
 - ProductSelect3Tests
