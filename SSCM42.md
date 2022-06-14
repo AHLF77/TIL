@@ -1332,8 +1332,38 @@ class CateSelectTests {
 
 ```
 
-- CateInsertTests
+- CateUpdateTests
 ```java
+package com.multi.cate;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.biz.CustBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CateUpdateTests {
+
+	@Autowired
+	CateBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		CateVO c = new CateVO(62, "small jeans",60);
+		try {
+			cabiz.modify(c);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 
 ```
 
