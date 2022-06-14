@@ -839,3 +839,87 @@ public class ProductVO {
 	
 }
 ```
+
+
+### src/main/resource
+#### templates
+- center
+```html
+<meta charset="UTF-8">
+
+<h1>환영 합니다.</h1>
+<p>Lorem consequat.</p>
+<hr>
+<h3>Test</h3>
+<p>Lorem ipsum...</p>
+```
+
+- left
+```html
+<meta charset="UTF-8">
+
+<p th:each="c:${leftcatelist}"><a href="#" th:text="${c.name}">main1</a></p>
+```
+
+- login
+```html
+<script>
+$(document).ready(function(){
+	$('#login_bt').click(function(){
+		
+		$('#login_form').attr({
+			'method':'post',
+			'action':'/loginimpl' 
+		});
+		$('#login_form').submit();
+	});
+});
+</script>
+
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+  	<h2>Customer Login</h2>
+  </div>
+  <form class="form-horizontal" id="login_form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="id">ID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-6">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+  	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button id="login_bt" class="btn btn-primary">LOGIN</button>
+        <h5 th:text="${msg}"></h5>
+      </div>
+  	</div>
+  </form>
+  
+</div>
+```
+
+- loginok
+```html
+
+```
+
+- loginfail
+```html
+
+```
+
+- main
+```html
+
+```
+
+- register
+```html
+
+```
