@@ -582,7 +582,29 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 - custmapper
 ```xml
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CustMapper">
+	
+	<select id="select" parameterType="String" resultType="custVO">
+		SELECT * FROM CUST WHERE ID=#{id}
+	</select>
+	<select id="selectall" resultType="custVO">
+		SELECT * FROM CUST
+	</select>
+	<insert id="insert" parameterType="custVO">
+		INSERT INTO CUST VALUES (#{id},#{name},#{addr},SYSDATE(), #{pwd})
+	</insert>
+	<update id="update" parameterType="custVO">
+		UPDATE CUST SET NAME=#{name},ADDR=#{addr},PWD=#{pwd} WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM CUST WHERE ID=#{id}
+	</delete>
+	
+</mapper>
 ```
 
 - productmapper
