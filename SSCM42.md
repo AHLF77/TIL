@@ -1723,17 +1723,112 @@ class ProductSelectAllTests {
 }
 ```
 
-- CustDeleteTests
+- ProductSelectTests
 ```java
+package com.multi.product;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelectTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		
+		ProductVO prod = null;
+		try {
+			prod = pbiz.get(1006);
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(prod);
+		
+	}
+
+
+}
 ```
 
-- CustDeleteTests
+- ProductUpdateTests
 ```java
+package com.multi.product;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductUpdateTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO p = new ProductVO(1006,"zara",25000,11,"2.jpg");
+		try {
+			pbiz.modify(p);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 ```
 
-- CustDeleteTests
+- SelectProductTests
 ```java
+package com.multi.product;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class SelectProductTests {
+
+	@Autowired
+	ProductBiz pbiz;
+	
+	@Test
+	void contextLoads() {
+		
+		List<ProductVO> list = null;
+		try {
+			list = pbiz.selectproduct(21);
+			for (ProductVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+
+}
 
 ```
