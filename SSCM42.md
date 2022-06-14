@@ -377,3 +377,48 @@ public class MainController {
 	}
 }
 ```
+
+#### com.multi.frame
+- Biz(interface)
+```java
+package com.multi.frame;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+public interface Biz<K,V> {
+	@Transactional
+	public void register(V v) throws Exception;
+	public void modify(V v) throws Exception;
+	public void remove(K k) throws Exception;
+	public V get(K k) throws Exception;
+	public List<V> get() throws Exception;
+}
+
+```
+
+#### com.multi.mapper
+- CartMapper(interface)
+```java
+package com.multi.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import com.multi.vo.CartVO;
+import com.multi.vo.CateVO;
+
+@Repository
+@Mapper
+public interface CartMapper {
+
+	public void insert(CartVO obj) throws Exception;
+	public void delete(int obj) throws Exception;
+	public void update(CartVO obj) throws Exception;
+	public CartVO select(int obj) throws Exception;
+	public List<CartVO> selectall() throws Exception;
+}
+```
