@@ -925,10 +925,188 @@ $(document).ready(function(){
 
 - main
 ```html
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2b21c3f8da84a6df87f98d92e21da425&libraries=services"></script>
 
+
+
+<style>
+   /* Remove the navbar's default margin-bottom and rounded borders */ 
+   .navbar {
+     margin-bottom: 0;
+     border-radius: 0;
+   }
+   
+   /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+   .row.content {height: 700px}
+   
+   /* Set gray background color and 100% height */
+   .sidenav {
+     padding-top: 20px;
+     background-color: #f1f1f1;
+     height: 100%;
+   }
+   
+   /* Set black background color, white text and some padding */
+   footer {
+     background-color: #555;
+     color: white;
+     padding: 15px;
+   }
+   
+   /* On small screens, set height to 'auto' for sidenav and grid */
+   @media screen and (max-width: 767px) {
+     .sidenav {
+       height: auto;
+       padding: 15px;
+     }
+     .row.content {height:auto;} 
+   }
+</style>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="/">HOME</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li th:each="c:${catelist}"><a th:href="@{/getcate(id=${c.id})}" th:text="${c.name}">Home</a></li>
+	      </ul>
+	    
+	      <ul class="nav navbar-nav navbar-right">
+	      <li th:if="${session.logincust == null}"><a href="/register">
+	      <span class="glyphicon glyphicon-list-alt"></span>Register</a></li> 	
+	      	<li th:if="${session.logincust == null}"><a th:href="@{/login}">
+	      	    <span class="glyphicon glyphicon-log-in">
+	      	    </span> Login</a></li>
+	      	<li th:unless="${session.logincust == null}"><a href="/logout">
+				<span th:text="${session.logincust.name}"></span>
+				<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	      </ul>
+	    
+	    
+	    </div>
+	  </div>
+	</nav>
+	  
+	<div class="container-fluid text-center">    
+	  <div class="row content">
+	    <div class="col-sm-1 sidenav"
+	    th:insert="${left} ? ${left} : left">
+	    </div>
+	    <div class="col-sm-9 text-left" 
+	    th:insert="${center} ? ${center} : center"> 
+	    </div>
+	    <div class="col-sm-2 sidenav">
+	      <div class="well">
+	        <p>ADS</p>
+	      </div>
+	      <div class="well">
+	        <p>ADS</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<footer class="container-fluid text-center">
+	  <p>Footer Text</p>
+	</footer>
+</body>
+</html>
 ```
 
 - register
 ```html
+<meta charset="UTF-8">
+<script>
+$(document).ready(function(){
+	
+	$('#id').keyup(function(){
+		var inputid = $(this).val();
+		$.ajax({
+			url:'/checkcustid',
+			data:{id:inputid},
+			success:function(result){
+				if(result == '1'){
+					$('#iid').text('사용불가능');
+				}else{
+					$('#iid').text('사용가능');
+				}
+			}
+		});
+	});	
+	
+	$('#register_bt').click(function(){
+		
+		$('#register_form').attr({
+			'method':'post',
+			'action':'/registerimpl'
+		});
+		
+		$('#register_form').submit();
+	});
+});
+</script>
 
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-10">
+  	<h2>Customer Register Page</h2>
+  </div>
+  <form class="form-horizontal" id="register_form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="id">ID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+      	<h5 id="iid"></h5>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-6">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="addr">Address:</label>
+      <div class="col-sm-6">          
+        <input type="text" class="form-control" id="addr" placeholder="Enter Address" name="addr">
+      </div>
+    </div>
+        <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-6">          
+        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+      </div>
+    </div>
+    
+      	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button id="register_bt" class="btn btn-primary" name="REGISTER">REGISTER</button>
+      </div>
+  	</div>
+  </form>
+  
+</div>
 ```
