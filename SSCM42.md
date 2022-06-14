@@ -609,5 +609,55 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 - productmapper
 ```xml
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ProductMapper">
+	
+	<select id="select" parameterType="int" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		WHERE p.id = #{id}
+	</select>
+	<select id="selectproduct" parameterType="int" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		WHERE p.cid = #{id}
+	</select>
+	<select id="selectall" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+	</select>
+	<select id="selectall2" resultType="productVO">
+		SELECT p.id, p.name, p.regdate, p.imgname,
+		p.cid, p.price, c.name as catename, c2.name as maincatename
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		INNER JOIN cate c2 ON c.pid = c2.id
+	</select>
+	<select id="selectall3" resultType="productAVGVO">
+		SELECT c.name as catename, AVG(p.price) as avg
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		GROUP BY catename
+	</select>
+	<insert id="insert" parameterType="productVO">
+		INSERT INTO PRODUCT VALUES (NULL, #{name},#{price},curdate(),#{cid},#{imgname})
+	</insert>
+	<update id="update" parameterType="productVO">
+		UPDATE PRODUCT SET NAME=#{name},PRICE=#{price},CID=#{cid},IMGNAME=#{imgname} 
+		WHERE ID=#{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM PRODUCT WHERE ID=#{id}
+	</delete>
+	
+</mapper>
 ```
