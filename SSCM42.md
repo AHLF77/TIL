@@ -1367,3 +1367,55 @@ class CateUpdateTests {
 
 ```
 
+#### com.multi.cust
+- CustDeleteTests
+```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustDeleteTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			cubiz.remove("id04");
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
+
+- CustDeleteTests
+```java
+
+```
