@@ -635,13 +635,16 @@ public class MainController {
 		return "/index";
 	}
 	
-	@RequestMapping("login")
-	public String login(Model m) {
+	@RequestMapping("/login")
+	public String login(Model m, String msg) {
+		if(msg != null && msg.equals("f")) {
+			m.addAttribute("msg", "LOGIN FAIL !!");
+		}
 		m.addAttribute("center", "login");
 		return "/index";
 	}
 	
-	@RequestMapping("logout")
+	@RequestMapping("/logout")
 	public String logout(Model m, HttpSession session) {
 		if(session != null) {
 			session.invalidate();
@@ -650,29 +653,22 @@ public class MainController {
 	}
 	
 	@RequestMapping("loginimpl")
-	public String loginimpl(Model m, String id, String pwd, HttpSession session) {
-		String next = "";
+	public String loginimpl(Model m, String id, String pwd, HttpSession session) {	
 		AdminVO ad = null;
-		
 		try {
 			ad = biz.getAdmin(id);
-			if(ad != null) {
-				if(ad.getPwd().equals(pwd)) {
+			if(ad == null) {
+				throw new Exception();
+				
+			}if(ad.getPwd().equals(pwd)){
 					session.setAttribute("loginadmin", ad);
-					m.addAttribute("loginadmin", ad);
-					next = "loginok";
+					
 				}else {
 					throw new Exception();
 				}
-				}else {
-					throw new Exception();
-				}
-			
 		} catch (Exception e) {
-			next="loginfail";
+			return "redirect:/login?msg=f";
 		}
-		
-		m.addAttribute("center", next);
 		return "/index";
 	}
 	
