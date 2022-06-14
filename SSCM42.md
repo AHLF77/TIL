@@ -1650,14 +1650,77 @@ class ProductSelect2Tests {
 }
 ```
 
-- CustDeleteTests
+- ProductSelect3Tests
 ```java
+package com.multi.product;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CustVO;
+import com.multi.vo.ProductAVGVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelect3Tests {
+	
+	@Autowired
+	ProductBiz pbiz;
+
+	@Test
+	void contextLoads() {
+		List<ProductAVGVO> list = null;
+		try {
+			list = pbiz.get3();
+			for (ProductAVGVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
 ```
 
-- CustDeleteTests
+- ProductSelectAllTests
 ```java
+package com.multi.product;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CustVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductSelectAllTests {
+	
+	@Autowired
+	ProductBiz pbiz;
+
+	@Test
+	void contextLoads() {
+		List<ProductVO> list = null;
+		try {
+			list = pbiz.get();
+			for (ProductVO obj : list) {
+				System.out.println(obj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
 ```
 
 - CustDeleteTests
