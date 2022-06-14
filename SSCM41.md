@@ -1992,7 +1992,6 @@ $(document).ready(function(){
 - login
 ```html
 <script>
-<script>
 $(document).ready(function(){
 	$('#login_bt').click(function(){
 		
@@ -2784,7 +2783,6 @@ class CartInsertTests {
 	
 	@Test
 	void contextLoads() {
-		//(NULL, 'id01',1006,CURDATE(),3);
 		CartVO obj = new CartVO("id06",1016,2);
 		try {
 			biz.register(obj);
@@ -2834,7 +2832,6 @@ class CartSelectAllTests {
 	}
 
 }
-
 ```
 
 - CartSelectTests
@@ -2938,7 +2935,6 @@ class CateDeleteTests {
 	}
 
 }
-
 ```
 
 - CateInsertTests
@@ -3047,7 +3043,6 @@ class CateSelectMainTests {
 	}
 
 }
-
 ```
 
 - CateSelectTests
@@ -3539,4 +3534,62 @@ class ProductDeleteTests {
 	}
 
 }
+```
+
+- ProductInsertTests
+```java
+package com.multi.product;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.biz.ProductBiz;
+import com.multi.vo.CateVO;
+import com.multi.vo.ProductVO;
+
+@SpringBootTest
+class ProductInsertTests {
+
+	@Autowired
+	ProductBiz biz;
+	
+	@Test
+	void contextLoads() {
+		ProductVO obj = new ProductVO("UNIQLO",19000, 21,"6.png");
+		System.out.println("Register OK");
+		try {
+			biz.register(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
+
+- ProductSelect2Tests
+```java
+
+```
+
+- ProductSelect3Tests
+```java
+
+```
+
+- ProductSelectAllTests
+```java
+
+```
+
+- ProductSelectTests
+```java
+
+```
+
+- ProductUpdateTests
+```java
+
 ```
