@@ -1110,3 +1110,66 @@ $(document).ready(function(){
   
 </div>
 ```
+
+### src/test/java
+#### com.multi.cate
+- CateDeleteTests
+```java
+package com.multi.cate;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+
+@SpringBootTest
+class CateDeleteTests {
+
+	@Autowired
+	CateBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		try {
+			cabiz.remove(41);
+			System.out.println("Delete OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+```
+
+- CateInsertTests
+```java
+package com.multi.cate;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
+
+@SpringBootTest
+class CateInsertTests {
+
+	@Autowired
+	CateBiz cabiz;
+	
+	@Test
+	void contextLoads() {
+		CateVO obj = new CateVO(41, "small shoes", 40);
+		try {
+			cabiz.register(obj);
+			System.out.println("Register OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
