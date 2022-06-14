@@ -1400,22 +1400,146 @@ class CustDeleteTests {
 
 ```
 
-- CustDeleteTests
+- CustInsertTests
 ```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustInsertTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		CustVO c = new CustVO("id05","lee","Ulsan","pwd05");
+		try {
+			cubiz.register(c);
+			System.out.println("Register OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 
 ```
 
-- CustDeleteTests
+- CustSelectAllTests
 ```java
+package com.multi.cust;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustSelectAllTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		List<CustVO> list = null;
+		try {
+			list = cubiz.get();
+			System.out.println("Select All Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		for(CustVO custvo : list) {
+			System.out.println(custvo);
+		}
+		
+	}
+
+}
 
 ```
 
-- CustDeleteTests
+- CustSelectTests
 ```java
+package com.multi.cust;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustSelectTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		
+		CustVO obj = null;
+		try {
+			obj = cubiz.get("id01");
+			System.out.println("Select Success");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println(obj);
+		
+	}
+
+
+}
 
 ```
 
-- CustDeleteTests
+- CustUpdateTests
 ```java
+package com.multi.cust;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.multi.biz.CustBiz;
+import com.multi.vo.CustVO;
+
+@SpringBootTest
+class CustUpdateTests {
+
+	@Autowired
+	CustBiz cubiz;
+	
+	@Test
+	void contextLoads() {
+		CustVO c = new CustVO("id05", "choi","Gyeonggi","pwd55");
+		try {
+			cubiz.modify(c);
+			System.out.println("Update OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}
 
 ```
