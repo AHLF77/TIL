@@ -1868,7 +1868,7 @@ $(document).ready(function(){
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow" th:if="${session.loginadmin == null}">
-                        	<a href="/login">
+                        	<a th:href="@{/login}">
 	      	    			<span class="glyphicon glyphicon-log-in">
 	      	    			</span> Login</a></li>
                         </li>
@@ -1896,7 +1896,7 @@ $(document).ready(function(){
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/logout"data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
