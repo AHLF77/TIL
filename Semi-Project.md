@@ -34,7 +34,52 @@
 ## 수행방법
 
 - 맥도날드, 버거킹 등 패스트 푸드 점의 키오스크 로직 파악
+
 - 써브웨이 어플리케이션을 참조하여 필요 기능을 선정해 MultiSub에 반영.
+
+- ERD-CLOUD 협업 도구를 사용하여 DB 테이블 구성
+
+  ![MultiSub](../OneDrive/Desktop/화면 캡처 2022-06-27 151545.png) 
+
+- HW 장비
+
+​     O 개인용 노트북/컴퓨터
+
+​     O 태블릿 PC
+
+- SW 장비
+
+​     O ERD-CLOUD
+
+​     O Eclipse
+
+​     O GitHub
+
+​     O Zoom
+
+​     O Spring Boot
+
+​     O MySQL
+
+​     O DisCord
+
+- 사용 언어
+
+​     O JAVA
+
+​     O HTML
+
+​     O CSS
+
+​     O Java Script
+
+​     O Ajax
+
+​     O THYMELEAF
+
+​     O jQuery
+
+​     O Start BootStrap 
 
 
 
@@ -54,11 +99,19 @@
 
 
 
-
-
-
-
-
-
 ## 시연
 
+
+
+
+
+## DB SQL-DML
+
+- Category Table
+
+  | CATENAME | ID   | 분류 |
+  | -------- | ---- | ---- |
+  |          |      |      |
+  |          |      |      |
+
+  
