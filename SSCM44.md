@@ -18,14 +18,21 @@
   - root로 접속 후 비밀 번호 변경
     - mysql -u root -p
     - ALTER USER 'root'@'localhost' IDENTIFIED BY '변경할 비밀번호';
+  - 비밀번호 정책 변경
+    - SHOW VARIABLES LIKE 'validate_password%';
+    - SET GLOBAL validate_password.length = 5; : 최소 5자리 이상 설정해야 함.
+    - SET GLOBAL validate_password.number_count = 0; : 숫자 필수는 아님.
+    - SET GLOBAL validate_password.policy=LOW;: 정책 수준 낮음.
+    - SET GLOBAL validate_password.mixed_case_count = 0;: 대소문자 미포함
+    - SET GLOBAL validate_password.special_char_count = 0;: 특수문자 미포함
+
+※ 위와 같이 설정하지 않을 경우 최소 8자리 이상, 대/소문자 포함, 특수문자, 숫자 등을 포함 필요.
 
 
 
+### MySQL 삭제
 
 
-
-
-rm -rf
 
 
 
