@@ -1,5 +1,38 @@
 # 리눅스 서버 설정
 
+### putty 명령어
+
+- java -version: 자바 버전 확인
+- systemctl status mysqld: sql 구동 상태
+- pwd: 현재 설정 경로 보여주기
+- ls: 현재 있는 루트에 파일 목록 보여주기
+- rm: ls로 파일 목록 확인하고 삭제(파일명, 확장자),(ex: rm day05.war)
+- mv: 이동(이동할 대상, 디렉토리 이름: mv ROOT ROOT_BACK)
+- CP: 복사 "(복사한)파일명, 확장자"(ex: cp /root/day051.war .) .는 현재경로
+- cat: 파일 내용 확인
+- ls: 간략히 보기(-al: 파일 종류, 접근권한, 링크수, 소유자, 소유그룹, 파일크기, 마지막 수정일시, 숨김파일 등)
+- mkdir "디렉토리 이름":  디렉토리 생성
+- rmdir "디렉토리 이름": 디렉토리 안에 다른 파일이나 디렉토리가 존재하지 않아야만 가능.
+- 파일 찾기
+  - find 검색시작위치 -name "파일명패턴"# 특정 파일명 패턴을 갖는 파일들을 검색해서 지우기find 검색시작위치 -name "파일명패턴" -delete
+- wget: 파일 내려받기
+- 압축하기
+  - tar zcvf 생성될 압축파일 이름
+- 해체하기
+  - tar zxvf 압축파일_이름
+    - c : 새로운 묶음 만듬
+    - x : 묶인 파일 풀어줌
+    - f : 묶음 파일의 이름 지정 옵션
+    - v : 묶음 파일을 풀거나 묶을 때 과정을 화면에 출력
+
+- zip 명령어 압축/해제
+
+  - zip 압축파일이름 : 압축
+
+  - unzip 파일이름: 해제
+
+
+
 ### MySQL8.0 설치
 
 - Install
@@ -40,24 +73,9 @@
 ### MySQL 삭제
 
 - yum list installed | grep mysql: 설치된 패키지 목록 확인
-
 - yum remove package_name: 원하는 패키지만 삭제
-
 - yum remove -y mysql-community-*: 삭제
-
 - rm -rf : 디렉토리 삭제 시, 삭제 확인 과정을 거치지 않음(-r: 비어 있지 않은 디렉토리 제거 시 사용)
-
-  
-
-### putty 명령어
-
-- java -version: 자바 버전 확인
-- systemctl status mysqld: sql 구동 상태
-- pwd: 현재 설정 경로 보여주기
-- ls: 현재 있는 루트에 파일 목록 보여주기
-- rm: ls로 파일 목록 확인하고 삭제(파일명, 확장자),(ex: rm day05.war)
-- mv: 이동(이동할 대상, 디렉토리 이름: mv ROOT ROOT_BACK)
-- CP: 복사 "(복사한)파일명, 확장자"(ex: cp /root/day051.war .) .는 현재경로
 
 
 
