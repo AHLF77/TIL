@@ -13,6 +13,7 @@
     - systemctl enable mysqld: 재부팅 시 자동 시작하도록 설정
     - systemctl start mysqld: 서비스 시작
     - systemctl status mysqld: 서비스 구동 여부 확인
+    - systemctl stop mysqld: 서비스 중지
   - settings root password
     - grep "temporary password" /var/log/mysqld.log
   - root로 접속 후 비밀 번호 변경
@@ -27,20 +28,26 @@
     - SET GLOBAL validate_password.special_char_count = 0;: 특수문자 미포함
     - ※ 위와 같이 설정하지 않을 경우 최소 8자리 이상, 대/소문자 포함, 특수문자, 숫자 등을 포함 필요.
   - 사용자 생성 및 데이터베이스 생성
-    - use mysql;
-    - SELECT host, user FROM user;
-    - CREATE USER '아이디'@'%' identified by '비밀번호';
-    - GRANT ALL PRIVILEGES ON DB이름.* to '아이디'@'%';
-    - flush privileges;
-    - select host,user from user;
+    - use mysql; : MySQL의 정보가 있는 mysql db를 선택
+    - SELECT host, user FROM user;: 유저의 목록과 접속 허용된 IP를 볼 수 있음.
+    - CREATE USER '아이디'@'%' identified by '비밀번호'; : 외부접속만 가능한 계정 생성
+    - CREATE DATABASE DB이름 default character set utf8;: 테이블 생성 시, 기본 인코딩을 UTF-8으로 설정
+    - GRANT ALL PRIVILEGES ON DB이름.* to '아이디'@'%';: 해당 DB에 대한 권한 부여
+    - flush privileges; : 새로고침
 
 
 
 ### MySQL 삭제
 
+- yum list installed | grep mysql: 설치된 패키지 목록 확인
 
+- yum remove package_name: 원하는 패키지만 삭제
 
+- yum remove -y mysql-community-*: 삭제
 
+- rm -rf : 디렉토리 삭제 시, 삭제 확인 과정을 거치지 않음(-r: 비어 있지 않은 디렉토리 제거 시 사용)
+
+  
 
 ### putty 명령어
 
