@@ -8,47 +8,18 @@
   - yum install -y mysql-server
   - mysql -V
 
+- Configuring Server
+  - Start & Stop
+    - systemctl enable mysqld: 재부팅 시 자동 시작하도록 설정
+    - systemctl start mysqld: 서비스 시작
+    - systemctl status mysqld: 서비스 구동 여부 확인
+  - settings root password
+    - grep "temporary password" /var/log/mysqld.log
+  - root로 접속 후 비밀 번호 변경
+    - mysql -u root -p
+    - ALTER USER 'root'@'localhost' IDENTIFIED BY '변경할 비밀번호';
 
 
-
-
-
-
-
-
-반납이 필요할 경우: 정지 후, 반납
-
-
-
-반납을 하였을 경우, 재생성 해야함.
-
-
-
-가이드 참조(서버 접속 가이드)
-
-
-
-초기설정
-
-ACG 메뉴
-
-
-
-Putty: 포트 포워딩 설정
-
-IP: 서버 접속용 공인IP,
-
-외부 포트 지정
-
-
-
-서버생성
-
-
-
-
-
-포워딩 정보: Putty를 가지고 접속을 함.
 
 
 
@@ -56,21 +27,7 @@ IP: 서버 접속용 공인IP,
 
 rm -rf
 
-CentOS Mysql8.0(**Install**)
 
-yum install -y https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm
-
-yum repolist enabled | grep "mysql.*"
-
-yum install -y mysql-server
-
-mysql -V
-
-
-
-
-
-grep "temporary password" /var/log/mysqld.log
 
 ### putty 명령어
 
