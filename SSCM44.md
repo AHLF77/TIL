@@ -1,5 +1,21 @@
 # 리눅스 서버 설정
 
+### MySQL8.0 설치
+
+- Install
+  - yum install -y https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm
+  - yum repolist enabled | grep "mysql.*"
+  - yum install -y mysql-server
+  - mysql -V
+
+
+
+
+
+
+
+
+
 반납이 필요할 경우: 정지 후, 반납
 
 
