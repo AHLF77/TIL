@@ -25,8 +25,14 @@
     - SET GLOBAL validate_password.policy=LOW;: 정책 수준 낮음.
     - SET GLOBAL validate_password.mixed_case_count = 0;: 대소문자 미포함
     - SET GLOBAL validate_password.special_char_count = 0;: 특수문자 미포함
-
-※ 위와 같이 설정하지 않을 경우 최소 8자리 이상, 대/소문자 포함, 특수문자, 숫자 등을 포함 필요.
+    - ※ 위와 같이 설정하지 않을 경우 최소 8자리 이상, 대/소문자 포함, 특수문자, 숫자 등을 포함 필요.
+  - 사용자 생성 및 데이터베이스 생성
+    - use mysql;
+    - SELECT host, user FROM user;
+    - CREATE USER '아이디'@'%' identified by '비밀번호';
+    - GRANT ALL PRIVILEGES ON DB이름.* to '아이디'@'%';
+    - flush privileges;
+    - select host,user from user;
 
 
 
