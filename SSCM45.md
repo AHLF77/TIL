@@ -57,3 +57,18 @@
 ### NCP 계정 생성
 
 ![](../OneDrive/Desktop/멀티캠퍼스/13주차/서브계정 로그인.png)
+
+- 로그인 페이지 접속키 입력
+- 서브 계정 아이디 입력
+- 비밀번호 입력
+
+![](../OneDrive/Desktop/멀티캠퍼스/13주차/콘솔.png)
+
+![](../OneDrive/Desktop/멀티캠퍼스/13주차/서버 접속.png)
+
+
+
+![](../OneDrive/Desktop/멀티캠퍼스/13주차/서버생성.png)
+
+
+
