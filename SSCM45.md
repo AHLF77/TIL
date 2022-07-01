@@ -108,3 +108,22 @@
 
 
 
+### 보안 설정
+
+- 포트포워딩에 있는 IP 정보들은 전부 삭제
+
+- ACG 설정 클릭
+
+  ![](../OneDrive/Desktop/멀티캠퍼스/13주차/ACG 설정화면.png)
+
+
+
+- 해당 컴퓨터 선택 후, ACG 설정 클릭
+
+  ![](../OneDrive/Desktop/멀티캠퍼스/13주차/ACG 설정.png)
+
+- 규칙 설정
+
+  ![](../OneDrive/Desktop/멀티캠퍼스/13주차/rbclrtjfwjd.png)
+
+  - MyIP를 통해 자신의 IP를 불러오고, 허용포트를 삽입 후 투가하여, 적용버튼을 누르면 완료.
