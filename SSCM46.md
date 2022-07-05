@@ -243,3 +243,23 @@ public class KakaoAPI {
 }
 ```
 
+
+
+### 5. Main Page(index) 설정(src/main/resources/templates)
+
+```html
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+	<h1>Main Page</h1>
+	<h2><a href="/kakao">KAKAOTEST</h2>
+</body>
+</html>
+```
+
