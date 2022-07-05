@@ -263,3 +263,52 @@ public class KakaoAPI {
 </html>
 ```
 
+
+
+### 6. Kakao Page(kakao) 설정(src/main/resources/templates)
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+</script>
+
+</head>
+<body>
+	<h1>KaKao Page</h1>
+	<input type="text" id="param">
+	<button id="bt">Click</button>
+</body>
+</html>
+```
+
+
+
+```javascript
+	$(document).ready(function(){
+		$('#bt').click(function(){
+			var param = $('#param').val();
+			//alert(param);
+			$.ajax({
+				url:'/kakaolocal',
+				data:{'keyword':param},
+				success:function(data){
+					alert(data);
+				}
+			});
+		});
+	});
+```
+
+- Input란에  키워드로 원하는 장소를 검색하여 카카오 API로 불러오는 기능을 해줌.
+
+
+
+### 7. KAKAOAPI 테스트(src/test/java)
+
