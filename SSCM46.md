@@ -312,3 +312,41 @@ public class KakaoAPI {
 
 ### 7. KAKAOAPI 테스트(src/test/java)
 
+```java
+package com.ncp;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ncp.restapi.KakaoAPI;
+
+@SpringBootTest
+class KaKaoTests {
+	
+	@Autowired
+	KakaoAPI kakaoapi;
+	
+	@Test
+	void contextLoads() throws Exception {
+		String result="";
+		result = kakaoapi.kakaolocalapi("pharmacy");
+		System.out.println(result);		
+		
+	}
+
+}
+```
+
+
+
+- kakao.html의 fitness를 입력할 경우 해당 데이터들을 불러옴.
+
+<aside> 📍 해당 결과 값 {"documents":[{"address_name":"서울 중구 남대문로3가 30-15","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"8886498","phone":"02-753-7575","place_name":"남시약국","place_url":"http://place.map.kakao.com/8886498","road_address_name":"서울 중구 남대문로 18","x":"126.97774853256885","y":"37.56077835029789"},{"address_name":"서울 중구 태평로1가 84","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"13513669","phone":"02-779-7697","place_name":"에이스약국","place_url":"http://place.map.kakao.com/13513669","road_address_name":"서울 중구 세종대로 136","x":"126.97774173003772","y":"37.56842600499118"},{"address_name":"서울 용산구 동자동 43-205","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"11602516","phone":"02-313-4483","place_name":"서울중앙약국","place_url":"http://place.map.kakao.com/11602516","road_address_name":"서울 용산구 청파로 378","x":"126.97048737272486","y":"37.55361923561954"},{"address_name":"서울 서초구 서초동 1306-4","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"695043199","phone":"02-535-8233","place_name":"굿약국","place_url":"http://place.map.kakao.com/695043199","road_address_name":"서울 서초구 서초대로77길 24","x":"127.02598800338","y":"37.5000248610428"},{"address_name":"서울 강남구 도곡동 950-8","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"717110856","phone":"02-6401-9002","place_name":"스토리약국","place_url":"http://place.map.kakao.com/717110856","road_address_name":"서울 강남구 남부순환로359길 27","x":"127.03592548459473","y":"37.4864720109638"},{"address_name":"서울 강남구 일원동 715-1","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"9499539","phone":"02-459-3702","place_name":"천사약국","place_url":"http://place.map.kakao.com/9499539","road_address_name":"서울 강남구 일원로 95","x":"127.083453216988","y":"37.4856542114117"},{"address_name":"서울 영등포구 영등포동7가 204","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"1487898328","phone":"02-2633-0308","place_name":"별담은온누리약국","place_url":"http://place.map.kakao.com/1487898328","road_address_name":"서울 영등포구 국회대로54길 10","x":"126.90610790749588","y":"37.52303358536511"},{"address_name":"경기 고양시 일산서구 대화동 2250-6","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"10748610","phone":"031-915-2400","place_name":"인제조은약국","place_url":"http://place.map.kakao.com/10748610","road_address_name":"경기 고양시 일산서구 호수로856번길 73-2","x":"126.749812508007","y":"37.6737332687028"},{"address_name":"인천 계양구 계산동 925-9","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"12681887","phone":"032-543-7036","place_name":"유영약국","place_url":"http://place.map.kakao.com/12681887","road_address_name":"인천 계양구 하느재로20번길 1","x":"126.725206767953","y":"37.5454572897296"},{"address_name":"경기 고양시 일산서구 대화동 2250-5","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"12357903","phone":"031-921-6622","place_name":"큰믿음약국","place_url":"http://place.map.kakao.com/12357903","road_address_name":"경기 고양시 일산서구 호수로856번길 73-4","x":"126.74970793393231","y":"37.67381954065568"},{"address_name":"경기 고양시 일산서구 대화동 2702","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"734469903","phone":"031-923-0992","place_name":"애플약국","place_url":"http://place.map.kakao.com/734469903","road_address_name":"경기 고양시 일산서구 킨텍스로 217-23","x":"126.74550392649627","y":"37.66279518613446"},{"address_name":"경기 고양시 일산서구 대화동 2248","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"9509049","phone":"031-916-4688","place_name":"평화약국","place_url":"http://place.map.kakao.com/9509049","road_address_name":"경기 고양시 일산서구 호수로856번길 74-1","x":"126.7500690756693","y":"37.673616685604756"},{"address_name":"경기 고양시 일산서구 대화동 2248-2","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"8908343","phone":"031-923-5400","place_name":"대한약국","place_url":"http://place.map.kakao.com/8908343","road_address_name":"경기 고양시 일산서구 호수로856번길 74-7","x":"126.750339123945","y":"37.6735361695764"},{"address_name":"경기 김포시 걸포동 389-17","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"16801487","phone":"031-989-8808","place_name":"금파약국","place_url":"http://place.map.kakao.com/16801487","road_address_name":"경기 김포시 감암로 7","x":"126.711271127067","y":"37.6319875140694"},{"address_name":"경기 김포시 양촌읍 양곡리 415-4","category_group_code":"PM9","category_group_name":"약국","category_name":"의료,건강 \u003e 약국","distance":"","id":"324344934","phone":"031-981-2065","place_name":"한성약국","place_url":"http://place.map.kakao.com/324344934","road_address_name":"경기 김포시 양촌읍 양곡1로 44","x":"126.623770844752","y":"37.6545555447785"}],"meta":{"is_end":false,"pageable_count":45,"same_name":{"keyword":"pharmacy","region":[],"selected_region":""},"total_count":50}}
+
+</aside>
+
+
+
+## 키워드로 장소 검색
+
