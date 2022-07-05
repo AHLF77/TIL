@@ -113,3 +113,63 @@
 </project>
 ```
 
+
+
+### 2. ‘application.properties’을 이용한 포트 설정
+
+-  server.port=8080
+
+
+
+### 3. Controller 설정(src/main/java)
+
+- MainController
+
+```java
+package com.ncp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class MainController {
+	
+	@RequestMapping("/")
+	public String main() {
+		return "index";
+	}
+	@RequestMapping("/kakao")
+	public String kakao() {
+		return "kakao";
+	}
+}
+```
+
+
+
+- AJAXController
+
+```java
+package com.ncp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ncp.restapi.KakaoAPI;
+
+@RestController
+public class AJAXController {
+
+	@Autowired
+	KakaoAPI kakaoapi;
+	
+	@RequestMapping("kakaolocal")
+	public Object kakaolocal(String keyword) throws Exception {
+		System.out.println(keyword);
+		String result = kakaoapi.kakaolocalapi(keyword);
+		return result;
+	}
+}
+```
+
