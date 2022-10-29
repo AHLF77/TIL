@@ -293,9 +293,7 @@ $ git log -2
 - use "git restroe <file> ... " to discard changes in working directory = > 작업 디렉터리에서 변화를 버리기 위해서는 **'git restore'** 를 사용하라.
 
 
-## 4. 주의할점
-
-#### Github
+## ※ 주의할점
 
 1. git init하지 않기
 2. 상위폴더에 init하지 않기
