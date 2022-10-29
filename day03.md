@@ -1,4 +1,4 @@
-# 0406
+# 0406 배운 내용 요약
 
 ## Primitive type 
 - 기본형 타입
@@ -137,7 +137,7 @@ package ch04;
 
 import java.util.Scanner;
 
-public class P1099 {
+public class P109 {
 // 
 	public static void main(String[] args) {
 		System.out.println("Start");
@@ -166,8 +166,22 @@ public class P1099 {
 			return;
 		}
 		
+//	    입력 받은 숫자가 한자리 수가 아니면 종료.
+//		if ( n1.length() > 1 || n2.length() > 1 ) {
+//			System.out.println("한자리수만 입력 가능합니다.");
+//			sc.close();
+//			return;
+//		}
+// 숫자만 입력 받는다.
+//		// "1" -> '1'
+//		char c1 = n1.charAt(0);
+//		char c2 = n2.charAt(0);
+//		if ( !(c1 >= '1' && c1 <= '9') || !(c2 >= '1' && c2 <='9') ) {
+//			System.out.println("숫자만 입력 가능합니다.");
+//			sc.close();
+//			return;
+//		}	
 		
-		// 숫자만 입력 받는다.
 		
 		double num1 = 0.0;
 		double num2 = 0.0;
@@ -202,7 +216,7 @@ public class P1099 {
 		}
 		System.out.printf("결과: %.2f\n", result);
 		
-		String str = "";
+		String str = ""; //음수, 양수 필터링
 		str = (result < 0) ? "음수": "양수";
 		System.out.println(str);
 		
@@ -216,7 +230,7 @@ public class P1099 {
 		}
 		System.out.println(str2);
 		
-		
+		//큰수,중간수, 작은수 필터링
 		sc.close();
 		System.out.println("End");
 	}
@@ -270,7 +284,7 @@ public class P146 {
 		if(s1 == s2) {// 주소를 비교한다.
 			System.out.println("Equal Reference ..");
 		}
-		if(s1.equals(s2)) { // 값을 비교한다.
+		if(s1.equals(s2)) { // String 안의 값(value)을 비교하는것
 			System.out.println("Equal String ..");
 		}
 	}
