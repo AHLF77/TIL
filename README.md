@@ -3,20 +3,17 @@
 
 ## JAVA
  - [day01: 자바의 기초](https://github.com/AHLF77/TIL/blob/master/day01.md)
- - [day02: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day03: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day04: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day05: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day06: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day07: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day08: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day09: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day10: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day11: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day12: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day13: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)  
- - [day14: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
- - [day15: 자바 데이터타입, 연산자 공부](https://github.com/AHLF77/TIL/blob/master/day02.md)
+ - [day02: 자바 데이터타입, 연산자](https://github.com/AHLF77/TIL/blob/master/day02.md)
+ - [day03: STRING,reference type](https://github.com/AHLF77/TIL/blob/master/day03.md)
+ - [day04: 제어문]()
+ - [day05: 배열]()
+ - [day06: 숫자맞추기, 로또게임]()
+ - [day07: 자바 객체지향 기초(1)]()
+ - [day08: 자바 객체지향 기초(2)]()
+ - [day09: 추상클래스]()
+ - [day10: 인터페이스]()
+ - [day11: 예외처리]()
+ - [day12: API]()
 
 ## SQL
 
@@ -31,4 +28,9 @@
 
 
 ## Cloud
+
+
+## Git
+ - [day01: Git 기초]()
+ - [day02: Git 실전]()
 
