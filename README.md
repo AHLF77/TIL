@@ -31,6 +31,6 @@
 
 
 ## Git
- - [day01: Git 기초]()
- - [day02: Git 실전]()
+ - [day01: Git 기초](https://github.com/AHLF77/TIL/blob/master/GItday01.md)
+ - [day02: Git 실전](https://github.com/AHLF77/TIL/blob/master/GItday02.md)
 
