@@ -7,12 +7,12 @@ package ch02;
 public class P39 {
 
 	public static void main(String[] args) {
-		byte b1 = 127;
+		byte b1 = 127; // byte는 -128 ~ 127 까지만 처리할 수 있다.
 		System.out.println(b1);
 		
-//		char c1 = 'A';
-		char c1 = 65;
-//		char c1 = '\u0041'; // unicode
+//		char c1 = 'A';  //character는 한글자만 가능하다. 작은따옴표 ' ' 안에 있어야만 한다.
+		char c1 = 65; 
+//		char c1 = '\u0041'; // unicode 한글 '가'
 		System.out.println(c1);
 		
 //		char c2 = '\uAC00';
@@ -31,9 +31,9 @@ package ch02;
 public class P44 {
 
 	public static void main(String[] args) {
-	 int v1 = 10; // 10진수
-	 int v2 = 012;// 8진수
-	 int v3 = 0xA;// 16진수
+	 int v1 = 10; // 10진수 10
+	 int v2 = 012;// 8진수 10
+	 int v3 = 0xA;// 16진수 10
 	 System.out.println(v1);
 	 System.out.println(v2);
 	 System.out.println(v3);
@@ -346,7 +346,7 @@ public class P86 {
 		// 객체형: 문자열, 객체
 		String str = "NaN";
 		char c ='A';
-		double a = Double.valueOf(str);
+		double a = Double.valueOf(str); // String을 정수로 바꾸어주는 함수
 		double result = 0.0;
 		
 		if(Double.isNaN(a)) {
@@ -355,6 +355,11 @@ public class P86 {
 			result = a * 100;
 		}
 		
+		int b = (int)c ; // int에는 정수형값이 들어갈 수 있다. 결과값 : 65
+		// int a (int)str; // int type 에는 "" type이 들어올수 없어 에러가난다.
+
+		System.out.println(b);
+
 		System.out.println(result);
 		
 		
