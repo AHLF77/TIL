@@ -1,4 +1,4 @@
-# 0411 강의
+# 0411 배운 내용 요약
 
 ## 1. switch 문
 - if 문과 같은 제어문
@@ -173,7 +173,7 @@ public class P120 {
 			s++;
 		}
 		System.out.println("답2: " + sum2);
-		System.out.println("" + s);
+		System.out.println("" + s); // 마지막 s++ 되면서 s값은 10+1 이되어서 11이됨.
 		System.out.println("평균: " + sum2/(s-1));
 		
 		System.out.println("-------------------------------------");	
@@ -434,6 +434,8 @@ public class P130 {
 /*		for (int i = 10; i >= 1; i--) {
 			System.out.println("For Loop1: "+i);
 		}*/
+		// 7일때 까지만 실행해라.
+		// i가 짝수 일때만 출력해라.
 		for (int i = 1; i <= 10; i++) {
 			System.out.println("For Loop: "+i);
 			if (i == 7) {
@@ -465,6 +467,7 @@ package day04;
 public class P131 {
 
 	public static void main(String[] args) {
+		// 10부터 1까지 출력하시오
 		// i가 짝수일때만 출력하시오.
 		for (int i = 1; i <= 10; i++) {
 			if (i%2 == 1) {
@@ -492,5 +495,97 @@ public class P131 {
 
 ```
 
-## 느낀점
-> 오늘은 평소와 다르게 빠르게 흘러가는 것 같았다. 갈길이 아직 멀었지만, 내 꿈을 위해 꾸준히 나아가자. 낙심하지 말자.
+## Ws01
+
+```java
+package cho4;
+
+import java.util.Scanner;
+
+public class Ws01 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String sc1 = sc.next();
+		String sc2 = sc.next();
+		double num1 = 0.0;
+		double num2 = 0.0;
+		try {
+			num1 = Double.parseDouble(sc1);
+			num2 = Double.parseDouble(sc2);
+			if ((num1 < 0 || num1 > 99) || (num2 < 0 || num2 > 99) ) {
+				System.out.println("0~99까지 숫자만 입력 가능합니다.");
+			}else if ( num1 > num2) {
+				System.out.println("첫번째 숫자는 두번째 숫자보다 작아야 합니다.");
+			}else {
+				double sum = 0;
+				for (int i = 0; i <= num2; i++) {
+					if (num1 < i) {
+						sum += i;
+					}	
+				}
+				System.out.println(" 첫번째숫자부터 두번째 숫까지 합 :" + (num1+sum));
+				System.out.println(" 첫번째숫자부터 두번째 숫까지 평균 :" + (num1+sum) / (num2 - num1 +1) );
+			}
+
+		} catch (Exception e) {
+			System.out.println("숫자만 입력가능합니다.");
+			sc.close();
+			return;
+		}
+		sc.close();
+
+		
+	}
+
+}
+```
+
+## Ws02
+
+```java
+package cho4;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Ws02 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String sc1 = sc.next();
+		Random r = new Random();
+		int num = 0;
+		try {
+			num = Integer.parseInt(sc1);
+			if ((num < 10 || num > 99) ) {
+				System.out.println("10~99 숫자만 입력 가능합니다.");
+				sc.close();
+				return;
+			}
+			System.out.println("입력한 수:" + num );
+			int randnum = r.nextInt(num -1) + 2 ;
+			System.out.println("난수 :" + randnum);
+			int randsum = 0;
+			int count = 0;
+			for ( int i =1; i <= randnum; i++) {
+					if (i % 2 == 0) {
+						randsum += i;
+						count++;
+					}
+			}
+			System.out.println("난수까지 짝수의 합:" + randsum);
+			System.out.println("난수까지 짝수의 평균:" + randsum / count );
+		
+			} catch (Exception e) {
+			System.out.println("숫자만 입력가능합니다.");
+			sc.close();
+			return;
+		}
+		
+		
+		sc.close();
+	}
+
+}
+```
