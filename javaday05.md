@@ -1,9 +1,8 @@
-# 0412 강의
+# 0412 배운 내용 요약
 
 ## 2차원 배열
 
-
-## 2중 for문 구구단
+### 2중 for문 구구단
 ```java
 package ch04;
 
@@ -33,7 +32,7 @@ public class P124 {
 
 ```
 
-## 2중 for문을 활용한 표 배열
+### 2중 for문을 활용한 표 배열
 ```java
 package ch04;
 
@@ -82,7 +81,28 @@ public class P126 {
 
 ```
 
-## 은행계좌 이체 문제
+```java
+package ch04;
+
+public class P127 {
+
+	public static void main(String[] args) {
+		// 주사위를 2개 던저서 아오는 값의 합이 8이 나오는 경우를 출력 하시오.
+		for (int i = 1; i <= 6; i++) {
+			for (int j = 1; j <= 6; j++) {
+				if(i+j == 8) {
+					System.out.printf("(%d,%d)\n", i,j);
+				}
+			}
+		}
+		
+
+	}
+
+}
+```
+
+### 은행계좌 이체 문제
 ```java
 package ch04;
 
@@ -163,11 +183,11 @@ public class P135 {
 ```
 
 
-## 참조 타입
+### 참조 타입
 - 객체형: 문자열, 객체
 - substring(시작위치,끝위치)
 
-## Substring, IndexOf
+### Substring, IndexOf
 ```java
 package ch05;
 
@@ -200,7 +220,7 @@ public class P148 {
 
 ```
 
-## 배열
+### 배열
 - 참조타입
 - for문을 돌려서 값을 추출
 - int 선언하면은 String 사용 못함
@@ -224,10 +244,10 @@ public class P149 {
 		
 		System.out.println(a);
 		System.out.println(ar);
-		System.out.println(Arrays.toString(ar)); // 안에 내용을 볼 때만 사용
+		System.out.println(Arrays.toString(ar)); 
 		
 		for (int i = 0; i < ar.length; i++) {
-			System.out.println(ar[i]);
+			System.out.println(ar[i]); // 각 배열의 값 출력.
 		}
 
 	}
@@ -236,7 +256,7 @@ public class P149 {
 
 ```
 
-## 배열과 for문 예제
+### 배열과 for문 예제
 ```java
 package ch05;
 
@@ -272,7 +292,7 @@ public class P150 {
 }
 ```
 
-## 배열에 홀수 번째 값들의 합과 평균을 구하는 예제
+### 배열에 홀수 번째 값들의 합과 평균을 구하는 예제
 ```java
 package ch05;
 
@@ -281,7 +301,7 @@ public class P151 {
 	public static void main(String[] args) {
 		int ar [] = {1,2,3,4,5,6,7,8,9};
 		
-		// 
+		// 배열에 홀수 번째 값들의 합을 구하시오
 		double sum =0.0;
 		int cnt = 0;
 		for (int i = 0; i < ar.length;i++) {
@@ -298,7 +318,7 @@ public class P151 {
 
 ```
 
-## 152P
+### 152P
 - 
 - 
 ```java
@@ -321,7 +341,7 @@ public class P152 {
 }
 ```
 
-## 2차원 배열 예제
+### 2차원 배열 예제
 - 배열 요소로 또 다른 배열을 가지는 배열을 의미
 ```java
 package ch05;
