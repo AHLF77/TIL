@@ -30,9 +30,11 @@
  - [day02: HTML 태그](https://github.com/AHLF77/TIL/blob/master/webday02.md)
  - [day03: CSS3](https://github.com/AHLF77/TIL/blob/master/webday03.md)
  - [day03-1: 애플 홈페이지 과제](https://github.com/AHLF77/TIL/blob/master/webday03-1.md)
- - [day04: 반응형 웹]()
- - [day04-1: 부트스트랩 예시]()
- - [day05: thymleaf 활용하여 페이지만들기]()
+ - [day04: 반응형 웹](https://github.com/AHLF77/TIL/blob/master/webday04.md)
+ - [day04-1: 부트스트랩 예시](https://github.com/AHLF77/TIL/blob/master/webday04-1.md)
+ - [day05: thymleaf 활용하여 페이지만들기](https://github.com/AHLF77/TIL/blob/master/webday05.md)
+ - [day06: Jquery(1)]()
+ - [day07: Jquery(2)]()
 
 
 ## Spring

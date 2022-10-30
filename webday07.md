@@ -1,4 +1,4 @@
-# 0518강의(jQuery 강의)
+# 0518 배운 내용 요약
 
 - jQController
 ```java
