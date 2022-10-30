@@ -1,4 +1,4 @@
-# 0520강의(jQuery AJAX 강의)
+# 0520 배운 내용 요약
 
 - AJAXController
 ```java

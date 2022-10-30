@@ -1,4 +1,4 @@
-# 0525강의(카카오 지도 기능 강의)
+# 0525 배운 내용 요약
 
 - main
 ```html
@@ -306,9 +306,11 @@ function displaymarker(pos){
 			content: item.content
 		});
 		kakao.maps.event.addListener(marker, 'mouseover', function() {
+			// 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
 			infowindow.open(map,marker);
 		});
 		kakao.maps.event.addListener(marker, 'mouseout', function() {
+			// 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
 			  infowindow.close();
 		});
 		kakao.maps.event.addListener(marker, 'click', function() {
