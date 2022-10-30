@@ -35,9 +35,9 @@
  - [day05: thymleaf 활용하여 페이지만들기](https://github.com/AHLF77/TIL/blob/master/webday05.md)
  - [day06: Jquery(1)](https://github.com/AHLF77/TIL/blob/master/webday06.md)
  - [day07: Jquery(2)](https://github.com/AHLF77/TIL/blob/master/webday07.md)
- - [day08: Ajax(1)]()
- - [day09: Ajax(2), 카카오 지도 API(1)]()
- - [day10: Ajax(3), 카카오 지도 API(2)]()
+ - [day08: Ajax(1)](https://github.com/AHLF77/TIL/blob/master/webday08.md)
+ - [day09: Ajax(2), 카카오 지도 API(1)](https://github.com/AHLF77/TIL/blob/master/webday09.md)
+ - [day10: Ajax(3), 카카오 지도 API(2)](https://github.com/AHLF77/TIL/blob/master/webday10.md)
 
 
 ## Spring
