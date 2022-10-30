@@ -11,9 +11,9 @@
  - [day07: 자바 객체지향 기초(1)](https://github.com/AHLF77/TIL/blob/master/javaday07.md)
  - [day08: 자바 객체지향 기초(2)](https://github.com/AHLF77/TIL/blob/master/javaday08.md)
  - [day09: 추상클래스](https://github.com/AHLF77/TIL/blob/master/javaday09.md)
- - [day10: 인터페이스]()
- - [day11: 예외처리]()
- - [day12: API]()
+ - [day10: 인터페이스](https://github.com/AHLF77/TIL/blob/master/javaday10.md)
+ - [day11: 예외처리](https://github.com/AHLF77/TIL/blob/master/javaday11.md)
+ - [day12: API](https://github.com/AHLF77/TIL/blob/master/javaday12.md)
 
 ## SQL
 
