@@ -1,4 +1,4 @@
-# 0415 강의
+# 0415 배운 내용 요약
 ## Class
 - 객체들의 공통적으로 갖는 속성들을 모아서 놓은 것을 의미
 - OOAD(UML) -> OOP
@@ -144,6 +144,7 @@ public class BankApp {
 package ch06;
 
 public class Account {
+	//private : 해당 변수는 다른 클래스에서 수정을 못하도록 막음.
 	String accNo;
 	double balance;
 	
@@ -161,11 +162,12 @@ public class Account {
 	}
 	
 	
-	
+	// get은 타 클래스에서 정보만 볼 수 있는 것.
 	public String getAccNo() {
 		return accNo;
 	}
 
+	// set은 타 클래스에서 설정할 수 있는 것.
 	public void setAccNo(String accNo) {
 		this.accNo = accNo;
 	}
@@ -179,7 +181,7 @@ public class Account {
 	}
 
 	
-	public String toString() {
+	public String toString() { // 모양을 보기위해서 하는것 업무에서는 필요하지 않는 코드이다.
 		return "Account [accNo" + accNo + ", balance=" + balance + "]";
 	}
 	
@@ -210,18 +212,84 @@ public class Account {
 
 ```
 
+```java
+package bank;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class AccountApp {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Start...");
+		Account acc = null;
+		String accNo ="";
+		Random r = new Random();	
+		
+		while(true) {
+			System.out.println("Input cmd(c,d,w,s,q) ...");
+			String cmd = sc.next();
+			try {	
+				if(cmd.equals("q")) {
+					System.out.println("Bye");
+					break;
+				}else if (cmd.equals("c")) {
+					System.out.println("계좌 생성합니다 ...");
+					System.out.println("계좌 생성중 ...");
+					// 000000-00-000000
+					int accNo1 =r.nextInt(1000000);
+					int accNo2 =r.nextInt(100);
+					int accNo3 =r.nextInt(1000000);
+					accNo = new String(accNo1 + "-" + accNo2 + "-"+ accNo3);
+					acc = new Account(accNo);
+					System.out.println("계좌가 생성되었습니다.");				
+					System.out.println("당신의 계좌번호: " + accNo);			
+				}else if (cmd.equals("d")) {
+					System.out.println("입금 금액을 입럭하세요.");
+					double dm = Double.parseDouble(sc.next());
+					acc.deposit(dm);
+					System.out.println("입금 금액 :" + dm ); 
+					System.out.println("현재 잔액 :" + acc.getBalance()); 
+				}else if (cmd.equals("w")) {
+					System.out.println("출금 금액을 입럭하세요.");
+					double wm = Double.parseDouble(sc.next());
+					acc.withdraw(wm);
+					System.out.println("출금 금액 :" + wm ); 
+					System.out.println("현재 잔액 :" + acc.getBalance());
+				}else if  (cmd.equals("s")) {
+					System.out.println("내 계좌번호:" + accNo );
+					System.out.println("현재 잔액 :" + acc.getBalance());			
+				}
+			
+				} catch (Exception e) {
+					System.out.println("숫자만 입력 가능합니다. 다시 선택하세요.");
+					continue;
+			}
+			
+		}
+		
+		sc.close();
+		System.out.println("End ...");
+
+	}
+
+}
+```
+
 ## 자동차2에 대한 클래스 예제(값 입력 받기)
 ```java
 package car;
 
 public class Car {
+	// Attribute(속성, 필드)
 	private String name;
 	private double fsize;
 	private double cfsize;
-	private String status;
+	private String status; //Go, Stop
 	private double fe;
 	
-	public Car() {
+	public Car() { //Constructor(생성자)
 		
 	}
 
