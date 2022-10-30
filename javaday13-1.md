@@ -1,12 +1,4 @@
-## 0425 강의
-
-## 자바 언어의 특징
- - Exception
- - oop
- - Generic: 상속 받아 오버라이딩 함, 다형성을 쉽게 구현이 가능
- - Collection API
- - Multi thread
- - I/O
+## 0425-1 배운 내용 요약
 
 ### Multi thread
 - 여러 개의 크롬 프로세스가 생성된 것이다.
@@ -26,6 +18,8 @@ public class MainThread {
 		MyThread1 t1= new MyThread1();
 		t1.start();
 		
+
+		// 인터페이스 안에서 생성한 객체는 thread 객체 안에 넣어서 사용
 		MyThread2 t2 = new MyThread2();
 		Thread tt2 = new Thread(t2);
 		tt2.start();
@@ -73,7 +67,7 @@ public class MyThread2 implements Runnable{
 			i++;
 			System.out.println("MyThread2: "+i);
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -221,6 +215,7 @@ public class InsertCust {
 		
 		// MySQL Connect
 		String url = "jdbc:mysql://개인IP:3306/shopdb?serverTimezone=Asia/Seoul";
+		// root로 접속을 보안상이유로 막아놓은다.
 		String mid = "admin1";
 		String mpwd = "111111";
 		try {
@@ -246,6 +241,8 @@ public class InsertCust {
 			e.printStackTrace();
 		} finally {
 			//Close
+			// 예외 상황이 발생하여도 close를 해주어야함.
+			// MySQL Close -> !!! close를 안해주면 MYSQL에 쓰레기가 남아 DB가 터질 수 있다.!!!
 			if(ps != null) {
 				try {
 					ps.close();
@@ -279,6 +276,7 @@ public class UpdateCust {
 
 	public static void main(String[] args) {
 		// JDBC(Java Database Connectivity) Program
+		// java projcet에 mysql connector apply하기.
 		
 		// 변수 선언
 		Connection con = null;

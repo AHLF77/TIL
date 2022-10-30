@@ -14,9 +14,11 @@
  - [day10: 인터페이스](https://github.com/AHLF77/TIL/blob/master/javaday10.md)
  - [day11: 예외처리](https://github.com/AHLF77/TIL/blob/master/javaday11.md)
  - [day12: API](https://github.com/AHLF77/TIL/blob/master/javaday12.md)
+ - [day13: 멀티쓰레드, 데이터 베이스 연동]()
+ - [day13-1: 로또 프로그램 중간 평가]()
+ - [day13-2: 놀이동산 CRUD 프로그램 중간 평가]()
 
 ## SQL
-
 
 
 ## WEB
@@ -24,7 +26,6 @@
 
 
 ## Spring
-
 
 
 ## Cloud

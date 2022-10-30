@@ -1,4 +1,5 @@
-# MySQL연동을 위한 JDBC Programming과 OOP개념을 적용한 시스템 구축
+# 0425-3 놀이동산 CRUD 프로그램 중간 평가
+## MySQL연동을 위한 JDBC Programming과 OOP개념을 적용한 시스템 구축
 
 ## 7조 구성원: 김O준, 한O정, 강O성, 유O아
 
