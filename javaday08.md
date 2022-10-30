@@ -1,4 +1,4 @@
-## 0418 강의
+## 0418 배운 내용 요약
 
 ## 캡슐화
 - 객체의 필드, 메소드를 하나로 묶고, 실제 구현 내용을 감추는 것
@@ -296,8 +296,7 @@ public class Cal1 {
 		return (this.a + this.b) / 2;
 	}
 	
-	
-	
+
 }
 
 ```
@@ -318,7 +317,7 @@ public class Cal2 {
 		return a + b;
 	}
 	
-	public static double div(double a, double b) { // 오버로딩(arguments가 달라서)
+	public static double div(double a, double b) { 
 		return a / b;
 	}
 	
@@ -335,6 +334,9 @@ public class CalApp {
 		Cal1 c1 = new Cal1(10,2);
 		int c1avg = c1.avg();
 		System.out.println(c1avg);
+
+		// 매소드에 static이 존재할 경우 객체를 생성 안하고도 사용 가능하다.
+		// 메소드에는 기능만 정의되어야 가능하다.
 		
 		int c2sum = Cal2.sum(10, 2);
 		System.out.println(c2sum);
@@ -678,6 +680,3 @@ public class CompanyApp2 {
 }
 
 ```
-- Manager is a Employee
-
-#### singleton, final, annotation 제외(※ 나중에 따로 독학해야 함.)

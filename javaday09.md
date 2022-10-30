@@ -1,4 +1,4 @@
-## 0419 강의
+## 0419 배운 내용 요약
 ### 복습
 - 절차지향 프로그램 : C, Script
 - 조건문을 통해 흐름제어 : if문, switch문
@@ -267,7 +267,7 @@ public class DrawPanel {
 		System.out.println(shape.toString());
 		if(shape instanceof Circle) {
 			Circle c = (Circle)shape;
-			c.setColor("red");
+			c.setColor("blue");
 		}
 	}
 
