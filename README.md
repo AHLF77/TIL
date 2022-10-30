@@ -26,10 +26,13 @@
  - [day04: SQL 문법(3)](https://github.com/AHLF77/TIL/blob/master/sqlday04.md)
 
 ## WEB
- - [day01: 웹 소개, HTML 기초]() 
- - [day02: HTML 태그]()
- - [day03: CSS3]()
- - [day03-1: 애플 홈페이지 과제]()
+ - [day01: 웹 소개, HTML 기초](https://github.com/AHLF77/TIL/blob/master/webday01.md) 
+ - [day02: HTML 태그](https://github.com/AHLF77/TIL/blob/master/webday02.md)
+ - [day03: CSS3](https://github.com/AHLF77/TIL/blob/master/webday03.md)
+ - [day03-1: 애플 홈페이지 과제](https://github.com/AHLF77/TIL/blob/master/webday03-1.md)
+ - [day04: 반응형 웹]()
+ - [day04-1: 부트스트랩 예시]()
+ - [day05: thymleaf 활용하여 페이지만들기]()
 
 
 ## Spring

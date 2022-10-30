@@ -1,51 +1,51 @@
-# 0514강의(반응형 웹)
+# 0513 배운 내용 요약
 
 ## 반응형 웹이란?
-- 웹 페이지 하나로도 데스크톱, 태블릿PC, 스마트폰에 맞게 디자인이 자동으로 반응해서 변경되는 웹 페이지를 의미
-- 개발: 미디어 쿼리를 사용
+ - 웹 페이지 하나로도 데스크톱, 태블릿PC, 스마트폰에 맞게 디자인이 자동으로 반응해서 변경되는 웹 페이지를 의미
+ - 개발: 미디어 쿼리를 사용
 
 ## 반응형 웹을 위한 설정
-1. 뷰포트 설정
-- meta 태그는 웹 페이지에 투가 정보를 제공할 때 사용
-- name 속성에 viewport가 입력된 meta 태그를 viewport meta태그 라고 함.
+ 1. 뷰포트 설정
+  - meta 태그는 웹 페이지에 투가 정보를 제공할 때 사용
+  - name 속성에 viewport가 입력된 meta 태그를 viewport meta태그 라고 함.
 <meta name="viewport" content="user-scalable=no,initial-scale=1, maximum-scale=1">
-- 입력할 수 있는 태그 값
-| 값   | 설명   | 예 |
-| ------ | ------ | --------- |
-| width  | 화면너비 | width=240 |
-| height | 화면 높이 | height=800 |
-| initial-scale | 초기 확대 비율 | initial-scale=2.0 |
-| user-scalable | 확대 및 축소 가능 여부 | user-scalable=no |
-| minimum-scale | 최소 축소 비율 | minimum-scale=1.0 |
-| maximum-scale | 최대 확대 비율 | maximum-scale=2.0 |
-| target-densitydpi | DPI 지정 | target-densitydpi=medium-dpi |
+ - 입력할 수 있는 태그 값
+ | 값   | 설명   | 예 |
+ | ------ | ------ | --------- |
+ | width  | 화면너비 | width=240 |
+ | height | 화면 높이 | height=800 |
+ | initial-scale | 초기 확대 비율 | initial-scale=2.0 |
+ | user-scalable | 확대 및 축소 가능 여부 | user-scalable=no |
+ | minimum-scale | 최소 축소 비율 | minimum-scale=1.0 |
+ | maximum-scale | 최대 확대 비율 | maximum-scale=2.0 |
+ | target-densitydpi | DPI 지정 | target-densitydpi=medium-dpi |
 
-2. 미디어 쿼리 설정
-- 웹 페이지가 표시되는 장치에 '반응'하도록 하여 반응형 웹을 구현할 수 있도록 함
-- 이때 사용하는 것이 미디어 쿼리임.
- 1. @-규칙@-rule이란 스타일시트 내부에서 특정한 규칙을 표현하는데 사용
- 2. 외부 스타일을 가져오는 @import규칙, 글똘을 추가로 정의하는 @font-face 규칙 등이 있음
-- @media 규칙
-@media (<미디어 쿼리>){
+ 2. 미디어 쿼리 설정
+  - 웹 페이지가 표시되는 장치에 '반응'하도록 하여 반응형 웹을 구현할 수 있도록 함
+  - 이때 사용하는 것이 미디어 쿼리임.
+  ① @-규칙@-rule이란 스타일시트 내부에서 특정한 규칙을 표현하는데 사용
+  ② 외부 스타일을 가져오는 @import규칙, 글똘을 추가로 정의하는 @font-face 규칙 등이 있음
+  - @media 규칙
+  @media (<미디어 쿼리>){
     <CSS 코드>
-}
+  }
 
-- media 속성
-<link rel="stylesheet" href="<파일이름>" media="<미디어 쿼리>">
+  - media 속성
+  <link rel="stylesheet" href="<파일이름>" media="<미디어 쿼리>">
 
 ## 반응형 웹 패턴
-- 부트스트랩 웹 사이트를 이용하여 설계 가능.
-1. 너비가 큰 화면에서는 메뉴가 왼쪽, 너비가 좁은 화면에서는 메뉴가 위쪽
-2. 너비가 큰 화면에서는 메뉴가 오른쪽, 너비가 좁은 화면에서는 메뉴가 위쪽
-3. 너비가 큰 화면에서는 메뉴가 왼쪽, 너비가 좁은 화면에서는 메뉴가 아래쪽
-4. 너비가 큰 화면에서는 메뉴가 오른쪽, 너비가 좁은 화면에서는 메뉴가 오른쪽
+ - 부트스트랩 웹 사이트를 이용하여 설계 가능.
+  1. 너비가 큰 화면에서는 메뉴가 왼쪽, 너비가 좁은 화면에서는 메뉴가 위쪽
+  2. 너비가 큰 화면에서는 메뉴가 오른쪽, 너비가 좁은 화면에서는 메뉴가 위쪽
+  3. 너비가 큰 화면에서는 메뉴가 왼쪽, 너비가 좁은 화면에서는 메뉴가 아래쪽
+  4. 너비가 큰 화면에서는 메뉴가 오른쪽, 너비가 좁은 화면에서는 메뉴가 오른쪽
 
-- 위치를 잡기 위한 규칙
-1. HTML 태그 구성은 모바일 장치를 기준으로 함.
-2. float 태그의 left와 right를 활용해 적당한 위치에 놓아둠
+ - 위치를 잡기 위한 규칙
+  1. HTML 태그 구성은 모바일 장치를 기준으로 함.
+  2. float 태그의 left와 right를 활용해 적당한 위치에 놓아둠
 
 ### 반응형 웹 예제
-- main
+ - main
 ```java
 package com.shop.controller;
 

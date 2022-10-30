@@ -1,4 +1,4 @@
-# 0516강의(JavaScript)
+# 0516 배운 내용 요약
 
 ### src/main/java(com.shop.controller)
 - MainController
