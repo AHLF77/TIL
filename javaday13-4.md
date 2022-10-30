@@ -1,4 +1,4 @@
-# LottoGame Mini Project
+# 0425-4 로또 프로그램 중간 평가
 
 ## lottoapp
 ### Application

@@ -1,6 +1,6 @@
-# 0503강의
+# 0503강의 배운 내용 요약
 
-## 외래키,  
+## 외래키
 -- DDL
 ```sql
 DROP DATABASE IF EXISTS shoppingdb;

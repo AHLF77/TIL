@@ -14,14 +14,16 @@
  - [day10: 인터페이스](https://github.com/AHLF77/TIL/blob/master/javaday10.md)
  - [day11: 예외처리](https://github.com/AHLF77/TIL/blob/master/javaday11.md)
  - [day12: API](https://github.com/AHLF77/TIL/blob/master/javaday12.md)
- - [day13: 멀티쓰레드, 데이터 베이스 연동](https://github.com/AHLF77/TIL/blob/master/javaday13-1.md)
- - [day13-1: 로또 프로그램 중간 평가](https://github.com/AHLF77/TIL/blob/master/javaday13-2.md)
- - [day13-2: 놀이동산 CRUD 프로그램 중간 평가](https://github.com/AHLF77/TIL/blob/master/javaday13-3.md)
+ - [day13-1: 멀티쓰레드, 데이터 베이스 연동](https://github.com/AHLF77/TIL/blob/master/javaday13-1.md)
+ - [day13-2: 로또 프로그램 중간 평가(1)](https://github.com/AHLF77/TIL/blob/master/javaday13-2.md)
+ - [day13-3: 놀이동산 CRUD 프로그램 중간 평가](https://github.com/AHLF77/TIL/blob/master/javaday13-3.md)
+ - [day13-4: 로또 프로그램 중간 평가(2)]()
 
 ## SQL
- - [day01: SQL 기초]()
- - [day02: SQL 문법(1)]()
- - [day03: SQL 문법(2)]()
+ - [day01: SQL 기초](https://github.com/AHLF77/TIL/blob/master/sqlday01.md)
+ - [day02: SQL 문법(1)](https://github.com/AHLF77/TIL/blob/master/sqlday02.md)
+ - [day03: SQL 문법(2)](https://github.com/AHLF77/TIL/blob/master/sqlday03.md)
+ - [day04: SQL 문법(3)]()
 
 ## WEB
 
