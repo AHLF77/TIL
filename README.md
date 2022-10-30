@@ -33,8 +33,8 @@
  - [day04: 반응형 웹](https://github.com/AHLF77/TIL/blob/master/webday04.md)
  - [day04-1: 부트스트랩 예시](https://github.com/AHLF77/TIL/blob/master/webday04-1.md)
  - [day05: thymleaf 활용하여 페이지만들기](https://github.com/AHLF77/TIL/blob/master/webday05.md)
- - [day06: Jquery(1)]()
- - [day07: Jquery(2)]()
+ - [day06: Jquery(1)](https://github.com/AHLF77/TIL/blob/master/webday06.md)
+ - [day07: Jquery(2)](https://github.com/AHLF77/TIL/blob/master/webday07.md)
 
 
 ## Spring
@@ -46,4 +46,7 @@
 ## Git
  - [day01: Git 기초](https://github.com/AHLF77/TIL/blob/master/GItday01.md)
  - [day02: Git 실전](https://github.com/AHLF77/TIL/blob/master/GItday02.md)
+
+## 개인 프로젝트
+ - [day01: CSS, Jquery, Boostrap를 이용한 SandWitchhomepage]()
 
