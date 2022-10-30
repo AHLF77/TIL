@@ -917,8 +917,6 @@ public class ToDoVO {
 		return "ToDoVO [id=" + id + ", when=" + when + ", what=" + what + ", done=" + done + "]";
 	}
 
-	
-	
 
 }
 ```

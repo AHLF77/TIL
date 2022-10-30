@@ -1,4 +1,4 @@
-## 0422 강의
+## 0422 배운 내용 요약
 
 ### 자바 API란
 - 자바에서 기본적으로 제공하는 라이브러리
@@ -16,6 +16,7 @@
 ```java
 package P457;
 
+//VO = value object
 public class CustomerVO {
 	
 	private String id;
@@ -81,7 +82,7 @@ public class TestApp {
 		CustomerVO c = (CustomerVO)obj2;
 		System.out.println(c.getName());
 		
-		Object obj3 = 10; //왜 될까?
+		Object obj3 = 10; 
 		Object obj4 = new Integer(10);
 		
 	}
@@ -101,6 +102,7 @@ public class CustomerDAO implements DAO {
 	@Override
 	public void insert(Object obj) throws Exception {
 		connect();
+		// Object 객체를 CustromerVO 객체로 바꿔줘야함.
 		CustomerVO c = (CustomerVO)obj;
 		System.out.println(c);
 		System.out.println("Inserted...");
@@ -236,6 +238,7 @@ import java.util.ArrayList;
 
 public interface DAO {
 	
+	// 인터페이스는 기능만 정의하는곳에 일반함수를 넣기위해 default를 따로 정의함.
 	public default void connect() {
 		System.out.println("Connect......");
 	}
@@ -243,11 +246,12 @@ public interface DAO {
 		System.out.println("Close......");
 	}
 	//CRUD
-	public void insert(Object obj) throws Exception;
-	public void delete(Object obj) throws Exception; 
-	public void update(Object obj) throws Exception; 
-	public Object select(Object obj) throws Exception; 
-	public ArrayList<Object> select() throws Exception;
+	// Object 클래스를 쓰면, 어떤 데이터를 집어넣어도 되는 표준 스펙이 됨.
+	public void insert(Object obj) throws Exception;  // DuplicatedIDException
+	public void delete(Object obj) throws Exception;  // NotFoundException
+	public void update(Object obj) throws Exception; // NotFoundException
+	public Object select(Object obj) throws Exception; // NotFoundException
+	public ArrayList<Object> select() throws Exception; // NotFoundException
 
 }
 
@@ -372,6 +376,20 @@ public class ItemVO {
 
 }
 
+```
+
+```java
+package Oracle;
+
+public class NotFoundException extends Exception {
+	public NotFoundException() {
+		
+	}
+	
+	public NotFoundException(String msg) {
+		super(msg);
+	}
+}
 ```
 
 ### 예제3(달력)
@@ -552,4 +570,254 @@ public class FormatTest {
 
 }
 
+```
+
+### P654
+```java
+package p654;
+
+public class Box {
+	Object obj;
+	public Box() {
+		
+	}
+	public void setBox(Object c) {
+		obj = c;
+	}
+	public Object getBox(){
+		return obj;
+	}
+	
+	
+}
+```
+
+```java
+package p654;
+
+import java.util.ArrayList;
+
+public class BoxTest {
+
+	public static void main(String[] args) {
+		Box box = new Box();
+		box.setBox(new ItemVO(100,"pants",10000));
+		
+		ItemVO item = (ItemVO)box.getBox();
+		System.out.println(item);
+	}
+
+}
+```
+
+```java
+package p654;
+
+//VO = value object
+public class CustomerVO {
+	private String id;
+	private String password;
+	private String name;
+	public CustomerVO() {
+	}
+	public CustomerVO(String id, String password, String name) {
+		this.id = id;
+		this.password = password;
+		this.name = name;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "CustomerVO [id=" + id + ", password=" + password + ", name=" + name + "]";
+	}
+	
+	
+	
+}
+```
+
+```java
+package p654;
+
+public class ItemVO {
+	private int id;
+	private String name;
+	private double price;
+	public ItemVO() {
+	}
+	public ItemVO(int id, String name, double price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	@Override
+	public String toString() {
+		return "ItemVO [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
+	
+}
+```
+
+### P722
+```java
+package p722;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListTest {
+
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		list.add(2,"d");
+		
+		
+		for (String s : list) {
+			System.out.println(s);
+		}
+	}
+
+}
+```
+```java
+package p722;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapTest {
+
+	public static void main(String[] args) {
+		Map<Integer, String> map = new HashMap<Integer, String>();
+		map.put(100,"A");
+		map.put(102,"B");
+		map.put(103,"C");
+		map.put(104,"D");
+		map.put(105,"E");
+		map.put(107,"f");
+		
+		System.out.println(map.toString());
+		map.remove(102);
+		System.out.println(map.toString());
+		System.out.println(map.get(103));
+		
+
+	}
+
+}
+```
+```java
+package p722;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
+public class PropertiTest {
+
+	public static void main(String[] args) {
+		Properties pr = new Properties();
+		String path = PropertiTest.class.getResource("database properties.txt").getPath();
+		try {
+			pr.load(new FileReader(path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String url = pr.getProperty("url");
+		
+		System.out.println(url);
+
+	}
+	
+
+}
+```
+```java
+package p722;
+
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
+public class SetTest {
+
+	public static void main(String[] args) {
+		Set<Integer> set = new HashSet<Integer>();
+		Random rd = new Random();
+		while(set.size() <= 6) {
+			int num = rd.nextInt(45) + 1;
+			set.add(num);
+			System.out.println("cnt");
+		}
+		
+		for (Integer i : set) {
+			System.out.println(i);
+		}
+
+	}
+
+}
+```
+```java
+package p722;
+
+import java.util.Stack;
+
+public class StackTest {
+
+	public static void main(String[] args) {
+		Stack<String> st = new Stack<String>();
+		st.push("a");
+		st.push("b");
+		st.push("c");
+		st.push("d");
+		st.push("e");
+		
+		while(! st.isEmpty()) {
+			String s = st.pop();
+			System.out.println(s);
+		}
+		
+	}
+
+}
 ```

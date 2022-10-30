@@ -1,4 +1,4 @@
-## 0421 강의
+## 0421 배운 내용 요약
 
 ### serach
 ```java
@@ -347,6 +347,7 @@ public class App {
 package bank;
 
 public class Account {
+	//private : 해당 변수는 다른 클래스에서 수정을 못하도록 막음.
 	private String accNo;
 	private double balance;
 	
@@ -366,7 +367,7 @@ public class Account {
 
 	
 	
-	
+	// get은 타 클래스에서 정보만 볼 수 있는 것.
 	public String getAccNo() {
 		return accNo;
 	}
@@ -389,7 +390,8 @@ public class Account {
 		this.balance += money;
 	}
 	
-	
+	// 출금 금액이 1보다 작으면 안된다.
+	// 출금 금액이 잔액 보다 많으면 안된다.
 	public void withdraw(double money) throws MinusException, OverdrawnException {
 		if(money < 1) {
 			throw new MinusException("음수입니다.");
@@ -458,4 +460,302 @@ public class OverdrawnException extends Exception {
 	
 }
 
+```
+
+### WorkShop
+```java
+package workshop;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Start..."); 
+		OracleDAO oracledao = new OracleDAO();
+		DAO dao = oracledao;
+		Search search = oracledao;
+		while(true) {
+			System.out.println("Input cmd(i,d,s,u,a,f,q) ...");
+			String cmd = sc.next();
+			if(cmd.equals("q")) {
+				System.out.println("Bye");
+				break;
+			}else if (cmd.equals("i")) {
+				System.out.println("Input todolist ..");
+				System.out.println("Input order..");
+				String id = sc.next();
+				System.out.println("Input when..");
+				String pwd = sc.next();
+				System.out.println("Input what..");
+				String name = sc.next();
+				ToDoVO c = new ToDoVO(id, pwd, name);
+				try {
+					dao.insert(c);
+				} catch (DuplicatedIDException e) {
+					System.out.println(e.getMessage());
+				}
+			}else if (cmd.equals("d")) {
+				System.out.println("Input order:");
+				String id = sc.next();
+				try {
+					dao.delete(id);
+				} catch (NotFoundException e) {
+					System.out.println(e.getMessage());
+				}
+			}else if (cmd.equals("s")) {
+				System.out.println("Input order:");
+				String id = sc.next();
+				ToDoVO c;
+				try {
+					c = dao.select(id);
+					System.out.println(c.toString());
+				} catch (NotFoundException e) {
+					System.out.println(e.getMessage());
+				}
+			}else if (cmd.equals("a")) {
+				ArrayList<ToDoVO> list;
+				try {
+					list = dao.select();
+					for (ToDoVO c : list) {
+						System.out.println(c.toString());
+					}
+				} catch (NotFoundException e) {
+					System.out.println(e.getMessage());
+				}
+			}else if (cmd.equals("u")) {
+				System.out.println("Input order:");
+				String id = sc.next();			
+				ToDoVO c;
+				try {
+					c = dao.update(id);
+					System.out.println(c);
+				} catch (NotFoundException e) {
+					System.out.println(e.getMessage());
+				}
+
+			}else if (cmd.equals("f")) {
+				System.out.println("Input when:");
+				String when = sc.next();
+				ArrayList<ToDoVO> list;
+				try {
+					list = search.search(when);
+					for (ToDoVO c : list) {
+						System.out.println(c);
+					}
+				} catch (NotFoundException e) {
+					System.out.println(e.getMessage());;
+				}
+
+			}
+		}
+		
+		sc.close();
+		System.out.println("End ...");
+		
+
+	}
+
+}
+```
+```java
+package workshop;
+
+import java.util.ArrayList;
+
+public interface DAO {
+	public void insert(ToDoVO c)  throws DuplicatedIDException;
+	public void delete(String id) throws NotFoundException;
+	public ToDoVO update(String id)throws NotFoundException;
+	public ToDoVO select(String id)throws NotFoundException;
+	public ArrayList<ToDoVO> select()throws NotFoundException;
+	
+}
+```
+```java
+package workshop;
+
+public class DuplicatedIDException extends Exception {
+	public DuplicatedIDException() {
+		
+	}
+	
+	public DuplicatedIDException(String msg) {
+		super(msg);
+	}
+}
+```
+```java
+package workshop;
+
+public class NotFoundException extends Exception {
+	public NotFoundException() {
+		
+	}
+	
+	public NotFoundException(String msg) {
+		super(msg);
+	}
+}
+```
+```java
+package workshop;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class OracleDAO implements DAO, Search {
+
+	HashMap<String, ToDoVO> map;
+	
+	public OracleDAO() {
+		map = new HashMap<String, ToDoVO>();
+	}
+	
+	@Override
+	public void insert(ToDoVO c) throws DuplicatedIDException {
+		String key = c.getOrder();
+		if(map.containsKey(key)) {
+			throw new DuplicatedIDException("중복된 번호 입니다.");
+		}		
+		map.put(key, c);
+	}
+
+	@Override
+	// 1. true가 된 것은 삭제
+	public void delete(String id) throws NotFoundException {		
+
+		// 1. false를 찾는다.
+		// 2. key를 뽑는다.
+		// 3. 지운다.
+		if(! map.containsKey(id)) {
+			throw new NotFoundException("해당 번호를 찾을 수 없습니다.");
+		}
+		map.remove(id);
+	}
+
+	@Override
+	public ToDoVO select(String id) throws NotFoundException {
+		ToDoVO c = null;
+		if(! map.containsKey(id)) {
+			throw new NotFoundException("해당 번호를 찾을 수 없습니다.");
+		}
+		c = map.get(id);
+		return c;
+	}
+
+	@Override
+	public ArrayList<ToDoVO> select() throws NotFoundException {
+		ArrayList<ToDoVO> list = new ArrayList<>();	
+		if(map.size()==0) {
+			throw new NotFoundException("현재 목록이 없습니다.");
+		}
+		Collection<ToDoVO> col = map.values();
+		Iterator<ToDoVO> it = col.iterator();		
+		
+		while(it.hasNext()) {
+			ToDoVO cust = it.next();
+			list.add(cust);
+		}
+		return list;
+	}
+
+	@Override
+	public ToDoVO update(String id) throws NotFoundException {
+		// 해당 ID는 완료처리해서 true값으로 바꾸어줌.
+		ToDoVO c = null;
+		if(! map.containsKey(id)) {
+			throw new NotFoundException("해당 번호를 찾을 수 업습니다.");
+		}
+		c = map.get(id);
+		if(c.isDone() == true) {
+			throw new NotFoundException("이미 완료한 항목입니다.");
+		}
+		c.setDone(true);
+		return c;
+	}
+
+	@Override
+	public ArrayList<ToDoVO> search(String when) throws NotFoundException {
+		ArrayList<ToDoVO> list = new ArrayList<>();	
+		Collection<ToDoVO> col = map.values();
+		Iterator<ToDoVO> it = col.iterator();
+		while(it.hasNext()) {
+            ToDoVO cust = it.next();
+            if(cust.getWhen().equals(when)) {
+                list.add(cust);
+            }else {
+            	throw new NotFoundException("해당 날짜를 찾을 수 없습니다.");
+            }
+            
+		}
+		return list;
+
+	}
+
+}
+```
+```java
+package workshop;
+
+import java.util.ArrayList;
+
+
+public interface Search {
+	public ArrayList<ToDoVO> search(String name) throws NotFoundException;
+}
+```
+```java
+package workshop;
+
+public class ToDoVO {
+	private String order;
+	private String when;
+	private String what;
+	private boolean done;
+	public ToDoVO() {
+	}
+	public ToDoVO(String order, String when, String what) {
+		this.order = order;
+		this.when = when;
+		this.what = what;
+		this.done = false;			
+	}
+	public String getOrder() {
+		return order;
+	}
+	public void setOrder(String order) {
+		this.order = order;
+	}
+	public String getWhen() {
+		return when;
+	}
+	public void setWhen(String when) {
+		this.when = when;
+	}
+	public String getWhat() {
+		return what;
+	}
+	public void setWhat(String what) {
+		this.what = what;
+	}
+	public boolean isDone() {
+		return done;
+	}
+	public void setDone(boolean done) {
+		this.done = done;
+	}
+	@Override
+	public String toString() {
+		return "ToDoVO [order=" + order + ", when=" + when + ", what=" + what + ", done=" + done + "]";
+	}
+
+
+	
+}
 ```
