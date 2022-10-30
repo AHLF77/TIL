@@ -17,13 +17,13 @@
  - [day13-1: 멀티쓰레드, 데이터 베이스 연동](https://github.com/AHLF77/TIL/blob/master/javaday13-1.md)
  - [day13-2: 로또 프로그램 중간 평가(1)](https://github.com/AHLF77/TIL/blob/master/javaday13-2.md)
  - [day13-3: 놀이동산 CRUD 프로그램 중간 평가](https://github.com/AHLF77/TIL/blob/master/javaday13-3.md)
- - [day13-4: 로또 프로그램 중간 평가(2)]()
+ - [day13-4: 로또 프로그램 중간 평가(2)](https://github.com/AHLF77/TIL/blob/master/javaday13-4.md)
 
 ## SQL
  - [day01: SQL 기초](https://github.com/AHLF77/TIL/blob/master/sqlday01.md)
  - [day02: SQL 문법(1)](https://github.com/AHLF77/TIL/blob/master/sqlday02.md)
  - [day03: SQL 문법(2)](https://github.com/AHLF77/TIL/blob/master/sqlday03.md)
- - [day04: SQL 문법(3)]()
+ - [day04: SQL 문법(3)](https://github.com/AHLF77/TIL/blob/master/sqlday04.md)
 
 ## WEB
 
