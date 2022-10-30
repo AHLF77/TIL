@@ -48,5 +48,5 @@
  - [day02: Git 실전](https://github.com/AHLF77/TIL/blob/master/GItday02.md)
 
 ## 개인 프로젝트
- - [day01: CSS, Jquery, Boostrap를 이용한 SandWitchhomepage]()
+ - [day01: CSS, Jquery, Boostrap를 이용한 SandWitchhomepage](https://github.com/AHLF77/TIL/blob/master/SandWitchhomepage.md)
 
