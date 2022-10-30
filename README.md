@@ -42,10 +42,10 @@
 
 ## Spring
  - day01: 자바 스프링 환경 셋팅 및 개념 공부
-    - [day01-1: 자바로만 이용한 클래스간 연동]() 
-    - [day01-2: Spring 라이브러리를 직졉 가져와 스프링환경셋팅]() 
-    - [day01-3: Spring 라이브러리를 직졉 가져와 스프링 환경 기초 연습]() 
-    - [day01-4: Spring Maven서버를 이용해 가져와서 스프링 환경 기초 연습(DAO,Controller,Service,VO)]() 
+    - [day01-1: 자바로만 이용한 클래스간 연동](https://github.com/AHLF77/TIL/blob/master/springday01-1.md) 
+    - [day01-2: Spring 라이브러리를 직졉 가져와 스프링환경셋팅](https://github.com/AHLF77/TIL/blob/master/springday01-2.md) 
+    - [day01-3: Spring 라이브러리를 직졉 가져와 스프링 환경 기초 연습](https://github.com/AHLF77/TIL/blob/master/springday01-3.md) 
+    - [day01-4: Spring Maven서버를 이용해 가져와서 스프링 환경 기초 연습(DAO,Controller,Service,VO)](https://github.com/AHLF77/TIL/blob/master/springday01-4.md) 
 
 
 ## Cloud
