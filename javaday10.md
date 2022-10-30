@@ -1,4 +1,4 @@
-## 0420 강의
+## 0420 배운 내용 요약
 ### 복습
 - 추상: 실체들 간에 공통되는 특성을 추출한 것(ex: 새, 곤충, 물고기 -> 동물)
 - 추상 클래스는 실체 클래스의 공통된 필드와 메소드의 이름 통일할 목적
@@ -18,7 +18,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		System.out.println("Start...");
-		OracleDAO dao = new OracleDAO();
+		OracleDAO dao = new OracleDAO(); // OracleDAO에 넣기위해서는 클래스 초기화 필요. 단, 오라클과 연동되는 프로그램으로 고착됨.
 
 		Scanner sc = new Scanner(System.in);
 
@@ -309,6 +309,7 @@ import java.util.ArrayList;
 public interface DAO {
 	static final int a = 1000;
 	
+	// 인터페이스는 기능만 정의하는곳에 일반함수를 넣기위해 default를 따로 정의함.
 	public default void connect() {
 		System.out.println("Connect .....");
 	}
@@ -449,8 +450,9 @@ public class App {
 				String pwd = sc.next();
 				System.out.println("Input Customer name: ");
 				String name = sc.next();
-				
+				// customerVO 객체 생성
 				CustomerVO c = new CustomerVO(id, pwd, name);
+				// OracleDAO의 insert기능 실행.
 				dao.insert(c);
 				
 			}else if(cmd.equals("d")) {
@@ -557,6 +559,8 @@ import java.util.ArrayList;
 public interface DAO {
 	
 	static final int a = 1000; 
+
+	// 인터페이스는 기능만 정의하는곳에 일반함수를 넣기위해 default를 따로 정의함.
 	
 	public default void connect() {
 		System.out.println("Connect......");
@@ -690,3 +694,231 @@ public class Test {
 
 ```
 
+#### 인터페이스 WorkShop
+```java
+package ws;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Start...");
+		// OracleDAO에 넣기위해서는 클래스 초기화 필요. 단, 오라클과 연동되는 프로그램으로 고착됨. 
+		OracleDAO oracledao = new OracleDAO();
+		DAO dao = oracledao;
+		Search search = oracledao;
+		while(true) {
+			System.out.println("Input cmd(i,d,s,u,a,f,q) ...");
+			String cmd = sc.next();
+			if(cmd.equals("q")) {
+				System.out.println("Bye");
+				break;
+			}else if (cmd.equals("i")) {
+				System.out.println("Input todolist ..");
+				System.out.println("Input order..");
+				String id = sc.next();
+				System.out.println("Input when..");
+				String pwd = sc.next();
+				System.out.println("Input what..");
+				String name = sc.next();
+				// customerVO 객체 생성
+				ToDoVO c = new ToDoVO(id, pwd, name);
+				// OracleDAO의 insert기능 실행.
+				dao.insert(c);
+			}else if (cmd.equals("d")) {
+				System.out.println("Input order:");
+				String id = sc.next();
+				dao.delete(id);
+			}else if (cmd.equals("s")) {
+				System.out.println("Input order:");
+				String id = sc.next();
+				ToDoVO c = dao.select(id);
+				System.out.println(c);
+			}else if (cmd.equals("a")) {
+				ArrayList<ToDoVO>list = dao.select();
+				for (ToDoVO c : list) {
+					System.out.println(c);
+				}
+			}else if (cmd.equals("u")) {
+				System.out.println("Input order:");
+				String id = sc.next();			
+				ToDoVO c = dao.update(id);
+				System.out.println(c);
+			}else if (cmd.equals("f")) {
+				System.out.println("Input when:");
+				String when = sc.next();
+				ArrayList<ToDoVO> list = search.search(when);
+				for (ToDoVO c : list) {
+					System.out.println(c);
+				}
+			}
+		}
+		
+		sc.close();
+		System.out.println("End ...");
+		
+
+	}
+
+}
+```
+
+```java
+package ws;
+
+import java.util.ArrayList;
+
+
+public interface DAO {
+	
+
+	public void insert(ToDoVO c);
+	public void delete(String id);
+	public ToDoVO update(String id);
+	public ToDoVO select(String id);
+	public ArrayList<ToDoVO> select();
+	
+	
+}
+```
+
+```java
+package ws;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class OracleDAO implements DAO, Search {
+
+	HashMap<String, ToDoVO> map;
+	
+	public OracleDAO() {
+		map = new HashMap<String, ToDoVO>();
+	}
+	
+	@Override
+	public void insert(ToDoVO c) {
+		String key = c.getId();
+		map.put(key, c);
+	}
+
+	@Override
+	
+	public void delete(String id) {	
+		map.remove(id);
+	}
+
+	@Override
+	public ToDoVO select(String id) {
+		ToDoVO c = null;
+		c = map.get(id);
+		return c;
+	}
+
+	@Override
+	public ArrayList<ToDoVO> select() {
+		Collection<ToDoVO> col = map.values();
+		Iterator<ToDoVO> it = col.iterator();		
+		ArrayList<ToDoVO> list = new ArrayList<>();	
+		while(it.hasNext()) {
+			ToDoVO cust = it.next();
+			list.add(cust);
+		}
+		return list;
+	}
+
+	@Override
+	public ToDoVO update(String id) {
+		ToDoVO c = null;
+		c = map.get(id);	
+		c.setDone(true);
+		return c;
+	}
+
+	@Override
+	public ArrayList<ToDoVO> search(String when) {
+		ArrayList<ToDoVO> list = new ArrayList<>();	
+		Collection<ToDoVO> col = map.values();
+		Iterator<ToDoVO> it = col.iterator();
+		while(it.hasNext()) {
+            ToDoVO cust = it.next();
+            if(cust.getWhen().equals(when)) {
+                list.add(cust);
+            }
+		}
+		return list;
+
+	}
+
+}
+```
+
+```java
+package ws;
+
+import java.util.ArrayList;
+
+
+public interface Search {
+	public ArrayList<ToDoVO> search(String name);
+}
+```
+
+```java
+package ws;
+
+public class ToDoVO {
+	private String id;
+	private String when;
+	private String what;
+	private boolean done;
+	public ToDoVO() {
+	}
+	
+	public ToDoVO(String id, String when, String what) {
+		this.id = id;
+		this.when = when;
+		this.what = what;
+		this.done = false;
+	}
+
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getWhen() {
+		return when;
+	}
+	public void setWhen(String when) {
+		this.when = when;
+	}
+	public String getWhat() {
+		return what;
+	}
+	public void setWhat(String what) {
+		this.what = what;
+	}
+	public boolean isDone() {
+		return done;
+	}
+	public void setDone(boolean done) {
+		this.done = done;
+	}
+	@Override
+	public String toString() {
+		return "ToDoVO [id=" + id + ", when=" + when + ", what=" + what + ", done=" + done + "]";
+	}
+
+	
+	
+
+}
+```
