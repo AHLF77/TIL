@@ -1,103 +1,101 @@
-# 0511강의
+# 0511 배운 내용 요약
 
 ## 글자태그
-- h1 ~ h6 제목 글자 생성
-- p : 본문 문단 생성
-- br : 줄바꿈 
-- hr: 수평 줄 삽입
-- a : 하이퍼 링크 생성
-- b, i, small, sub, sup, ins, del: 글자 모양 지정
+ - h1 ~ h6 제목 글자 생성
+ - p : 본문 문단 생성
+ - br : 줄바꿈 
+ - hr: 수평 줄 삽입
+ - a : 하이퍼 링크 생성
+ - b, i, small, sub, sup, ins, del: 글자 모양 지정
 
-※ br 태그는 다른 글자 태그 내부에 삽입할 수 있지만 hr 태그는 안된다는 것입니다.
+  ※ br 태그는 다른 글자 태그 내부에 삽입할 수 있지만 hr 태그는 안된다는 것입니다.
 
 ## 목록 태그
-- ul : 순서가 없는 목록 생성
-- ol : 순서삭 있는 목록 생성
-- li : 목록 요소 생성
-※ 아래의 P79 참조
+ - ul : 순서가 없는 목록 생성
+ - ol : 순서삭 있는 목록 생성
+ - li : 목록 요소 생성
+  ※ 아래의 P79 참조
 
 ## 테이블 태그
-- table : 표 삽입
-- tr : 표에 행 삽입
-- th : 표의 제목 셀 생성
-- td : 표의 일반 셀 생성
+ - table : 표 삽입
+ - tr : 표에 행 삽입
+ - th : 표의 제목 셀 생성
+ - td : 표의 일반 셀 생성
 
 ## 테이블 태그의 속성
-- border(table): 표의 테두리 두께 지정
-- colspan(th,td): 셀의 너비 지정
-- rowspan(th,td): 셀의 높이 지정
+ - border(table): 표의 테두리 두께 지정
+ - colspan(th,td): 셀의 너비 지정
+ - rowspan(th,td): 셀의 높이 지정
 
 ## 미디어 태그
-- img, audio, video: 이미지, 오디오, 비디오 삽입
+ - img, audio, video: 이미지, 오디오, 비디오 삽입
 
 ## 특수문자 표기
-- &nbsp; = 공백생성
-<body>
-	<h1>공백 &nbsp 글자</h1>
-</body>
-
-※ 권장하지는 않음.
+ - &nbsp; = 공백생성
+	<body>
+		<h1>공백 &nbsp 글자</h1>
+	</body>
+	※ 권장하지는 않음.
 
 ## 웹 페이지 내부에 연결하기
 <a href="http://www.naver.com">네이버</a>
-1. 이동할 웹페이지
-2. 출력 글자
+	1. 이동할 웹페이지
+	2. 출력 글자
 
 ※ 빈 링크
 <li><a href="#">언론사 전체보기</a></li>
-- 속성에 '#'을 넣어 처리
+ - 속성에 '#'을 넣어 처리
 
 ## 입력 양식 태그
-- 사용자에게 정보를 입력받는 요소
-- form 태그는 method 속성의 방식으로 action 속성 장소에 데이터를 전달 
-<form action="전송위치" method="전송방식">
-</form>
-1. 전달 위치: 데이터를 전달할 목적지
-2. 전송방식
-- GET: 주소에 데이터를 직접 입력해 전달(비밀 유지 불가능)
-- POST: 별도의 방법을 사용해 데이터를 해당 주소로 전달(비밀 유지 가능)
+ - 사용자에게 정보를 입력받는 요소
+ - form 태그는 method 속성의 방식으로 action 속성 장소에 데이터를 전달 
+<form action="전송위치" method="전송방식"></form>
+ 1. 전달 위치: 데이터를 전달할 목적지
+ 2. 전송방식
+ - GET: 주소에 데이터를 직접 입력해 전달(비밀 유지 불가능)
+ - POST: 별도의 방법을 사용해 데이터를 해당 주소로 전달(비밀 유지 가능)
 
 ### 입력 양식의 종류
-1. form
-- 보이지 않음: 입력 양식의 시작과 끝 표시
+ 1. form
+ - 보이지 않음: 입력 양식의 시작과 끝 표시
 
-2. input
-- text : 글자 입력 양식 생성
-- button : 버튼 생성
-- checkbox : 체크 박스 생성
-- file : 파일 입력 양식 생성
-- hidden : 해당 내용 표시 안함
-- image : 이미지 형태 생성
-- password : 비밀번호 입력 양식 생성
-- radio : 라디오 버튼 생성
-- reset : 초기화 버튼 생성
-- submit : 제출 버튼 생성
+ 2. input
+ - text : 글자 입력 양식 생성
+ - button : 버튼 생성
+ - checkbox : 체크 박스 생성
+ - file : 파일 입력 양식 생성
+ - hidden : 해당 내용 표시 안함
+ - image : 이미지 형태 생성
+ - password : 비밀번호 입력 양식 생성
+ - radio : 라디오 버튼 생성
+ - reset : 초기화 버튼 생성
+ - submit : 제출 버튼 생성
 
-3. textarea
-- cols/rows : 여러 행의 글자 입력 양식 생성, cols는 너비를 지정하고 rows는 높이를 지정
+ 3. textarea
+ - cols/rows : 여러 행의 글자 입력 양식 생성, cols는 너비를 지정하고 rows는 높이를 지정
 
-4. Select optgroup option
-- 선택 양식 생성  
-- 옵션 그룹화
-- 옵션 생성
+ 4. Select optgroup option
+ - 선택 양식 생성  
+ - 옵션 그룹화
+ - 옵션 생성
 
-5. fieldset legend
-- 입력 양식의 그룹 지정
-- 입력 양식 그룹의 이름 지정
+ 5. fieldset legend
+ - 입력 양식의 그룹 지정
+ - 입력 양식 그룹의 이름 지정
 
 ## HTML5 문서 구조화
-- 공간 분할 태그 : 훨씬 더 자유롭게 
-1. div 태그: 블록 형식으로 공간 분할(각 태그가 한 행을 모두 차지)
-2. span 태그: 인라인 형식으로 공간 분할(글자크기 만큼 차지, 왼쪽에서 오른쪽으로 쌓임)
+ - 공간 분할 태그 : 훨씬 더 자유롭게 
+ 1. div 태그: 블록 형식으로 공간 분할(각 태그가 한 행을 모두 차지)
+ 2. span 태그: 인라인 형식으로 공간 분할(글자크기 만큼 차지, 왼쪽에서 오른쪽으로 쌓임)
 
 ## 시맨틱 태그
-- 컴퓨터 프로그램이 코드를 읽고 의미를 인식할 수 있는 지능형 웹
-1. header: 머리말
-2. nav: 하이퍼링크들을 모아 둔 내비겡이션
-3. aside: 본문 흐름에 벗어나는 노트나 팁
-4. section: 문서의 장이나 절에 해당하는 내용
-5. article: 본문과 독립적인 콘텐트 영역
-6. footer: 꼬리말
+ - 컴퓨터 프로그램이 코드를 읽고 의미를 인식할 수 있는 지능형 웹
+ 1. header: 머리말
+ 2. nav: 하이퍼링크들을 모아 둔 내비겡이션
+ 3. aside: 본문 흐름에 벗어나는 노트나 팁
+ 4. section: 문서의 장이나 절에 해당하는 내용
+ 5. article: 본문과 독립적인 콘텐트 영역
+ 6. footer: 꼬리말
 
 ### P52(html 복습)
 <!DOCTYPE html>
@@ -241,6 +239,8 @@
 </head>
 <body>
 	<h1>Form Tag</h1>
+	<!-- register2 로 post방식으로 보내기.  -->
+	<!-- register2 로 보내기 위해서는 java에서 프로그램이 되어야함. -->
 	<form action="register2" method="POST">
 		<fieldset>
 			<legend>회원 가입</legend>	
@@ -249,14 +249,17 @@
 			AGE<input type="number" name="age"><br>
 			BIRTH<input type="date" name="birth"><br>
 			GENDER<br>
+			<!-- radio : n개중 1개만 선택 가능.(마우스 체크통해서) 다중선택X -->
 			<input type="radio" name="gender" value="f">Female<br>
 			<input type="radio" name="gender" value="m">Male<br>
 			<input type="radio" name="gender" value="a">Aje<br>
 			HOBBY<br>
+			<!-- checkbox : n개중 n개 선택 가능.(마우스 체크통해서) 다중선택O -->
 			<input type="checkbox" name="hobby" value="s">Study<br>
 			<input type="checkbox" name="hobby" value="t">Train<br>
 			<input type="checkbox" name="hobby" value="e">Eat<br>
 			Car<br>
+			<!-- select : 옵션중 1개 선택 가능  -->
 			<select name="car">
 				<option value="k1">K1</option>
 				<option value="k2">K2</option>
@@ -264,19 +267,23 @@
 			</select><br>
 			Resume<br>
 			<textarea name="resume" rows="10" cols="100"></textarea>
+			<!-- hidden : 화면상 보이지 않는것.  -->
 			<input type="hidden" name="loginid value="leejan">
+			<!-- range : 범위 바를 만들어줌.  -->
 			<input type="range" name="range" size="10" step="1"><br>
 		</fieldset>
+		<!-- submit : 서버로 보내기..  -->
 		<input type="submit" value="REGISTER">
+		<!-- reset : 작성된 내용 모두 지우기.  -->
 		<input type="reset" value="RESET">
 	</form>
 </body>
 </html>
 
-- 한 항목만 선택하기: select태그는 목록으로 보여 주는 항목 중 하나 또는 여러 개를 선택할 때 사용하는 입력 양식 요소
-- 여러 항목 선택하기: multiple 속성을 사용 
-- 선택 옵션 묶기: optgroup 태그를 사용해 선택 옵션을 그룹으로 묶을 수 있습니다.
-- legend 태그: 입력 양식을 그룹으로 묶고 이름을 지정할 수 있음.
+ - 한 항목만 선택하기: select태그는 목록으로 보여 주는 항목 중 하나 또는 여러 개를 선택할 때 사용하는 입력 양식 요소
+ - 여러 항목 선택하기: multiple 속성을 사용 
+ - 선택 옵션 묶기: optgroup 태그를 사용해 선택 옵션을 그룹으로 묶을 수 있습니다.
+ - legend 태그: 입력 양식을 그룹으로 묶고 이름을 지정할 수 있음.
 
 
 ### Maincontroller
@@ -294,6 +301,7 @@ public class MainController {
 		System.out.println(id+""+pwd+""+age);
 	}
 	
+	// 화면에서 입력되는 것
 	@RequestMapping("/register2")
 	public void register2(String id, String pwd, int age, 
 			String birth, String gender, 
@@ -458,6 +466,23 @@ public class MainController {
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+</head>
+<body>
+	<h1>P105</h1>
+	<h1 id="hh1">Header1</h1>
+	<h1 class="c1">Header1</h1>
+	<h2>Header2</h2>
+	<h2 class="c1">Header2</h2>
+	<a href="#">Click</a>
+	<a href="#">Click</a>
+	<span>Span1</span>
+	<span>Span2</span>
+	<p>Paragraph</p>
+</body>
+</html>
+```
+
+```css
 <style>
 	*{   /* margin: 테두리(border)와 이웃하는 요소 사이의 간격인 마진 영역의 크기*/
 	/* padding: 내용(content)과 테두리(border) 사이의 간격인 패딩 영역의 크기*/
@@ -493,18 +518,4 @@ public class MainController {
 	}
 
 </style>
-</head>
-<body>
-	<h1>P105</h1>
-	<h1 id="hh1">Header1</h1>
-	<h1 class="c1">Header1</h1>
-	<h2>Header2</h2>
-	<h2 class="c1">Header2</h2>
-	<a href="#">Click</a>
-	<a href="#">Click</a>
-	<span>Span1</span>
-	<span>Span2</span>
-	<p>Paragraph</p>
-</body>
-</html>
 ```

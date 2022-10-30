@@ -26,7 +26,10 @@
  - [day04: SQL 문법(3)](https://github.com/AHLF77/TIL/blob/master/sqlday04.md)
 
 ## WEB
-
+ - [day01: 웹 소개, HTML 기초]() 
+ - [day02: HTML 태그]()
+ - [day03: CSS3]()
+ - [day03-1: 애플 홈페이지 과제]()
 
 
 ## Spring
