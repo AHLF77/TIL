@@ -59,7 +59,14 @@
 - day04: 자바스프링 Springboot를 이용한 WEB, SQL연동
     - [day04-1: spring mySQL 연동 셋팅 연습1](https://github.com/AHLF77/TIL/blob/master/springday04-1.md) 
     - [day04-2: spring mySQL 연동 셋팅 연습2](https://github.com/AHLF77/TIL/blob/master/springday04-2.md)    
-    - [day04-3: spring mySQL 연동 셋팅 연습3]() 
+    - [day04-3: spring mySQL 연동 셋팅 연습3](https://github.com/AHLF77/TIL/blob/master/springday04-3.md) 
+
+- day05: 자바스프링 Springboot를 이용한 WEB, SQL연동 bootstrap이용하여 web디자인까지(1)
+    - [day05: springboot web,data연동, 컨트롤러 httpsession 활용, thymleaf if문 활용]() 
+
+- day06: 자바스프링 Springboot를 이용한 WEB, SQL연동 bootstrap이용하여 web디자인까지(2)
+    - [day06-1: shoppingdb 환경셋팅부터 dao,service 구축(shopadmin)]()
+    - [day06-1: shoppingdb 환경셋팅부터 dao,service 구축(shopcustomer)]()      
 
 
 ## Ncp(Naver Cloud Platform)

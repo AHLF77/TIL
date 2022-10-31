@@ -1,4 +1,4 @@
-# 0607 강의
+# 0607 배운 내용 요약
 ## day051
 
 ### src/main/java
@@ -1329,24 +1329,23 @@ $(document).ready(function(){
 
 - custupdate
 ```html
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Cust Update Page</h1>
-	<form action="custupdateimpl" method="post">
-	ID: <span th:text="${ucust.id}"></span><br>
-	<input type="hidden" name="id" value="" th:value="${ucust.id}">
-	
-	PWD<input type="text" name="pwd" value="" th:value="${ucust.pwd}"><br>
-	NAME<input type="text" name="name" value="" th:value="${ucust.name}"><br>
-	<input type="submit" value="UPDATE"><br>
-	</form>
-</body>
-</html>
+<h1>CUST UPDATE PAGE</h1>
+<form action="custupdateimpl" method="post">
+  <div class="form-group">
+    <label for="id">ID:</label>
+    <input type="text" class="form-control" id="id" name="id" th:value="${ucust.id}" readonly="readonly">
+  </div>
+   <div class="form-group">
+    <label for="name">NAME:</label>
+    <input type="text" class="form-control" id="name" name="name" th:value="${ucust.name}">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="text" class="form-control" id="pwd" name="pwd" th:value="${ucust.pwd}">
+  </div>
+  <button type="submit" class="btn btn-default">UPDATE</button>
+</form>
 ```
 
 - left
@@ -1399,8 +1398,12 @@ NAME<br><input type="text" name="name"><br>
 ```html
 <meta charset="UTF-8">
 
-<h1>Product Main Page</h1>
+
+<h1>PRODUCT PAGE</h1>
+<p>Lorem consequat.</p>
 <hr>
+<h3>Test</h3>
+<p>Lorem ipsum...</p>
 ```
 
 - left
@@ -1494,14 +1497,28 @@ NAME<br><input type="text" name="name"><br>
 ```html
 <meta charset="UTF-8">
 
-<h1>Product Register Page</h1>
-<form action="registerimpl" method="POST">
-NAME<br><input type="text" name="name"><br>
-PRICE<br><input type="text" name="price"><br>
-RATE<br><input type="text" name="rate"><br>
-<input type="submit" name="REGISTER"><br>
+
+<h1>PRODUCT Register PAGE</h1>
+
+
+<form action="registerimpl" method="post">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" name="name">
+  </div>
+   <div class="form-group">
+    <label for="price">PRICE:</label>
+    <input type="number" class="form-control" name="price">
+  </div>
+  <div class="form-group">
+    <label for="rate">RATE:</label>
+    <input type="text" class="form-control" name="rate">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
 </form>
-<hr>
 
 ```
 
