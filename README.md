@@ -59,11 +59,12 @@
 - day04: 자바스프링 Springboot를 이용한 WEB, SQL연동
     - [day04-1: spring mySQL 연동 셋팅 연습1](https://github.com/AHLF77/TIL/blob/master/springday04-1.md) 
     - [day04-2: spring mySQL 연동 셋팅 연습2](https://github.com/AHLF77/TIL/blob/master/springday04-2.md)    
+    - [day04-3: spring mySQL 연동 셋팅 연습3]() 
 
 
 ## Ncp(Naver Cloud Platform)
- - [day01: Linux]()
- - [day02: Naver Cloud Platform]()
+ - [day01: Linux](https://github.com/AHLF77/TIL/blob/master/Ncpday01.md)
+ - [day02: Naver Cloud Platform](https://github.com/AHLF77/TIL/blob/master/Ncpday02.md)
 
 ## Git
  - [day01: Git 기초](https://github.com/AHLF77/TIL/blob/master/GItday01.md)
