@@ -47,11 +47,15 @@
     - [day01-3: Spring 라이브러리를 직졉 가져와 스프링 환경 기초 연습](https://github.com/AHLF77/TIL/blob/master/springday01-3.md) 
     - [day01-4: Spring Maven서버를 이용해 가져와서 스프링 환경 기초 연습(DAO,Controller,Service,VO)](https://github.com/AHLF77/TIL/blob/master/springday01-4.md) 
  - day02: 스프링 AOP,DI 특성에따른 활용법 셋팅 및 SQL 연동 공부.
-    - [day02-1: DI XML을 활용하여 적용하기]() 
-    - [day02-2: DI anotation 을 활용하여 적용하기]() 
-    - [day02-3: AOP XML을 활용하여 적용하기]() 
-    - [day02-4: AOP annotation 을 활용하여 적용하기]()    
-    - [day02-5: Spring mybatis를 활용하여 SQL과 데이터베이스 연동하기.]()     
+    - [day02-1: DI XML을 활용하여 적용하기](https://github.com/AHLF77/TIL/blob/master/springday02-1.md) 
+    - [day02-2: DI anotation 을 활용하여 적용하기](https://github.com/AHLF77/TIL/blob/master/springday02-2.md) 
+    - [day02-3: AOP XML을 활용하여 적용하기](https://github.com/AHLF77/TIL/blob/master/springday02-3.md) 
+    - [day02-4: AOP annotation 을 활용하여 적용하기](https://github.com/AHLF77/TIL/blob/master/springday02-4.md)    
+    - [day02-5: Spring mybatis를 활용하여 SQL과 데이터베이스 연동하기.](https://github.com/AHLF77/TIL/blob/master/springday02-5.md)     
+ - day03: 스프링 SQL연동 및 환경셋팅 이해 및 연습
+    - [day02-1: spring mySQL 연동 셋팅 연습1]() 
+    - [day02-2: spring mySQL 연동 셋팅 연습2]() 
+    - [day02-3: spring mySQL 연동 워크샵]()     
 
 
 ## Cloud
