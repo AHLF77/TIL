@@ -1,7 +1,4 @@
-# 0603강의
-
-## Springboot 2차
-- product 테이블을 이용한 CRUD 작성
+# 0603 배운 내용 요약
 
 ## day0412
 
@@ -327,6 +324,9 @@ public class ProductVO {
 <body>
 	<h1>Product Add OK Page</h1>
 	<h3 th:text="${rproduct.name}"></h3>
+	<h3 th:text="${rproduct.price}"></h3>
+	<h3 th:text="${rproduct.regdate}"></h3>
+	<h3 th:text="${rproduct.rate}"></h3>
 	<h3>상품이 등록 되었습니다.</h3>
 </body>
 </html>

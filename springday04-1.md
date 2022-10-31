@@ -1,4 +1,4 @@
-# 0602강의
+# 0602 배운 내용 요약
 ## Springboot
 - Springboot를 통해 SQL문을 연동하고, CRUD를 작성하는 것이 목표
 
@@ -313,6 +313,7 @@ public class CustVO {
 <body>
 	<h1>Cust Add OK Page</h1>
 	<h3 th:text="${rcust.id}"></h3>
+	<h3 th:text="${rcust.pwd}"></h3>
 	<h3 th:text="${rcust.name}"></h3>
 	<h3>님이 등록 되었습니다.</h3>
 </body>

@@ -53,9 +53,12 @@
     - [day02-4: AOP annotation 을 활용하여 적용하기](https://github.com/AHLF77/TIL/blob/master/springday02-4.md)    
     - [day02-5: Spring mybatis를 활용하여 SQL과 데이터베이스 연동하기.](https://github.com/AHLF77/TIL/blob/master/springday02-5.md)     
  - day03: 스프링 SQL연동 및 환경셋팅 이해 및 연습
-    - [day02-1: spring mySQL 연동 셋팅 연습1]() 
-    - [day02-2: spring mySQL 연동 셋팅 연습2]() 
-    - [day02-3: spring mySQL 연동 워크샵]()     
+    - [day03-1: spring mySQL 연동 셋팅 연습1](https://github.com/AHLF77/TIL/blob/master/springday03-1.md) 
+    - [day03-2: spring mySQL 연동 셋팅 연습2](https://github.com/AHLF77/TIL/blob/master/springday03-2.md) 
+    - [day03-3: spring mySQL 연동 워크샵](https://github.com/AHLF77/TIL/blob/master/springday03-3.md) 
+- day04: 자바스프링 Springboot를 이용한 WEB, SQL연동
+    - [day04-1: spring mySQL 연동 셋팅 연습1](https://github.com/AHLF77/TIL/blob/master/springday03-1.md) 
+    - [day04-2: spring mySQL 연동 셋팅 연습2](https://github.com/AHLF77/TIL/blob/master/springday03-2.md)    
 
 
 ## Cloud
