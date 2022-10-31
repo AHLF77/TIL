@@ -69,7 +69,7 @@
     - [day06-1: shoppingdb 환경셋팅부터 dao,service 구축(shopcustomer)](https://github.com/AHLF77/TIL/blob/master/springday06-2.md)  
 
 - day07: 카카오 지도 API 활용
-    - [day07: Springboot를 기반으로 카카오 API를 사용한 장소 검색]()        
+    - [day07: Springboot를 기반으로 카카오 API를 사용한 장소 검색](https://github.com/AHLF77/TIL/blob/master/springday07.md)        
 
 ## Ncp(Naver Cloud Platform)
  - [day01: Linux 기초, Linux 명령어](https://github.com/AHLF77/TIL/blob/master/Ncpday01.md)
